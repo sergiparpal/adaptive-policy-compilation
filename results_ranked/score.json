@@ -1,0 +1,6016 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-20T02:00:31Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "ab6d626a749611681db8f02a5c8e9b2b7df328d1",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "9365213bfb38e2a3"
+  },
+  "plan": "PLAN_RANKED.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_RANKED.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_RANKED.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "RK-g1": {
+      "what": "PLAN_CORRECTIONS.md's own blocking checks pass; on its three L runs' answers arm l gives back the run, arm k with rung 2's decision put back gives back the same record and messages, its ranking is the replay's at every birth and its votes the record's, and its own decision is rung 2's but at a CONFLICT, where the ranking decides; it overrides decide alone; the suite green",
+      "corrections_checks": {
+        "CR-g1": true,
+        "CR-g2": true,
+        "CR-g3": true,
+        "instruments": true,
+        "passes": true
+      },
+      "replays": {
+        "l_r1": {
+          "calls": 722,
+          "reported_errors": 216,
+          "placement_calls": 345,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 154,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        },
+        "l_r2": {
+          "calls": 715,
+          "reported_errors": 209,
+          "placement_calls": 347,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 163,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        },
+        "l_r3": {
+          "calls": 686,
+          "reported_errors": 235,
+          "placement_calls": 338,
+          "l_is_the_run": true,
+          "reports_where_reported": true,
+          "reports_are_the_labels": true,
+          "k_put_back_is_l": true,
+          "k_sends_what_l_sends": true,
+          "ranking_is_the_replays": true,
+          "votes_are_the_records": true,
+          "decides": {
+            "conflicts": 75,
+            "as_rung_2_elsewhere": true,
+            "by_the_ranking_at_conflicts": true,
+            "as_the_space_is_read": true
+          },
+          "passes": true
+        }
+      },
+      "decide_alone": true,
+      "suite": {
+        "ran": true,
+        "tests": 3493,
+        "result": "OK (skipped=5)",
+        "seconds": 218.1,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RK-g2": {
+      "what": "both arms send PLAN_CORRECTIONS.md's arm L's texts, by digest, and its request with the pin, and differ in their headers by the engine alone; the at-once asks send that plan's texts and request with their budget; \u00a70's figures 2 to 7 come back",
+      "texts": {
+        "keys": true,
+        "system_prompt_level_1": true,
+        "report_r1": true,
+        "three_are_v1cs": true,
+        "both_arms_the_same_texts": true,
+        "the_arms_differ_by_the_engine": true,
+        "at_once_system_prompt": true,
+        "at_once_header": true,
+        "passes": true
+      },
+      "requests": {
+        "both_arms_corrections_0": true,
+        "at_once_but_for_the_budget_0": true,
+        "both_arms_corrections_1": true,
+        "at_once_but_for_the_budget_1": true,
+        "pin": true,
+        "passes": true
+      },
+      "drafting": {
+        "as_declared": {
+          "set_aside": true,
+          "final_bases": true,
+          "as_it_went": true,
+          "asked_conflicts": true,
+          "pair_arrivals": true,
+          "schedule": true
+        },
+        "sound": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "RK-g3": {
+      "what": "six runs alternating from the arm the seed draws; the smoke runs 30 cases an arm on PLAN_CHANNEL.md's smoke draws; coverage 1/2; the cap 400; \u00a72.6's constants and a session after every run; the ask pool for the asks alone; Step 0: under the transcriber and each draw, arm k's engine gives back rung 2's record and its ranking decides nothing; each competitor's ceiling",
+      "schedule": [
+        [
+          "l",
+          1
+        ],
+        [
+          "k",
+          1
+        ],
+        [
+          "l",
+          2
+        ],
+        [
+          "k",
+          2
+        ],
+        [
+          "l",
+          3
+        ],
+        [
+          "k",
+          3
+        ]
+      ],
+      "as_declared": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "coverage": true,
+      "cap": true,
+      "draws_are_corrections": true,
+      "at_once": true,
+      "a_session_after_every_run": true,
+      "the_pool_is_for_asks": true,
+      "before_any_vote_the_domains_order": true,
+      "step_zero": {
+        "r1": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        },
+        "r2": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 132280
+        },
+        "r3": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        },
+        "passes": true
+      },
+      "competitors_ceilings": true,
+      "passes": true
+    },
+    "RK-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_RANKED.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_RANKED.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "missing": [],
+  "verdicts": {
+    "RK-a": {
+      "verdict": "holds",
+      "value": [
+        3,
+        3
+      ],
+      "line": "every complete K run",
+      "thin": false,
+      "why": null,
+      "per_run": {
+        "1": "SECURITY_INCIDENT",
+        "2": "SECURITY_INCIDENT",
+        "3": "SECURITY_INCIDENT"
+      }
+    },
+    "RK-b": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "23119/134400",
+        "value": 0.17201636904761905
+      },
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds_at": ">=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "k": [
+          "743/960",
+          "1229/1920",
+          "31/40"
+        ],
+        "l": [
+          "17251/26880",
+          "26967/44800",
+          "2419/4480"
+        ]
+      }
+    },
+    "RK-c": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "2/3",
+        "value": 0.6666666666666666
+      },
+      "line": {
+        "fraction": "1/2",
+        "value": 0.5
+      },
+      "holds_at": ">=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "k": [
+          "2/3",
+          "1/3",
+          "2/3"
+        ]
+      }
+    },
+    "RK-d": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "713/13440",
+        "value": 0.05305059523809524
+      },
+      "line": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "holds_at": ">=",
+      "thin": true,
+      "why": null,
+      "per_run": {
+        "1": "131/1680",
+        "2": "-1415/5376",
+        "3": "713/13440"
+      }
+    },
+    "RK-e": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "83/98",
+        "value": 0.8469387755102041
+      },
+      "line": {
+        "fraction": "1/2",
+        "value": 0.5
+      },
+      "holds_at": ">=",
+      "thin": false,
+      "why": null,
+      "per_run": {
+        "k": [
+          "83/98",
+          "40/79",
+          "41/47"
+        ]
+      }
+    },
+    "RK-f": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "3/5",
+        "value": 0.6
+      },
+      "line": {
+        "fraction": "9/10",
+        "value": 0.9
+      },
+      "holds_at": ">=",
+      "thin": false,
+      "why": null,
+      "per_run": {
+        "k": [
+          "3/5",
+          "4/5",
+          "1/3"
+        ]
+      }
+    }
+  },
+  "RK-g": {
+    "runs": {
+      "l_r1": {
+        "arm": "l",
+        "engine": "rung2",
+        "space": {
+          "fraction": "17251/26880",
+          "value": 0.6417782738095238
+        },
+        "under_rung2": {
+          "fraction": "17251/26880",
+          "value": 0.6417782738095238
+        },
+        "under_the_ranking": {
+          "fraction": "6143/8960",
+          "value": 0.6856026785714285
+        },
+        "keyword_half": [
+          48405,
+          37850
+        ],
+        "recall": {
+          "T1_GENERAL": {
+            "fraction": "45/116",
+            "value": 0.3879310344827586
+          },
+          "T2_TECHNICAL": {
+            "fraction": "3431/3672",
+            "value": 0.934368191721133
+          },
+          "T3_ENGINEERING": {
+            "fraction": "187/409",
+            "value": 0.4572127139364303
+          },
+          "BILLING_SPECIALIST": {
+            "fraction": "197/342",
+            "value": 0.5760233918128655
+          },
+          "SECURITY_INCIDENT": {
+            "fraction": "19/30",
+            "value": 0.6333333333333333
+          },
+          "ACCOUNT_MANAGER": {
+            "fraction": "337/822",
+            "value": 0.4099756690997567
+          },
+          "ONCALL_ESCALATION": {
+            "fraction": "4/15",
+            "value": 0.26666666666666666
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "fraction": "19/43",
+            "value": 0.4418604651162791
+          }
+        },
+        "ranking": {
+          "final": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "T2_TECHNICAL",
+            "SELF_SERVICE_DEFLECT",
+            "BILLING_SPECIALIST",
+            "T1_GENERAL"
+          ],
+          "votes": [
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T2_TECHNICAL"
+              ],
+              "for_first": 143,
+              "for_second": 385
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 16,
+              "for_second": 268
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 124
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 67,
+              "for_second": 276
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 254,
+              "for_second": 464
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 17,
+              "for_second": 90
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 124,
+              "for_second": 94
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 311
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 271,
+              "for_second": 470
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 39
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 481,
+              "for_second": 267
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 21,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 100
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 82,
+              "for_second": 101
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 27
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 6,
+              "for_second": 1
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 231
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 402,
+              "for_second": 699
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 7,
+              "for_second": 79
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 454,
+              "for_second": 476
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 91,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 15,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 64,
+              "for_second": 5
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 2,
+              "for_second": 40
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 76,
+              "for_second": 12
+            },
+            {
+              "pair": [
+                "ONCALL_ESCALATION",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 2,
+              "for_second": 0
+            }
+          ],
+          "n_votes": 7155,
+          "changes": 36,
+          "security_first_from": 31,
+          "final_from": 320
+        },
+        "curve": {
+          "births": 326,
+          "points": 134400,
+          "rung2": {
+            "peak": 94455,
+            "peak_birth": 104,
+            "final": 86255
+          },
+          "ranked": {
+            "peak": 98010,
+            "peak_birth": 110,
+            "final": 92145
+          }
+        },
+        "taken_by_the_ranking": null,
+        "asked_conflicts": {
+          "cases": 137,
+          "ranking_right": 92,
+          "first_call_right": 60
+        },
+        "corpus": {
+          "labelled": [
+            122,
+            251
+          ],
+          "rest": [
+            1341,
+            1749
+          ],
+          "online": [
+            1544,
+            1853
+          ],
+          "online_cases_read": 1853
+        },
+        "escalations": {
+          "IMPASSE": 56,
+          "ERROR": 207,
+          "CONFLICT": 137
+        },
+        "stopped_at_the_cap": 1852,
+        "empty_objects": 0,
+        "labels": 207,
+        "handed": "each of 207 reported errors handed its own label",
+        "engine_record": "arm l keeps no ranking",
+        "followed": [
+          207,
+          207
+        ],
+        "refused": {
+          "fraction": "37/200",
+          "value": 0.185
+        },
+        "calls": 784,
+        "reports": {
+          "by_decile": [
+            40,
+            23,
+            20,
+            37,
+            18,
+            10,
+            20,
+            14,
+            22,
+            3
+          ],
+          "by_queue": {
+            "T2_TECHNICAL": 34,
+            "T1_GENERAL": 37,
+            "SELF_SERVICE_DEFLECT": 44,
+            "BILLING_SPECIALIST": 46,
+            "T3_ENGINEERING": 26,
+            "ACCOUNT_MANAGER": 18,
+            "SECURITY_INCIDENT": 2
+          }
+        },
+        "layer_below_oncall": [
+          8180,
+          10500
+        ],
+        "nested_in_the_keyword": [
+          {
+            "rule_id": "R0085",
+            "queue": "T2_TECHNICAL",
+            "born_at": 238,
+            "points": 33600,
+            "security_points": 16800,
+            "security_points_wrong": 16800
+          },
+          {
+            "rule_id": "R0164",
+            "queue": "T2_TECHNICAL",
+            "born_at": 679,
+            "points": 6720,
+            "security_points": 3360,
+            "security_points_wrong": 3360
+          },
+          {
+            "rule_id": "R0302",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1707,
+            "points": 33600,
+            "security_points": 16800,
+            "security_points_wrong": 16800
+          }
+        ],
+        "rounds": {
+          "rounds_sent": 384,
+          "rounds_not_sent": 4,
+          "listed_by_relation": {
+            "crossing": 9542,
+            "inside": 0,
+            "containing": 0,
+            "equal": 21
+          },
+          "left_out_by_reason": {
+            "inside": 699,
+            "containing": 514,
+            "governed": 2941
+          },
+          "unplaced_by_what_it_left_out": {
+            "crossing": 74
+          },
+          "replay_ok": true
+        },
+        "edges": {
+          "ok": 5463,
+          "cierra_ciclo": 1691,
+          "fuera_del_vecindario": 1
+        },
+        "calls_made": {
+          "calls": 784,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 785,
+          "rate_limited": 0,
+          "providers": {
+            "DeepInfra": 785
+          },
+          "finish_reasons": {
+            "stop": 784,
+            "length": 1
+          },
+          "prompt_tokens": 2292459,
+          "completion_tokens": 2673807,
+          "reasoning_tokens": {
+            "sum": 2500342,
+            "median": 1757,
+            "max": 16000
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 400,
+              "median": 13.31,
+              "sum": 6770.51
+            },
+            "1": {
+              "calls": 384,
+              "median": 39.870000000000005,
+              "sum": 20512.52
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 400,
+              "median": 13.31,
+              "sum": 6770.51
+            },
+            "1": {
+              "calls": 384,
+              "median": 39.870000000000005,
+              "sum": 20512.52
+            }
+          },
+          "retries": {
+            "parse": 1
+          }
+        },
+        "closed_l_under_the_same_draws": {
+          "space": {
+            "fraction": "253/448",
+            "value": 0.5647321428571429
+          },
+          "security": {
+            "fraction": "253/720",
+            "value": 0.35138888888888886
+          },
+          "oncall": {
+            "fraction": "2/5",
+            "value": 0.4
+          },
+          "escalations": {
+            "IMPASSE": 36,
+            "ERROR": 216,
+            "CONFLICT": 125
+          }
+        },
+        "transcriber_under_the_same_draws": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        }
+      },
+      "l_r2": {
+        "arm": "l",
+        "engine": "rung2",
+        "space": {
+          "fraction": "26967/44800",
+          "value": 0.6019419642857143
+        },
+        "under_rung2": {
+          "fraction": "26967/44800",
+          "value": 0.6019419642857143
+        },
+        "under_the_ranking": {
+          "fraction": "97901/134400",
+          "value": 0.7284300595238096
+        },
+        "keyword_half": [
+          37480,
+          43421
+        ],
+        "recall": {
+          "T1_GENERAL": {
+            "fraction": "769/1044",
+            "value": 0.7365900383141762
+          },
+          "T2_TECHNICAL": {
+            "fraction": "2219/3672",
+            "value": 0.6043028322440087
+          },
+          "T3_ENGINEERING": {
+            "fraction": "206/409",
+            "value": 0.5036674816625917
+          },
+          "BILLING_SPECIALIST": {
+            "fraction": "5981/6840",
+            "value": 0.8744152046783625
+          },
+          "SECURITY_INCIDENT": {
+            "fraction": "5/8",
+            "value": 0.625
+          },
+          "ACCOUNT_MANAGER": {
+            "fraction": "1727/4110",
+            "value": 0.4201946472019465
+          },
+          "ONCALL_ESCALATION": {
+            "fraction": "3/5",
+            "value": 0.6
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "fraction": "2577/4300",
+            "value": 0.5993023255813954
+          }
+        },
+        "ranking": {
+          "final": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "ACCOUNT_MANAGER",
+            "T3_ENGINEERING",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "votes": [
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T2_TECHNICAL"
+              ],
+              "for_first": 106,
+              "for_second": 477
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 1,
+              "for_second": 16
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 48,
+              "for_second": 347
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 12,
+              "for_second": 229
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 19,
+              "for_second": 227
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 6
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 121,
+              "for_second": 515
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 59,
+              "for_second": 88
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 225,
+              "for_second": 92
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 10,
+              "for_second": 644
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 193,
+              "for_second": 387
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 22,
+              "for_second": 105
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 529,
+              "for_second": 283
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 20,
+              "for_second": 1
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 196
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 83,
+              "for_second": 92
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 9,
+              "for_second": 82
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 24,
+              "for_second": 6
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 454
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 123,
+              "for_second": 518
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 12,
+              "for_second": 193
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 445,
+              "for_second": 372
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 274,
+              "for_second": 4
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 30,
+              "for_second": 10
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 186,
+              "for_second": 1
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 14,
+              "for_second": 98
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 129,
+              "for_second": 40
+            },
+            {
+              "pair": [
+                "ONCALL_ESCALATION",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 5,
+              "for_second": 0
+            }
+          ],
+          "n_votes": 8182,
+          "changes": 20,
+          "security_first_from": 51,
+          "final_from": 288
+        },
+        "curve": {
+          "births": 291,
+          "points": 134400,
+          "rung2": {
+            "peak": 90316,
+            "peak_birth": 257,
+            "final": 80901
+          },
+          "ranked": {
+            "peak": 108310,
+            "peak_birth": 157,
+            "final": 97901
+          }
+        },
+        "taken_by_the_ranking": null,
+        "asked_conflicts": {
+          "cases": 119,
+          "ranking_right": 78,
+          "first_call_right": 36
+        },
+        "corpus": {
+          "labelled": [
+            102,
+            230
+          ],
+          "rest": [
+            1404,
+            1770
+          ],
+          "online": [
+            1721,
+            2000
+          ],
+          "online_cases_read": 2000
+        },
+        "escalations": {
+          "IMPASSE": 33,
+          "ERROR": 193,
+          "CONFLICT": 119
+        },
+        "stopped_at_the_cap": null,
+        "empty_objects": 0,
+        "labels": 193,
+        "handed": "each of 193 reported errors handed its own label",
+        "engine_record": "arm l keeps no ranking",
+        "followed": [
+          193,
+          193
+        ],
+        "refused": {
+          "fraction": "53/345",
+          "value": 0.1536231884057971
+        },
+        "calls": 684,
+        "reports": {
+          "by_decile": [
+            34,
+            25,
+            18,
+            18,
+            14,
+            18,
+            18,
+            14,
+            18,
+            16
+          ],
+          "by_queue": {
+            "SELF_SERVICE_DEFLECT": 41,
+            "T1_GENERAL": 23,
+            "T2_TECHNICAL": 46,
+            "BILLING_SPECIALIST": 33,
+            "T3_ENGINEERING": 27,
+            "ACCOUNT_MANAGER": 22,
+            "SECURITY_INCIDENT": 1
+          }
+        },
+        "layer_below_oncall": [
+          6300,
+          10500
+        ],
+        "nested_in_the_keyword": [
+          {
+            "rule_id": "R0018",
+            "queue": "T2_TECHNICAL",
+            "born_at": 23,
+            "points": 8400,
+            "security_points": 0,
+            "security_points_wrong": 0
+          },
+          {
+            "rule_id": "R0054",
+            "queue": "T2_TECHNICAL",
+            "born_at": 154,
+            "points": 3360,
+            "security_points": 1680,
+            "security_points_wrong": 1680
+          },
+          {
+            "rule_id": "R0160",
+            "queue": "T2_TECHNICAL",
+            "born_at": 956,
+            "points": 33600,
+            "security_points": 16800,
+            "security_points_wrong": 16800
+          },
+          {
+            "rule_id": "R0183",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1097,
+            "points": 16800,
+            "security_points": 8400,
+            "security_points_wrong": 8400
+          },
+          {
+            "rule_id": "R0258",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1742,
+            "points": 33600,
+            "security_points": 16800,
+            "security_points_wrong": 16800
+          }
+        ],
+        "rounds": {
+          "rounds_sent": 339,
+          "rounds_not_sent": 0,
+          "listed_by_relation": {
+            "crossing": 10022,
+            "containing": 0,
+            "inside": 0,
+            "equal": 20
+          },
+          "left_out_by_reason": {
+            "containing": 622,
+            "governed": 3375,
+            "inside": 585
+          },
+          "unplaced_by_what_it_left_out": {
+            "crossing": 52,
+            "crossing+equal": 1
+          },
+          "replay_ok": true
+        },
+        "edges": {
+          "ok": 5418,
+          "cierra_ciclo": 2623,
+          "fuera_del_vecindario": 166
+        },
+        "calls_made": {
+          "calls": 684,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 689,
+          "rate_limited": 0,
+          "providers": {
+            "DeepInfra": 689
+          },
+          "finish_reasons": {
+            "stop": 685,
+            "length": 4
+          },
+          "prompt_tokens": 2219129,
+          "completion_tokens": 2419467,
+          "reasoning_tokens": {
+            "sum": 2262421,
+            "median": 1752,
+            "max": 16000
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 345,
+              "median": 11.44,
+              "sum": 4525.1
+            },
+            "1": {
+              "calls": 339,
+              "median": 35.86,
+              "sum": 15715.52
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 345,
+              "median": 11.44,
+              "sum": 4525.1
+            },
+            "1": {
+              "calls": 339,
+              "median": 35.86,
+              "sum": 15715.52
+            }
+          },
+          "retries": {
+            "parse": 5
+          }
+        },
+        "closed_l_under_the_same_draws": {
+          "space": {
+            "fraction": "2269/5376",
+            "value": 0.4220610119047619
+          },
+          "security": {
+            "fraction": "23/160",
+            "value": 0.14375
+          },
+          "oncall": {
+            "fraction": "47/105",
+            "value": 0.44761904761904764
+          },
+          "escalations": {
+            "IMPASSE": 41,
+            "ERROR": 209,
+            "CONFLICT": 118
+          }
+        },
+        "transcriber_under_the_same_draws": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 132280
+        }
+      },
+      "l_r3": {
+        "arm": "l",
+        "engine": "rung2",
+        "space": {
+          "fraction": "2419/4480",
+          "value": 0.5399553571428571
+        },
+        "under_rung2": {
+          "fraction": "2419/4480",
+          "value": 0.5399553571428571
+        },
+        "under_the_ranking": {
+          "fraction": "483/640",
+          "value": 0.7546875
+        },
+        "keyword_half": [
+          32415,
+          40155
+        ],
+        "recall": {
+          "T1_GENERAL": {
+            "fraction": "73/116",
+            "value": 0.6293103448275862
+          },
+          "T2_TECHNICAL": {
+            "fraction": "5987/7344",
+            "value": 0.8152233115468409
+          },
+          "T3_ENGINEERING": {
+            "fraction": "1027/1636",
+            "value": 0.6277506112469438
+          },
+          "BILLING_SPECIALIST": {
+            "fraction": "91/152",
+            "value": 0.5986842105263158
+          },
+          "SECURITY_INCIDENT": {
+            "fraction": "661/1680",
+            "value": 0.39345238095238094
+          },
+          "ACCOUNT_MANAGER": {
+            "fraction": "1361/3288",
+            "value": 0.4139294403892944
+          },
+          "ONCALL_ESCALATION": {
+            "fraction": "13/60",
+            "value": 0.21666666666666667
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "fraction": "106/215",
+            "value": 0.4930232558139535
+          }
+        },
+        "ranking": {
+          "final": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "votes": [
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T2_TECHNICAL"
+              ],
+              "for_first": 125,
+              "for_second": 435
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 0,
+              "for_second": 2
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 19,
+              "for_second": 405
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 148
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 24,
+              "for_second": 153
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 5
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 236,
+              "for_second": 495
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 14,
+              "for_second": 90
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 131,
+              "for_second": 88
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 1,
+              "for_second": 476
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 259,
+              "for_second": 347
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 6,
+              "for_second": 86
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 636,
+              "for_second": 196
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 9,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 70
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 79,
+              "for_second": 38
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 2,
+              "for_second": 27
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 4,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 594
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 315,
+              "for_second": 652
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 186
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 446,
+              "for_second": 259
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 160,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 40,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 106,
+              "for_second": 5
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 58
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 105,
+              "for_second": 11
+            },
+            {
+              "pair": [
+                "ONCALL_ESCALATION",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 4,
+              "for_second": 0
+            }
+          ],
+          "n_votes": 7550,
+          "changes": 21,
+          "security_first_from": 21,
+          "final_from": 242
+        },
+        "curve": {
+          "births": 329,
+          "points": 134400,
+          "rung2": {
+            "peak": 91065,
+            "peak_birth": 104,
+            "final": 72570
+          },
+          "ranked": {
+            "peak": 102852,
+            "peak_birth": 316,
+            "final": 101430
+          }
+        },
+        "taken_by_the_ranking": null,
+        "asked_conflicts": {
+          "cases": 163,
+          "ranking_right": 104,
+          "first_call_right": 73
+        },
+        "corpus": {
+          "labelled": [
+            118,
+            231
+          ],
+          "rest": [
+            1421,
+            1769
+          ],
+          "online": [
+            1470,
+            1757
+          ],
+          "online_cases_read": 1757
+        },
+        "escalations": {
+          "IMPASSE": 43,
+          "ERROR": 194,
+          "CONFLICT": 163
+        },
+        "stopped_at_the_cap": 1756,
+        "empty_objects": 0,
+        "labels": 194,
+        "handed": "each of 194 reported errors handed its own label",
+        "engine_record": "arm l keeps no ranking",
+        "followed": [
+          194,
+          194
+        ],
+        "refused": {
+          "fraction": "71/400",
+          "value": 0.1775
+        },
+        "calls": 786,
+        "reports": {
+          "by_decile": [
+            29,
+            33,
+            29,
+            25,
+            17,
+            23,
+            16,
+            12,
+            10,
+            0
+          ],
+          "by_queue": {
+            "SELF_SERVICE_DEFLECT": 55,
+            "T1_GENERAL": 31,
+            "ACCOUNT_MANAGER": 16,
+            "T2_TECHNICAL": 49,
+            "BILLING_SPECIALIST": 28,
+            "T3_ENGINEERING": 12,
+            "SECURITY_INCIDENT": 3
+          }
+        },
+        "layer_below_oncall": [
+          6720,
+          10500
+        ],
+        "nested_in_the_keyword": [
+          {
+            "rule_id": "R0089",
+            "queue": "T2_TECHNICAL",
+            "born_at": 270,
+            "points": 6720,
+            "security_points": 3360,
+            "security_points_wrong": 3360
+          },
+          {
+            "rule_id": "R0140",
+            "queue": "T2_TECHNICAL",
+            "born_at": 529,
+            "points": 33600,
+            "security_points": 16800,
+            "security_points_wrong": 16800
+          }
+        ],
+        "rounds": {
+          "rounds_sent": 386,
+          "rounds_not_sent": 3,
+          "listed_by_relation": {
+            "crossing": 10203,
+            "inside": 0,
+            "containing": 0,
+            "equal": 65
+          },
+          "left_out_by_reason": {
+            "inside": 1073,
+            "containing": 1016,
+            "governed": 4987
+          },
+          "unplaced_by_what_it_left_out": {
+            "crossing": 70,
+            "equal": 1
+          },
+          "replay_ok": true
+        },
+        "edges": {
+          "ok": 5794,
+          "cierra_ciclo": 1756
+        },
+        "calls_made": {
+          "calls": 786,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 790,
+          "rate_limited": 0,
+          "providers": {
+            "DeepInfra": 790
+          },
+          "finish_reasons": {
+            "stop": 786,
+            "length": 4
+          },
+          "prompt_tokens": 2389708,
+          "completion_tokens": 2490526,
+          "reasoning_tokens": {
+            "sum": 2316432,
+            "median": 1784.0,
+            "max": 16000
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 400,
+              "median": 17.665,
+              "sum": 7804.29
+            },
+            "1": {
+              "calls": 386,
+              "median": 45.735,
+              "sum": 22134.17
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 400,
+              "median": 17.665,
+              "sum": 7804.29
+            },
+            "1": {
+              "calls": 386,
+              "median": 45.735,
+              "sum": 22134.17
+            }
+          },
+          "retries": {
+            "parse": 4
+          }
+        },
+        "closed_l_under_the_same_draws": {
+          "space": {
+            "fraction": "10787/19200",
+            "value": 0.5618229166666666
+          },
+          "security": {
+            "fraction": "25/84",
+            "value": 0.2976190476190476
+          },
+          "oncall": {
+            "fraction": "547/1260",
+            "value": 0.43412698412698414
+          },
+          "escalations": {
+            "IMPASSE": 39,
+            "ERROR": 235,
+            "CONFLICT": 74
+          }
+        },
+        "transcriber_under_the_same_draws": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        }
+      },
+      "k_r1": {
+        "arm": "k",
+        "engine": "ranked",
+        "space": {
+          "fraction": "743/960",
+          "value": 0.7739583333333333
+        },
+        "under_rung2": {
+          "fraction": "15859/26880",
+          "value": 0.5899925595238096
+        },
+        "under_the_ranking": {
+          "fraction": "743/960",
+          "value": 0.7739583333333333
+        },
+        "keyword_half": [
+          50400,
+          53620
+        ],
+        "recall": {
+          "T1_GENERAL": {
+            "fraction": "157/261",
+            "value": 0.6015325670498084
+          },
+          "T2_TECHNICAL": {
+            "fraction": "6703/7344",
+            "value": 0.9127178649237473
+          },
+          "T3_ENGINEERING": {
+            "fraction": "334/409",
+            "value": 0.8166259168704156
+          },
+          "BILLING_SPECIALIST": {
+            "fraction": "25/38",
+            "value": 0.6578947368421053
+          },
+          "SECURITY_INCIDENT": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          },
+          "ACCOUNT_MANAGER": {
+            "fraction": "977/1096",
+            "value": 0.8914233576642335
+          },
+          "ONCALL_ESCALATION": {
+            "fraction": "3/5",
+            "value": 0.6
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "fraction": "83/86",
+            "value": 0.9651162790697675
+          }
+        },
+        "ranking": {
+          "final": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "votes": [
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T2_TECHNICAL"
+              ],
+              "for_first": 48,
+              "for_second": 133
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 0,
+              "for_second": 1
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 0,
+              "for_second": 52
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 1,
+              "for_second": 26
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 11,
+              "for_second": 132
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 4
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 94,
+              "for_second": 247
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 2,
+              "for_second": 16
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 91,
+              "for_second": 52
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 71
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 50,
+              "for_second": 125
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 16
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 207,
+              "for_second": 69
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 12,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 18
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 34,
+              "for_second": 12
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 6
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 95
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 157,
+              "for_second": 257
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 60
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 282,
+              "for_second": 198
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 22,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 6,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 21,
+              "for_second": 4
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 16
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 61,
+              "for_second": 10
+            },
+            {
+              "pair": [
+                "ONCALL_ESCALATION",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 2,
+              "for_second": 0
+            }
+          ],
+          "n_votes": 2723,
+          "changes": 17,
+          "security_first_from": 28,
+          "final_from": 147
+        },
+        "curve": {
+          "births": 196,
+          "points": 134400,
+          "rung2": {
+            "peak": 97215,
+            "peak_birth": 78,
+            "final": 79295
+          },
+          "ranked": {
+            "peak": 104020,
+            "peak_birth": 195,
+            "final": 104020
+          }
+        },
+        "taken_by_the_ranking": {
+          "cases": 196,
+          "right": 166,
+          "wrong_reported": 16,
+          "wrong_silent": 14,
+          "on_a_tie": 0
+        },
+        "asked_conflicts": null,
+        "corpus": {
+          "labelled": [
+            158,
+            231
+          ],
+          "rest": [
+            1631,
+            1769
+          ],
+          "online": [
+            1814,
+            2000
+          ],
+          "online_cases_read": 2000
+        },
+        "escalations": {
+          "IMPASSE": 42,
+          "ERROR": 193
+        },
+        "stopped_at_the_cap": null,
+        "empty_objects": 0,
+        "labels": 193,
+        "handed": "each of 193 reported errors handed its own label",
+        "engine_record": "the ranking after each of 196 births, and the final one, are what the record's births give; 2723 votes; the ranking decided 196 cases",
+        "followed": [
+          193,
+          193
+        ],
+        "refused": {
+          "fraction": "39/235",
+          "value": 0.16595744680851063
+        },
+        "calls": 463,
+        "reports": {
+          "by_decile": [
+            37,
+            27,
+            22,
+            30,
+            11,
+            14,
+            16,
+            12,
+            10,
+            14
+          ],
+          "by_queue": {
+            "SELF_SERVICE_DEFLECT": 49,
+            "T1_GENERAL": 30,
+            "BILLING_SPECIALIST": 52,
+            "T3_ENGINEERING": 8,
+            "T2_TECHNICAL": 37,
+            "ACCOUNT_MANAGER": 14,
+            "SECURITY_INCIDENT": 2,
+            "ONCALL_ESCALATION": 1
+          }
+        },
+        "layer_below_oncall": [
+          7140,
+          10500
+        ],
+        "nested_in_the_keyword": [
+          {
+            "rule_id": "R0070",
+            "queue": "T2_TECHNICAL",
+            "born_at": 238,
+            "points": 4200,
+            "security_points": 0,
+            "security_points_wrong": 0
+          },
+          {
+            "rule_id": "R0076",
+            "queue": "T2_TECHNICAL",
+            "born_at": 270,
+            "points": 6720,
+            "security_points": 3360,
+            "security_points_wrong": 3360
+          },
+          {
+            "rule_id": "R0091",
+            "queue": "T2_TECHNICAL",
+            "born_at": 394,
+            "points": 33600,
+            "security_points": 16800,
+            "security_points_wrong": 16800
+          },
+          {
+            "rule_id": "R0106",
+            "queue": "T2_TECHNICAL",
+            "born_at": 483,
+            "points": 3360,
+            "security_points": 1680,
+            "security_points_wrong": 1680
+          }
+        ],
+        "rounds": {
+          "rounds_sent": 228,
+          "rounds_not_sent": 0,
+          "listed_by_relation": {
+            "crossing": 3896,
+            "inside": 0,
+            "containing": 0,
+            "equal": 9
+          },
+          "left_out_by_reason": {
+            "inside": 608,
+            "containing": 287,
+            "governed": 1213
+          },
+          "unplaced_by_what_it_left_out": {
+            "crossing": 39
+          },
+          "replay_ok": true
+        },
+        "edges": {
+          "ok": 2135,
+          "cierra_ciclo": 588
+        },
+        "calls_made": {
+          "calls": 463,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 463,
+          "rate_limited": 0,
+          "providers": {
+            "DeepInfra": 463
+          },
+          "finish_reasons": {
+            "stop": 463
+          },
+          "prompt_tokens": 1039360,
+          "completion_tokens": 1267880,
+          "reasoning_tokens": {
+            "sum": 1174411,
+            "median": 1605,
+            "max": 14944
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 235,
+              "median": 12.04,
+              "sum": 3966.88
+            },
+            "1": {
+              "calls": 228,
+              "median": 30.235,
+              "sum": 8537.57
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 235,
+              "median": 12.04,
+              "sum": 3966.88
+            },
+            "1": {
+              "calls": 228,
+              "median": 30.235,
+              "sum": 8537.57
+            }
+          },
+          "retries": {}
+        },
+        "closed_l_under_the_same_draws": {
+          "space": {
+            "fraction": "253/448",
+            "value": 0.5647321428571429
+          },
+          "security": {
+            "fraction": "253/720",
+            "value": 0.35138888888888886
+          },
+          "oncall": {
+            "fraction": "2/5",
+            "value": 0.4
+          },
+          "escalations": {
+            "IMPASSE": 36,
+            "ERROR": 216,
+            "CONFLICT": 125
+          }
+        },
+        "transcriber_under_the_same_draws": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        }
+      },
+      "k_r2": {
+        "arm": "k",
+        "engine": "ranked",
+        "space": {
+          "fraction": "1229/1920",
+          "value": 0.6401041666666667
+        },
+        "under_rung2": {
+          "fraction": "89/168",
+          "value": 0.5297619047619048
+        },
+        "under_the_ranking": {
+          "fraction": "1229/1920",
+          "value": 0.6401041666666667
+        },
+        "keyword_half": [
+          33600,
+          52430
+        ],
+        "recall": {
+          "T1_GENERAL": {
+            "fraction": "913/1044",
+            "value": 0.8745210727969349
+          },
+          "T2_TECHNICAL": {
+            "fraction": "817/918",
+            "value": 0.8899782135076253
+          },
+          "T3_ENGINEERING": {
+            "fraction": "301/409",
+            "value": 0.7359413202933985
+          },
+          "BILLING_SPECIALIST": {
+            "fraction": "74/171",
+            "value": 0.4327485380116959
+          },
+          "SECURITY_INCIDENT": {
+            "fraction": "1/3",
+            "value": 0.3333333333333333
+          },
+          "ACCOUNT_MANAGER": {
+            "fraction": "355/411",
+            "value": 0.8637469586374696
+          },
+          "ONCALL_ESCALATION": {
+            "fraction": "4/5",
+            "value": 0.8
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "fraction": "753/860",
+            "value": 0.8755813953488372
+          }
+        },
+        "ranking": {
+          "final": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "votes": [
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T2_TECHNICAL"
+              ],
+              "for_first": 38,
+              "for_second": 118
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 12,
+              "for_second": 68
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 39
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 37,
+              "for_second": 92
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 31,
+              "for_second": 123
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 23,
+              "for_second": 49
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 184,
+              "for_second": 64
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 86
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 99,
+              "for_second": 167
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 3,
+              "for_second": 21
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 157,
+              "for_second": 79
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 4,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 83
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 67,
+              "for_second": 36
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 6,
+              "for_second": 24
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 11,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 391
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 242,
+              "for_second": 393
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 106
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 234,
+              "for_second": 183
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 97,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 16,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 67,
+              "for_second": 1
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 28
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 58,
+              "for_second": 12
+            },
+            {
+              "pair": [
+                "ONCALL_ESCALATION",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 1,
+              "for_second": 0
+            }
+          ],
+          "n_votes": 3551,
+          "changes": 20,
+          "security_first_from": 29,
+          "final_from": 147
+        },
+        "curve": {
+          "births": 212,
+          "points": 134400,
+          "rung2": {
+            "peak": 96880,
+            "peak_birth": 101,
+            "final": 71200
+          },
+          "ranked": {
+            "peak": 99575,
+            "peak_birth": 107,
+            "final": 86030
+          }
+        },
+        "taken_by_the_ranking": {
+          "cases": 79,
+          "right": 40,
+          "wrong_reported": 19,
+          "wrong_silent": 20,
+          "on_a_tie": 0
+        },
+        "asked_conflicts": null,
+        "corpus": {
+          "labelled": [
+            126,
+            242
+          ],
+          "rest": [
+            1574,
+            1758
+          ],
+          "online": [
+            1770,
+            2000
+          ],
+          "online_cases_read": 2000
+        },
+        "escalations": {
+          "IMPASSE": 36,
+          "ERROR": 216
+        },
+        "stopped_at_the_cap": null,
+        "empty_objects": 0,
+        "labels": 216,
+        "handed": "each of 216 reported errors handed its own label",
+        "engine_record": "the ranking after each of 212 births, and the final one, are what the record's births give; 3551 votes; the ranking decided 79 cases",
+        "followed": [
+          216,
+          216
+        ],
+        "refused": {
+          "fraction": "13/84",
+          "value": 0.15476190476190477
+        },
+        "calls": 497,
+        "reports": {
+          "by_decile": [
+            43,
+            31,
+            30,
+            16,
+            16,
+            13,
+            17,
+            17,
+            16,
+            17
+          ],
+          "by_queue": {
+            "SELF_SERVICE_DEFLECT": 32,
+            "T2_TECHNICAL": 43,
+            "T1_GENERAL": 24,
+            "BILLING_SPECIALIST": 70,
+            "T3_ENGINEERING": 20,
+            "ACCOUNT_MANAGER": 17,
+            "SECURITY_INCIDENT": 8,
+            "ONCALL_ESCALATION": 2
+          }
+        },
+        "layer_below_oncall": [
+          6300,
+          10500
+        ],
+        "nested_in_the_keyword": [
+          {
+            "rule_id": "R0058",
+            "queue": "T2_TECHNICAL",
+            "born_at": 154,
+            "points": 6720,
+            "security_points": 3360,
+            "security_points_wrong": 3360
+          },
+          {
+            "rule_id": "R0074",
+            "queue": "T2_TECHNICAL",
+            "born_at": 238,
+            "points": 4200,
+            "security_points": 0,
+            "security_points_wrong": 0
+          },
+          {
+            "rule_id": "R0111",
+            "queue": "T2_TECHNICAL",
+            "born_at": 529,
+            "points": 50400,
+            "security_points": 33600,
+            "security_points_wrong": 33600
+          },
+          {
+            "rule_id": "R0148",
+            "queue": "T2_TECHNICAL",
+            "born_at": 956,
+            "points": 6720,
+            "security_points": 3360,
+            "security_points_wrong": 3360
+          }
+        ],
+        "rounds": {
+          "rounds_sent": 245,
+          "rounds_not_sent": 2,
+          "listed_by_relation": {
+            "crossing": 4272,
+            "equal": 16,
+            "containing": 0,
+            "inside": 0
+          },
+          "left_out_by_reason": {
+            "containing": 350,
+            "inside": 910,
+            "governed": 1720
+          },
+          "unplaced_by_what_it_left_out": {
+            "crossing": 38,
+            "equal": 1
+          },
+          "replay_ok": true
+        },
+        "edges": {
+          "ok": 2709,
+          "cierra_ciclo": 842
+        },
+        "calls_made": {
+          "calls": 497,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 498,
+          "rate_limited": 0,
+          "providers": {
+            "DeepInfra": 498
+          },
+          "finish_reasons": {
+            "stop": 497,
+            "error": 1
+          },
+          "prompt_tokens": 1182979,
+          "completion_tokens": 1389712,
+          "reasoning_tokens": {
+            "sum": 1291381,
+            "median": 1661.5,
+            "max": 15350
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 252,
+              "median": 15.715,
+              "sum": 4822.92
+            },
+            "1": {
+              "calls": 245,
+              "median": 35.83,
+              "sum": 10408.93
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 252,
+              "median": 15.715,
+              "sum": 4822.92
+            },
+            "1": {
+              "calls": 245,
+              "median": 35.83,
+              "sum": 10408.93
+            }
+          },
+          "retries": {
+            "parse": 1
+          }
+        },
+        "closed_l_under_the_same_draws": {
+          "space": {
+            "fraction": "2269/5376",
+            "value": 0.4220610119047619
+          },
+          "security": {
+            "fraction": "23/160",
+            "value": 0.14375
+          },
+          "oncall": {
+            "fraction": "47/105",
+            "value": 0.44761904761904764
+          },
+          "escalations": {
+            "IMPASSE": 41,
+            "ERROR": 209,
+            "CONFLICT": 118
+          }
+        },
+        "transcriber_under_the_same_draws": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 132280
+        }
+      },
+      "k_r3": {
+        "arm": "k",
+        "engine": "ranked",
+        "space": {
+          "fraction": "31/40",
+          "value": 0.775
+        },
+        "under_rung2": {
+          "fraction": "2783/3840",
+          "value": 0.7247395833333333
+        },
+        "under_the_ranking": {
+          "fraction": "31/40",
+          "value": 0.775
+        },
+        "keyword_half": [
+          50190,
+          53970
+        ],
+        "recall": {
+          "T1_GENERAL": {
+            "fraction": "22/29",
+            "value": 0.7586206896551724
+          },
+          "T2_TECHNICAL": {
+            "fraction": "6877/7344",
+            "value": 0.9364106753812637
+          },
+          "T3_ENGINEERING": {
+            "fraction": "339/409",
+            "value": 0.8288508557457213
+          },
+          "BILLING_SPECIALIST": {
+            "fraction": "116/171",
+            "value": 0.6783625730994152
+          },
+          "SECURITY_INCIDENT": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          },
+          "ACCOUNT_MANAGER": {
+            "fraction": "1531/1644",
+            "value": 0.931265206812652
+          },
+          "ONCALL_ESCALATION": {
+            "fraction": "1/3",
+            "value": 0.3333333333333333
+          },
+          "SELF_SERVICE_DEFLECT": {
+            "fraction": "677/860",
+            "value": 0.7872093023255814
+          }
+        },
+        "ranking": {
+          "final": [
+            "SECURITY_INCIDENT",
+            "ONCALL_ESCALATION",
+            "T3_ENGINEERING",
+            "ACCOUNT_MANAGER",
+            "T2_TECHNICAL",
+            "BILLING_SPECIALIST",
+            "SELF_SERVICE_DEFLECT",
+            "T1_GENERAL"
+          ],
+          "votes": [
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T2_TECHNICAL"
+              ],
+              "for_first": 65,
+              "for_second": 165
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 31,
+              "for_second": 135
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 14
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 18,
+              "for_second": 107
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 48,
+              "for_second": 181
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "T3_ENGINEERING"
+              ],
+              "for_first": 14,
+              "for_second": 59
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 98,
+              "for_second": 38
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 1,
+              "for_second": 90
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 111,
+              "for_second": 249
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 2,
+              "for_second": 11
+            },
+            {
+              "pair": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 167,
+              "for_second": 65
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "BILLING_SPECIALIST"
+              ],
+              "for_first": 9,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 0,
+              "for_second": 14
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 67,
+              "for_second": 45
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 4
+            },
+            {
+              "pair": [
+                "T3_ENGINEERING",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SECURITY_INCIDENT"
+              ],
+              "for_first": 1,
+              "for_second": 34
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 102,
+              "for_second": 266
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 17
+            },
+            {
+              "pair": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 126,
+              "for_second": 106
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ACCOUNT_MANAGER"
+              ],
+              "for_first": 27,
+              "for_second": 3
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 1,
+              "for_second": 0
+            },
+            {
+              "pair": [
+                "SECURITY_INCIDENT",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 19,
+              "for_second": 2
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "ONCALL_ESCALATION"
+              ],
+              "for_first": 0,
+              "for_second": 14
+            },
+            {
+              "pair": [
+                "ACCOUNT_MANAGER",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 20,
+              "for_second": 2
+            },
+            {
+              "pair": [
+                "ONCALL_ESCALATION",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "for_first": 0,
+              "for_second": 0
+            }
+          ],
+          "n_votes": 2549,
+          "changes": 18,
+          "security_first_from": 51,
+          "final_from": 139
+        },
+        "curve": {
+          "births": 165,
+          "points": 134400,
+          "rung2": {
+            "peak": 98580,
+            "peak_birth": 81,
+            "final": 97405
+          },
+          "ranked": {
+            "peak": 107105,
+            "peak_birth": 97,
+            "final": 104160
+          }
+        },
+        "taken_by_the_ranking": {
+          "cases": 141,
+          "right": 123,
+          "wrong_reported": 10,
+          "wrong_silent": 8,
+          "on_a_tie": 0
+        },
+        "asked_conflicts": null,
+        "corpus": {
+          "labelled": [
+            146,
+            200
+          ],
+          "rest": [
+            1664,
+            1800
+          ],
+          "online": [
+            1820,
+            2000
+          ],
+          "online_cases_read": 2000
+        },
+        "escalations": {
+          "IMPASSE": 17,
+          "ERROR": 173
+        },
+        "stopped_at_the_cap": null,
+        "empty_objects": 0,
+        "labels": 173,
+        "handed": "each of 173 reported errors handed its own label",
+        "engine_record": "the ranking after each of 165 births, and the final one, are what the record's births give; 2549 votes; the ranking decided 141 cases",
+        "followed": [
+          173,
+          173
+        ],
+        "refused": {
+          "fraction": "5/38",
+          "value": 0.13157894736842105
+        },
+        "calls": 368,
+        "reports": {
+          "by_decile": [
+            35,
+            26,
+            10,
+            11,
+            7,
+            16,
+            24,
+            15,
+            13,
+            16
+          ],
+          "by_queue": {
+            "SELF_SERVICE_DEFLECT": 34,
+            "T2_TECHNICAL": 46,
+            "T1_GENERAL": 23,
+            "BILLING_SPECIALIST": 34,
+            "ACCOUNT_MANAGER": 18,
+            "T3_ENGINEERING": 15,
+            "SECURITY_INCIDENT": 3
+          }
+        },
+        "layer_below_oncall": [
+          8500,
+          10500
+        ],
+        "nested_in_the_keyword": [
+          {
+            "rule_id": "R0013",
+            "queue": "T2_TECHNICAL",
+            "born_at": 19,
+            "points": 4200,
+            "security_points": 0,
+            "security_points_wrong": 0
+          },
+          {
+            "rule_id": "R0016",
+            "queue": "T2_TECHNICAL",
+            "born_at": 23,
+            "points": 33600,
+            "security_points": 16800,
+            "security_points_wrong": 16800
+          },
+          {
+            "rule_id": "R0149",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1721,
+            "points": 16800,
+            "security_points": 8400,
+            "security_points_wrong": 8400
+          },
+          {
+            "rule_id": "R0159",
+            "queue": "T2_TECHNICAL",
+            "born_at": 1895,
+            "points": 6720,
+            "security_points": 3360,
+            "security_points_wrong": 3360
+          }
+        ],
+        "rounds": {
+          "rounds_sent": 178,
+          "rounds_not_sent": 6,
+          "listed_by_relation": {
+            "crossing": 3075,
+            "containing": 0,
+            "inside": 0,
+            "equal": 1
+          },
+          "left_out_by_reason": {
+            "containing": 181,
+            "inside": 223,
+            "governed": 739
+          },
+          "unplaced_by_what_it_left_out": {
+            "crossing": 25
+          },
+          "replay_ok": true
+        },
+        "edges": {
+          "ok": 1914,
+          "cierra_ciclo": 635
+        },
+        "calls_made": {
+          "calls": 368,
+          "failed": 0,
+          "served_elsewhere": 0,
+          "attempts": 368,
+          "rate_limited": 0,
+          "providers": {
+            "DeepInfra": 368
+          },
+          "finish_reasons": {
+            "stop": 368
+          },
+          "prompt_tokens": 815155,
+          "completion_tokens": 970279,
+          "reasoning_tokens": {
+            "sum": 895178,
+            "median": 1685.0,
+            "max": 11941
+          },
+          "seconds_by_round": {
+            "0": {
+              "calls": 190,
+              "median": 17.805,
+              "sum": 3834.76
+            },
+            "1": {
+              "calls": 178,
+              "median": 35.125,
+              "sum": 7619.32
+            }
+          },
+          "seconds_by_round_unlimited": {
+            "0": {
+              "calls": 190,
+              "median": 17.805,
+              "sum": 3834.76
+            },
+            "1": {
+              "calls": 178,
+              "median": 35.125,
+              "sum": 7619.32
+            }
+          },
+          "retries": {}
+        },
+        "closed_l_under_the_same_draws": {
+          "space": {
+            "fraction": "10787/19200",
+            "value": 0.5618229166666666
+          },
+          "security": {
+            "fraction": "25/84",
+            "value": 0.2976190476190476
+          },
+          "oncall": {
+            "fraction": "547/1260",
+            "value": 0.43412698412698414
+          },
+          "escalations": {
+            "IMPASSE": 39,
+            "ERROR": 235,
+            "CONFLICT": 74
+          }
+        },
+        "transcriber_under_the_same_draws": {
+          "record_is_rung_2s": true,
+          "decided_by_the_ranking": 0,
+          "space_right": 134380
+        }
+      }
+    },
+    "curves": {
+      "l_r1": [
+        {
+          "labels": 10,
+          "case": 63,
+          "loop": {
+            "fraction": "1577/2688",
+            "value": 0.5866815476190477
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "167/280",
+              "value": 0.5964285714285714
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "991/1680",
+                  "value": 0.5898809523809524
+                },
+                "first_match": 0.5898809523809524,
+                "installed": {
+                  "rules_in_answer": 16,
+                  "rules_installed": 16,
+                  "rules_rejected": 0,
+                  "edges_derived": 19,
+                  "edges_by_verdict": {
+                    "ok": 19
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "401/672",
+                  "value": 0.5967261904761905
+                },
+                "first_match": 0.5967261904761905,
+                "installed": {
+                  "rules_in_answer": 11,
+                  "rules_installed": 11,
+                  "rules_rejected": 0,
+                  "edges_derived": 24,
+                  "edges_by_verdict": {
+                    "ok": 24
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "167/280",
+                  "value": 0.5964285714285714
+                },
+                "first_match": 0.5964285714285714,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 35,
+                  "edges_by_verdict": {
+                    "ok": 35
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 20,
+          "case": 100,
+          "loop": {
+            "fraction": "17093/26880",
+            "value": 0.6359002976190476
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "589/960",
+              "value": 0.6135416666666667
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "589/960",
+                  "value": 0.6135416666666667
+                },
+                "first_match": 0.6135416666666667,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 32,
+                  "edges_by_verdict": {
+                    "ok": 32
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1891/3360",
+                  "value": 0.562797619047619
+                },
+                "first_match": 0.562797619047619,
+                "installed": {
+                  "rules_in_answer": 12,
+                  "rules_installed": 12,
+                  "rules_rejected": 0,
+                  "edges_derived": 18,
+                  "edges_by_verdict": {
+                    "ok": 18
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "509/768",
+                  "value": 0.6627604166666666
+                },
+                "first_match": 0.6627604166666666,
+                "installed": {
+                  "rules_in_answer": 19,
+                  "rules_installed": 19,
+                  "rules_rejected": 0,
+                  "edges_derived": 58,
+                  "edges_by_verdict": {
+                    "ok": 58
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 40,
+          "case": 197,
+          "loop": {
+            "fraction": "8773/13440",
+            "value": 0.6527529761904762
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "137/224",
+              "value": 0.6116071428571429
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "137/224",
+                  "value": 0.6116071428571429
+                },
+                "first_match": 0.6116071428571429,
+                "installed": {
+                  "rules_in_answer": 18,
+                  "rules_installed": 18,
+                  "rules_rejected": 0,
+                  "edges_derived": 35,
+                  "edges_by_verdict": {
+                    "ok": 35
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1177/1680",
+                  "value": 0.700595238095238
+                },
+                "first_match": 0.700595238095238,
+                "installed": {
+                  "rules_in_answer": 18,
+                  "rules_installed": 17,
+                  "rules_rejected": 1,
+                  "edges_derived": 36,
+                  "edges_by_verdict": {
+                    "ok": 36
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "8101/13440",
+                  "value": 0.6027529761904762
+                },
+                "first_match": 0.5933779761904762,
+                "installed": {
+                  "rules_in_answer": 22,
+                  "rules_installed": 22,
+                  "rules_rejected": 0,
+                  "edges_derived": 45,
+                  "edges_by_verdict": {
+                    "ok": 45
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 80,
+          "case": 571,
+          "loop": {
+            "fraction": "271/420",
+            "value": 0.6452380952380953
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "747/1120",
+              "value": 0.6669642857142857
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "747/1120",
+                  "value": 0.6669642857142857
+                },
+                "first_match": 0.6669642857142857,
+                "installed": {
+                  "rules_in_answer": 21,
+                  "rules_installed": 21,
+                  "rules_rejected": 0,
+                  "edges_derived": 30,
+                  "edges_by_verdict": {
+                    "ok": 30
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "7313/13440",
+                  "value": 0.5441220238095238
+                },
+                "first_match": 0.5441220238095238,
+                "installed": {
+                  "rules_in_answer": 38,
+                  "rules_installed": 38,
+                  "rules_rejected": 0,
+                  "edges_derived": 27,
+                  "edges_by_verdict": {
+                    "ok": 27
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "115/168",
+                  "value": 0.6845238095238095
+                },
+                "first_match": 0.6845238095238095,
+                "installed": {
+                  "rules_in_answer": 23,
+                  "rules_installed": 23,
+                  "rules_rejected": 0,
+                  "edges_derived": 37,
+                  "edges_by_verdict": {
+                    "ok": 37
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1326,
+          "loop": {
+            "fraction": "17657/26880",
+            "value": 0.6568824404761905
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "1367/1920",
+              "value": 0.7119791666666667
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1367/1920",
+                  "value": 0.7119791666666667
+                },
+                "first_match": 0.7119791666666667,
+                "installed": {
+                  "rules_in_answer": 38,
+                  "rules_installed": 38,
+                  "rules_rejected": 0,
+                  "edges_derived": 82,
+                  "edges_by_verdict": {
+                    "ok": 82
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "4931/6720",
+                  "value": 0.7337797619047619
+                },
+                "first_match": 0.7337797619047619,
+                "installed": {
+                  "rules_in_answer": 28,
+                  "rules_installed": 28,
+                  "rules_rejected": 0,
+                  "edges_derived": 72,
+                  "edges_by_verdict": {
+                    "ok": 72
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "7823/13440",
+                  "value": 0.5820684523809524
+                },
+                "first_match": 0.5820684523809524,
+                "installed": {
+                  "rules_in_answer": 29,
+                  "rules_installed": 21,
+                  "rules_rejected": 8,
+                  "edges_derived": 25,
+                  "edges_by_verdict": {
+                    "ok": 25
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 207,
+          "case": 1843,
+          "loop": {
+            "fraction": "5757/8960",
+            "value": 0.6425223214285715
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "953/1344",
+              "value": 0.7090773809523809
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1249/1920",
+                  "value": 0.6505208333333333
+                },
+                "first_match": 0.6505208333333333,
+                "installed": {
+                  "rules_in_answer": 40,
+                  "rules_installed": 37,
+                  "rules_rejected": 3,
+                  "edges_derived": 34,
+                  "edges_by_verdict": {
+                    "ok": 34
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "691/960",
+                  "value": 0.7197916666666667
+                },
+                "first_match": 0.7197916666666667,
+                "installed": {
+                  "rules_in_answer": 49,
+                  "rules_installed": 49,
+                  "rules_rejected": 0,
+                  "edges_derived": 41,
+                  "edges_by_verdict": {
+                    "ok": 41
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "953/1344",
+                  "value": 0.7090773809523809
+                },
+                "first_match": 0.7090773809523809,
+                "installed": {
+                  "rules_in_answer": 44,
+                  "rules_installed": 44,
+                  "rules_rejected": 0,
+                  "edges_derived": 70,
+                  "edges_by_verdict": {
+                    "ok": 70
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "l_r2": [
+        {
+          "labels": 10,
+          "case": 58,
+          "loop": {
+            "fraction": "17089/26880",
+            "value": 0.6357514880952381
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "2603/4480",
+              "value": 0.5810267857142857
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "7393/13440",
+                  "value": 0.5500744047619047
+                },
+                "first_match": 0.5500744047619047,
+                "installed": {
+                  "rules_in_answer": 12,
+                  "rules_installed": 12,
+                  "rules_rejected": 0,
+                  "edges_derived": 22,
+                  "edges_by_verdict": {
+                    "ok": 22
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "7957/13440",
+                  "value": 0.5920386904761905
+                },
+                "first_match": 0.5920386904761905,
+                "installed": {
+                  "rules_in_answer": 10,
+                  "rules_installed": 10,
+                  "rules_rejected": 0,
+                  "edges_derived": 23,
+                  "edges_by_verdict": {
+                    "ok": 23
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "2603/4480",
+                  "value": 0.5810267857142857
+                },
+                "first_match": 0.5810267857142857,
+                "installed": {
+                  "rules_in_answer": 12,
+                  "rules_installed": 12,
+                  "rules_rejected": 0,
+                  "edges_derived": 24,
+                  "edges_by_verdict": {
+                    "ok": 24
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 20,
+          "case": 101,
+          "loop": {
+            "fraction": "1047/1792",
+            "value": 0.5842633928571429
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "673/1344",
+              "value": 0.5007440476190477
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "673/1344",
+                  "value": 0.5007440476190477
+                },
+                "first_match": 0.5007440476190477,
+                "installed": {
+                  "rules_in_answer": 18,
+                  "rules_installed": 18,
+                  "rules_rejected": 0,
+                  "edges_derived": 31,
+                  "edges_by_verdict": {
+                    "ok": 31
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "16027/26880",
+                  "value": 0.5962425595238096
+                },
+                "first_match": 0.5962425595238096,
+                "installed": {
+                  "rules_in_answer": 16,
+                  "rules_installed": 16,
+                  "rules_rejected": 0,
+                  "edges_derived": 17,
+                  "edges_by_verdict": {
+                    "ok": 17
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "13441/26880",
+                  "value": 0.5000372023809524
+                },
+                "first_match": 0.5000372023809524,
+                "installed": {
+                  "rules_in_answer": 19,
+                  "rules_installed": 15,
+                  "rules_rejected": 4,
+                  "edges_derived": 23,
+                  "edges_by_verdict": {
+                    "ok": 23
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 40,
+          "case": 228,
+          "loop": {
+            "fraction": "8311/13440",
+            "value": 0.6183779761904762
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "11639/26880",
+              "value": 0.4329985119047619
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "479/1120",
+                  "value": 0.4276785714285714
+                },
+                "first_match": 0.4276785714285714,
+                "installed": {
+                  "rules_in_answer": 19,
+                  "rules_installed": 19,
+                  "rules_rejected": 0,
+                  "edges_derived": 13,
+                  "edges_by_verdict": {
+                    "ok": 13
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "357/640",
+                  "value": 0.5578125
+                },
+                "first_match": 0.5578125,
+                "installed": {
+                  "rules_in_answer": 20,
+                  "rules_installed": 20,
+                  "rules_rejected": 0,
+                  "edges_derived": 60,
+                  "edges_by_verdict": {
+                    "ok": 60
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "11639/26880",
+                  "value": 0.4329985119047619
+                },
+                "first_match": 0.4329985119047619,
+                "installed": {
+                  "rules_in_answer": 16,
+                  "rules_installed": 16,
+                  "rules_rejected": 0,
+                  "edges_derived": 23,
+                  "edges_by_verdict": {
+                    "ok": 23
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 80,
+          "case": 632,
+          "loop": {
+            "fraction": "919/1680",
+            "value": 0.5470238095238096
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "5721/8960",
+              "value": 0.6385044642857143
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "20311/26880",
+                  "value": 0.7556175595238095
+                },
+                "first_match": 0.7556175595238095,
+                "installed": {
+                  "rules_in_answer": 26,
+                  "rules_installed": 26,
+                  "rules_rejected": 0,
+                  "edges_derived": 42,
+                  "edges_by_verdict": {
+                    "ok": 42
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "97/240",
+                  "value": 0.4041666666666667
+                },
+                "first_match": 0.4041666666666667,
+                "installed": {
+                  "rules_in_answer": 34,
+                  "rules_installed": 32,
+                  "rules_rejected": 2,
+                  "edges_derived": 19,
+                  "edges_by_verdict": {
+                    "ok": 19
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "5721/8960",
+                  "value": 0.6385044642857143
+                },
+                "first_match": 0.6385044642857143,
+                "installed": {
+                  "rules_in_answer": 23,
+                  "rules_installed": 23,
+                  "rules_rejected": 0,
+                  "edges_derived": 40,
+                  "edges_by_verdict": {
+                    "ok": 40
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1635,
+          "loop": {
+            "fraction": "15247/26880",
+            "value": 0.5672247023809524
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "287/384",
+              "value": 0.7473958333333334
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "4709/6720",
+                  "value": 0.7007440476190476
+                },
+                "first_match": 0.7007440476190476,
+                "installed": {
+                  "rules_in_answer": 36,
+                  "rules_installed": 36,
+                  "rules_rejected": 0,
+                  "edges_derived": 45,
+                  "edges_by_verdict": {
+                    "ok": 45
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "287/384",
+                  "value": 0.7473958333333334
+                },
+                "first_match": 0.7473958333333334,
+                "installed": {
+                  "rules_in_answer": 25,
+                  "rules_installed": 23,
+                  "rules_rejected": 2,
+                  "edges_derived": 70,
+                  "edges_by_verdict": {
+                    "ok": 70
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "3357/4480",
+                  "value": 0.7493303571428571
+                },
+                "first_match": 0.7493303571428571,
+                "installed": {
+                  "rules_in_answer": 28,
+                  "rules_installed": 28,
+                  "rules_rejected": 0,
+                  "edges_derived": 43,
+                  "edges_by_verdict": {
+                    "ok": 43
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 193,
+          "case": 1967,
+          "loop": {
+            "fraction": "80881/134400",
+            "value": 0.6017931547619048
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "823/1120",
+              "value": 0.7348214285714286
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1189/1680",
+                  "value": 0.7077380952380953
+                },
+                "first_match": 0.7077380952380953,
+                "installed": {
+                  "rules_in_answer": 20,
+                  "rules_installed": 19,
+                  "rules_rejected": 1,
+                  "edges_derived": 39,
+                  "edges_by_verdict": {
+                    "ok": 39
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "10879/13440",
+                  "value": 0.8094494047619047
+                },
+                "first_match": 0.8094494047619047,
+                "installed": {
+                  "rules_in_answer": 27,
+                  "rules_installed": 27,
+                  "rules_rejected": 0,
+                  "edges_derived": 44,
+                  "edges_by_verdict": {
+                    "ok": 44
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "823/1120",
+                  "value": 0.7348214285714286
+                },
+                "first_match": 0.7348214285714286,
+                "installed": {
+                  "rules_in_answer": 32,
+                  "rules_installed": 32,
+                  "rules_rejected": 0,
+                  "edges_derived": 33,
+                  "edges_by_verdict": {
+                    "ok": 33
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "l_r3": [
+        {
+          "labels": 10,
+          "case": 74,
+          "loop": {
+            "fraction": "14449/26880",
+            "value": 0.5375372023809524
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "261/448",
+              "value": 0.5825892857142857
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "3943/6720",
+                  "value": 0.5867559523809524
+                },
+                "first_match": 0.5867559523809524,
+                "installed": {
+                  "rules_in_answer": 13,
+                  "rules_installed": 13,
+                  "rules_rejected": 0,
+                  "edges_derived": 21,
+                  "edges_by_verdict": {
+                    "ok": 21
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "251/480",
+                  "value": 0.5229166666666667
+                },
+                "first_match": 0.5229166666666667,
+                "installed": {
+                  "rules_in_answer": 26,
+                  "rules_installed": 26,
+                  "rules_rejected": 0,
+                  "edges_derived": 42,
+                  "edges_by_verdict": {
+                    "ok": 42
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "261/448",
+                  "value": 0.5825892857142857
+                },
+                "first_match": 0.5825892857142857,
+                "installed": {
+                  "rules_in_answer": 11,
+                  "rules_installed": 11,
+                  "rules_rejected": 0,
+                  "edges_derived": 20,
+                  "edges_by_verdict": {
+                    "ok": 20
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 20,
+          "case": 150,
+          "loop": {
+            "fraction": "16183/26880",
+            "value": 0.6020461309523809
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "1735/2688",
+              "value": 0.6454613095238095
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1735/2688",
+                  "value": 0.6454613095238095
+                },
+                "first_match": 0.6454613095238095,
+                "installed": {
+                  "rules_in_answer": 12,
+                  "rules_installed": 12,
+                  "rules_rejected": 0,
+                  "edges_derived": 12,
+                  "edges_by_verdict": {
+                    "ok": 12
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "2537/4480",
+                  "value": 0.5662946428571428
+                },
+                "first_match": 0.5662946428571428,
+                "installed": {
+                  "rules_in_answer": 45,
+                  "rules_installed": 44,
+                  "rules_rejected": 1,
+                  "edges_derived": 65,
+                  "edges_by_verdict": {
+                    "ok": 60,
+                    "cierra_ciclo": 5
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "297/448",
+                  "value": 0.6629464285714286
+                },
+                "first_match": 0.6629464285714286,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 31,
+                  "edges_by_verdict": {
+                    "ok": 31
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 40,
+          "case": 272,
+          "loop": {
+            "fraction": "67/105",
+            "value": 0.638095238095238
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "4651/13440",
+              "value": 0.34605654761904764
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "5821/13440",
+                  "value": 0.43311011904761904
+                },
+                "first_match": 0.43311011904761904,
+                "installed": {
+                  "rules_in_answer": 26,
+                  "rules_installed": 26,
+                  "rules_rejected": 0,
+                  "edges_derived": 30,
+                  "edges_by_verdict": {
+                    "ok": 30
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "215/672",
+                  "value": 0.31994047619047616
+                },
+                "first_match": 0.31994047619047616,
+                "installed": {
+                  "rules_in_answer": 26,
+                  "rules_installed": 5,
+                  "rules_rejected": 21,
+                  "edges_derived": 1,
+                  "edges_by_verdict": {
+                    "ok": 1
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "4651/13440",
+                  "value": 0.34605654761904764
+                },
+                "first_match": 0.34605654761904764,
+                "installed": {
+                  "rules_in_answer": 26,
+                  "rules_installed": 26,
+                  "rules_rejected": 0,
+                  "edges_derived": 23,
+                  "edges_by_verdict": {
+                    "ok": 23
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 80,
+          "case": 535,
+          "loop": {
+            "fraction": "4271/6720",
+            "value": 0.6355654761904762
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "3947/6720",
+              "value": 0.5873511904761904
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "997/1680",
+                  "value": 0.593452380952381
+                },
+                "first_match": 0.593452380952381,
+                "installed": {
+                  "rules_in_answer": 33,
+                  "rules_installed": 32,
+                  "rules_rejected": 1,
+                  "edges_derived": 84,
+                  "edges_by_verdict": {
+                    "ok": 84
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "3947/6720",
+                  "value": 0.5873511904761904
+                },
+                "first_match": 0.5873511904761904,
+                "installed": {
+                  "rules_in_answer": 45,
+                  "rules_installed": 44,
+                  "rules_rejected": 1,
+                  "edges_derived": 99,
+                  "edges_by_verdict": {
+                    "ok": 99
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "2837/6720",
+                  "value": 0.42217261904761905
+                },
+                "first_match": 0.42217261904761905,
+                "installed": {
+                  "rules_in_answer": 23,
+                  "rules_installed": 21,
+                  "rules_rejected": 2,
+                  "edges_derived": 16,
+                  "edges_by_verdict": {
+                    "ok": 16
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1231,
+          "loop": {
+            "fraction": "26319/44800",
+            "value": 0.5874776785714285
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "9631/13440",
+              "value": 0.7165922619047619
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "9631/13440",
+                  "value": 0.7165922619047619
+                },
+                "first_match": 0.7165922619047619,
+                "installed": {
+                  "rules_in_answer": 37,
+                  "rules_installed": 37,
+                  "rules_rejected": 0,
+                  "edges_derived": 33,
+                  "edges_by_verdict": {
+                    "ok": 33
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "121/160",
+                  "value": 0.75625
+                },
+                "first_match": 0.75625,
+                "installed": {
+                  "rules_in_answer": 42,
+                  "rules_installed": 42,
+                  "rules_rejected": 0,
+                  "edges_derived": 100,
+                  "edges_by_verdict": {
+                    "ok": 100
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "411/640",
+                  "value": 0.6421875
+                },
+                "first_match": 0.6421875,
+                "installed": {
+                  "rules_in_answer": 42,
+                  "rules_installed": 42,
+                  "rules_rejected": 0,
+                  "edges_derived": 11,
+                  "edges_by_verdict": {
+                    "ok": 11
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 194,
+          "case": 1751,
+          "loop": {
+            "fraction": "2419/4480",
+            "value": 0.5399553571428571
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "1387/1680",
+              "value": 0.825595238095238
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1387/1680",
+                  "value": 0.825595238095238
+                },
+                "first_match": 0.825595238095238,
+                "installed": {
+                  "rules_in_answer": 27,
+                  "rules_installed": 27,
+                  "rules_rejected": 0,
+                  "edges_derived": 56,
+                  "edges_by_verdict": {
+                    "ok": 56
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "211/240",
+                  "value": 0.8791666666666667
+                },
+                "first_match": 0.8791666666666667,
+                "installed": {
+                  "rules_in_answer": 20,
+                  "rules_installed": 20,
+                  "rules_rejected": 0,
+                  "edges_derived": 52,
+                  "edges_by_verdict": {
+                    "ok": 52
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "10613/13440",
+                  "value": 0.7896577380952381
+                },
+                "first_match": 0.7896577380952381,
+                "installed": {
+                  "rules_in_answer": 49,
+                  "rules_installed": 49,
+                  "rules_rejected": 0,
+                  "edges_derived": 75,
+                  "edges_by_verdict": {
+                    "ok": 75
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "k_r1": [
+        {
+          "labels": 10,
+          "case": 63,
+          "loop": {
+            "fraction": "2699/4480",
+            "value": 0.6024553571428571
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "4289/6720",
+              "value": 0.6382440476190476
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1921/3360",
+                  "value": 0.5717261904761904
+                },
+                "first_match": 0.5717261904761904,
+                "installed": {
+                  "rules_in_answer": 21,
+                  "rules_installed": 20,
+                  "rules_rejected": 1,
+                  "edges_derived": 47,
+                  "edges_by_verdict": {
+                    "ok": 47
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "4289/6720",
+                  "value": 0.6382440476190476
+                },
+                "first_match": 0.6382440476190476,
+                "installed": {
+                  "rules_in_answer": 11,
+                  "rules_installed": 11,
+                  "rules_rejected": 0,
+                  "edges_derived": 34,
+                  "edges_by_verdict": {
+                    "ok": 34
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1459/2240",
+                  "value": 0.6513392857142857
+                },
+                "first_match": 0.6513392857142857,
+                "installed": {
+                  "rules_in_answer": 14,
+                  "rules_installed": 14,
+                  "rules_rejected": 0,
+                  "edges_derived": 26,
+                  "edges_by_verdict": {
+                    "ok": 26
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 20,
+          "case": 109,
+          "loop": {
+            "fraction": "423/640",
+            "value": 0.6609375
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "1723/2688",
+              "value": 0.6409970238095238
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "2847/4480",
+                  "value": 0.6354910714285714
+                },
+                "first_match": 0.6354910714285714,
+                "installed": {
+                  "rules_in_answer": 18,
+                  "rules_installed": 18,
+                  "rules_rejected": 0,
+                  "edges_derived": 27,
+                  "edges_by_verdict": {
+                    "ok": 27
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "433/672",
+                  "value": 0.6443452380952381
+                },
+                "first_match": 0.6443452380952381,
+                "installed": {
+                  "rules_in_answer": 20,
+                  "rules_installed": 20,
+                  "rules_rejected": 0,
+                  "edges_derived": 44,
+                  "edges_by_verdict": {
+                    "ok": 44
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1723/2688",
+                  "value": 0.6409970238095238
+                },
+                "first_match": 0.6409970238095238,
+                "installed": {
+                  "rules_in_answer": 14,
+                  "rules_installed": 14,
+                  "rules_rejected": 0,
+                  "edges_derived": 36,
+                  "edges_by_verdict": {
+                    "ok": 36
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 40,
+          "case": 227,
+          "loop": {
+            "fraction": "1339/1920",
+            "value": 0.6973958333333333
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "473/768",
+              "value": 0.6158854166666666
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "5317/8960",
+                  "value": 0.5934151785714286
+                },
+                "first_match": 0.5934151785714286,
+                "installed": {
+                  "rules_in_answer": 13,
+                  "rules_installed": 12,
+                  "rules_rejected": 1,
+                  "edges_derived": 15,
+                  "edges_by_verdict": {
+                    "ok": 15
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "473/768",
+                  "value": 0.6158854166666666
+                },
+                "first_match": 0.6158854166666666,
+                "installed": {
+                  "rules_in_answer": 16,
+                  "rules_installed": 16,
+                  "rules_rejected": 0,
+                  "edges_derived": 19,
+                  "edges_by_verdict": {
+                    "ok": 19
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "17693/26880",
+                  "value": 0.6582217261904761
+                },
+                "first_match": 0.6582217261904761,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 29,
+                  "edges_by_verdict": {
+                    "ok": 29
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 80,
+          "case": 502,
+          "loop": {
+            "fraction": "19907/26880",
+            "value": 0.7405877976190476
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "757/1680",
+              "value": 0.4505952380952381
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "5543/13440",
+                  "value": 0.41242559523809524
+                },
+                "first_match": 0.41242559523809524,
+                "installed": {
+                  "rules_in_answer": 36,
+                  "rules_installed": 25,
+                  "rules_rejected": 11,
+                  "edges_derived": 22,
+                  "edges_by_verdict": {
+                    "ok": 22
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "187/384",
+                  "value": 0.4869791666666667
+                },
+                "first_match": 0.4869791666666667,
+                "installed": {
+                  "rules_in_answer": 20,
+                  "rules_installed": 20,
+                  "rules_rejected": 0,
+                  "edges_derived": 29,
+                  "edges_by_verdict": {
+                    "ok": 29
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "757/1680",
+                  "value": 0.4505952380952381
+                },
+                "first_match": 0.4505952380952381,
+                "installed": {
+                  "rules_in_answer": 29,
+                  "rules_installed": 27,
+                  "rules_rejected": 2,
+                  "edges_derived": 58,
+                  "edges_by_verdict": {
+                    "ok": 58
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1434,
+          "loop": {
+            "fraction": "20107/26880",
+            "value": 0.7480282738095239
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "9271/13440",
+              "value": 0.6898065476190476
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "9271/13440",
+                  "value": 0.6898065476190476
+                },
+                "first_match": 0.6898065476190476,
+                "installed": {
+                  "rules_in_answer": 46,
+                  "rules_installed": 45,
+                  "rules_rejected": 1,
+                  "edges_derived": 55,
+                  "edges_by_verdict": {
+                    "ok": 55
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "2281/3360",
+                  "value": 0.6788690476190476
+                },
+                "first_match": 0.6788690476190476,
+                "installed": {
+                  "rules_in_answer": 25,
+                  "rules_installed": 25,
+                  "rules_rejected": 0,
+                  "edges_derived": 40,
+                  "edges_by_verdict": {
+                    "ok": 40
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "3177/4480",
+                  "value": 0.7091517857142857
+                },
+                "first_match": 0.7091517857142857,
+                "installed": {
+                  "rules_in_answer": 41,
+                  "rules_installed": 41,
+                  "rules_rejected": 0,
+                  "edges_derived": 55,
+                  "edges_by_verdict": {
+                    "ok": 55
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 193,
+          "case": 1996,
+          "loop": {
+            "fraction": "743/960",
+            "value": 0.7739583333333333
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "1559/2240",
+              "value": 0.6959821428571429
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1559/2240",
+                  "value": 0.6959821428571429
+                },
+                "first_match": 0.6959821428571429,
+                "installed": {
+                  "rules_in_answer": 17,
+                  "rules_installed": 17,
+                  "rules_rejected": 0,
+                  "edges_derived": 36,
+                  "edges_by_verdict": {
+                    "ok": 36
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1921/2688",
+                  "value": 0.7146577380952381
+                },
+                "first_match": 0.7146577380952381,
+                "installed": {
+                  "rules_in_answer": 43,
+                  "rules_installed": 40,
+                  "rules_rejected": 3,
+                  "edges_derived": 111,
+                  "edges_by_verdict": {
+                    "ok": 111
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "9287/13440",
+                  "value": 0.6909970238095238
+                },
+                "first_match": 0.6909970238095238,
+                "installed": {
+                  "rules_in_answer": 51,
+                  "rules_installed": 47,
+                  "rules_rejected": 4,
+                  "edges_derived": 38,
+                  "edges_by_verdict": {
+                    "ok": 38
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "k_r2": [
+        {
+          "labels": 10,
+          "case": 47,
+          "loop": {
+            "fraction": "72943/134400",
+            "value": 0.5427306547619047
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "4223/6720",
+              "value": 0.6284226190476191
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1151/1920",
+                  "value": 0.5994791666666667
+                },
+                "first_match": 0.5994791666666667,
+                "installed": {
+                  "rules_in_answer": 7,
+                  "rules_installed": 7,
+                  "rules_rejected": 0,
+                  "edges_derived": 11,
+                  "edges_by_verdict": {
+                    "ok": 11
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "4223/6720",
+                  "value": 0.6284226190476191
+                },
+                "first_match": 0.6284226190476191,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 38,
+                  "edges_by_verdict": {
+                    "ok": 38
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "859/1344",
+                  "value": 0.6391369047619048
+                },
+                "first_match": 0.6391369047619048,
+                "installed": {
+                  "rules_in_answer": 16,
+                  "rules_installed": 16,
+                  "rules_rejected": 0,
+                  "edges_derived": 24,
+                  "edges_by_verdict": {
+                    "ok": 24
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 20,
+          "case": 101,
+          "loop": {
+            "fraction": "20081/33600",
+            "value": 0.5976488095238095
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "2911/4480",
+              "value": 0.6497767857142858
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "5441/8960",
+                  "value": 0.6072544642857143
+                },
+                "first_match": 0.6072544642857143,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 28,
+                  "edges_by_verdict": {
+                    "ok": 28
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "8917/13440",
+                  "value": 0.6634672619047619
+                },
+                "first_match": 0.6634672619047619,
+                "installed": {
+                  "rules_in_answer": 11,
+                  "rules_installed": 11,
+                  "rules_rejected": 0,
+                  "edges_derived": 32,
+                  "edges_by_verdict": {
+                    "ok": 32
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "2911/4480",
+                  "value": 0.6497767857142858
+                },
+                "first_match": 0.6497767857142858,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 27,
+                  "edges_by_verdict": {
+                    "ok": 27
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 40,
+          "case": 184,
+          "loop": {
+            "fraction": "291/448",
+            "value": 0.6495535714285714
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "1891/3360",
+              "value": 0.562797619047619
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "2189/3360",
+                  "value": 0.6514880952380953
+                },
+                "first_match": 0.6514880952380953,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 33,
+                  "edges_by_verdict": {
+                    "ok": 33
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1349/3360",
+                  "value": 0.40148809523809526
+                },
+                "first_match": 0.40148809523809526,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 15,
+                  "rules_rejected": 0,
+                  "edges_derived": 24,
+                  "edges_by_verdict": {
+                    "ok": 24
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1891/3360",
+                  "value": 0.562797619047619
+                },
+                "first_match": 0.562797619047619,
+                "installed": {
+                  "rules_in_answer": 12,
+                  "rules_installed": 12,
+                  "rules_rejected": 0,
+                  "edges_derived": 29,
+                  "edges_by_verdict": {
+                    "ok": 29
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 80,
+          "case": 453,
+          "loop": {
+            "fraction": "19427/26880",
+            "value": 0.7227306547619048
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "97/168",
+              "value": 0.5773809523809523
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1187/2688",
+                  "value": 0.4415922619047619
+                },
+                "first_match": 0.4415922619047619,
+                "installed": {
+                  "rules_in_answer": 18,
+                  "rules_installed": 15,
+                  "rules_rejected": 3,
+                  "edges_derived": 21,
+                  "edges_by_verdict": {
+                    "ok": 21
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1247/1920",
+                  "value": 0.6494791666666667
+                },
+                "first_match": 0.6494791666666667,
+                "installed": {
+                  "rules_in_answer": 27,
+                  "rules_installed": 15,
+                  "rules_rejected": 12,
+                  "edges_derived": 15,
+                  "edges_by_verdict": {
+                    "ok": 15
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "97/168",
+                  "value": 0.5773809523809523
+                },
+                "first_match": 0.5773809523809523,
+                "installed": {
+                  "rules_in_answer": 23,
+                  "rules_installed": 23,
+                  "rules_rejected": 0,
+                  "edges_derived": 52,
+                  "edges_by_verdict": {
+                    "ok": 52
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1318,
+          "loop": {
+            "fraction": "8231/13440",
+            "value": 0.6124255952380953
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "3551/4480",
+              "value": 0.7926339285714286
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "11723/13440",
+                  "value": 0.8722470238095238
+                },
+                "first_match": 0.8722470238095238,
+                "installed": {
+                  "rules_in_answer": 29,
+                  "rules_installed": 28,
+                  "rules_rejected": 1,
+                  "edges_derived": 79,
+                  "edges_by_verdict": {
+                    "ok": 79
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "3551/4480",
+                  "value": 0.7926339285714286
+                },
+                "first_match": 0.7926339285714286,
+                "installed": {
+                  "rules_in_answer": 25,
+                  "rules_installed": 25,
+                  "rules_rejected": 0,
+                  "edges_derived": 73,
+                  "edges_by_verdict": {
+                    "ok": 73
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "3071/4480",
+                  "value": 0.6854910714285715
+                },
+                "first_match": 0.6854910714285715,
+                "installed": {
+                  "rules_in_answer": 29,
+                  "rules_installed": 22,
+                  "rules_rejected": 7,
+                  "edges_derived": 31,
+                  "edges_by_verdict": {
+                    "ok": 31
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 216,
+          "case": 1998,
+          "loop": {
+            "fraction": "1229/1920",
+            "value": 0.6401041666666667
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "24281/26880",
+              "value": 0.9033110119047619
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "10849/13440",
+                  "value": 0.807217261904762
+                },
+                "first_match": 0.807217261904762,
+                "installed": {
+                  "rules_in_answer": 29,
+                  "rules_installed": 24,
+                  "rules_rejected": 5,
+                  "edges_derived": 58,
+                  "edges_by_verdict": {
+                    "ok": 58
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "24281/26880",
+                  "value": 0.9033110119047619
+                },
+                "first_match": 0.9033110119047619,
+                "installed": {
+                  "rules_in_answer": 27,
+                  "rules_installed": 25,
+                  "rules_rejected": 2,
+                  "edges_derived": 72,
+                  "edges_by_verdict": {
+                    "ok": 72
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "12883/13440",
+                  "value": 0.9585565476190476
+                },
+                "first_match": 0.9585565476190476,
+                "installed": {
+                  "rules_in_answer": 37,
+                  "rules_installed": 37,
+                  "rules_rejected": 0,
+                  "edges_derived": 79,
+                  "edges_by_verdict": {
+                    "ok": 79
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "k_r3": [
+        {
+          "labels": 10,
+          "case": 27,
+          "loop": {
+            "fraction": "7369/26880",
+            "value": 0.2741443452380952
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "1553/2688",
+              "value": 0.5777529761904762
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "3667/6720",
+                  "value": 0.5456845238095238
+                },
+                "first_match": 0.5456845238095238,
+                "installed": {
+                  "rules_in_answer": 11,
+                  "rules_installed": 11,
+                  "rules_rejected": 0,
+                  "edges_derived": 7,
+                  "edges_by_verdict": {
+                    "ok": 7
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1431/2240",
+                  "value": 0.6388392857142857
+                },
+                "first_match": 0.6388392857142857,
+                "installed": {
+                  "rules_in_answer": 11,
+                  "rules_installed": 11,
+                  "rules_rejected": 0,
+                  "edges_derived": 30,
+                  "edges_by_verdict": {
+                    "ok": 30
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1553/2688",
+                  "value": 0.5777529761904762
+                },
+                "first_match": 0.5777529761904762,
+                "installed": {
+                  "rules_in_answer": 13,
+                  "rules_installed": 11,
+                  "rules_rejected": 2,
+                  "edges_derived": 32,
+                  "edges_by_verdict": {
+                    "ok": 32
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 20,
+          "case": 74,
+          "loop": {
+            "fraction": "5861/8960",
+            "value": 0.6541294642857143
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "2311/4480",
+              "value": 0.5158482142857143
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "207/320",
+                  "value": 0.646875
+                },
+                "first_match": 0.646875,
+                "installed": {
+                  "rules_in_answer": 19,
+                  "rules_installed": 19,
+                  "rules_rejected": 0,
+                  "edges_derived": 36,
+                  "edges_by_verdict": {
+                    "ok": 36
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "2311/4480",
+                  "value": 0.5158482142857143
+                },
+                "first_match": 0.5158482142857143,
+                "installed": {
+                  "rules_in_answer": 18,
+                  "rules_installed": 18,
+                  "rules_rejected": 0,
+                  "edges_derived": 41,
+                  "edges_by_verdict": {
+                    "ok": 41
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "229/448",
+                  "value": 0.5111607142857143
+                },
+                "first_match": 0.5111607142857143,
+                "installed": {
+                  "rules_in_answer": 17,
+                  "rules_installed": 17,
+                  "rules_rejected": 0,
+                  "edges_derived": 38,
+                  "edges_by_verdict": {
+                    "ok": 38
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 40,
+          "case": 265,
+          "loop": {
+            "fraction": "6369/8960",
+            "value": 0.7108258928571428
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "2481/4480",
+              "value": 0.5537946428571429
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "2481/4480",
+                  "value": 0.5537946428571429
+                },
+                "first_match": 0.5537946428571429,
+                "installed": {
+                  "rules_in_answer": 15,
+                  "rules_installed": 14,
+                  "rules_rejected": 1,
+                  "edges_derived": 33,
+                  "edges_by_verdict": {
+                    "ok": 33
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "1549/2240",
+                  "value": 0.6915178571428572
+                },
+                "first_match": 0.6915178571428572,
+                "installed": {
+                  "rules_in_answer": 23,
+                  "rules_installed": 23,
+                  "rules_rejected": 0,
+                  "edges_derived": 63,
+                  "edges_by_verdict": {
+                    "ok": 63
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "2713/6720",
+                  "value": 0.4037202380952381
+                },
+                "first_match": 0.4037202380952381,
+                "installed": {
+                  "rules_in_answer": 29,
+                  "rules_installed": 20,
+                  "rules_rejected": 9,
+                  "edges_derived": 11,
+                  "edges_by_verdict": {
+                    "ok": 11
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 80,
+          "case": 732,
+          "loop": {
+            "fraction": "2573/3360",
+            "value": 0.7657738095238096
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "447/640",
+              "value": 0.6984375
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "89/120",
+                  "value": 0.7416666666666667
+                },
+                "first_match": 0.7416666666666667,
+                "installed": {
+                  "rules_in_answer": 21,
+                  "rules_installed": 21,
+                  "rules_rejected": 0,
+                  "edges_derived": 76,
+                  "edges_by_verdict": {
+                    "ok": 74,
+                    "cierra_ciclo": 2
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "447/640",
+                  "value": 0.6984375
+                },
+                "first_match": 0.6984375,
+                "installed": {
+                  "rules_in_answer": 37,
+                  "rules_installed": 37,
+                  "rules_rejected": 0,
+                  "edges_derived": 45,
+                  "edges_by_verdict": {
+                    "ok": 45
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "3089/6720",
+                  "value": 0.459672619047619
+                },
+                "first_match": 0.459672619047619,
+                "installed": {
+                  "rules_in_answer": 23,
+                  "rules_installed": 23,
+                  "rules_rejected": 0,
+                  "edges_derived": 32,
+                  "edges_by_verdict": {
+                    "ok": 32
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 160,
+          "case": 1809,
+          "loop": {
+            "fraction": "5177/6720",
+            "value": 0.7703869047619047
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "5029/6720",
+              "value": 0.7483630952380952
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "421/560",
+                  "value": 0.7517857142857143
+                },
+                "first_match": 0.7517857142857143,
+                "installed": {
+                  "rules_in_answer": 36,
+                  "rules_installed": 34,
+                  "rules_rejected": 2,
+                  "edges_derived": 50,
+                  "edges_by_verdict": {
+                    "ok": 50
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "9829/13440",
+                  "value": 0.7313244047619047
+                },
+                "first_match": 0.7313244047619047,
+                "installed": {
+                  "rules_in_answer": 30,
+                  "rules_installed": 30,
+                  "rules_rejected": 0,
+                  "edges_derived": 30,
+                  "edges_by_verdict": {
+                    "ok": 30
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "5029/6720",
+                  "value": 0.7483630952380952
+                },
+                "first_match": 0.7483630952380952,
+                "installed": {
+                  "rules_in_answer": 65,
+                  "rules_installed": 65,
+                  "rules_rejected": 0,
+                  "edges_derived": 61,
+                  "edges_by_verdict": {
+                    "ok": 61
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "labels": 173,
+          "case": 1976,
+          "loop": {
+            "fraction": "31/40",
+            "value": 0.775
+          },
+          "at_once": {
+            "valid_asks": 3,
+            "space": {
+              "fraction": "9703/13440",
+              "value": 0.7219494047619047
+            },
+            "asks": [
+              {
+                "space": {
+                  "fraction": "1193/1680",
+                  "value": 0.7101190476190476
+                },
+                "first_match": 0.7101190476190476,
+                "installed": {
+                  "rules_in_answer": 41,
+                  "rules_installed": 41,
+                  "rules_rejected": 0,
+                  "edges_derived": 38,
+                  "edges_by_verdict": {
+                    "ok": 38
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "9703/13440",
+                  "value": 0.7219494047619047
+                },
+                "first_match": 0.7219494047619047,
+                "installed": {
+                  "rules_in_answer": 34,
+                  "rules_installed": 34,
+                  "rules_rejected": 0,
+                  "edges_derived": 46,
+                  "edges_by_verdict": {
+                    "ok": 46
+                  }
+                }
+              },
+              {
+                "space": {
+                  "fraction": "10223/13440",
+                  "value": 0.760639880952381
+                },
+                "first_match": 0.760639880952381,
+                "installed": {
+                  "rules_in_answer": 36,
+                  "rules_installed": 36,
+                  "rules_rejected": 0,
+                  "edges_derived": 78,
+                  "edges_by_verdict": {
+                    "ok": 78
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "learners": {
+      "l_r1": {
+        "trained": {
+          "labels": 207,
+          "distinct_tickets": 200,
+          "ilp_40": {
+            "right": 51298,
+            "error": null
+          },
+          "ilp_120": {
+            "right": 48003,
+            "error": null
+          },
+          "tree": {
+            "right": 63050,
+            "error": null
+          },
+          "logistic": {
+            "right": 50981,
+            "error": null
+          },
+          "cache": {
+            "right": 32883,
+            "error": null
+          },
+          "table": {
+            "right": 200,
+            "error": null
+          }
+        },
+        "best": {
+          "fraction": "1261/2688",
+          "value": 0.46912202380952384
+        }
+      },
+      "l_r2": {
+        "trained": {
+          "labels": 193,
+          "distinct_tickets": 190,
+          "ilp_40": {
+            "right": 55854,
+            "error": null
+          },
+          "ilp_120": {
+            "right": 60792,
+            "error": null
+          },
+          "tree": {
+            "right": 66600,
+            "error": null
+          },
+          "logistic": {
+            "right": 57202,
+            "error": null
+          },
+          "cache": {
+            "right": 40458,
+            "error": null
+          },
+          "table": {
+            "right": 190,
+            "error": null
+          }
+        },
+        "best": {
+          "fraction": "111/224",
+          "value": 0.4955357142857143
+        }
+      },
+      "l_r3": {
+        "trained": {
+          "labels": 194,
+          "distinct_tickets": 188,
+          "ilp_40": {
+            "right": 47507,
+            "error": null
+          },
+          "ilp_120": {
+            "right": 51373,
+            "error": null
+          },
+          "tree": {
+            "right": 72390,
+            "error": null
+          },
+          "logistic": {
+            "right": 68781,
+            "error": null
+          },
+          "cache": {
+            "right": 38741,
+            "error": null
+          },
+          "table": {
+            "right": 188,
+            "error": null
+          }
+        },
+        "best": {
+          "fraction": "2413/4480",
+          "value": 0.5386160714285714
+        }
+      },
+      "k_r1": {
+        "trained": {
+          "labels": 193,
+          "distinct_tickets": 184,
+          "ilp_40": {
+            "right": 56736,
+            "error": null
+          },
+          "ilp_120": {
+            "right": 42890,
+            "error": null
+          },
+          "tree": {
+            "right": 61244,
+            "error": null
+          },
+          "logistic": {
+            "right": 54755,
+            "error": null
+          },
+          "cache": {
+            "right": 34763,
+            "error": null
+          },
+          "table": {
+            "right": 184,
+            "error": null
+          }
+        },
+        "best": {
+          "fraction": "15311/33600",
+          "value": 0.4556845238095238
+        }
+      },
+      "k_r2": {
+        "trained": {
+          "labels": 216,
+          "distinct_tickets": 211,
+          "ilp_40": {
+            "right": 69665,
+            "error": null
+          },
+          "ilp_120": {
+            "right": 72809,
+            "error": null
+          },
+          "tree": {
+            "right": 89540,
+            "error": null
+          },
+          "logistic": {
+            "right": 74856,
+            "error": null
+          },
+          "cache": {
+            "right": 47739,
+            "error": null
+          },
+          "table": {
+            "right": 211,
+            "error": null
+          }
+        },
+        "best": {
+          "fraction": "4477/6720",
+          "value": 0.6662202380952381
+        }
+      },
+      "k_r3": {
+        "trained": {
+          "labels": 173,
+          "distinct_tickets": 173,
+          "ilp_40": {
+            "right": 60409,
+            "error": null
+          },
+          "ilp_120": {
+            "right": 60446,
+            "error": null
+          },
+          "tree": {
+            "right": 57240,
+            "error": null
+          },
+          "logistic": {
+            "right": 60424,
+            "error": null
+          },
+          "cache": {
+            "right": 41324,
+            "error": null
+          },
+          "table": {
+            "right": 173,
+            "error": null
+          }
+        },
+        "best": {
+          "fraction": "30223/67200",
+          "value": 0.4497470238095238
+        }
+      }
+    },
+    "prior": {
+      "0": {
+        "valid_asks": 5,
+        "space": {
+          "fraction": "4069/6720",
+          "value": 0.6055059523809524
+        },
+        "asks": [
+          {
+            "space": {
+              "fraction": "283/480",
+              "value": 0.5895833333333333
+            },
+            "first_match": 0.5895833333333333,
+            "installed": {
+              "rules_in_answer": 8,
+              "rules_installed": 8,
+              "rules_rejected": 0,
+              "edges_derived": 9,
+              "edges_by_verdict": {
+                "ok": 9
+              }
+            }
+          },
+          {
+            "space": {
+              "fraction": "20051/33600",
+              "value": 0.5967559523809524
+            },
+            "first_match": 0.5967559523809524,
+            "installed": {
+              "rules_in_answer": 10,
+              "rules_installed": 10,
+              "rules_rejected": 0,
+              "edges_derived": 17,
+              "edges_by_verdict": {
+                "ok": 17
+              }
+            }
+          },
+          {
+            "space": {
+              "fraction": "4157/6720",
+              "value": 0.6186011904761904
+            },
+            "first_match": 0.6186011904761904,
+            "installed": {
+              "rules_in_answer": 10,
+              "rules_installed": 10,
+              "rules_rejected": 0,
+              "edges_derived": 21,
+              "edges_by_verdict": {
+                "ok": 21
+              }
+            }
+          },
+          {
+            "space": {
+              "fraction": "37/56",
+              "value": 0.6607142857142857
+            },
+            "first_match": 0.6607142857142857,
+            "installed": {
+              "rules_in_answer": 8,
+              "rules_installed": 8,
+              "rules_rejected": 0,
+              "edges_derived": 14,
+              "edges_by_verdict": {
+                "ok": 14
+              }
+            }
+          },
+          {
+            "space": {
+              "fraction": "4069/6720",
+              "value": 0.6055059523809524
+            },
+            "first_match": 0.6055059523809524,
+            "installed": {
+              "rules_in_answer": 9,
+              "rules_installed": 9,
+              "rules_rejected": 0,
+              "edges_derived": 17,
+              "edges_by_verdict": {
+                "ok": 17
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rebuilt_is_the_run": true,
+  "calls_as_recorded": true,
+  "labels_by_their_route": true,
+  "engines_as_recorded": true
+}
