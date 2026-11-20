@@ -14,8 +14,7 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   in #289, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things the last two readings left free**
   reached it in #291, merged on 2026-11-20 at Sergi's word.
-- **The POST-RUN reading of one region under two queues** reaches it in the
-  pull request it is opened in.
+- **The POST-RUN reading of one region under two queues** reaches it in #293.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -204,8 +203,8 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > **[NOTE 2026-11-20, latest] And one more.** [`twins.json`](twins.json) is the
 > POST-RUN reading of one region under two queues.
-> - **It was written from `57a5d3f`**, on the branch of the pull request it is
->   opened in: the commit that carries the reading and its expectation.
+> - **It was written from `57a5d3f`**, on the branch of #293: the commit that
+>   carries the reading and its expectation.
 > - **Its code digest is `bcaccda1496dc28e`**, because `ranked/twins.py` was
 >   added after the last two readings. Its `_env` says `git_dirty`, for the
 >   same files, and `code_dirty` is false. No module an earlier record of this
@@ -1523,8 +1522,7 @@ and what the side declared between them decided. This reading answers it on the
 records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.twins`, on 2026-11-20,
-from `57a5d3f` with its code clean, on the branch of the pull request it is
-opened in.
+from `57a5d3f` with its code clean, on the branch of #293.
 - **The commit.** `57a5d3f` carries the reading and its expectation, written and
   committed before the reading ran. Nothing was added after the first run, and
   its record is the one kept.
