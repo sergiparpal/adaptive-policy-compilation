@@ -12,6 +12,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things the six readings left free** reached it
   in #289, merged on 2026-11-20 at Sergi's word.
+- **The POST-RUN reading of two things the last two readings left free**
+  reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -184,6 +186,17 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   at `cf1aee3`, and still at the merge of #289. Their `_env` says
 >   `git_dirty`, for the same files, and `code_dirty` is false. The modules
 >   Stage C and the six readings ran did not change.
+>
+> **[NOTE 2026-11-20, last] And two more.** [`refusals.json`](refusals.json)
+> and [`billing.json`](billing.json) are the POST-RUN reading of two things the
+> last two readings left free.
+> - **They were written from `00c7c5e`**, on the branch of the pull request it
+>   is opened in: the commit that adds the part read after the first run. The
+>   readings and their expectations are the commit before it, `95abfbb`.
+> - **Their code digest is `1a1536f33438d3f0`**, because `ranked/refusals.py`
+>   and `ranked/billing.py` were added after the last two readings. Their
+>   `_env` says `git_dirty`, for the same files, and `code_dirty` is false. No
+>   module an earlier record of this plan ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1238,14 +1251,243 @@ before them. It is not signed, and it is on no scoreboard.
    each refused edge's cycle, and whether the paths ran through rules no
    contested point sees, as `results_corrections/FINDINGS_CORRECTIONS.md` found
    for the closed L runs. Free on the records.
+   **[NOTE 2026-11-20, last] Read POST-RUN: around older rules nested in broad
+   newborns.** Most refusals were a newborn's declared win, refused through a
+   narrower rule inside its region; in K r1, a rule of the general queue born
+   wrong at an impasse at case 2. *Two things the last two readings left
+   free*, I, below.
 2. **Why K r2's base decided `H11`'s tickets wrong with one queue standing**,
    110 of 186, which no conflict met. Free on the records.
+   **[NOTE 2026-11-20, last] Read POST-RUN: to deflection's rules written at
+   `H12`'s tickets.** They leave out the prior tickets that part `H11` from
+   `H12`, and win inside billing's broad rules by containment. *Two things the
+   last two readings left free*, J, below.
 3. **Whether the draw is the provider's.** The request asked for temperature 0,
    and no attempt carried a fingerprint. One prompt asked several times on one
    day, at temperature 0 and at the provider's default, would tell. Calls.
 4. **Which draft a prompt draws most.** With several asks a ticket, the most
    frequent draft at the exception's tickets, and whether it keeps the tier.
    Calls.
+
+---
+
+## Two things the last two readings left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-20, after the last two readings.** Their *What
+it does not settle*, above, names two more things the records can answer
+without a call: why the refusals fell where they did, its first item, and why K
+r2's base decided `H11`'s tickets wrong with one queue standing, its second.
+This reading answers both on the records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.refusals` and
+`PYTHONHASHSEED=0 python3 -m ranked.billing`, on 2026-11-20, from `00c7c5e`
+with its code clean, on the branch of the pull request it is opened in.
+- **The commits.** `95abfbb` carries both readings and their expectations,
+  written and committed before either ran. `00c7c5e` adds one part to each
+  after the first run, read by no clause: who the rules are that the cycles and
+  the losses run through. The first run, from `95abfbb`, had printed every
+  clause's verdict, and its readings had been read whole. Its records were not
+  kept.
+- **Each record was committed alone**, as `1c607f1` and `2064f4b`.
+- **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `1a1536f33438d3f0`.
+- **The records are [`refusals.json`](refusals.json) and
+  [`billing.json`](billing.json).** Their 18 gates passed:
+  - in each K run, the replay gives every edge the log's verdict, meets every
+    refusal of `conflicts.json` where it was tried and sees it refused there
+    for closing a cycle, and ends on the run's base;
+  - in each K run, the losses are as many as `conflicts.json` counts, billing
+    stands at none of them, and every declared edge that keeps a rule of
+    billing out was installed at a birth whose rule is at one end of it.
+
+### I. Why the refusals fell where they did
+
+A refusal is an edge the engine refused between a rule of the winner's queue and
+one of the runner-up's, at a case K's ranking took. The same edge at two cases
+is two refusals. Each edge is read in the base right before it was tried, at
+the birth of one of its two rules, the newborn.
+
+| run | refusals, at cases | the newborn's win | closed through containment at the newborn | the cycle nowhere | a door carries every path | the refused declaration right by the policy |
+|---|---|---|---|---|---|---|
+| K r1 | 239, at 196 | 188 | 192 | 182 | 195 | 97 |
+| K r2 | 98, at 79 | 56 | 57 | 32 | 78 | 61 |
+| K r3 | 239, at 141 | 179 | 183 | 156 | 140 | 220 |
+
+- **Most refusals were a newborn's win, refused through a rule nested in it.**
+  The loop installs a newborn's wins before its losses. A win refused before
+  any loss of the newborn is installed can only close through containment: a
+  narrower, older rule inside the newborn's region, which the rule it claimed
+  to beat already reached. That closes 192, 57 and 183 of the refusals (I2
+  holds). The rest close through the newborn's own wins, at a loss it
+  declared.
+- **In K r1, one rule wrong at its birth carries them.** `R0003`, of
+  `T1_GENERAL`, was born at an impasse at case 2, at a ticket of `H24` that the
+  policy sends to `SELF_SERVICE_DEFLECT`: free mobile tickets at severity 4
+  without the keyword.
+  - **Where it lies.** It lies inside `R0089`'s region, free accounts at
+    severity 4 without the keyword, and `T2_TECHNICAL`'s rules of api and
+    integrations tickets already reached it. So `R0089`'s wins over them closed
+    cycles through it.
+  - **How much it carries.** It is a door of 121 refusals, and the nested rule
+    of 123. Of K r1's 192 refusals closed by containment, 134 run through a
+    rule of another queue than the newborn's, and 125 through a rule wrong at
+    its birth.
+- **In K r3, older rules of the newborn's own queue.** The refused wins of
+  `R0126` and others closed through narrower api rules of `T2_TECHNICAL` nested
+  in them: `R0014`, business accounts' api tickets at severity 3 or more, at
+  118 refusals, and `R0009`, enterprise accounts', at 49. `R0124`'s 36
+  installed wins had put deflection's broad rule above the rules that reach
+  them. Of K r3's 183, 19 run through a rule of another queue, and 2 through a
+  rule wrong at its birth.
+- **In K r2, deflection's rule inside billing's.** The nested rule crossed most
+  often is `R0044`, deflection's billing at severity 4, inside billing's
+  `R0102`, at 20 refusals. It is one of the rules J finds taking `H11`'s
+  tickets.
+- **Where the cycle is.** In K r1 and K r3 most cycles are nowhere, 182 and 156:
+  the nested rule misses every point the pair shares, as `R0003`'s mobile
+  tickets miss the api points `R0089` shares with `T2_TECHNICAL`'s rules. In K
+  r2 most are somewhere, 66 of 98: the cycle runs through rules that all match
+  a point the pair shares (I1 fails, the bet).
+- **Through a door.** At 195, 78 and 140 refusals one step carries every path
+  (I3 holds).
+- **The refused declarations.** By the policy over the points both rules match,
+  K r1's were mostly wrong, 138 of 239, and 126 of the 153 in deflection's
+  conflicts. K r3's were mostly right, 220. K r2's were split, 61 right and 36
+  wrong.
+
+**An engine that refused only real cycles would have installed the refusals that
+are nowhere.** At those, the ranking's choice against the queue each refused
+edge declared above:
+
+| run | refusals nowhere | the ranking right | the declaration names the true queue |
+|---|---|---|---|
+| K r1 | 182 | 176 | 60 |
+| K r2 | 32 | 27 | 26 |
+| K r3 | 156 | 141 | 144 |
+
+- **In K r1 such an engine would have handed `R0089`'s wrong declarations** the
+  api and integrations tickets the ranking decided right. In K r3 it would have
+  decided about as the ranking did. This is not the loop that would have run:
+  installed, those edges would have decided other cases too.
+
+**So the refusals fell where a broad newborn met an older rule inside its
+region.**
+- **K r1's** fell around a rule of the general queue, born wrong at an impasse
+  at case 2 and nested in deflection's broad rule.
+- **K r3's** fell around older api rules nested in the technical queue's broad
+  one.
+- **K r2's** fell around deflection's billing rule nested in billing's.
+
+In K r1 and K r3 those cycles ran through rules no point the pair shares sees.
+
+### J. Why K r2's base lost `H11`'s tickets with one queue standing
+
+`H11` is billing at severity 3 or 4 with three prior tickets or more, of free,
+pro and business accounts, and the policy sends it to `BILLING_SPECIALIST`.
+`H12`, the rest of billing, goes to `SELF_SERVICE_DEFLECT`. At severity 3 or 4
+the two part on prior tickets alone. A loss is an arrival of `H11` decided
+wrong with one queue standing.
+
+| run | losses | to `SELF_SERVICE_DEFLECT` | to `T1_GENERAL` | to `ACCOUNT_MANAGER` | rules of billing matching, median | every rule standing born at a ticket of `H12` | no rule standing bounds prior tickets |
+|---|---|---|---|---|---|---|---|
+| K r1 | 90 | 86 | none | 4 | 18 | 78 | 73 |
+| K r2 | 110 | 77 | 27 | 6 | 30.5 | 53 | 104 |
+| K r3 | 59 | 53 | 1 | 5 | 13 | 42 | 46 |
+
+- **Billing's rules matched every loss** (J1 holds), a median of 30.5 of them
+  in K r2, and none stood.
+- **Deflection's rules took most, drafted at `H12`'s reported tickets.**
+  - **The rules.** In K r2, `R0160`, free accounts' billing at severity 3 or
+    more, stands at 37 losses. `R0144` and `R0022`, free accounts' billing at
+    severity 4, stand at 24 and 15, and `R0044`, billing at severity 4, at 19.
+  - **Their births.** Each was drafted at a reported ticket of `H12`, with the
+    queue its report named. At 53 of the 110 losses every rule standing was
+    born so, and at 104 none bounds prior tickets.
+- **The general queue's rule of pro accounts took 27.** `R0059`, pro accounts at
+  severity 4, was drafted at a reported ticket of `H29`, and reaches billing's
+  pro tickets at severity 4. K r1 and K r3 lost none and one that way: it is
+  most of K r2's excess.
+- **Containment kept billing out, more than declarations.** Deflection's rules
+  are narrower than billing's broad rules, all of billing or billing at
+  severity 2 or more, and a rule nested in another wins. Over K r2's pairs of a
+  loss and a rule of billing that matched, 2,392 were kept out by a nested rule
+  alone, 714 by a nested rule and a declared one, and 70 by a declared rule
+  alone.
+  - **So nearly every loss is mixed**: 97 of 110, with 9 kept out by
+    containment alone and 4 by declarations alone (J2 fails, the bet).
+  - **Those 4 were declared by the rule above at 3** (J3 holds), and are wrong
+    by the policy at all 4 (J4 holds). Both read 4 losses.
+  - **The same region, written twice.** The edge at the most losses, 52, is
+    `R0118` above `R0117`: billing at severity 4, born at cases 585 and 584, the
+    first as `SELF_SERVICE_DEFLECT`'s and the second as `BILLING_SPECIALIST`'s.
+    Deflection's declared itself above billing's.
+- **K r1 and K r3 lost `H11`'s tickets the same way** (J5 fails): 4 of 90 and 10
+  of 59 declared, 85 and 49 mixed, to deflection's rules drafted at `H12`'s
+  tickets.
+
+**So K r2's base lost `H11`'s tickets to deflection's rules written at `H12`'s,
+which leave out the prior tickets that part the two.**
+- **What the first call was told.** The ticket is billing at severity 3 or 4,
+  and the report says it is `SELF_SERVICE_DEFLECT`'s. The blind first call
+  explains it by the tier, the severity or the product, as B found it explain a
+  keyword ticket by severity.
+- **What its rule does.** The rule lies inside billing's broad rule and wins
+  there by containment, on `H11`'s tickets as on `H12`'s.
+- **Why K r2 lost more.** A rule of the general queue took its pro accounts'
+  tickets too.
+
+### The expectation
+
+Written in the two modules' docstrings before either reading ran, and committed
+before them. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| I1, in every K run, the cycle is nowhere at more than half of the refusals | 182 of 239, 32 of 98 and 156 of 239 | fails |
+| I2, in every K run, at more than half of the refusals the cycle closes without the newborn's own declarations | 192 of 239, 57 of 98 and 183 of 239 | **holds** |
+| I3, in every K run, at more than half of the refusals a door carries every path | 195 of 239, 78 of 98 and 140 of 239 | **holds** |
+| J1, in K r2, at more than half of the losses a rule of `BILLING_SPECIALIST` matched the ticket | 110 of 110 | **holds** |
+| J2, in K r2, more than half of the losses where one matched are declared | 4 of 110 | fails |
+| J3, in K r2, more than half of the declared losses are by the rule above | 3 of 4 | **holds** |
+| J4, in K r2, more than half of the declared losses are wrong | 4 of 4 | **holds** |
+| J5, in K r1 and in K r3, more than half of the losses where a rule of `BILLING_SPECIALIST` matched are declared | 4 of 90 and 10 of 59 | fails |
+
+**I2, I3, J1, J3 and J4 hold, and I1, J2 and J5 fail.**
+- **Both bets failed.** I1 failed on K r2, whose cycles were mostly real at the
+  points their pairs share. J2 failed by far: nested rules, not declarations,
+  kept billing's rules out.
+- **The three trusted most, I2, J1 and J4, held**, J4 on 4 losses. **Of the three
+  trusted least, I3 held, J3 held on 4 losses, and J5 failed.**
+
+### What it says
+
+- **The refusals fell where a broad newborn met an older rule inside its
+  region.** Its declared wins, installed first, were refused through that
+  rule.
+  - **In K r1** it was a rule of the general queue born wrong at an impasse, and
+    the refused declarations were mostly wrong. The ranking righted them.
+  - **In K r1 and K r3** most of those cycles ran through rules no point the pair
+    shares sees. An engine that refused only real cycles would have installed
+    K r1's wrong declarations.
+- **K r2's base lost `H11`'s tickets to deflection's rules written at `H12`'s,
+  nested in billing's.** They leave out the prior tickets that part the two
+  layers, and win by containment. K r1 and K r3 lost them the same way. K r2
+  lost more to the general queue's rule of pro accounts.
+
+### What it does not settle
+
+1. **A first call told why.** The rules that take `H11`'s tickets, like the rule
+   nested in the keyword's region, are born of a report that names the queue
+   and not the reason. Level 2's prose, or a report that says why, might keep
+   the prior tickets in the draft. Calls.
+2. **What a loop on an engine that refuses only real cycles would run.** At the
+   refusals that are nowhere, K r1's ranking was right where its refused
+   declarations mostly were not. Such a loop would have installed them, and
+   decided other cases otherwise. Calls.
+3. **One region under two queues.** How often the loop wrote one region as two
+   queues' rules, as `R0117` and `R0118`, and what the side declared between
+   them decided. Free on the records.
 
 ---
 
@@ -1262,3 +1504,5 @@ before them. It is not signed, and it is on no scoreboard.
 - [`readings.json`](readings.json): POST-RUN, six things Stage C left free.
 - [`conflicts.json`](conflicts.json), [`drafts.json`](drafts.json): POST-RUN, two
   things the six readings left free.
+- [`refusals.json`](refusals.json), [`billing.json`](billing.json): POST-RUN, two
+  things the last two readings left free.
