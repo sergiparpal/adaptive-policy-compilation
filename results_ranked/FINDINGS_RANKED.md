@@ -8,7 +8,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   `main` in #285, merged on 2026-11-20 at Sergi's word.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reached it in the same pull request, the one this record was opened in.
-- **The POST-RUN reading of six things Stage C left free** reaches it in #287.
+- **The POST-RUN reading of six things Stage C left free** reached it in #287,
+  merged on 2026-11-20 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -160,12 +161,14 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > **[NOTE 2026-11-20] And a POST-RUN record.** [`readings.json`](readings.json)
 > is the POST-RUN reading of six things Stage C left free.
-> - **It was written from `308e5c1`**, on the branch of #287: the commit that
->   adds the part read after the first run. The reading and its expectation are
->   the commit before it, `6eda07b`.
+> - **It was written from `308e5c1`**, on the branch of #287, which is `52a26dc`
+>   on `main`: the commit that adds the part read after the first run. The
+>   reading and its expectation are the commit before it, `6eda07b`, which is
+>   `1192918` on `main`.
 > - **Its code digest is `722f5e7cd521fdfe`**, because `ranked/readings.py` was
->   added after Stage C. Its `_env` says `git_dirty`, for the same files, and
->   `code_dirty` is false. The modules Stage C ran did not change.
+>   added after Stage C. `main` computes it at `52a26dc`, and still at the merge
+>   of #287. Its `_env` says `git_dirty`, for the same files, and `code_dirty`
+>   is false. The modules Stage C ran did not change.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -610,16 +613,23 @@ settle*, above, names six things the records can answer without a call. This
 reading answers the six on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.readings`, on 2026-11-20,
-from `308e5c1` with its code clean, on the branch of #287.
-- **The commits.** `6eda07b` carries the reading and its expectation, written
-  and committed before the reading ran. `308e5c1` adds one part after the first
-  run, read by no clause: what decides L's wrong points outside the keyword
-  half, in C. The first run, from `6eda07b`, had printed every clause's verdict,
-  and its readings had been read whole. Its record was not kept.
-- **The record was committed alone**, as `ef76cd6`.
+from `308e5c1` with its code clean, on the branch of #287, which is `52a26dc` on
+`main`.
+- **The commits.** `1192918` on `main` carries the reading and its
+  expectation, written and committed before the reading ran. `52a26dc` adds one
+  part after the first run, read by no clause: what decides L's wrong points
+  outside the keyword half, in C. The first run, from the first of the two, had
+  printed every clause's verdict, and its readings had been read whole. Its
+  record was not kept.
+- **The record was committed alone**, as `a72c7cc`.
+- **On #287's branch the three commits were `6eda07b`, `308e5c1` and
+  `ef76cd6`.** Each pair has the same subject, the same tree and the same
+  `git patch-id --stable`, and the GitHub API names #287 behind the three
+  `main` commits.
 - **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
   in the repository's root, untracked. `code_dirty` is false, and the code
-  digest is `722f5e7cd521fdfe`.
+  digest, `722f5e7cd521fdfe`, is the one `main` computes at `52a26dc`, and still
+  at the merge.
 - **The record is [`readings.json`](readings.json).** Its 30 gates passed, four
   for each run and two more for each K run:
   - each run's final base, rebuilt birth by birth, decides on its own engine the
