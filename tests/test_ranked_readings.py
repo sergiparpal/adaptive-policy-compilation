@@ -228,6 +228,28 @@ class TestTheSameDraft(unittest.TestCase):
         self.assertEqual(got["per_ticket"]["5"]["runs"], ["l_r1", "k_r1", "k_r2", "k_r3"])
 
 
+class TestByBirth(unittest.TestCase):
+    """The part added after the first run: the points a base decides wrong, by how
+    the rules that decide them were born."""
+
+    def test_by_the_escalation_each_rule_was_born_at(self):
+        from types import SimpleNamespace as NS
+        # four points, all decided by one queue standing; points 0 and 1 wrong
+        rules = [NS(rule_id="R1", born_at=3), NS(rule_id="R2", born_at=5),
+                 NS(rule_id="R3", born_at=8)]
+        walk = NS(engine=NS(rules=rules), und={"R1": 0b0011, "R2": 0b0010, "R3": 0b1100})
+        read = {"decided": 0b1111, "conflict": 0, "rung2": 0b1100}
+        record = {"escalations": [{"idx": 3, "kind": plan.CONFLICT},
+                                  {"idx": 5, "kind": plan.ERROR},
+                                  {"idx": 8, "kind": plan.IMPASSE}]}
+        got = RD.by_birth({"walk": walk, "read": read}, record, 0b1111, {AM: 0b0001})
+        self.assertEqual({k: got[k] for k in ("wrong", "conflict", "error", "impasse",
+                                              "only_conflict")},
+                         {"wrong": 2, "conflict": 2, "error": 1, "impasse": 0,
+                          "only_conflict": 1})
+        self.assertEqual(got["conflict_by_queue"][AM], 1)
+
+
 class TestGatesWithTeeth(unittest.TestCase):
     """On K r3's record: the gates pass, and one figure moved fails them. Nothing
     of the reading is printed or pinned."""
