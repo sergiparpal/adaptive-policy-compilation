@@ -14,6 +14,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   in #289, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things the last two readings left free**
   reached it in #291, merged on 2026-11-20 at Sergi's word.
+- **The POST-RUN reading of one region under two queues** reaches it in the
+  pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -199,6 +201,15 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   computes it at `3165cb3`, and still at the merge of #291. Their `_env` says
 >   `git_dirty`, for the same files, and `code_dirty` is false. No module an
 >   earlier record of this plan ran changed.
+>
+> **[NOTE 2026-11-20, latest] And one more.** [`twins.json`](twins.json) is the
+> POST-RUN reading of one region under two queues.
+> - **It was written from `57a5d3f`**, on the branch of the pull request it is
+>   opened in: the commit that carries the reading and its expectation.
+> - **Its code digest is `bcaccda1496dc28e`**, because `ranked/twins.py` was
+>   added after the last two readings. Its `_env` says `git_dirty`, for the
+>   same files, and `code_dirty` is false. No module an earlier record of this
+>   plan ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1495,6 +1506,128 @@ before them. It is not signed, and it is on no scoreboard.
 3. **One region under two queues.** How often the loop wrote one region as two
    queues' rules, as `R0117` and `R0118`, and what the side declared between
    them decided. Free on the records.
+   **[NOTE 2026-11-20, latest] Read POST-RUN: seldom, and its side mostly
+   right.** Under a tenth of every run's births twin another queue's rule; the
+   newborn mostly declares itself above its twin, and the side installed is
+   right by the policy more often than not. *One thing the last two readings
+   left free*, K, below.
+
+---
+
+## One thing the last two readings left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-20, after the last two readings.** Their *What
+it does not settle*, above, names one thing the records can answer without a
+call, its third item: how often the loop wrote one region as two queues' rules,
+and what the side declared between them decided. This reading answers it on the
+records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.twins`, on 2026-11-20,
+from `57a5d3f` with its code clean, on the branch of the pull request it is
+opened in.
+- **The commit.** `57a5d3f` carries the reading and its expectation, written and
+  committed before the reading ran. Nothing was added after the first run, and
+  its record is the one kept.
+- **The record was committed alone**, as `e6ac287`.
+- **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `bcaccda1496dc28e`.
+- **The record is [`twins.json`](twins.json).** Its 18 gates passed: in each
+  run, every pair's newborn recorded its twin among its first call's copies and
+  the two rules cover exactly the same points, the final base is Stage C's, and
+  every edge between a pair was tried at the newborn's birth, as the log has it.
+
+### K. One region under two queues
+
+A twin pair is a born rule, the newborn, and an earlier rule of another queue
+that covers exactly the same tickets, its region. v1c records such a copy and
+lets it be born. A newborn that covers exactly an earlier rule of its own queue
+is a copy, counted beside.
+
+| run | births | twins of another queue | twin pairs | copies of the same queue |
+|---|---|---|---|---|
+| L r1 | 326 | 14 | 16 | 101 |
+| K r1 | 196 | 6 | 8 | 49 |
+| L r2 | 291 | 10 | 13 | 93 |
+| K r2 | 212 | 11 | 13 | 71 |
+| L r3 | 329 | 29 | 53 | 109 |
+| K r3 | 165 | 1 | 1 | 38 |
+
+- **Rare under another queue, common under the same.** In every run fewer than
+  one birth in ten twins an earlier rule of another queue (K5 holds): 71 of the
+  six runs' 1,519 births. A copy of an earlier rule of the newborn's own queue
+  is far more common: 461 births, nearly a third of L r1's.
+- **How the twins were born.**
+  - **In K**, every twin was born at a reported error, since K asks about no
+    conflict.
+  - **In L**, 35 of 53 were born at a conflict the loop asked about.
+  - **Pooled**, 36 of the 71 were born at a reported error (K1 holds), and every
+    one of those reports named the newborn's queue. At 14 of them, the rule that
+    had decided the ticket was the twin itself.
+- **The newborn declared itself above its twin.** The engine installed that side
+  at 76 of the 104 pairs (K2 holds). At 22 the newborn's answer declared a loss
+  to its twin, and the engine installed that. 5 twins were not listed, their
+  region wholly governed when the round was listed, and 1 edge was refused.
+- **The side installed was right by the policy more often than not.** Of the 98
+  installed, 59 are right over the region, 34 wrong and 5 even (K4 fails, the
+  bet). Where the newborn declared a loss to its twin, the twin's side was right
+  at 21 of 22, and even at the other.
+- **The region did not go to the newborn.** In the final bases, the newborn's
+  queue decides more of its region than its twin's at 45 of the 104 pairs (K3
+  fails): 14 of K's 22, and 31 of L's 82.
+  - **Later rules took most of it.** Summed over the pairs, of 544,530
+    pair-points, 252,318 go to rules of other queues and 102,549 to no queue,
+    most of these in L, where a conflict is left undecided.
+- **The pair that asked the question is one of the wrong ones.** K r2's `R0118`
+  above `R0117` was installed, and is wrong by the policy. In the final base
+  `R0118`'s queue decides 1,010 of the region's 6,720 points, `R0117`'s 120, and
+  other queues 5,590.
+
+**So the loop wrote one region under two queues seldom**, mostly when it was
+asked about a conflict or told of an error inside an earlier rule's region. The
+newborn mostly put itself above its twin, and was right more often than wrong.
+What decided the regions, though, was mostly the rules born after them. What the
+loop writes again far more often is its own queue's rule.
+
+### The expectation
+
+Written in the module's docstring before the reading ran, and committed before
+it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| K1, in the six runs pooled, more than half of the births that twin an earlier rule of another queue were born at a reported error | 36 of 71 | **holds** |
+| K2, of the twin pairs pooled, at more than half the newborn was declared above its twin and the engine installed the edge | 76 of 104 | **holds** |
+| K3, of the twin pairs pooled, at more than half the newborn's queue decides more of the region than its twin's, in the run's final base | 45 of 104 | fails |
+| K4, of the twin pairs whose edge was installed, pooled, at more than half the side installed is wrong by the policy's verdict over the region | 34 of 98 | fails |
+| K5, in every run, fewer than one birth in ten twins an earlier rule of another queue | 14 of 326, 6 of 196, 10 of 291, 11 of 212, 29 of 329 and 1 of 165 | **holds** |
+
+**K1, K2 and K5 hold, and K3 and K4 fail.**
+- **The bet, K4, failed.** The side installed was right more often than wrong.
+  The pair that prompted the reading is among the wrong ones.
+- **K1 and K5, trusted most, held**, K1 by one birth. **K3 and K4, trusted
+  least, failed.**
+
+### What it says
+
+- **One region under two queues is rare, and its side mostly right.** Under a
+  tenth of every run's births twin another queue's rule. The newborn mostly
+  declares itself above its twin, and three installed sides in five are right
+  by the policy. The regions themselves go mostly to rules born later.
+- **The loop writes its own queue's rule again far more often**: about three
+  births in ten copy an earlier rule of their own queue exactly.
+
+### What it does not settle
+
+1. **Why the loop writes its own queue's rule again.** 461 of the six runs'
+   births copy an earlier rule of their own queue.
+   `results_corrections/FINDINGS_CORRECTIONS.md` found the broad correction to
+   be the queue's general line, which the base already holds. What the copies
+   cost the base, and whether they are mostly such corrections, is free on the
+   records.
+2. **Why L's twins are born at the conflicts it asks about.** At 35 conflicts
+   the first call drew exactly an earlier rule's region under another queue.
+   Its reasoning is in the records. Free on the records.
 
 ---
 
@@ -1513,3 +1646,4 @@ before them. It is not signed, and it is on no scoreboard.
   things the six readings left free.
 - [`refusals.json`](refusals.json), [`billing.json`](billing.json): POST-RUN, two
   things the last two readings left free.
+- [`twins.json`](twins.json): POST-RUN, one region under two queues.
