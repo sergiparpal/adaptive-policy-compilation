@@ -13,6 +13,8 @@ What is pinned is the instrument:
 - gates 2 and 3 with teeth: one queue standing, a row that was no conflict, a
   draft of another queue or region;
 - the conditions of the births, by group, and their median;
+- the part added after the first run: how each twin was born, a twin's queue
+  standing beside the newborn's or not, and a twin that was a correction;
 - `twins.json`'s pairs born at a conflict;
 - the expectation's clauses at their edges, and over nothing;
 - that the writer refuses unsigned before it reads or writes.
@@ -161,6 +163,35 @@ class TestEachConflictTwin(unittest.TestCase):
         r = record()
         r["escalations"][3]["calls"][0]["payload"] = None
         self.assertFalse(self.read(r)[2])
+
+
+class TestAddedAfterTheFirstRun(unittest.TestCase):
+
+    def test_how_each_twin_was_born(self):
+        space, corpus = MI.space(), list(MI.corpus())
+        r = record()
+        r["escalations"][0]["kind"] = "ERROR"
+        r["reports_handed"] = {"1": BILL, "3": T1}
+        births = AS.conflict_twins(r, space)
+        rows, _, _ = AS.read_births(r, births, AS.standing_at(r, {3, 4}, space, corpus), space)
+        self.assertEqual([(t["rule"], t["born_of"], t["report_named_it"]) for t in rows[1]["twins"]],
+                         [("R1", "ERROR", True), ("R3", plan.CONFLICT, False)])
+        self.assertEqual([(x["twin_queue_stood"], x["both_queues_stood"], x["twin_a_correction"])
+                          for x in rows], [(True, True, True), (True, False, True)])
+
+    def test_the_flags(self):
+        here = {BILL: ["R1"], SS: ["R2"]}
+        twin = {"queue": BILL, "born_of": "ERROR", "report_named_it": True}
+        self.assertEqual(AS.after_the_first_run(SS, [twin], here),
+                         {"twin_queue_stood": True, "both_queues_stood": True,
+                          "twin_a_correction": True})
+        self.assertEqual(AS.after_the_first_run(T1, [dict(twin, report_named_it=False)], here),
+                         {"twin_queue_stood": True, "both_queues_stood": False,
+                          "twin_a_correction": False})
+        self.assertEqual(AS.after_the_first_run(SS, [dict(twin, queue=T1, born_of="IMPASSE")],
+                                                here),
+                         {"twin_queue_stood": False, "both_queues_stood": False,
+                          "twin_a_correction": False})
 
 
 class TestTheKeptPairs(unittest.TestCase):
