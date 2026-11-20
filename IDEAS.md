@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 17, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 20, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -131,7 +131,10 @@ day**, and the item it answers is struck in place. **What the rest of what the
 declared ranking lacks is was read POST-RUN the same day**, and the item it
 answers is struck in place. **A count of what each pair decides was read
 POST-RUN on November 17, 2026**, and the item it answers is struck in place.
-This is a list of things not done,
+**The loop that settles its conflicts by the ranking its own votes choose
+closed on November 20, 2026**: `PLAN_RANKED.md`, six signed rows, five held and
+one refuted, and one reported, written up in `results_ranked/`. The item it
+answers is struck in place. This is a list of things not done,
 none of them developed and in no order of precedence.
 
 **Figures live in the FINDINGS that owns them and in `STATUS.md`.** What appears
@@ -142,6 +145,22 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **A loop that settles its conflicts by the ranking its own votes choose.**
+  November 20, 2026, `PLAN_RANKED.md`, three dollars and thirteen cents.
+  `PLAN_CORRECTIONS.md`'s arm L ran twice over, at level 1 with reasoning on,
+  pinned to DeepInfra, under the channel at coverage 1/2: three runs an arm,
+  alternating. Arm L's engine is rung 2's, which escalates a CONFLICT. Arm K's
+  decides it, by the ranking of the queues that agrees with most of the votes
+  the loop's placement answers have cast so far.
+  - **The votes ranked `SECURITY_INCIDENT` first**, and settling conflicts by
+    them decided about a sixth of the space more than asking, and reached
+    compiling at once at the median.
+  - **What containment costs stays.** A rule of `T2_TECHNICAL` nested in the
+    keyword's region holds what K loses of `SECURITY_INCIDENT`, and the one
+    run in which it held two thirds of the queue thins three rows.
+  - **The rarest queue was not compiled.**
+
+  What it leaves is in its own section below. `results_ranked/`.
 - **A report that carries the true queue: the learning regime.** November 14,
   2026, `PLAN_CORRECTIONS.md`, three dollars and sixty-seven cents.
   `PLAN_PLACEMENT.md`'s v1c ran at level 1, the catalogue, with reasoning on,
@@ -523,6 +542,80 @@ against, a threshold a next run would have to clear.
 
 ---
 
+## What `PLAN_RANKED.md` opens and does not resolve
+
+Closed November 20, 2026. It ran `PLAN_CORRECTIONS.md`'s arm L twice over, at
+level 1 with reasoning on, pinned to DeepInfra, under the channel at coverage
+1/2: three runs an arm, alternating. Arm L's engine is rung 2's, which escalates
+a CONFLICT. Arm K's decides it, by the ranking of the queues that agrees with
+most of the votes the loop's placement answers have cast so far. The votes
+ranked `SECURITY_INCIDENT` first, and K decided about a sixth of the space more
+than L and reached compiling at once at the median, thinly. What that leaves:
+
+- **Why K r2's ranking decided its conflicts at half.** K r1's and K r3's
+  decided more than four in five right, under the same last ranking. Which pairs
+  of queues K r2's conflicts fell between, and when in the run. Free on the
+  records.
+- **The tickets that beget a rule nested in the keyword's region.** In both arms
+  the rules of `T2_TECHNICAL` wholly inside the keyword's region were born at a
+  few tickets, each in more than one run. The one born at case 529 holds two
+  thirds of `SECURITY_INCIDENT` in K r2. Which tickets they are, and what each
+  first call was told. Free on the records.
+- **Keeping such a rule from being born.** The ranking settles what conflicts
+  cost the loop, and leaves what containment costs it. The lever left is in the
+  births: a first call shown the rule that erred, which `PLAN_CORRECTIONS.md`'s
+  readings named. Calls.
+- **Where K's gain lies outside the keyword half.** In K r1 and K r2 most of it
+  does, where §0 expected it in `SECURITY_INCIDENT`'s region. Which queues'
+  points the ranking decides there that L leaves in conflict. Free on the
+  records.
+- **K's ranking and the pair `T3_ENGINEERING`, `ACCOUNT_MANAGER`.** Every K
+  ranking put `T3_ENGINEERING` above, the order that cost the closed runs'
+  declared ranking most of what it lacked, and K's bases still recall
+  `ACCOUNT_MANAGER` well. What the pair decides in K's bases. Free on the
+  records.
+- **Why K r2's at-once answers decided so much more than its loop.** Its labels
+  named `SECURITY_INCIDENT` more often than any other run's. Free on the
+  records.
+- **The decision or the rules it leads to.** Each cross-reading reads one arm's
+  rules under the other arm's engine, and no reading of these records
+  separates the two (§13 of the plan, its first item).
+- **Telling the proposer how the engine settles a conflict.** The system prompt
+  still describes rung 2's engine in both arms. Calls.
+- **An engine that abstains where its votes are silent.** No case K's ranking
+  took was decided on a tie, so at the arrivals it would have changed nothing.
+  Over the space it is not read. Free on the records.
+
+Lessons it leaves:
+
+- **A check that compares two live records whole compares the wall clock.** A
+  record keeps each call's seconds, and Step 0 refused a session twice on one
+  call's hundredths. Time both loops by a clock that reads zero, as
+  `placement/gates.py` and `channel/gates.py` do, or leave the seconds out. And
+  run every paid command's own path before signature: only the runs' dry run
+  had been run, and the pause fell on the asker's path.
+- **Hold a new engine to the transcriber before drawing bands from a replay.**
+  A replay of closed records cannot show what an engine does to a proposer that
+  writes a rule again. The first draft's engine failed Step 0 the day it was
+  written.
+- **A recommendation the user accepted is withdrawn in so many words when a
+  check undoes it**, before anything else is built on it.
+- **A count over citations is moved by rules written again.** Under the first
+  draft's engine each correction of a queue in the middle of the policy voted
+  it down.
+- **A supervisor's commit message should tell a refused launch from a
+  launch.** A launch a blocking check refused kept nothing, and "resumed from
+  the partial file" would have been false of it.
+- **One run can thin several rows at once.** The same K run, under the same
+  nested rule, would refute three rows in place of its arm's median. A plan
+  that reads several medians over the same runs should say in §0 what one run
+  below several lines means.
+- **A large record can time a push out.** GitHub answered HTTP 408 to a 15 MB
+  record, and the fourth attempt went through. A supervisor's retries should
+  outlast that.
+
+---
+
 ## What `PLAN_CORRECTIONS.md` opens and does not resolve
 
 Closed November 14, 2026. It ran `PLAN_PLACEMENT.md`'s v1c at level 1, the
@@ -788,10 +881,22 @@ learner of the labels alone matched the loop. What that leaves:
   the order*.
 - **What the labels bought in L r2.** Searched on its labels, L r2's base gained
   far more of the space than L r1's or L r3's. Free on the records.
-- **A loop that orders its rules by a ranking.** In L r1 and L r2 the loop's
-  final rules, ordered by one ranking of the queues after the run, beat
-  compiling at once. A loop whose engine installed each birth by a fixed
-  ranking would decide other cases on the way and write other rules. Calls.
+- ~~**A loop that orders its rules by a ranking.**~~ **Run from 2026-11-18 to
+  2026-11-20 as `PLAN_RANKED.md`** (`FINDINGS_RANKED.md`), on an engine that is
+  rung 2's but where rung 2's would return CONFLICT. There the ranking its votes
+  have chosen so far decides. In L r1 and L r2 the loop's final rules, ordered
+  by one ranking of the queues after the run, had beaten compiling at once.
+  - **The votes ranked `SECURITY_INCIDENT` first in every run** (`RK-a` holds),
+    **and the loop decided about a sixth of the space more than the same loop
+    asking** (`RK-b` holds, thin).
+  - **It reached at once at the median** (`RK-d` holds, thin), **and kept two
+    thirds of `SECURITY_INCIDENT`** (`RK-c` holds, thin). What it lost of the
+    queue lies inside a rule of `T2_TECHNICAL` nested in rules of the queue, as
+    the replay below found.
+  - **The three thin rows rest on one run**, whose nested rule holds two thirds
+    of the queue.
+  So the second lever the replay named, keeping such a rule from being born, is
+  the one left. Calls. See *What `PLAN_RANKED.md` opens*.
   **[NOTE 2026-11-16] The ranking could be the loop's own.** Gathered by pair
   of queues, its placement declarations choose one ranking, which orders its
   final rules above at once in L r2 and just below it in L r1. A loop that
