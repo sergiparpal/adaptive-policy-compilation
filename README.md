@@ -63,6 +63,7 @@ up in four places at once.
 | **WR** · the region asked for whole | `PLAN_PLACEMENT.md`'s v1c arm run again with level 3's manual and reasoning on, pinned to DeepInfra, beside v1d, whose first call asks for the governing rule's region whole, three runs an arm alternating, each pair under one set of draws, to see whether the loop's narrow rules were the first call's text and what whole first drafts compile — closed 2026-11-10 | [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md) |
 | **HV** · the paragraph's halves | the loop's first call asked alone at 136 tickets the reasoning loops escalated, with level 3's manual and reasoning on, pinned to DeepInfra, under four paragraphs where the base would be — the empty base, v2b's paragraph, its first half alone and its overlap clause on the empty base — in two passes and a session of the rarest queue's tickets, to see which half of v2b's paragraph makes the first call cut — closed 2026-11-12 | [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md) |
 | **CR** · the learning regime | `PLAN_PLACEMENT.md`'s v1c at level 1, the catalogue, with reasoning on, pinned to DeepInfra, under the channel at coverage 1/2, with and without a report that carries the reported ticket's true queue, beside the same labels compiled at once and handed to the inducer and the students, to see whether the loop learns what its prompt does not hold — closed 2026-11-14 | [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md) |
+| **RK** · the conflicts settled by the loop's own ranking | `PLAN_CORRECTIONS.md`'s arm L on an engine that decides each CONFLICT by the ranking of the queues its own placement votes choose, beside the same loop on rung 2's engine, which asks, in one period, with each run's labels compiled at once and handed to the inducer and the students — closed 2026-11-20 | [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -996,6 +997,50 @@ PYTHONHASHSEED=0 .venv/bin/python -m corrections.run --smoke --arm n  # Stage B 
 PYTHONHASHSEED=0 .venv/bin/python -m corrections.ask --session smoke  # then §9's order, one step at a time
 ```
 
+**[`PLAN_RANKED.md`](PLAN_RANKED.md) closed on 2026-11-20**: the loop that
+settles its conflicts by the ranking its own votes choose, beside the same loop,
+which asks. Sergi signed §0 on 2026-11-18, before any of its figures existed.
+- **What it asked.** It ran `PLAN_CORRECTIONS.md`'s arm L twice over, at level 1
+  with reasoning on, every call pinned to DeepInfra's fp8 endpoint, under
+  `PLAN_CHANNEL.md`'s channel at coverage 1/2: three runs an arm, alternating.
+  - **Arm L** is that arm, on rung 2's engine: a CONFLICT escalates.
+  - **Arm K** is the same loop on an engine that is rung 2's but where rung 2's
+    would return CONFLICT. There the undefeated rule whose queue ranks first
+    wins, by the ranking of the eight queues that agrees with most of the
+    votes the born rules' placement answers have cast.
+  - **Beside each run's labels**, the model compiled them at once, at
+    checkpoints, and `PLAN_ILP.md`'s inducer and `PLAN_STUDENTS.md`'s students
+    learned them, as `PLAN_CORRECTIONS.md` did.
+- **Why.** `PLAN_CORRECTIONS.md`'s free readings found that the loop lost mostly
+  by its order, left in conflict by right sides the engine refused, and that it
+  had declared most of the ranking it lacked. Only calls could say what a loop
+  that settles its own conflicts by it compiles.
+
+Its record is [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md). Its gate
+reads that plan and no other, counts its signature line, and guards its four
+writers. `corrections/`, `placement/`, `channel/`, `reasoned_loop/`, `manual/`,
+`blind/`, `authorship/`, `edges/`, `fidelity/`, `queue_alone/`, `reuse/` and
+`rung2/` are called by it and not edited. It breaks the oracle's separation on
+purpose by `PLAN_CORRECTIONS.md`'s one route, in both arms. Its blocking
+Step 0 was corrected once after the signature, before any step ran behind it,
+and the findings date it.
+
+Stages A and C are free, and each reproduces from the committed records in under
+ten minutes, most of it the suite inside its first check. **Stage B
+spent**: its records are guarded, and a re-run neither overwrites them nor gives
+the same rules back. A paid run does not start without Sergi asking for it. A
+run took about three to eight and a half hours of calls on DeepInfra, which
+refused no call for the rate, K's runs the shorter. A run stopped by an outage
+resumes from its partial file with the same command.
+
+```bash
+python3 -m ranked.run --dry-run                                  # RK-g1..RK-g3, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m ranked.sample                        # Stage A · the references
+PYTHONHASHSEED=0 python3 -m ranked.score                         # Stage C · RK-a to RK-f, and RK-g
+PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, one step at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -1267,7 +1312,8 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_PLACEMENT.md`'s, and the three of `whole/`, which run
 > `PLAN_WHOLE.md`'s, and the three of `halves/`, which run
 > `PLAN_HALVES.md`'s, and the four of `corrections/`, which run
-> `PLAN_CORRECTIONS.md`'s.
+> `PLAN_CORRECTIONS.md`'s, and the four of `ranked/`, which run
+> `PLAN_RANKED.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -2290,6 +2336,18 @@ adaptive-policy-compilation/
 │   ├── gap.py               POST-RUN · what the rest of what the declared ranking lacks is: each L run's final base ordered by its declared ranking, by that ranking with ACCOUNT_MANAGER and T3_ENGINEERING exchanged, by its best ranking and by that ranking with the two exchanged back, read on the space and the corpus, by queue and by the policy's eight layers; and the placement votes on that pair, read rule by rule
 │   └── decides.py           POST-RUN · a count of what each pair decides: each L run's placement votes, kept where their pair decides a point of the space in the declared ranking's order and left out where it decides none; the rankings the kept votes choose, read on the space and the corpus beside the declared and best rankings and at once, and the kept votes against the best ranking
 │
+├── ranked/               RK · the loop that settles its conflicts by the ranking its own votes choose, beside the same loop, which asks
+│   ├── plan.py              the gate, the constants, the lines, DECLARED, the schedule and the paths; the client is PLAN_CORRECTIONS.md's, pin included
+│   ├── engine.py            arm K's engine: the votes, the ranking, and the decision where rung 2's would return CONFLICT · the proposer's path
+│   ├── loop.py              PLAN_CORRECTIONS.md's loop, called, with each arm's engine · the proposer's path
+│   ├── run.py               Stage B · the smoke runs and the six runs · spends · resumes · the proposer's path
+│   ├── ask.py               Stage B · the at-once sessions, four asks at a time · spends · resumes · the proposer's path
+│   ├── reading.py           what each engine decides of a record's base, after every birth and at the end
+│   ├── setaside.py          the two engines set aside, run by no run, so that §0's figure 2 is recomputed
+│   ├── gates.py             RK-g1..RK-g4 · blocking
+│   ├── sample.py            Stage A · the references
+│   └── score.py             Stage C · RK-a to RK-f and RK-g, gated on PLAN_RANKED.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -2377,7 +2435,7 @@ adaptive-policy-compilation/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
     results_reasoned_loop/  results_channel/  results_placement/  results_whole/  results_halves/
-    results_corrections/
+    results_corrections/  results_ranked/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:

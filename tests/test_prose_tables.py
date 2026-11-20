@@ -104,6 +104,7 @@ THREADS = {
     "WR": ("results_whole/score.json", ("verdicts",)),
     "HV": ("results_halves/score.json", ("verdicts",)),
     "CR": ("results_corrections/score.json", ("verdicts",)),
+    "RK": ("results_ranked/score.json", ("verdicts",)),
 }
 
 # Rows a thread's record keeps somewhere else. `P-c`'s record states its verdict
@@ -151,6 +152,7 @@ TABLES = {
     "results_whole/FINDINGS_WHOLE.md": ("WR",),
     "results_halves/FINDINGS_HALVES.md": ("HV",),
     "results_corrections/FINDINGS_CORRECTIONS.md": ("CR",),
+    "results_ranked/FINDINGS_RANKED.md": ("RK",),
 }
 PROSE_ONLY = {"P": "results2/FINDINGS2.md", "B": "results3/FINDINGS3.md"}
 NOT_TABLES = {

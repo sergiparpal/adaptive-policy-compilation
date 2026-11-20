@@ -181,7 +181,8 @@ the FINDINGS.
 `reasoned_rule/ask.py`, since 2026-10-31 `reasoned_loop/run.py`, since
 2026-11-05 `channel/run.py`, since 2026-11-07 `placement/run.py`, since
 2026-11-09 `whole/run.py`, since 2026-11-10 `halves/ask.py`, and since
-2026-11-12 `corrections/run.py` and `corrections/ask.py`, all twenty below. It
+2026-11-12 `corrections/run.py` and `corrections/ask.py`, and since 2026-11-18
+`ranked/run.py` and `ranked/ask.py`, all twenty-two below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -1623,6 +1624,91 @@ ran the smoke runs, the sessions and the six runs one at a time. It committed
 each record alone and pushed it to one pull request. WSL restarted under one
 run, which resumed from its partial file. The merge waited for Sergi's word.
 
+**`PLAN_RANKED.md` closed on 2026-11-20: the loop that settles its conflicts by
+the ranking its own votes choose, beside the same loop, which asks.** Six signed
+rows adjudicated, five held and one refuted, and one reported. Sergi signed §0 on
+2026-11-18, before any figure it governs existed.
+- **What it asked.** It ran `PLAN_CORRECTIONS.md`'s arm L twice over, at level 1
+  with reasoning on, three runs an arm, alternating, under `PLAN_CHANNEL.md`'s
+  channel at coverage 1/2.
+  - **Arm L** is that arm, on rung 2's engine, which escalates a CONFLICT.
+  - **Arm K** is the same loop on `ranked.engine.RankedEngine`: rung 2's engine,
+    but where it would return CONFLICT the undefeated rule whose queue ranks
+    first wins. The ranking is the one of the eight queues that agrees with the
+    most votes, and every citation of a rule of another queue in a born rule's
+    placement answer is a vote.
+  - **Beside each run's labels**, the model compiled them at once, and the
+    inducer and the students learned them, as in `PLAN_CORRECTIONS.md`.
+  - **The pin is DeepInfra's fp8 endpoint**, by the rule agreed on 2026-11-06,
+    with no bridge.
+- **Where it is written up.** The record is `results_ranked/FINDINGS_RANKED.md`,
+  and `STATUS.md` indexes its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same rules back, so a paid run does not start
+  without Sergi asking for it.
+- **The gate.** Every writer in `ranked/` refuses while the plan carries a blank
+  signature line. The gate reads `PLAN_RANKED.md` and no other plan, and counts
+  every such line.
+- **What it calls.** `corrections/`, `placement/`, `channel/`, `reasoned_loop/`,
+  `manual/`, `blind/`, `authorship/`, `edges/`, `fidelity/`, `queue_alone/`,
+  `reuse/` and `rung2/` are called by it and not edited. K's engine overrides
+  `decide`, and nothing else rung 2's engine defines.
+- **It breaks the oracle's separation on purpose, by `PLAN_CORRECTIONS.md`'s one
+  route**, in both arms, and its proposer-path modules are watched as the
+  authority channel in `tests/test_oracle_separation.py`. K's engine reads the
+  answers' citations, and nothing of the truth.
+
+The first command is blocking and writes nothing:
+
+    python3 -m ranked.run --dry-run                                  # RK-g1..RK-g3; must pass first
+    PYTHONHASHSEED=0 python3 -m ranked.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m ranked.score                         # Stage C, free, from the runs and the asks
+    PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
+
+**Settling its conflicts by its own votes, the loop decides more of the function
+than asking** (`RK-b` holds, thin), **and reaches what compiling its corrections
+at once decides** (`RK-d` holds, thin). The votes put the security queue first
+in every run (`RK-a` holds), and the ranking decides right most of the conflicts
+it takes (`RK-e` holds). What it leaves is containment's: a rule of another
+queue nested in the keyword's region keeps what it holds, whatever the ranking
+says (`RK-c` holds, thin). A lever on the order leaves the rules it lets be
+born.
+
+**One run thinned three rows.** The same run, under the same nested rule, would
+refute three rows in place of its arm's median. A plan that reads several
+medians over the same runs should say in §0 what one run below several lines
+means.
+
+**A check that compares two live records whole compares the wall clock.** A
+record keeps each call's seconds, and Step 0 refused a session on one call's
+pause, before any spend. It was corrected after the signature, in a commit of
+its own, at Sergi's word and before any step ran behind it. Time both loops by a
+clock that reads zero, as `placement/gates.py` and `channel/gates.py` do, or
+leave the seconds out. **And run every paid command's own path before
+signature**: only the runs' dry run had been run, and the pause fell on the
+asker's path.
+
+**Hold a new engine to the transcriber before drawing bands from a replay.** The
+first draft's engine put the whole base in the ranking's order. Held to a
+proposer that never errs, it failed Step 0 the day it was written, before any
+call: no ranking of queues holds a policy whose queues interleave, and a rule
+written again after a reported error casts its votes again. **A recommendation
+the user accepted is withdrawn in so many words when a check undoes it**,
+before anything else is built on it.
+
+**A supervisor's commit message should tell a refused launch from a launch.** A
+launch a blocking check refused kept nothing, and "resumed from the partial
+file" would have been false of it. **And a large record can time a push out**:
+GitHub refused one several times before it took it.
+
+**Its runs were launched by the agent, as §2.10 let Sergi choose.** A supervisor
+ran the smoke runs, the sessions and the six runs one at a time. It committed
+each record alone and pushed it to one pull request. The smoke phase was paused
+once at Sergi's request, and resumed from its partial file. The merge waits for
+Sergi's word.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
@@ -1633,7 +1719,9 @@ and `reasoned_loop/protocol.py` ask through too, and `channel/run.py` through
 `reasoned_loop/protocol.py`, and `placement/run.py` through the asker
 `placement/protocol.py` pins, and `whole/run.py`, `halves/ask.py` and
 `corrections/run.py` through the same asker, without changing a request, and
-`corrections/ask.py` through a subclass of it that changes the budget alone. Every paid writer but rung 1's stores each question's attempts as
+`corrections/ask.py` through a subclass of it that changes the budget alone,
+and `ranked/run.py` through the same asker and `ranked/ask.py` through that
+subclass, each unchanged. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -1726,7 +1814,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 `reasoned_rule/ask.py`, since 2026-10-31, `reasoned_loop/run.py`, since
 2026-11-05, `channel/run.py`, since 2026-11-07, `placement/run.py`, since
 2026-11-09, `whole/run.py`, since 2026-11-10, `halves/ask.py`, and since
-2026-11-12, `corrections/run.py` and `corrections/ask.py`.
+2026-11-12, `corrections/run.py` and `corrections/ask.py`, and since
+2026-11-18, `ranked/run.py` and `ranked/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

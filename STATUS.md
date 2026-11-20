@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 17, 2026. **Not a history** — that is the four
+What is known, as of November 20, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -30,8 +30,9 @@ What is known, as of November 17, 2026. **Not a history** — that is the four
 [`results_channel/FINDINGS_CHANNEL.md`](results_channel/FINDINGS_CHANNEL.md),
 [`results_placement/FINDINGS_PLACEMENT.md`](results_placement/FINDINGS_PLACEMENT.md),
 [`results_whole/FINDINGS_WHOLE.md`](results_whole/FINDINGS_WHOLE.md),
-[`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md) and
-[`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md),
+[`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md),
+[`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md) and
+[`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
 each with its dated errata in place. Every figure here already exists in one
 of them.
 
@@ -86,7 +87,9 @@ seven more, closed on 2026-11-10 — plus **which half of v2b's base paragraph
 makes the loop's first call cut, in `PLAN_HALVES.md`**: seven more, closed on
 2026-11-12 — plus **the learning regime, a report that carries the true queue
 under level 1's catalogue, in `PLAN_CORRECTIONS.md`**: seven more, closed on
-2026-11-14.
+2026-11-14 — plus **the loop that settles its conflicts by the ranking its own
+votes choose, beside the same loop, which asks, in `PLAN_RANKED.md`**: seven
+more, closed on 2026-11-20.
 
 **In one sentence.** The priority of a stratified policy is not in the shape of
 its rules; of the three ways of supplying it — infer it from the syntax, have the
@@ -470,6 +473,34 @@ third recovers 61% of what full supervision buys, on corpus test.
 >
 > So the corrections reach the proposer, and the loop does not keep them.
 > [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md).
+>
+> **[NOTE 2026-11-20] Settling its conflicts by the ranking its own votes
+> choose, the loop decides about a sixth of the space more than the loop that
+> asks, thinly.** [`PLAN_RANKED.md`](PLAN_RANKED.md) ran `PLAN_CORRECTIONS.md`'s
+> arm L twice over, three runs an arm, alternating, in one period. Arm L's
+> engine is rung 2's, which escalates a CONFLICT. Arm K's decides it: of the
+> undefeated rules, the one whose queue wins the ranking that agrees with most
+> of the votes its placement answers have cast so far.
+>
+> - **The votes put `SECURITY_INCIDENT` first in every K run** (`RK-a` holds),
+>   and all three K runs ended on one ranking.
+> - **K's median base decides 0.7740 of the space, and L's 0.6019** (`RK-b`
+>   holds, thin), in both halves of it.
+> - **It keeps two thirds of `SECURITY_INCIDENT`** (`RK-c` holds, thin). Every
+>   point of the queue it loses lies inside a rule of `T2_TECHNICAL` nested in
+>   rules of the queue, which containment lets win whatever the ranking says.
+> - **It reaches what compiling its corrections at once decides** (`RK-d`
+>   holds, thin), where L, in this period as in the last, does not.
+> - **Its ranking decides right most of the conflicts it takes** (`RK-e`
+>   holds): a median of 0.8469 of them, where L's first call named the true
+>   queue at under half of the conflicts it asked about.
+> - **The rarest queue was not compiled** (`RK-f` refuted).
+>
+> **The three thin rows rest on one run.** K r2, whose rule nested in the
+> keyword's region holds two thirds of `SECURITY_INCIDENT`, would refute each
+> of them in place of K's median. So the ranking settles what conflicts cost
+> the loop, and what containment costs it is left.
+> [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md).
 
 ---
 
@@ -518,7 +549,7 @@ the audit cost zero API calls.
 
 ## The signed rows, and how they came out
 
-**One hundred and ninety-five rows have been signed before the figures they name existed. This
+**Two hundred and two rows have been signed before the figures they name existed. This
 is their scoreboard**, and it is a fact about the drafter rather than about the
 material. It exists because the standing calibration note in
 [`IDEAS.md`](IDEAS.md) is *directional* — it tells whoever writes the next entry
@@ -580,7 +611,8 @@ a count behind it.
 | **WR** · the region asked for whole (§0 of `PLAN_WHOLE.md`) — *one row replicates a closed one* | 7 | 6 | **3** | 0 | 3 | 1 |
 | **HV** · the paragraph's halves (§0 of `PLAN_HALVES.md`) — *two rows replicate a POST-RUN reading* | 7 | 6 | **2** | 0 | 4 | 1 |
 | **CR** · the learning regime (§0 of `PLAN_CORRECTIONS.md`) | 7 | 6 | **3** | 0 | 3 | 1 |
-| **total** | **195** | **164** | **65** | **2** | **97** | **29** |
+| **RK** · the conflicts settled by the loop's own ranking (§0 of `PLAN_RANKED.md`) | 7 | 6 | **1** | 0 | 5 | 1 |
+| **total** | **202** | **170** | **66** | **2** | **102** | **30** |
 
 **Named, so that the table can be recomputed by hand.** Refuted: `Q-d`, `Q-f`,
 `S-a`, `S-b`, `S-c`, `S-d`, `R-a`, `D-a`, `D-c`, `P-d`, `P-e`, `B-b`, `B-c`,
@@ -588,7 +620,7 @@ a count behind it.
 `O-a`, `K-b`, `K-c`, `K-e`, `V-a`, `H-d`, `M-b`, `M-c`, `M-d`, `T-d`, `T-e`, `J-d`, `N-b`,
 `N-c`, `N-d`, `Z-a`, `Z-b`, `Z-d`, `G-b`, `G-e`, `G-f`, `X-c`, `QA-c`,
 `QA-d`, `QA-e`, `FM-b`, `RR-d`, `RL-b`, `RL-e`, `RL-f`, `CH-c`, `PL-e`,
-`PL-f`, `WR-a`, `WR-b`, `WR-f`, `HV-c`, `HV-f`, `CR-b`, `CR-e`, `CR-f`.
+`PL-f`, `WR-a`, `WR-b`, `WR-f`, `HV-c`, `HV-f`, `CR-b`, `CR-e`, `CR-f`, `RK-f`.
 Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `R-c`, `C-b`, `C-c`, `D-b`, `P-c`, `B-a`, `B-d`, `A-c`, `A-d`, `A-e`, `I-d`,
 `U-a`, `U-b`, `U-c`, `U-e`, `F-a`, `F-b`, `F-d`, `F-e`, `W-a`, `L-b`, `Y-a`,
@@ -598,10 +630,11 @@ Hold: `Q-a`, `Q-b`, `Q-c`, `Q-e`, `S-e`, `S-f`,
 `X-d`, `X-e`, `X-f`, `QA-a`, `QA-b`, `QA-f`, `FM-a`, `FM-c`, `FM-d`, `FM-e`,
 `FM-f`, `RR-a`, `RR-b`, `RR-c`, `RL-a`, `RL-c`, `RL-d`, `RL-g`, `CH-a`, `CH-b`,
 `CH-d`, `CH-e`, `CH-f`, `PL-a`, `PL-b`, `PL-c`, `PL-d`, `WR-c`, `WR-d`,
-`WR-e`, `HV-a`, `HV-b`, `HV-d`, `HV-e`, `CR-a`, `CR-c`, `CR-d`.
+`WR-e`, `HV-a`, `HV-b`, `HV-d`, `HV-e`, `CR-a`, `CR-c`, `CR-d`, `RK-a`, `RK-b`,
+`RK-c`, `RK-d`, `RK-e`.
 Reported: `R-d`, `C-d`, `D-d`, `U-f`, `F-f`, `W-d`, `L-c`, `Y-e`, `E-e`, `O-d`,
 `K-f`, `V-e`, `H-e`, `M-f`, `T-f`, `J-f`, `N-f`, `Z-f`, `G-g`, `X-g`, `QA-g`,
-`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`, `WR-g`, `HV-g`, `CR-g`.
+`FM-g`, `RR-e`, `RL-h`, `CH-g`, `PL-g`, `WR-g`, `HV-g`, `CR-g`, `RK-g`.
 
 **`I-b` is signed and NOT adjudicated, and it is the first of its kind.** It holds
 at one declared beam width and is refuted at the other, so `I-g4` refuses it a
@@ -624,16 +657,16 @@ not the same drafting behaviour, and the thread that bet on arrivals *differing*
 from the space is the one that stopped being refuted.
 
 **The convention chosen is the milder of the two available, and that is declared
-here rather than left to be found later.** With the `Q` rows, 65 of 164 = **39.6%**
-refuted; without them, 63 of 158 = **39.9%**. `Q` is in because of the common
+here rather than left to be found later.** With the `Q` rows, 66 of 170 = **38.8%**
+refuted; without them, 64 of 164 = **39.0%**. `Q` is in because of the common
 drafter and the sample size, not because of the figure — and it moves the figure
-0.3 points the flattering way, which is exactly why saying so is not optional.
+0.2 points the flattering way, which is exactly why saying so is not optional.
 **The `Y` rows, and three of the `V` rows, flatter it more, and for a reason of
 design.** Their bands were set on a development set: the `Y` rows' on the same
 model a day earlier, and those of `V-b` to `V-d` on a pilot of 300 decisions the
 drafter had read. So they bet that a reading generalises rather than test the
-drafter's foresight. Without them the two ratios are 65 of 157 = **41.4%** and 63
-of 151 = **41.7%**, which is the reading the calibration note should take.
+drafter's foresight. Without them the two ratios are 66 of 163 = **40.5%** and 64
+of 157 = **40.8%**, which is the reading the calibration note should take.
 
 > **[ERRATUM 2026-08-29] That paragraph had been stale since the `B` thread
 > landed, and this file is where it should have been caught.** It read *11 of 24 =
@@ -843,6 +876,15 @@ of 151 = **41.7%**, which is the reading the calibration note should take.
 >   count in the heading and the ratios moved together, and the test above read
 >   them. The gap between the first two is still 0.3 points as printed, and
 >   the paragraph that gives it says so.
+>
+> **[NOTE 2026-11-20] Recomputed with the `RK` thread, in the same commit as its
+> row.** Seven rows were signed and six adjudicated: one refuted and five held,
+> three of them thinly. One was reported. None of its bands was set on a
+> development set, and none of its rows replicates a closed one.
+> - **The four ratios moved with the rest.** The table, the named lists, the
+>   count in the heading and the ratios moved together, and the test above read
+>   them. The gap between the first two is now 0.2 points as printed, and the
+>   paragraph that gives it says so.
 
 **Where the verdicts are read from.** The `Q` column comes from *the predictions
 of §0, one by one* in the first part of
@@ -906,6 +948,8 @@ which owns all seven; and `HV` from
 [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md),
 which owns all seven; and `CR` from
 [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md),
+which owns all seven; and `RK` from
+[`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
 which owns all seven.
 
 > **[ERRATUM 2026-10-21] This paragraph stopped at `V`.** The six threads that
@@ -3530,6 +3574,21 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
        it chooses another ranking.
 
      [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md), *A count of what each pair decides*.
+     **[NOTE 2026-11-20] And a loop that settles its conflicts by that ranking,
+     measured as `PLAN_RANKED.md`.** Arm K was `PLAN_CORRECTIONS.md`'s arm L on
+     an engine that decides each CONFLICT by the ranking its votes have chosen
+     so far, beside arm L again, in one period.
+     - **Its votes put `SECURITY_INCIDENT` first in every run** (`RK-a` holds),
+       and its median base decides 0.7740 of the space, against L's 0.6019
+       (`RK-b` holds, thin).
+     - **It reaches at once at the median** (`RK-d` holds, thin), and its
+       ranking decides right most of the conflicts it takes (`RK-e` holds).
+     - **What containment costs it stays.** Every point of `SECURITY_INCIDENT`
+       it loses lies inside a rule of `T2_TECHNICAL` nested in rules of the
+       queue (`RK-c` holds, thin). The three thin rows rest on the one run in
+       which that rule holds two thirds of the queue.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md).
 
    All three are read above.
 
