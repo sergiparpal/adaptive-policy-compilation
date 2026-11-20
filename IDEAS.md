@@ -137,7 +137,9 @@ one refuted, and one reported, written up in `results_ranked/`. The item it
 answers is struck in place. **Six things its Stage C left free were read
 POST-RUN the same day**, and the six items they answer are struck in place.
 **Two things those six readings left free were read POST-RUN the same day
-too**, and the two items they answer are struck in place.
+too**, and the two items they answer are struck in place. **Two things those
+two readings left free were read POST-RUN the same day as well**, and the two
+items they answer are struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -584,6 +586,10 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   exception's tickets in a third. A plan that bands what a new text
   does to the births should ask each ticket several times, or say in §0 what one
   draw stands for.
+  **[NOTE 2026-11-20, last] And billing's lost layer too.** Read POST-RUN, K r2
+  lost `H11`'s tickets to rules drafted at reported tickets of `H12` that leave
+  out the prior tickets parting the two layers. A report that says why, or
+  level 2's prose, is the same lever there. Calls.
 - ~~**Where K's gain lies outside the keyword half.**~~ **Read POST-RUN on
   2026-11-20** (the same section, C). Mostly `ACCOUNT_MANAGER`'s, and mostly
   not the ranking's: it decides right a third, a sixth and under half of the
@@ -626,12 +632,22 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   alike. The draft follows the path: it keeps the queue a report names, and
   draws its attributes anew. At case 529 both calls read the label as a
   severity that is not critical, and bounded it at 2 and at 3.
-- **Why the refusals fell where they did.** Which earlier declarations closed
-  each refused edge's cycle, and whether the paths ran through rules no
-  contested point sees, as `PLAN_CORRECTIONS.md`'s readings found for its L
-  runs. Free on the records.
-- **Why K r2's base decided `H11`'s tickets wrong with one queue standing.** It
-  lost most of them so, and no conflict met them. Free on the records.
+- ~~**Why the refusals fell where they did.**~~ **Read POST-RUN on 2026-11-20**
+  (`FINDINGS_RANKED.md`, *Two things the last two readings left free*, I).
+  Most refusals were a newborn's declared win, refused through an older,
+  narrower rule nested in its region, since the loop installs wins first. In K
+  r1 that rule was of the general queue, born wrong at an impasse at case 2,
+  and the refused declarations were mostly wrong. In K r1 and K r3 most cycles
+  run through rules no point the pair shares sees; in K r2 most are real.
+- ~~**Why K r2's base decided `H11`'s tickets wrong with one queue
+  standing.**~~ **Read POST-RUN on 2026-11-20** (the same section, J). To
+  deflection's rules drafted at reported tickets of `H12`, which leave out the
+  prior tickets that part the two layers and win inside billing's broad rules
+  by containment, far more than by declarations. A rule of the general queue
+  of pro accounts took the rest of K r2's excess.
+- **One region under two queues.** How often the loop wrote one region as two
+  queues' rules, as K r2's `R0117` and `R0118`, and what the side declared
+  between them decided. Free on the records.
 - **Whether the draw is the provider's.** No attempt carried a system
   fingerprint. One prompt asked several times on one day, at temperature 0 and
   at the provider's default, would tell. Calls.
@@ -686,6 +702,16 @@ Lessons it leaves:
   and `ranked/drafts.py` labelled their questions with a capital, a hyphen and
   a letter, as two closed plans label their rows, and `tests/test_prose_tables.py`
   reads any such label in the prose as a row. The FINDINGS left the labels out.
+- **A refused win closes through a rule nested in the newborn.** The loop
+  installs a newborn's wins first, so a broad newborn's wins are refused
+  through the narrower rules inside its region that earlier declarations placed
+  below. Read the rules inside a broad newborn before reading its
+  declarations.
+- **Containment ordered more than the declarations did.** Both bets of the
+  readings of refusals and of `H11` assumed declared edges did the ordering. At
+  `H11`'s tickets nested rules kept billing's rules out far more often, and in
+  K r2 the refused cycles were real. A plan that bands a lever on declarations
+  should count first what containment already orders.
 
 ---
 
@@ -819,6 +845,12 @@ learner of the labels alone matched the loop. What that leaves:
   only a cycle through rules that all match a point the edge decides would
   install the right sides the records lost. It needs an engine of its own, since
   the closed records' is not edited. Calls.
+  **[NOTE 2026-11-20] It would install wrong sides too.** Read POST-RUN on
+  `PLAN_RANKED.md`'s K runs, most refusals at the ranking's conflicts were
+  cycles no point of their pair sees, in two runs of three. In K r1 the
+  refused declarations there were mostly wrong, and the ranking decided nearly
+  all of those cases right. `FINDINGS_RANKED.md`, *Two things the last two
+  readings left free*, I.
 - **Why so many rules sit above the gateway.** Which declarations put the rules
   of other queues above the nested rule of `H03`, and why the paths to it run so
   long. Free on the records.

@@ -3628,6 +3628,23 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *Two things the six readings left free*.
+     **[NOTE 2026-11-20, latest] And two things those two readings left free,
+     read POST-RUN.**
+     - **The refusals fell around older rules nested in broad newborns.** The
+       loop installs a newborn's wins first, and 192, 57 and 183 of the K
+       runs' refusals were closed through a narrower rule inside the newborn's
+       region. In K r1 that rule was of the general queue, born wrong at an
+       impasse at case 2, and the refused declarations it closed were mostly
+       wrong: the ranking righted them. In K r1 and K r3 most of those cycles
+       run through rules no point the pair shares sees.
+     - **K r2 lost `H11`'s tickets to deflection's rules written at `H12`'s.**
+       They leave out the prior tickets that part the two layers, and win
+       inside billing's broad rules by containment. Over K r2's pairs of a loss
+       and a rule of billing, 2,392 were kept out by a nested rule alone and 70
+       by a declared one alone.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *Two things the last two readings left free*.
 
    All three are read above.
 
