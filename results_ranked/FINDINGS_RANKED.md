@@ -8,6 +8,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   `main` in #285, merged on 2026-11-20 at Sergi's word.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reached it in the same pull request, the one this record was opened in.
+- **The POST-RUN reading of six things Stage C left free** reaches it in the
+  pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -156,6 +158,15 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > No space, no recall, no run's ranking or votes, no share the ranking decided,
 > no at-once reading and no learner was computed before Stage C.
+>
+> **[NOTE 2026-11-20] And a POST-RUN record.** [`readings.json`](readings.json)
+> is the POST-RUN reading of six things Stage C left free.
+> - **It was written from `308e5c1`**, on the branch of the pull request it is
+>   opened in: the commit that adds the part read after the first run. The
+>   reading and its expectation are the commit before it, `6eda07b`.
+> - **Its code digest is `722f5e7cd521fdfe`**, because `ranked/readings.py` was
+>   added after Stage C. Its `_env` says `git_dirty`, for the same files, and
+>   `code_dirty` is false. The modules Stage C ran did not change.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -540,6 +551,11 @@ In-sample, and reported only.
   decided more than four in five right, under the same last ranking. Which pairs of
   queues its 79 cases fell between, and when in the run, is free on the
   records.
+  **[NOTE 2026-11-20] Read POST-RUN: the conflicts its base met.** No error of
+  any K run was the ranking in force erring where the last one would not. K r2's
+  ranking took fewer conflicts between deflection and the technical or general
+  queue, which the last ranking orders right, and as many in billing's layer,
+  which it orders wrong in part. *Six things Stage C left free*, A, below.
 - **The tickets that beget a rule nested in the keyword's region.** In both
   arms, the rules of `T2_TECHNICAL` wholly inside the keyword's region were born
   at a few tickets: cases 23, 154, 238, 270, 529 and 956 each begot one in more
@@ -547,16 +563,31 @@ In-sample, and reported only.
   a third in L r3. Which tickets they are, and what each first call was told,
   is free on the records. Keeping such a rule from being born is calls, §13's
   third item.
+  **[NOTE 2026-11-20] Read POST-RUN: the exception's tickets, reported.** Every
+  nested rule of the six runs is `T2_TECHNICAL`'s, born at a ticket of `H03`
+  whose report named the queue, and every one that reaches
+  `SECURITY_INCIDENT`'s region drops the tier. *Six things Stage C left free*,
+  B.
 - **Where K's gain lies outside the keyword half.** Which queues' points the
   ranking decides there that L leaves in conflict. Free on the records.
+  **[NOTE 2026-11-20] Read POST-RUN: mostly `ACCOUNT_MANAGER`'s, and mostly not
+  the ranking's.** The ranking decides right a third, a sixth and under half of
+  the gain there. A rule L wrote at a conflict it asked about stands at about
+  three fifths of the points L decides wrong and K right. *Six things Stage C
+  left free*, C.
 - **K's ranking and the pair `T3_ENGINEERING`, `ACCOUNT_MANAGER`.** Every K
   ranking put `T3_ENGINEERING` above, the order
   `results_corrections/FINDINGS_CORRECTIONS.md` found to cost the closed runs'
   declared ranking most of what it lacked. K's bases still recall
   `ACCOUNT_MANAGER` at 0.8637 to 0.9313. What the pair decides in K's bases is
   free on the records.
+  **[NOTE 2026-11-20] Read POST-RUN: almost nothing.** The pair meets nowhere in
+  K r1 and K r2, and on 400 points in K r3. *Six things Stage C left free*, D.
 - **Why K r2's at-once answers decided 0.9033 of the space.** Free on the
   records.
+  **[NOTE 2026-11-20] Read POST-RUN: its labels named `SECURITY_INCIDENT` at
+  tickets of `H02` too.** Its answers decided the keyword half whole, which its
+  loop held half of. *Six things Stage C left free*, E.
 - **The decision or the rules it leads to**, §13's first item. The two
   cross-readings above are replays.
 - **Telling the proposer how K's engine settles a conflict**, §13's second
@@ -565,8 +596,340 @@ In-sample, and reported only.
   case K's ranking took was decided on a tie of votes between the winner's
   queue and the next. What such an engine would have left in conflict, at the
   arrivals and over the space, is not read. Free on the records.
+  **[NOTE 2026-11-20] Read POST-RUN: nothing.** No pair the ranking decided
+  between was silent or even, at the arrivals or over the space. *Six things
+  Stage C left free*, F.
 - **One model, one provider, one manual level, one coverage, one arrival order,
   and three runs an arm.**
+
+---
+
+## Six things Stage C left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-20, after Stage C.** *What Stage C does not
+settle*, above, names six things the records can answer without a call. This
+reading answers the six on the records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.readings`, on 2026-11-20,
+from `308e5c1` with its code clean, on the branch of the pull request it is
+opened in.
+- **The commits.** `6eda07b` carries the reading and its expectation, written
+  and committed before the reading ran. `308e5c1` adds one part after the first
+  run, read by no clause: what decides L's wrong points outside the keyword
+  half, in C. The first run, from `6eda07b`, had printed every clause's verdict,
+  and its readings had been read whole. Its record was not kept.
+- **The record was committed alone**, as `ef76cd6`.
+- **Its `_env` says `git_dirty`**, for the files the session's sandbox mounted
+  in the repository's root, untracked. `code_dirty` is false, and the code
+  digest is `722f5e7cd521fdfe`.
+- **The record is [`readings.json`](readings.json).** Its 30 gates passed, four
+  for each run and two more for each K run:
+  - each run's final base, rebuilt birth by birth, decides on its own engine the
+    share and the halves Stage C keeps;
+  - each at-once answer at all of a run's labels decides the share Stage C keeps
+    for it;
+  - the nested rules, their points and their points of `SECURITY_INCIDENT`
+    decided wrong are Stage C's;
+  - at the birth of every nested rule, the first call's draft is the rule;
+  - at every case a K record logs as decided by its ranking, the replay finds
+    the queues, the ranking, the runner-up and the votes the record keeps, and
+    the winner is the record's decision; at no other case does it find a
+    conflict;
+  - each K run's last ranking is the record's.
+
+### A. Why K r2's ranking decided its conflicts at half
+
+Every case a K run's ranking took is read at the base and the votes the engine
+held then. A wrong decision is `absent` when no rule of the case's queue stood
+at the ticket, `then` when one stood and the run's last ranking would have put
+it first, and `last` when the last ranking also puts another queue first.
+
+- **No error was the ranking's path.** No wrong decision of any K run is
+  `then`: wherever the ranking in force erred, the last ranking errs too. Of
+  the 30, 39 and 18 wrong decisions, 24, 36 and 14 are `last`, and 6, 3 and 4
+  `absent`. In K r2, 44 of the 79 cases were decided under an earlier ranking,
+  24 of them wrong.
+- **So the excess is the last ranking's, at the conflicts K r2 met.** K r2's
+  share of wrong decisions, 39 of 79, less K r1's and K r3's pooled, 48 of 337,
+  is 0.3512, and `last` carries 0.3429 of it (A1 holds).
+- **The three runs share that ranking. What differs is where their conflicts
+  fell.** The pairs are the winner's queue and the runner-up's, either way.
+
+| run | cases | between `SELF_SERVICE_DEFLECT` and `T2_TECHNICAL` or `T1_GENERAL` | in billing's layer: `ACCOUNT_MANAGER` and `BILLING_SPECIALIST`, or `BILLING_SPECIALIST` and `SELF_SERVICE_DEFLECT` | the rest |
+|---|---|---|---|---|
+| K r1 | 196, 30 wrong | 129, none wrong | 21, 10 wrong | 46, 20 wrong |
+| K r2 | 79, 39 wrong | 33, 11 wrong | 27, 20 wrong | 19, 8 wrong |
+| K r3 | 141, 18 wrong | 72, 1 wrong | 24, 5 wrong | 45, 12 wrong |
+
+  - **K r1 and K r3 took mostly conflicts the last ranking orders right.**
+    Between deflection and the technical or general queue they decided 201
+    cases, and erred at one.
+  - **K r2 took far fewer of those, and erred at 11.** Eight sent tickets of
+    `H24`, free accounts at severity 3 or 4, from `SELF_SERVICE_DEFLECT` to
+    `T2_TECHNICAL`, which the ranking puts above it. Three sent tickets of `H29`
+    from `T1_GENERAL` to `SELF_SERVICE_DEFLECT`.
+  - **Billing's layer is where a ranking of queues cannot be right.** The policy
+    gives enterprise billing to `ACCOUNT_MANAGER` (`H09`), urgent or repeated
+    billing to `BILLING_SPECIALIST` (`H10`, `H11`) and the rest of billing to
+    `SELF_SERVICE_DEFLECT` (`H12`), all before churn sends accounts to
+    `ACCOUNT_MANAGER` (`H13`, `H14`). The last ranking puts `ACCOUNT_MANAGER`
+    above `BILLING_SPECIALIST` above `SELF_SERVICE_DEFLECT`. Of K r2's billing
+    errors, 12 sent tickets of `H12` to `BILLING_SPECIALIST`, and 8 sent
+    tickets of `H10` and `H11` to `ACCOUNT_MANAGER`.
+- **Not one ticket again and again.** K r2's 39 errors fell on 39 points of the
+  space, as K r1's 30 and K r3's 18 did (A3 holds). No point was decided wrong
+  twice.
+- **Nor the keyword.** K r2's ranking took three keyword tickets, and erred at
+  one.
+- **The bet failed.** `BILLING_SPECIALIST` and `T2_TECHNICAL` met at one of K
+  r2's cases, and it went wrong (A2 fails). The drafter read K r2's low recall of
+  `BILLING_SPECIALIST` over the space as lost to `T2_TECHNICAL`. At the
+  arrivals the ranking sent billing's tickets to `ACCOUNT_MANAGER`, and
+  `H12`'s to `BILLING_SPECIALIST`.
+
+### B. The tickets that beget a rule nested in the keyword's region
+
+A rule is **nested** when its queue is not `SECURITY_INCIDENT` and its extension
+lies inside the keyword half. It **reaches** when it holds points of
+`SECURITY_INCIDENT`'s region. Otherwise it lies inside `H03`'s region, the
+policy's own exception: the keyword, a free or pro account, severity 3 or 4.
+
+- **All 22 nested rules of the six runs are `T2_TECHNICAL`'s, and each was born
+  at a ticket of `H03`** (B1 holds). **Each was a reported error whose report
+  named `T2_TECHNICAL`** (B2 holds). The engine had decided 13 of them
+  `SECURITY_INCIDENT`, 12 by the keyword's own rule, `has_security_keyword =
+  True`. Another queue's rule had taken the other 9: 4 `SELF_SERVICE_DEFLECT`'s,
+  3 `BILLING_SPECIALIST`'s and 2 `T1_GENERAL`'s.
+- **What the first call was told.** v1c's first call is blind. Its system prompt
+  is level 1's catalogue, the same at every call. The catalogue says what each
+  queue is for, and nothing of tier or severity, and the prompt says that nested
+  exceptions order themselves. Beside the ticket, the report says that the
+  engine decided it, that a reviewer marked the decision wrong, and that the
+  right queue is `T2_TECHNICAL`. The rule that erred is not shown.
+- **18 of the 22 reach, and every one of them drops the tier** (B3 holds). None
+  conditions on the customer's tier. Each explains the label by severity, and 8
+  by the product as well:
+  - `keyword and severity at least 3`, 7 rules, each holding 16,800 of the
+    queue's points, `H01`'s at severity 3 and 4;
+  - `keyword, billing and severity at least 3`, 6 rules; `keyword, billing and
+    severity 4`, 2; `keyword and severity 4`, 2;
+  - `keyword and severity other than 1`, K r2's `R0111`, born at case 529, which
+    holds 33,600, `H02`'s at severity 2 among them.
+- **The 4 that stay inside `H03`'s region keep one tier**: `customer_tier =
+  free`, at free accounts' tickets. No rule, and no first call, wrote `H03`'s
+  region whole.
+- **Mostly so at the exception's tickets.** The six runs asked 44 first calls at
+  24 tickets of `H03`. The 25 told `T2_TECHNICAL` drafted 21 rules that reach
+  and 4 that stay inside its region (B4 holds), and three of the 21 were not
+  born. The 19 asked at an impasse, told nothing, all drafted
+  `SECURITY_INCIDENT`.
+- **The ticket does not set the draft.** Seven tickets that begot a reaching
+  rule were asked as reported errors in two runs or more, nine pairs of runs.
+  The two first calls drafted the same queue and extension in three pairs (B5
+  fails). At case 529, K r2's drew `keyword and severity other than 1`, and L
+  r3's `keyword and severity at least 3`. At case 238, L r1's drew `keyword and
+  severity at least 3`, and K r1's and K r2's the exception for free accounts
+  at severity 4. A ticket's first call is sent the same texts in every run and
+  both arms, so one prompt drew different drafts.
+- **So the nested rule is born of what the report leaves out.** Told only the
+  queue, the first call has to guess why a keyword ticket is not a security
+  incident. It guesses severity, which the policy's exception reads, and leaves
+  out the tier, which it reads too. Level 2's prose names both: the rest of the
+  security mentions, *de cuentas free o pro con severidad baja*, go to
+  technical support.
+
+### C. Where K's gain lies outside the keyword half
+
+Each draw's K base against L's, over the other half, 67,200 points.
+
+| draw | K right | of which by its ranking | L right | K's gain | `ACCOUNT_MANAGER`'s part of it |
+|---|---|---|---|---|---|
+| r1 | 53,620 | 5,735 | 37,850 | 15,770 | 7,915 |
+| r2 | 52,430 | 1,360 | 43,421 | 9,009 | 7,292 |
+| r3 | 53,970 | 6,155 | 40,155 | 13,815 | 8,505 |
+
+- **The gain is mostly `ACCOUNT_MANAGER`'s**: half of it in r1, four fifths in r2
+  and three fifths in r3. `T3_ENGINEERING` adds 2,940, 1,900 and 1,645, and
+  `SELF_SERVICE_DEFLECT` 2,250, 1,188 and 1,265. `BILLING_SPECIALIST` loses
+  3,021 in r2.
+- **And mostly not the ranking's.** K's ranking decides right a third, a sixth
+  and under half of the gain. The rest is what K's rules decide right with one
+  queue standing: 10,035, 7,649 and 7,660 points more than L's base decides
+  right.
+- **What the ranking decides there is not always the interleaving queues'.**
+  `ACCOUNT_MANAGER`'s, `T3_ENGINEERING`'s and `SELF_SERVICE_DEFLECT`'s points are
+  3,580 of its 5,735 in r1 and 1,100 of its 1,360 in r2, but 1,775 of its 6,155
+  in r3, where `ONCALL_ESCALATION`'s 1,900 and `T2_TECHNICAL`'s 1,835 lead (C1
+  fails).
+- **L's loss there is mostly decided wrong, not left in conflict.** Of the
+  points L does not decide right, conflict holds 8,920 of 29,350, 8,885 of
+  23,779 and 15,721 of 27,045 (C2 fails in r1 and r2). Every point of the half
+  has a rule in L.
+- **K decides right most of what L leaves in conflict** (C3 holds): 5,709 of
+  8,920, 6,305 of 8,885 and 10,156 of 15,721. Its ranking decides only 580, 520
+  and 1,790 of them. K's rules leave the rest no conflict.
+- **What decides L's wrong points there**, read after the first run. A rule L
+  wrote at a conflict it asked about stands at 12,110 of its 20,430 points
+  decided wrong in r1, at 8,773 of 14,894 in r2 and at 5,429 of 11,324 in r3.
+  Of the points L decides wrong and K right, 14,696, 10,350 and 7,364, such a
+  rule stands at 8,356, 6,375 and 4,599, about three fifths.
+  `ACCOUNT_MANAGER`'s are the largest share of those points: 5,135, 3,922 and
+  3,100. K asks about no conflict, and writes no such rule.
+- **So outside the keyword half the ranking itself decides little of K's
+  gain.** Most of it lies where L's rules decide wrong, and at about three
+  fifths of those points stands a rule L wrote at a conflict, which K never
+  writes. This does not separate the decision from the rules it leads to
+  (§13's first item): K's rules are other rules too, born of other reports.
+
+### D. K's ranking and the pair `T3_ENGINEERING`, `ACCOUNT_MANAGER`
+
+- **The pair meets nowhere in K r1 and K r2**: at no point of the space do rules
+  of both stand undefeated. In K r3 it meets on 400 points and decides all 400:
+  200 of `T3_ENGINEERING`'s, 200 of other queues', and none of
+  `ACCOUNT_MANAGER`'s (D1 holds, D2 fails).
+- **Exchanging the two in the last ranking changes nothing in K r1 and K r2, and
+  costs K r3 200 points.**
+- **On `ACCOUNT_MANAGER`'s 16,440 points no rule of `T3_ENGINEERING` stands beside
+  one of `ACCOUNT_MANAGER`, in any K run** (D3 holds). K's bases decide 14,655,
+  14,200 and 15,310 of them right.
+- **So the order that cost the closed runs' declared ranking most of what it
+  lacked costs K nothing.** That ranking was read as the order of the whole
+  base, each rule placed by its queue. K's engine reads its ranking only where
+  rung 2's leaves a conflict, and in K's bases the two queues' rules never stand
+  together on `ACCOUNT_MANAGER`'s points.
+- **D2 failed with nothing to read**: where the pair decides, in K r3 alone,
+  `ACCOUNT_MANAGER` has no point.
+
+### E. Why K r2's at-once answers decided so much more than its loop
+
+Each run's three at-once answers at all of its labels, installed as Stage C
+installs them.
+
+| run | labels naming `SECURITY_INCIDENT`, by the rule governing the ticket | the three answers' keyword half, of 67,200 | median recall of `SECURITY_INCIDENT` | of `ONCALL_ESCALATION` |
+|---|---|---|---|---|
+| L r1 | 2 at `H01` | 50,400, 50,400, 50,400 | 2/3 | 0 |
+| K r1 | 2 at `H01` | 45,420, 50,400, 50,400 | 2/3 | 1/3 |
+| L r2 | 1 at `H01` | 50,400, 50,400, 50,400 | 2/3 | 0 |
+| K r2 | 4 at `H01`, 4 at `H02` | 58,800, 67,200, 67,200 | 1 | 2/3 |
+| L r3 | 2 at `H01`, 1 at `H02` | 67,200, 67,200, 67,200 | 1 | 0 |
+| K r3 | 3 at `H01` | 40,320, 50,400, 50,400 | 2/3 | 0 |
+
+- **K r2's median answer decides the keyword half whole, where its loop decided
+  half of it.** It decides 121,405 points, 0.9033 of the space, 35,375 more than
+  the loop's final base: 33,600 more in the keyword half and 1,775 in the other
+  (E2 holds).
+- **What it could write, its labels showed.** `SECURITY_INCIDENT`'s region is
+  `H01`'s 33,600 points, business and enterprise accounts, and `H02`'s 16,800,
+  free and pro accounts at severity 1 or 2. K r2's labels named the queue at
+  four tickets of each. L r3's named it at one ticket of `H02`, and every L r3
+  answer decided the half whole too. No answer of the other four runs decided
+  more than 50,400 points of it, three quarters.
+- **E1 fails on a tie**: L r3's median recall of `SECURITY_INCIDENT` is 1 too.
+- **And the rarest queue.** K r2's labels named `ONCALL_ESCALATION` twice, at
+  tickets of `H04`, and its answers recall 2/3 of it at the median, above every
+  other run's (E3 holds). K r1's one label gave 1/3, and the four runs without
+  one recall none.
+- **So at once read what the loop's first call read alone.** K r2's loop lost
+  two thirds of `SECURITY_INCIDENT` to `R0111`, drafted at case 529 from a
+  report read alone (B). At once read that label beside the eight that named
+  `SECURITY_INCIDENT`, four of them at free and pro accounts.
+
+### F. An engine that abstains where its votes are silent
+
+Where K's ranking decides, each other queue standing makes a pair with the
+winner's: `silent` if no vote went either way, `even` if as many went each way,
+`against` if more put the other queue above. The abstaining engine leaves
+`silent` and `even` in conflict.
+
+- **It would have abstained nowhere.** At every case the ranking took, in every
+  K run, more votes put the winner's queue above each other queue standing than
+  the reverse, but at one case of K r3, where more went the other way and the
+  ranking, which reads every pair, decided it right. No pair was silent and none
+  was even (F1 holds).
+- **Over the space too**, with the last votes. At the 30,630, 21,895 and 9,065
+  points K's ranking decides, every pair had more votes for the winner (F2
+  holds). The ranking decides 24,725, 14,830 and 6,755 of them right.
+- **F3 has nothing to read, and fails**, as the docstring says a clause that
+  reads a missing value does.
+- **So silence is no lever on these runs.** The ranking's errors are not where
+  its votes are thin. They are where one-sided votes point a pair the way the
+  policy does not on the tickets at hand, as A found.
+
+### The expectation
+
+Written in `ranked/readings.py`'s docstring before the reading ran, and
+committed before it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| A1, `last` carries more than half of K r2's excess of wrong decisions over K r1's and K r3's pooled | 0.3429 of 0.3512 | **holds** |
+| A2, in K r2 the pair `BILLING_SPECIALIST` and `T2_TECHNICAL` carries more than half of the wrong decisions | 1 of 39 | fails |
+| A3, in K r2 the wrong decisions fall on more distinct points than half their number | 39 points for 39 | **holds** |
+| B1, every nested rule that reaches was born at a ticket of `H03` | 18 of 18 | **holds** |
+| B2, every such birth was a reported error whose report named `T2_TECHNICAL` | 18 of 18 | **holds** |
+| B3, every such rule holds points of `H01`'s region | 18 of 18 | **holds** |
+| B4, of the first calls at tickets of `H03` told `T2_TECHNICAL` whose drafts lie inside the keyword half, more reach than stay inside `H03`'s region | 21 against 4 | **holds** |
+| B5, more than half of the pairs of runs that asked a ticket that begot a reaching rule as a reported error drafted the same queue and extension at its first call | 3 of 9 | fails |
+| C1, in every draw, more than half of the other half's points K's ranking decides right are `ACCOUNT_MANAGER`'s, `T3_ENGINEERING`'s and `SELF_SERVICE_DEFLECT`'s | 3,580 of 5,735, 1,100 of 1,360 and 1,775 of 6,155 | fails |
+| C2, in every draw, the points L leaves in conflict are more than half of those it does not decide right in the other half | 8,920 of 29,350, 8,885 of 23,779 and 15,721 of 27,045 | fails |
+| C3, in every draw, K decides right more than half of the other half's points L leaves in conflict | 5,709 of 8,920, 6,305 of 8,885 and 10,156 of 15,721 | **holds** |
+| D1, in every K run the pair decides fewer than 1,344 points | 0, 0 and 400 | **holds** |
+| D2, in every K run, where the pair decides, `ACCOUNT_MANAGER`'s points outnumber `T3_ENGINEERING`'s | none against none, none against none, and none against 200 | fails |
+| D3, in every K run a rule of `T3_ENGINEERING` stands beside one of `ACCOUNT_MANAGER` on fewer than a tenth of `ACCOUNT_MANAGER`'s points | none of 16,440 in each | **holds** |
+| E1, at all of its labels, K r2's median at-once recall of `SECURITY_INCIDENT` is above every other run's | 1, and L r3's 1 | fails |
+| E2, more than half of what K r2's median answer decides beyond its loop's final base lies in the keyword half | 33,600 of 35,375 | **holds** |
+| E3, at all of its labels, K r2's median at-once recall of `ONCALL_ESCALATION` is above every other run's | 2/3, against 1/3 and 0 | **holds** |
+| F1, in every K run the abstaining engine would have left in conflict fewer than a tenth of the cases the ranking took | none of 196, 79 and 141 | **holds** |
+| F2, in every K run it would leave in conflict fewer than a tenth of the points the ranking decides | none of 30,630, 21,895 and 9,065 | **holds** |
+| F3, in every K run the ranking decides right more than half of the points it would leave | no point to read | fails |
+
+**A1, A3, B1 to B4, C3, D1, D3, E2, E3, F1 and F2 hold, and A2, B5, C1, C2, D2,
+E1 and F3 fail.**
+- **The bet, A2, failed**: K r2's errors fell in billing's layer and at
+  deflection's tickets, not between billing and the technical queue.
+- **B1, B2 and F1, trusted most, held.**
+- **Of the three trusted least, E3 held, and B5 and C2 failed.**
+- **Three clauses failed on a tie or on nothing to read**: D2, where the pair
+  decides no point of `ACCOUNT_MANAGER`'s; E1, on L r3's tie; and F3, where
+  nothing abstains.
+
+### What it says
+
+- **K r2's ranking erred at half because of the conflicts its base met**, not
+  because its ranking was unsettled. Every error is the last ranking's own
+  order, or a ticket with no rule of its queue standing, and all three runs
+  share that ranking. K r2 met more of billing's layer, which no ranking of the
+  queues orders right, and fewer of the conflicts between deflection and the
+  technical or general queue, which the ranking orders right.
+- **The rule nested in the keyword's region is born of a report read alone.**
+  Told only that a keyword ticket of `H03` is `T2_TECHNICAL`'s, the blind first
+  call explains it by severity, and leaves out the tier the policy's exception
+  also reads. Compiled at once, the same label beside those that name
+  `SECURITY_INCIDENT` at free and pro accounts gave the half whole.
+- **Outside the keyword half, the ranking itself decides little of K's gain.**
+  At about three fifths of the points L decides wrong and K right stands a rule
+  L wrote at a conflict it asked about, which K never writes.
+- **The pair `T3_ENGINEERING`, `ACCOUNT_MANAGER` decides almost nothing in K's
+  bases.** The order that cost the closed runs' declared ranking most of what it
+  lacked costs K nothing.
+- **An engine that abstains where its votes are silent would never have
+  abstained** on these runs.
+
+### What it does not settle
+
+1. **Why K r2's base met billing's layer and few of deflection's conflicts.**
+   Which births made those conflicts, and from which reports, is not read. Free
+   on the records.
+2. **A first call that keeps the tier.** Shown the rule that erred, as
+   `results_corrections/FINDINGS_CORRECTIONS.md`'s readings proposed, or under
+   level 2's prose, which names the exception's tier, it might not drop it.
+   Calls.
+3. **Which part of K's gain outside the keyword half is the decision, and which
+   the rules it leads to** (§13's first item). L's side shows rules born at
+   conflicts where L errs. K's rules are other rules too, born of other reports.
+4. **Why one prompt drew different drafts.** At case 529 one run drew severity
+   other than 1, and another severity at least 3. Each first call's reasoning is
+   in the records, and no stage codes it. Free on the records.
 
 ---
 
@@ -580,3 +943,4 @@ In-sample, and reported only.
   `atonce_l_r3.json`, `atonce_k_r1.json` to `atonce_k_r3.json`: the at-once
   sessions.
 - [`score.json`](score.json): Stage C, the six verdicts and `RK-g`.
+- [`readings.json`](readings.json): POST-RUN, six things Stage C left free.
