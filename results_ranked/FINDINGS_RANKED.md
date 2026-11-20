@@ -11,7 +11,7 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
 - **The POST-RUN reading of six things Stage C left free** reached it in #287,
   merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things the six readings left free** reaches it
-  in the pull request it is opened in.
+  in #289.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -171,6 +171,17 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   added after Stage C. `main` computes it at `52a26dc`, and still at the merge
 >   of #287. Its `_env` says `git_dirty`, for the same files, and `code_dirty`
 >   is false. The modules Stage C ran did not change.
+>
+> **[NOTE 2026-11-20, later] And two more POST-RUN records.**
+> [`conflicts.json`](conflicts.json) and [`drafts.json`](drafts.json) are the
+> POST-RUN reading of two things the six readings left free.
+> - **They were written from `03e1d87`**, on the branch of #289: the commit that
+>   adds the part read after the first run. The readings and their expectations
+>   are the commit before it, `583fa67`.
+> - **Their code digest is `f3bdb353a9d85ae7`**, because `ranked/conflicts.py`
+>   and `ranked/drafts.py` were added after the six readings. Their `_env` says
+>   `git_dirty`, for the same files, and `code_dirty` is false. The modules
+>   Stage C and the six readings ran did not change.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -963,7 +974,7 @@ records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.conflicts` and
 `PYTHONHASHSEED=0 python3 -m ranked.drafts`, on 2026-11-20, from `03e1d87` with
-its code clean, on the branch of the pull request it is opened in.
+its code clean, on the branch of #289.
 - **The commits.** `583fa67` carries both readings and their expectations,
   written and committed before either ran. `03e1d87` adds one part to
   `ranked/conflicts.py` after the first run, read by no clause: three things
