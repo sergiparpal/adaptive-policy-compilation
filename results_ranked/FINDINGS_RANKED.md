@@ -24,6 +24,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   reached it in #300, merged on 2026-11-21 at Sergi's word.
 - **The POST-RUN reading of one thing the losses first left free** reached it in
   #302, merged on 2026-11-21 by GitHub's auto-merge, which Sergi asked for.
+- **The POST-RUN reading of one thing L r2's loss left free** reaches it in the
+  pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -266,6 +268,16 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   the merge of #302. Its `_env` says `git_dirty`, for the same files, and
 >   `code_dirty` is false. No module an earlier record of this plan ran
 >   changed.
+>
+> **[NOTE 2026-11-21, after the eleventh] And a twelfth.**
+> [`together.json`](together.json) is the POST-RUN reading of one thing L r2's
+> loss left free.
+> - **It was written from `21af613`**, on the branch of the pull request it is
+>   opened in: the commit that carries the reading and its expectation.
+> - **Its code digest is `1ee576b108adf370`**, because `ranked/together.py` was
+>   added after the last reading. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. No module an earlier record of this plan
+>   ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -2431,9 +2443,236 @@ and least.
    deflection's, while deflection's rules already reached rules the copies
    declared themselves below. Their reasoning is in the records. Free on the
    records.
+   **[NOTE 2026-11-21, last] Read POST-RUN: they declared the policy's order,
+   one listed rule at a time, and the base held it the other way through
+   earlier rules' own wins.** Both sides were right at most of the two copies'
+   pairs, and a wrong step carried most of them, mostly an older rule's win over
+   a rule of a higher layer. The round showed part of it, and their reasoning
+   read each listed rule alone. *One thing L r2's loss left free*, Q, below.
 2. **A round that shows the conflict.** v1c's round does not show a copy which
    of its sides the base already orders the other way. Shown it, an answer
    might declare sides the engine can keep. Calls.
+
+---
+
+## One thing L r2's loss left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-21, after the last reading.** Its *What it does
+not settle*, above, names one more thing the records can answer without a call:
+why billing's copies declared sides the base could not hold together, its first
+item. This reading answers it on the records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.together`, on 2026-11-21,
+from `21af613` with its code clean, on the branch of the pull request it is
+opened in.
+- **The commit.** `21af613` carries the reading and its expectation, written
+  and committed before it ran. Nothing was added after the run.
+- **The record was committed alone**, as `f673640`.
+- **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `1ee576b108adf370`.
+- **The record is [`together.json`](together.json).** Its 25 gates passed. In
+  each of the six runs:
+  - the replay gives every edge the log's verdict, and ends on the run's base;
+  - the copies are `copies.json`'s;
+  - at every pair the log installed the win and refused the loss;
+  - the losses the copies' pairs hold are exactly the copies' refused losses
+    `sides.json` reads as closed by the copy's own answer.
+
+  In L r2, the newborns of `lost.json`'s four edges that carry the most lost
+  points are `R0143` and `R0234`, both copies.
+
+### Q. Why billing's copies declared sides the base could not hold together
+
+**A pair** is one win and one loss of a birth's answer that the base, right
+before the birth's first edge, could not hold together. The newborn `N` is
+declared above `D` and below `U`, neither side closes a cycle alone, and `D`
+already reaches `U`. Either side, installed, closes the other into a cycle. The
+loop installs wins first, so the record kept each pair's win and refused its
+loss. Each pair is read in that base:
+- **the policy's verdict** on each side, over the points its two rules share;
+- **whether a wrong step carries it**: `D` no longer reaches `U` with every step
+  the policy calls wrong taken out;
+- **where the cycle is**: `nowhere` when no path from `D` to `U` runs through
+  rules that all match a point `N`, `D` and `U` all match;
+- **whether the round showed it**: some path from `D` to `U` has every step
+  shown in the round's list, a listed rule with the other among its own `beats`
+  or its own `loses_to`.
+
+| run | copies that tried a win and a loss | with a pair | their pairs | other births that tried both | with a pair | their pairs |
+|---|---|---|---|---|---|---|
+| L r1 | 81 | 7 | 250 | 153 | 51 | 1,455 |
+| K r1 | 41 | 2 | 9 | 92 | 34 | 477 |
+| L r2 | 64 | 23 | 1,166 | 141 | 71 | 2,315 |
+| K r2 | 57 | 9 | 206 | 95 | 35 | 363 |
+| L r3 | 71 | 17 | 351 | 151 | 66 | 2,723 |
+| K r3 | 30 | 13 | 318 | 75 | 33 | 608 |
+
+- **Not the copies' own.** Pooled, 71 of the 344 copies that tried a win and a
+  loss declared a pair, and 290 of the 707 other births that did: twice the
+  share.
+- **Half of the copies' pairs are L r2's**: 1,166 of 2,300. All the copies'
+  pairs together hold 541 losses: the copies' refused losses that `sides.json`
+  reads as closed by the copy's own wins alone.
+- **No copy cited one rule on both sides.** One other birth did, in L r2.
+
+| run | the copies' pairs | both sides right | the win right | the loss right | a wrong step carries every path | nowhere | shown |
+|---|---|---|---|---|---|---|---|
+| L r1 | 250 | 96 | 166 | 167 | 212 | 218 | 58 |
+| K r1 | 9 | 2 | 7 | 2 | 6 | 3 | 6 |
+| L r2 | 1,166 | 529 | 730 | 792 | 832 | 891 | 343 |
+| K r2 | 206 | 24 | 192 | 38 | 167 | 171 | 56 |
+| L r3 | 351 | 14 | 223 | 74 | 329 | 260 | 64 |
+| K r3 | 318 | 120 | 167 | 174 | 141 | 241 | 48 |
+
+- **Both sides right at a third** (Q1 fails, trusted least): 785 of 2,300. The
+  win was right at 1,485 and the loss at 1,247.
+- **By the copy's queue, billing's copies were right at most of theirs:**
+
+  | the copy's queue | copies with a pair | pairs | both sides right | the win wrong | the loss wrong |
+  |---|---|---|---|---|---|
+  | `ACCOUNT_MANAGER` | 15 | 673 | 172 | 58 | 366 |
+  | `BILLING_SPECIALIST` | 12 | 514 | 314 | 42 | 103 |
+  | `T2_TECHNICAL` | 15 | 376 | 42 | 227 | 150 |
+  | `SELF_SERVICE_DEFLECT` | 13 | 259 | 88 | 129 | 12 |
+  | `T1_GENERAL` | 6 | 243 | 15 | 155 | 5 |
+  | `ONCALL_ESCALATION` | 2 | 135 | 97 | 10 | 0 |
+  | `T3_ENGINEERING` | 8 | 100 | 57 | 4 | 1 |
+
+  The account manager's copies declared losses the policy calls wrong at more
+  than half of their pairs. The technical and general queues' copies declared
+  wrong wins at most of theirs.
+- **A wrong step carries most pairs** (Q2 holds): 1,687 of 2,300, and a wrong
+  declared step 1,622. A door carries every path at 1,238.
+- **Most cycles are nowhere** (Q3 holds): 1,784 of 2,300. Only 213 pairs lie
+  across the keyword's half, where the cycle is nowhere by construction.
+- **The round showed a whole path at a quarter** (Q4 fails, trusted most): 575
+  of 2,300. The drafter had expected the paths to run through rules the round
+  does not list.
+- **The doors that carry the most** are early declarations:
+  - **in L r2, `R0039`, billing's original of the two copies, above `R0031`, of
+    deflection**, installed at case 90, at 216 pairs, right by the policy;
+  - **in L r2, `R0031` above `R0018`, a keyword rule of `T2_TECHNICAL`**,
+    installed at case 73, at 208, wrong;
+  - **in L r3, `R0126`, of deflection, above `R0089`, of `T2_TECHNICAL`**,
+    installed at case 449, at 101, wrong;
+  - **in K r3, `R0019`, of the account manager, above `R0016`, of
+    `T2_TECHNICAL`**, installed at case 31, at 92, even.
+
+**The two copies.** `R0143` and `R0234` are each `product = billing AND
+prior_tickets_30d >= 5`, of `BILLING_SPECIALIST`. They were born at reported
+tickets at cases 794 and 1534.
+
+| | listed | declared above | declared below | pairs | both sides right | the loss right | a wrong step carries every path | both, and carried | nowhere | shown |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `R0143` | 45 | 28 | 17 | 119 | 86 | 119 | 71 | 46 | 87 | 58 |
+| `R0234` | 76 | 30 | 46 | 287 | 178 | 212 | 219 | 129 | 214 | 80 |
+
+- **They placed themselves by the policy's layers.** Their notes say so:
+  - **`R0143`'s**: *"overriding self-service and general support, but yielding
+    to security, critical severity, and enterprise-billing account manager
+    rules"*;
+  - **`R0234`'s**: *"overriding general self-service or T1 rules, but yielding
+    to security, severity-1, and account-manager rules for enterprise/business
+    with many tickets"*.
+  - **What they held.** Their pairs hold wins over rules of deflection and of
+    the general queue, and in `R0143`'s also of the account manager. They hold
+    losses to rules of security, of on-call, of `T2_TECHNICAL` and of the
+    account manager, and in `R0234`'s to one of `T3_ENGINEERING`.
+  - **How right.** Every one of `R0143`'s losses was right by the policy. At 50
+    of the 67 pairs where `R0234`'s loss was wrong, it was a loss to a rule of
+    the account manager for business accounts, which the policy puts below
+    billing's layer.
+- **Not every pair both right and carried** (Q5 fails, the bet): 46 of 119 and
+  129 of 287.
+- **The wrong steps were older rules' own wins.** On one shortest path per
+  pair, 128 of `R0143`'s 132 wrong declared steps, and 400 of `R0234`'s 415,
+  were installed by the step's upper rule: its own answer's win. The ones on
+  the most of their paths:
+  - **`R0031`, of deflection, above `R0018`**, a keyword rule of
+    `T2_TECHNICAL`: 33 and 72;
+  - **`R0060`, of deflection, above `R0039`**, billing's original: 18 and 48;
+  - **`R0029`, of the general queue, above `R0027`**, of the account manager:
+    14 and 42;
+  - **`R0027` above `R0024`**, of on-call: 14 and 23.
+- **The round showed it, one rule at a time.** At 58 and 80 of their pairs the
+  list showed a whole path, at 13 and 14 in one step: a listed rule shown above
+  the other.
+  - **One case.** The round showed `R0119`, of deflection, as *"`[gana a R0117,
+    R0003, R0001, R0055, R0038, R0088, R0049, …]`"*. Both copies declared
+    themselves above `R0119` and below `R0049`, enterprise billing's rule of
+    the account manager.
+  - **Their reasoning** went through the list rule by rule, by each rule's
+    queue and conditions. `R0234`'s, 39,410 characters, never mentions what a
+    listed rule `gana a` or `pierde con`. `R0143`'s, 29,318, mentions a listed
+    rule's own sides in four places, in passing (*"R0049 has a beats list
+    already"*), and declares against each rule by its queue all the same.
+    Neither mentions a cycle.
+
+**So billing's copies declared the policy's order of layers, one listed rule at
+a time, and the base held parts of it the other way.**
+- **Their sides were mostly right.** Both were right at 314 of billing's
+  copies' 514 pairs, and at most of the two copies'.
+- **What held them apart was older.** At the two copies, rules of lower layers,
+  born earlier, had declared themselves above rules of higher layers, billing's
+  original among them, and those wins were installed first. Pooled, a wrong
+  step carries most pairs, and most cycles are seen by no point.
+- **The round showed part of it.** The answers read each listed rule alone, and
+  at part of their pairs declared against what the list showed.
+
+### The expectation
+
+Written in the module's docstring before the reading ran, and committed before
+it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| Q1, pooled over the six runs, at more than half of the copies' pairs both sides are right by the policy | 785 of 2,300 | fails |
+| Q2, pooled, at more than half of the copies' pairs a step wrong by the policy carries every path from D to U | 1,687 of 2,300 | **holds** |
+| Q3, pooled, the cycle is nowhere at more than half of the copies' pairs | 1,784 of 2,300 | **holds** |
+| Q4, pooled, the round showed fewer than a tenth of the copies' pairs | 575 of 2,300 | fails |
+| Q5, in L r2, `R0143` and `R0234` each have a pair, and at every pair of theirs both sides are right and a wrong step carries every path | 46 of 119 and 129 of 287 | fails |
+
+**Q2 and Q3 hold, and Q1, Q4 and Q5 fail.**
+- **The bet failed**, Q5. Most of the two copies' pairs had both sides right,
+  and a wrong step carried most of them, but not every pair was both.
+- **The clause trusted most failed**, Q4. The round showed a whole path at a
+  quarter of the pairs.
+- **The clause trusted least failed**, Q1. Pooled, the copies' sides were both
+  right at a third of their pairs.
+
+### What it says
+
+- **Billing's copies declared the policy's order, one listed rule at a time.**
+  Their sides were both right at most of their pairs. The two copies' notes
+  name the layers they placed themselves between.
+- **The base held the lower rules above the upper ones, mostly through a wrong
+  step.** A wrong step carries most pairs, and most cycles are seen by no point.
+  At the two copies nearly every wrong step on their paths was an older rule's
+  own win. Rules of deflection, of the general queue and of the account
+  manager, born earlier, had declared themselves above rules of higher layers,
+  among them the copies' original.
+- **The round showed part of it**, a whole path at a quarter of the pairs. The
+  answers read each listed rule by its queue, and not by what it was shown to
+  beat.
+- **Not the copies' own.** Other births declared such pairs at twice the
+  copies' share. And pooled over every queue, the copies' sides were both right
+  at a third of their pairs.
+
+### What it does not settle
+
+1. **Why the older rules declared themselves above higher layers.** `R0031`'s
+   answer, at case 73, put deflection above a keyword rule of `T2_TECHNICAL`.
+   `R0060`'s put deflection above billing's original. Their reasoning is in the
+   records. Free on the records.
+2. **Why the account manager's copies declared wrong losses.** In K r2
+   `R0091`'s were wrong at all 161 of its pairs, and in L r3 `R0215`'s at 151 of
+   154. Free on the records.
+3. **A round that says which sides the base cannot hold.** v1c's round already
+   showed a whole path at a quarter of the pairs, and the answers read each
+   listed rule alone. A round that named the sides the base holds the other
+   way, or refused an answer whose sides close a cycle with the base, is not
+   measured. Calls.
 
 ---
 
@@ -2459,3 +2698,4 @@ and least.
 - [`losses.json`](losses.json): POST-RUN, one thing the copies' refused sides
   left free.
 - [`lost.json`](lost.json): POST-RUN, one thing the losses first left free.
+- [`together.json`](together.json): POST-RUN, one thing L r2's loss left free.
