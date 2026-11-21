@@ -1,0 +1,1235 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-21T14:39:14Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "8f03feebe46c1c216f8ca8ec2bc725cd407ab8ce",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "87fe60bbfa7c6f83"
+  },
+  "plan": "PLAN_RANKED.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_RANKED.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_RANKED.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-21, after ranked/sides.py. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "source": {
+    "copies": "results_ranked/copies.json",
+    "copies_from": "83e4458d46f6f40c00b2bfae5fec95efd97338cd",
+    "sides": "results_ranked/sides.json",
+    "sides_from": "d02983d747d210cf59f7960014e566b8a60134db",
+    "score": "results_ranked/score.json",
+    "score_from": "ab6d626a749611681db8f02a5c8e9b2b7df328d1",
+    "runs": {
+      "l_r1": "results_ranked/loop_l_r1.json",
+      "k_r1": "results_ranked/loop_k_r1.json",
+      "l_r2": "results_ranked/loop_l_r2.json",
+      "k_r2": "results_ranked/loop_k_r2.json",
+      "l_r3": "results_ranked/loop_l_r3.json",
+      "k_r3": "results_ranked/loop_k_r3.json"
+    }
+  },
+  "surface": "the whole space of 134,400 points, on each run's own engine, for three replays of the run's births and edges: the record's order, the copies' losses first, and every birth's losses first",
+  "gates": [
+    {
+      "gate": 2,
+      "run": "l_r1",
+      "what": "the copies are copies.json's",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "l_r1",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r1",
+      "what": "the refused losses are sides.json's",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "l_r1",
+      "what": "a replay moves only the order",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "k_r1",
+      "what": "the copies are copies.json's",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "k_r1",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "k_r1",
+      "what": "the refused losses are sides.json's",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "k_r1",
+      "what": "a replay moves only the order",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r2",
+      "what": "the copies are copies.json's",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "l_r2",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r2",
+      "what": "the refused losses are sides.json's",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "l_r2",
+      "what": "a replay moves only the order",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "k_r2",
+      "what": "the copies are copies.json's",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "k_r2",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "k_r2",
+      "what": "the refused losses are sides.json's",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "k_r2",
+      "what": "a replay moves only the order",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r3",
+      "what": "the copies are copies.json's",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "l_r3",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r3",
+      "what": "the refused losses are sides.json's",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "l_r3",
+      "what": "a replay moves only the order",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "k_r3",
+      "what": "the copies are copies.json's",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "k_r3",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "k_r3",
+      "what": "the refused losses are sides.json's",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "k_r3",
+      "what": "a replay moves only the order",
+      "passes": true
+    }
+  ],
+  "readings": {
+    "runs": {
+      "l_r1": {
+        "copies": 101,
+        "record": {
+          "right": 86255,
+          "halves": [
+            48405,
+            37850
+          ]
+        },
+        "copies_first": {
+          "right": 86610,
+          "halves": [
+            48405,
+            38205
+          ],
+          "change": 355,
+          "gained": 900,
+          "lost": 545,
+          "gained_by_queue": {
+            "T1_GENERAL": 300,
+            "T3_ENGINEERING": 600
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 545
+          },
+          "copies": {
+            "win": {
+              "tried": 1717,
+              "refused_in_the_record": 652,
+              "installed_now": 1,
+              "installed_in_the_record": 1065,
+              "refused_now": 57
+            },
+            "loss": {
+              "tried": 1142,
+              "refused_in_the_record": 167,
+              "installed_now": 53,
+              "installed_in_the_record": 975,
+              "refused_now": 0
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 2290,
+              "refused_in_the_record": 322,
+              "installed_now": 4,
+              "installed_in_the_record": 1968,
+              "refused_now": 0
+            },
+            "loss": {
+              "tried": 2005,
+              "refused_in_the_record": 550,
+              "installed_now": 2,
+              "installed_in_the_record": 1455,
+              "refused_now": 5
+            }
+          }
+        },
+        "every_first": {
+          "right": 90680,
+          "halves": [
+            50085,
+            40595
+          ],
+          "change": 4425,
+          "gained": 6910,
+          "lost": 2485,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 2060,
+            "BILLING_SPECIALIST": 165,
+            "ONCALL_ESCALATION": 420,
+            "SECURITY_INCIDENT": 1680,
+            "SELF_SERVICE_DEFLECT": 1190,
+            "T1_GENERAL": 740,
+            "T2_TECHNICAL": 115,
+            "T3_ENGINEERING": 540
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 1080,
+            "BILLING_SPECIALIST": 460,
+            "SELF_SERVICE_DEFLECT": 390,
+            "T1_GENERAL": 260,
+            "T2_TECHNICAL": 295
+          },
+          "copies": {
+            "win": {
+              "tried": 1717,
+              "refused_in_the_record": 652,
+              "installed_now": 162,
+              "installed_in_the_record": 1065,
+              "refused_now": 126
+            },
+            "loss": {
+              "tried": 1142,
+              "refused_in_the_record": 167,
+              "installed_now": 60,
+              "installed_in_the_record": 975,
+              "refused_now": 64
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 2290,
+              "refused_in_the_record": 322,
+              "installed_now": 51,
+              "installed_in_the_record": 1968,
+              "refused_now": 265
+            },
+            "loss": {
+              "tried": 2005,
+              "refused_in_the_record": 550,
+              "installed_now": 436,
+              "installed_in_the_record": 1455,
+              "refused_now": 46
+            }
+          }
+        },
+        "costs_most": {
+          "rule_id": "R0263",
+          "change": 520,
+          "refused_losses": [],
+          "wins_refused_now": []
+        }
+      },
+      "k_r1": {
+        "copies": 49,
+        "record": {
+          "right": 104020,
+          "halves": [
+            50400,
+            53620
+          ]
+        },
+        "copies_first": {
+          "right": 104020,
+          "halves": [
+            50400,
+            53620
+          ],
+          "change": 0,
+          "gained": 0,
+          "lost": 0,
+          "gained_by_queue": {},
+          "lost_by_queue": {},
+          "copies": {
+            "win": {
+              "tried": 416,
+              "refused_in_the_record": 244,
+              "installed_now": 0,
+              "installed_in_the_record": 172,
+              "refused_now": 3
+            },
+            "loss": {
+              "tried": 338,
+              "refused_in_the_record": 24,
+              "installed_now": 7,
+              "installed_in_the_record": 314,
+              "refused_now": 0
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 1306,
+              "refused_in_the_record": 104,
+              "installed_now": 0,
+              "installed_in_the_record": 1202,
+              "refused_now": 0
+            },
+            "loss": {
+              "tried": 663,
+              "refused_in_the_record": 216,
+              "installed_now": 0,
+              "installed_in_the_record": 447,
+              "refused_now": 0
+            }
+          }
+        },
+        "every_first": {
+          "right": 103855,
+          "halves": [
+            50400,
+            53455
+          ],
+          "change": -165,
+          "gained": 660,
+          "lost": 825,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 640,
+            "BILLING_SPECIALIST": 5,
+            "SELF_SERVICE_DEFLECT": 10,
+            "T2_TECHNICAL": 5
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 130,
+            "SELF_SERVICE_DEFLECT": 240,
+            "T1_GENERAL": 455
+          },
+          "copies": {
+            "win": {
+              "tried": 416,
+              "refused_in_the_record": 244,
+              "installed_now": 126,
+              "installed_in_the_record": 172,
+              "refused_now": 4
+            },
+            "loss": {
+              "tried": 338,
+              "refused_in_the_record": 24,
+              "installed_now": 8,
+              "installed_in_the_record": 314,
+              "refused_now": 55
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 1306,
+              "refused_in_the_record": 104,
+              "installed_now": 27,
+              "installed_in_the_record": 1202,
+              "refused_now": 151
+            },
+            "loss": {
+              "tried": 663,
+              "refused_in_the_record": 216,
+              "installed_now": 182,
+              "installed_in_the_record": 447,
+              "refused_now": 19
+            }
+          }
+        },
+        "costs_most": null
+      },
+      "l_r2": {
+        "copies": 93,
+        "record": {
+          "right": 80901,
+          "halves": [
+            37480,
+            43421
+          ]
+        },
+        "copies_first": {
+          "right": 80490,
+          "halves": [
+            39530,
+            40960
+          ],
+          "change": -411,
+          "gained": 4005,
+          "lost": 4416,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 505,
+            "ONCALL_ESCALATION": 420,
+            "SELF_SERVICE_DEFLECT": 35,
+            "T1_GENERAL": 35,
+            "T2_TECHNICAL": 2690,
+            "T3_ENGINEERING": 320
+          },
+          "lost_by_queue": {
+            "BILLING_SPECIALIST": 2356,
+            "ONCALL_ESCALATION": 1060,
+            "SELF_SERVICE_DEFLECT": 40,
+            "T1_GENERAL": 20,
+            "T2_TECHNICAL": 100,
+            "T3_ENGINEERING": 840
+          },
+          "copies": {
+            "win": {
+              "tried": 1799,
+              "refused_in_the_record": 744,
+              "installed_now": 91,
+              "installed_in_the_record": 1055,
+              "refused_now": 146
+            },
+            "loss": {
+              "tried": 1658,
+              "refused_in_the_record": 454,
+              "installed_now": 275,
+              "installed_in_the_record": 1204,
+              "refused_now": 21
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 2302,
+              "refused_in_the_record": 375,
+              "installed_now": 26,
+              "installed_in_the_record": 1927,
+              "refused_now": 3
+            },
+            "loss": {
+              "tried": 2282,
+              "refused_in_the_record": 1050,
+              "installed_now": 75,
+              "installed_in_the_record": 1232,
+              "refused_now": 32
+            }
+          }
+        },
+        "every_first": {
+          "right": 78639,
+          "halves": [
+            39900,
+            38739
+          ],
+          "change": -2262,
+          "gained": 6468,
+          "lost": 8730,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 1785,
+            "BILLING_SPECIALIST": 73,
+            "ONCALL_ESCALATION": 840,
+            "SELF_SERVICE_DEFLECT": 210,
+            "T1_GENERAL": 35,
+            "T2_TECHNICAL": 3425,
+            "T3_ENGINEERING": 100
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 1950,
+            "BILLING_SPECIALIST": 2356,
+            "SELF_SERVICE_DEFLECT": 389,
+            "T1_GENERAL": 945,
+            "T2_TECHNICAL": 550,
+            "T3_ENGINEERING": 2540
+          },
+          "copies": {
+            "win": {
+              "tried": 1799,
+              "refused_in_the_record": 744,
+              "installed_now": 419,
+              "installed_in_the_record": 1055,
+              "refused_now": 123
+            },
+            "loss": {
+              "tried": 1658,
+              "refused_in_the_record": 454,
+              "installed_now": 328,
+              "installed_in_the_record": 1204,
+              "refused_now": 60
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 2302,
+              "refused_in_the_record": 375,
+              "installed_now": 117,
+              "installed_in_the_record": 1927,
+              "refused_now": 326
+            },
+            "loss": {
+              "tried": 2282,
+              "refused_in_the_record": 1050,
+              "installed_now": 759,
+              "installed_in_the_record": 1232,
+              "refused_now": 22
+            }
+          }
+        },
+        "costs_most": {
+          "rule_id": "R0258",
+          "change": 7980,
+          "refused_losses": [],
+          "wins_refused_now": []
+        }
+      },
+      "k_r2": {
+        "copies": 71,
+        "record": {
+          "right": 86030,
+          "halves": [
+            33600,
+            52430
+          ]
+        },
+        "copies_first": {
+          "right": 84990,
+          "halves": [
+            33600,
+            51390
+          ],
+          "change": -1040,
+          "gained": 420,
+          "lost": 1460,
+          "gained_by_queue": {
+            "ONCALL_ESCALATION": 420
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 840,
+            "BILLING_SPECIALIST": 200,
+            "T3_ENGINEERING": 420
+          },
+          "copies": {
+            "win": {
+              "tried": 909,
+              "refused_in_the_record": 464,
+              "installed_now": 30,
+              "installed_in_the_record": 445,
+              "refused_now": 32
+            },
+            "loss": {
+              "tried": 729,
+              "refused_in_the_record": 43,
+              "installed_now": 36,
+              "installed_in_the_record": 686,
+              "refused_now": 14
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 1295,
+              "refused_in_the_record": 125,
+              "installed_now": 6,
+              "installed_in_the_record": 1170,
+              "refused_now": 4
+            },
+            "loss": {
+              "tried": 618,
+              "refused_in_the_record": 210,
+              "installed_now": 5,
+              "installed_in_the_record": 408,
+              "refused_now": 7
+            }
+          }
+        },
+        "every_first": {
+          "right": 83284,
+          "halves": [
+            33600,
+            49684
+          ],
+          "change": -2746,
+          "gained": 685,
+          "lost": 3431,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 215,
+            "BILLING_SPECIALIST": 440,
+            "SELF_SERVICE_DEFLECT": 30
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 1380,
+            "BILLING_SPECIALIST": 200,
+            "SELF_SERVICE_DEFLECT": 261,
+            "T1_GENERAL": 1590
+          },
+          "copies": {
+            "win": {
+              "tried": 909,
+              "refused_in_the_record": 464,
+              "installed_now": 202,
+              "installed_in_the_record": 445,
+              "refused_now": 28
+            },
+            "loss": {
+              "tried": 729,
+              "refused_in_the_record": 43,
+              "installed_now": 36,
+              "installed_in_the_record": 686,
+              "refused_now": 34
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 1295,
+              "refused_in_the_record": 125,
+              "installed_now": 48,
+              "installed_in_the_record": 1170,
+              "refused_now": 97
+            },
+            "loss": {
+              "tried": 618,
+              "refused_in_the_record": 210,
+              "installed_now": 151,
+              "installed_in_the_record": 408,
+              "refused_now": 14
+            }
+          }
+        },
+        "costs_most": {
+          "rule_id": "R0150",
+          "change": 420,
+          "refused_losses": [],
+          "wins_refused_now": []
+        }
+      },
+      "l_r3": {
+        "copies": 109,
+        "record": {
+          "right": 72570,
+          "halves": [
+            32415,
+            40155
+          ]
+        },
+        "copies_first": {
+          "right": 74630,
+          "halves": [
+            35145,
+            39485
+          ],
+          "change": 2060,
+          "gained": 3850,
+          "lost": 1790,
+          "gained_by_queue": {
+            "BILLING_SPECIALIST": 110,
+            "ONCALL_ESCALATION": 785,
+            "SECURITY_INCIDENT": 2730,
+            "T2_TECHNICAL": 225
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 605,
+            "SELF_SERVICE_DEFLECT": 315,
+            "T2_TECHNICAL": 450,
+            "T3_ENGINEERING": 420
+          },
+          "copies": {
+            "win": {
+              "tried": 2092,
+              "refused_in_the_record": 568,
+              "installed_now": 30,
+              "installed_in_the_record": 1524,
+              "refused_now": 67
+            },
+            "loss": {
+              "tried": 1287,
+              "refused_in_the_record": 158,
+              "installed_now": 105,
+              "installed_in_the_record": 1129,
+              "refused_now": 0
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 2232,
+              "refused_in_the_record": 298,
+              "installed_now": 15,
+              "installed_in_the_record": 1934,
+              "refused_now": 0
+            },
+            "loss": {
+              "tried": 1939,
+              "refused_in_the_record": 732,
+              "installed_now": 4,
+              "installed_in_the_record": 1207,
+              "refused_now": 16
+            }
+          }
+        },
+        "every_first": {
+          "right": 92569,
+          "halves": [
+            50360,
+            42209
+          ],
+          "change": 19999,
+          "gained": 25160,
+          "lost": 5161,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 1760,
+            "BILLING_SPECIALIST": 980,
+            "ONCALL_ESCALATION": 3675,
+            "SECURITY_INCIDENT": 13770,
+            "SELF_SERVICE_DEFLECT": 10,
+            "T1_GENERAL": 95,
+            "T2_TECHNICAL": 4280,
+            "T3_ENGINEERING": 590
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 1790,
+            "BILLING_SPECIALIST": 995,
+            "SELF_SERVICE_DEFLECT": 426,
+            "T1_GENERAL": 530,
+            "T2_TECHNICAL": 835,
+            "T3_ENGINEERING": 585
+          },
+          "copies": {
+            "win": {
+              "tried": 2092,
+              "refused_in_the_record": 568,
+              "installed_now": 239,
+              "installed_in_the_record": 1524,
+              "refused_now": 80
+            },
+            "loss": {
+              "tried": 1287,
+              "refused_in_the_record": 158,
+              "installed_now": 119,
+              "installed_in_the_record": 1129,
+              "refused_now": 16
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 2232,
+              "refused_in_the_record": 298,
+              "installed_now": 91,
+              "installed_in_the_record": 1934,
+              "refused_now": 353
+            },
+            "loss": {
+              "tried": 1939,
+              "refused_in_the_record": 732,
+              "installed_now": 530,
+              "installed_in_the_record": 1207,
+              "refused_now": 58
+            }
+          }
+        },
+        "costs_most": {
+          "rule_id": "R0275",
+          "change": 2355,
+          "refused_losses": [
+            {
+              "above": "R0240",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0234",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0181",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0027",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0266",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0238",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0013",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0092",
+              "below": "R0275",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            }
+          ],
+          "wins_refused_now": [
+            {
+              "above": "R0275",
+              "below": "R0144",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0275",
+              "below": "R0263",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            }
+          ]
+        }
+      },
+      "k_r3": {
+        "copies": 38,
+        "record": {
+          "right": 104160,
+          "halves": [
+            50190,
+            53970
+          ]
+        },
+        "copies_first": {
+          "right": 104380,
+          "halves": [
+            50190,
+            54190
+          ],
+          "change": 220,
+          "gained": 1050,
+          "lost": 830,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 610,
+            "T3_ENGINEERING": 440
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 80,
+            "BILLING_SPECIALIST": 540,
+            "T2_TECHNICAL": 210
+          },
+          "copies": {
+            "win": {
+              "tried": 457,
+              "refused_in_the_record": 216,
+              "installed_now": 4,
+              "installed_in_the_record": 241,
+              "refused_now": 68
+            },
+            "loss": {
+              "tried": 187,
+              "refused_in_the_record": 62,
+              "installed_now": 58,
+              "installed_in_the_record": 125,
+              "refused_now": 0
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 1262,
+              "refused_in_the_record": 137,
+              "installed_now": 6,
+              "installed_in_the_record": 1125,
+              "refused_now": 0
+            },
+            "loss": {
+              "tried": 643,
+              "refused_in_the_record": 220,
+              "installed_now": 0,
+              "installed_in_the_record": 423,
+              "refused_now": 9
+            }
+          }
+        },
+        "every_first": {
+          "right": 102830,
+          "halves": [
+            50190,
+            52640
+          ],
+          "change": -1330,
+          "gained": 2910,
+          "lost": 4240,
+          "gained_by_queue": {
+            "ACCOUNT_MANAGER": 900,
+            "ONCALL_ESCALATION": 1260,
+            "SELF_SERVICE_DEFLECT": 420,
+            "T2_TECHNICAL": 10,
+            "T3_ENGINEERING": 320
+          },
+          "lost_by_queue": {
+            "ACCOUNT_MANAGER": 640,
+            "BILLING_SPECIALIST": 540,
+            "SELF_SERVICE_DEFLECT": 5,
+            "T1_GENERAL": 205,
+            "T2_TECHNICAL": 2850
+          },
+          "copies": {
+            "win": {
+              "tried": 457,
+              "refused_in_the_record": 216,
+              "installed_now": 70,
+              "installed_in_the_record": 241,
+              "refused_now": 53
+            },
+            "loss": {
+              "tried": 187,
+              "refused_in_the_record": 62,
+              "installed_now": 55,
+              "installed_in_the_record": 125,
+              "refused_now": 1
+            }
+          },
+          "others": {
+            "win": {
+              "tried": 1262,
+              "refused_in_the_record": 137,
+              "installed_now": 46,
+              "installed_in_the_record": 1125,
+              "refused_now": 118
+            },
+            "loss": {
+              "tried": 643,
+              "refused_in_the_record": 220,
+              "installed_now": 191,
+              "installed_in_the_record": 423,
+              "refused_now": 5
+            }
+          }
+        },
+        "costs_most": {
+          "rule_id": "R0158",
+          "change": 650,
+          "refused_losses": [
+            {
+              "above": "R0016",
+              "below": "R0158",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0145",
+              "below": "R0158",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0154",
+              "below": "R0158",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0114",
+              "below": "R0158",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            },
+            {
+              "above": "R0024",
+              "below": "R0158",
+              "side": "loss",
+              "record": "cierra_ciclo",
+              "copies_first": "ok"
+            }
+          ],
+          "wins_refused_now": [
+            {
+              "above": "R0158",
+              "below": "R0134",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0053",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0054",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0056",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0061",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0021",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0051",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0046",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0127",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0081",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0093",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0099",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0063",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0115",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0129",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0102",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0153",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0116",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0121",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0066",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0086",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0109",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            },
+            {
+              "above": "R0158",
+              "below": "R0027",
+              "side": "win",
+              "record": "ok",
+              "copies_first": "cierra_ciclo"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": "O1",
+      "what": "pooled over the six runs, the replay with the copies' losses first installs more than half of the copies' losses the record refused for a cycle",
+      "reading": {
+        "refused_in_the_record": 908,
+        "installed_now": 534
+      },
+      "holds": true
+    },
+    {
+      "clause": "O2",
+      "what": "pooled, that replay refuses fewer of the copies' wins the record installed than it installs of the copies' losses the record refused",
+      "reading": {
+        "wins_refused_now": 373,
+        "losses_installed_now": 534
+      },
+      "holds": true
+    },
+    {
+      "clause": "O3",
+      "what": "in every L run, the base with the copies' losses first decides right more points of the space than the record's",
+      "reading": {
+        "l_r1": 355,
+        "l_r2": -411,
+        "l_r3": 2060
+      },
+      "holds": false
+    },
+    {
+      "clause": "O4",
+      "what": "pooled over the six runs, the base with every birth's losses first decides right more points than the base with the copies' losses first",
+      "reading": {
+        "every_first": 551857,
+        "copies_first": 535120
+      },
+      "holds": true
+    }
+  ]
+}
