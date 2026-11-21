@@ -146,7 +146,8 @@ items they answer are struck in place. **One thing those left free was read
 POST-RUN on November 21, 2026**, and the item it answers is struck in place.
 **One thing that one left free was read POST-RUN the same day**, and the item
 it answers is struck in place. **So was one thing that one left free**, and the
-item it answers is struck in place.
+item it answers is struck in place. **And so was one thing that one left
+free**, and the item it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -706,13 +707,30 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   installed first. The wins that carry most are the two copies' over
   deflection's rules on billing's tickets, and the edges that gain most are one
   of them's losses to the keyword's rules.
-- **Why billing's copies declared sides the base could not hold together.**
-  Their answers put them below the keyword's rules and above deflection's,
-  while deflection's rules already reached rules the copies declared
-  themselves below. Their reasoning is in the records. Free on the records.
+- ~~**Why billing's copies declared sides the base could not hold
+  together.**~~ **Read POST-RUN on 2026-11-21** (`FINDINGS_RANKED.md`, *One
+  thing L r2's loss left free*, Q). They declared the policy's order of layers,
+  one listed rule at a time, and their sides were mostly right. The base held
+  it the other way, mostly through a step wrong by the policy, in cycles no
+  point sees. At the two copies nearly every such step was an older rule's own
+  win over a rule of a higher layer. Their reasoning read each listed rule by
+  its queue and conditions.
 - **A placement round that shows what the base already orders.** v1c's round
   does not show a copy which of its sides the base already orders the other
   way. Shown it, an answer might declare sides the engine can keep. Calls.
+  **[NOTE 2026-11-21] It already shows part of it.** Read POST-RUN, the round's
+  list showed a whole path of the base's order at a quarter of the copies'
+  pairs, in the listed rules' own sides, and the answers read each listed rule
+  alone. A round would have to name the sides the base cannot hold, or refuse
+  an answer whose sides close a cycle with it and say why. Calls.
+- **Why the older rules declared themselves above higher layers.** In L r2
+  `R0031`'s answer, at case 73, put deflection above a keyword rule of
+  `T2_TECHNICAL`, and `R0060`'s put deflection above billing's original. Those
+  wins hold most of the two copies' pairs apart. Their reasoning is in the
+  records. Free on the records.
+- **Why the account manager's copies declared wrong losses.** Their losses were
+  wrong by the policy at more than half of their pairs, all of one copy's in
+  K r2 and nearly all of another's in L r3. Free on the records.
 - **Why a copy's refused losses mostly contradict its original's order.** At
   most of them the base already held an original above the rule the copy
   declared above itself. Whether the original's order or the copy's answer was
@@ -813,6 +831,12 @@ Lessons it leaves:
   r2 the record refused two copies' losses to the keyword's rules, and the
   replay refused their wins over deflection's rules, mostly right. A lever on
   the order should read what each side decides before choosing which to keep.
+- **An answer asked for a side against each listed rule gives each alone.**
+  v1c's round lists each rule with its own sides, and the copies' answers read
+  none of them as an order to keep. At a quarter of their pairs the list showed
+  a whole path of the base's order the other way. A protocol that asks for
+  sides one rule at a time should say in §0 what an answer that contradicts the
+  list's own sides does.
 
 ---
 
