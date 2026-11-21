@@ -23,7 +23,7 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
 - **The POST-RUN reading of one thing the copies' refused sides left free**
   reached it in #300, merged on 2026-11-21 at Sergi's word.
 - **The POST-RUN reading of one thing the losses first left free** reaches it in
-  the pull request it is opened in.
+  #302.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -258,8 +258,8 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > **[NOTE 2026-11-21, latest] And an eleventh.** [`lost.json`](lost.json) is the
 > POST-RUN reading of one thing the losses first left free.
-> - **It was written from `c5a880f`**, on the branch of the pull request it is
->   opened in: the commit that carries the reading and its expectation.
+> - **It was written from `c5a880f`**, on the branch of #302: the commit that
+>   carries the reading and its expectation.
 > - **Its code digest is `8081339b350fb9b5`**, because `ranked/lost.py` was
 >   added after the last reading. Its `_env` says `git_dirty`, for the same
 >   files, and `code_dirty` is false. No module an earlier record of this plan
@@ -2300,8 +2300,7 @@ why L r2 lost under the copies' losses first, its second item. This reading
 answers it on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.lost`, on 2026-11-21, from
-`c5a880f` with its code clean, on the branch of the pull request it is opened
-in.
+`c5a880f` with its code clean, on the branch of #302.
 - **The commit.** `c5a880f` carries the reading and its expectation, written
   and committed before it ran. Nothing was added after the run.
 - **The record was committed alone**, as `c0f3028`.
