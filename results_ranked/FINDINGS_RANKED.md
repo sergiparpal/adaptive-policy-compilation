@@ -18,8 +18,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things that reading left free** reached it in
   #295, merged on 2026-11-20 at Sergi's word.
-- **The POST-RUN reading of one thing that reading left free** reaches it in
-  #298.
+- **The POST-RUN reading of one thing that reading left free** reached it in
+  #298, merged on 2026-11-21 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -232,12 +232,14 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > **[NOTE 2026-11-21, after the eighth] And a ninth.** [`sides.json`](sides.json)
 > is the POST-RUN reading of one thing the last reading left free.
-> - **It was written from `d02983d`**, on the branch of #298: the commit that
->   carries the reading and its expectation.
+> - **It was written from `d02983d`**, on the branch of #298, which is
+>   `beedc1b` on `main`: the commit that carries the reading and its
+>   expectation.
 > - **Its code digest is `47287a13c01be1b4`**, because `ranked/sides.py` was
->   added after the last reading. Its `_env` says `git_dirty`, for the same
->   files, and `code_dirty` is false. No module an earlier record of this plan
->   ran changed.
+>   added after the last reading. `main` computes it at `beedc1b`, and still at
+>   the merge of #298. Its `_env` says `git_dirty`, for the same files, and
+>   `code_dirty` is false. No module an earlier record of this plan ran
+>   changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1904,13 +1906,19 @@ why the copies' declared sides closed cycles, its second item. This reading
 answers it on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.sides`, on 2026-11-21,
-from `d02983d` with its code clean, on the branch of #298.
-- **The commit.** `d02983d` carries the reading and its expectation, written
-  and committed before it ran. Nothing was added after the run.
-- **The record was committed alone**, as `96d6b1e`.
+from `d02983d` with its code clean, on the branch of #298, which is `beedc1b` on
+`main`.
+- **The commit.** `beedc1b` on `main` carries the reading and its expectation,
+  written and committed before it ran. Nothing was added after the run.
+- **The record was committed alone**, as `32cacef`.
+- **On #298's branch the five commits were `d02983d`, `96d6b1e`, `06eb7e5`,
+  `a6e19a5` and `cea67d5`.** Each pair has the same subject, the same tree and
+  the same `git patch-id --stable`, and the GitHub API names #298 behind the
+  five `main` commits.
 - **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
-  repository's root, untracked. `code_dirty` is false, and the code digest is
-  `47287a13c01be1b4`.
+  repository's root, untracked. `code_dirty` is false, and the code digest,
+  `47287a13c01be1b4`, is the one `main` computes at `beedc1b`, and still at the
+  merge.
 - **The record is [`sides.json`](sides.json).** Its 24 gates passed. In each of
   the six runs:
   - the replay gives every edge the log's verdict;
