@@ -18,6 +18,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of two things that reading left free** reached it in
   #295, merged on 2026-11-20 at Sergi's word.
+- **The POST-RUN reading of one thing that reading left free** reaches it in the
+  pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -227,6 +229,15 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   `a92d3f9`, and still at the merge of #295. Their `_env` says `git_dirty`,
 >   for the same files, and `code_dirty` is false. No module an earlier record
 >   of this plan ran changed.
+>
+> **[NOTE 2026-11-21, after the eighth] And a ninth.** [`sides.json`](sides.json)
+> is the POST-RUN reading of one thing the last reading left free.
+> - **It was written from `d02983d`**, on the branch of the pull request it is
+>   opened in: the commit that carries the reading and its expectation.
+> - **Its code digest is `47287a13c01be1b4`**, because `ranked/sides.py` was
+>   added after the last reading. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. No module an earlier record of this plan
+>   ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -1873,9 +1884,214 @@ before them. It is not signed, and it is on no scoreboard.
    `R0252`, and `R0275`'s losses to the keyword's security rules, were refused.
    Through which rules, and whether they are older rules nested in the copy's
    region, as the refusals reading found in K, is free on the records.
+   **[NOTE 2026-11-21] Read POST-RUN: by the order of installation.** Every
+   refused win entered the copy through an older rule nested in it, and most
+   refused losses closed through a win the copy had installed first.
+   `R0258`'s closed through an older keyword rule of its own queue, and
+   `R0275`'s through its own win over a rule of `ACCOUNT_MANAGER`. *One thing
+   the last reading left free*, N, below.
 3. **A first call shown the conflict.** At a conflict L asked about, the first
    call does not know which rules disagree. Shown them, with their queues, it
    might side otherwise. Calls.
+
+---
+
+## One thing the last reading left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-21, after the last reading.** Its *What it does
+not settle*, above, names one more thing the records can answer without a call:
+why the copies' declared sides closed cycles, its second item. This reading
+answers it on the records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.sides`, on 2026-11-21,
+from `d02983d` with its code clean, on the branch of the pull request it is
+opened in.
+- **The commit.** `d02983d` carries the reading and its expectation, written
+  and committed before it ran. Nothing was added after the run.
+- **The record was committed alone**, as `96d6b1e`.
+- **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `47287a13c01be1b4`.
+- **The record is [`sides.json`](sides.json).** Its 24 gates passed. In each of
+  the six runs:
+  - the replay gives every edge the log's verdict;
+  - the copies are `copies.json`'s, with their originals and the rule that
+    erred at their ticket;
+  - every refused side of a copy is met at its birth, the lower rule reaching
+    the upper, and refused there for closing a cycle;
+  - the replay ends on the run's base.
+
+### N. Why the copies' declared sides closed cycles
+
+A side is an edge a birth tried, with its rule, the newborn, at one end: a win
+when the newborn's answer declared it above the other rule, a loss when below. A
+copy's refused side is one tried at a copy's birth that the engine refused for
+closing a cycle. Each is read in the base right before it was tried, as the
+refusals reading, I, reads one, with two more readings:
+- **the rules at the copy**, those its paths step through by containment at the
+  copy: nested in it, on a win; holding it, on a loss;
+- **its original's order**: whether the base already held an original of the
+  copy on the side the copy declared, or on the other.
+
+| run | copies | their sides | refused | the other births' sides | refused |
+|---|---|---|---|---|---|
+| L r1 | 101 | 2,859 | 819 | 4,295 | 872 |
+| K r1 | 49 | 754 | 268 | 1,969 | 320 |
+| L r2 | 93 | 3,457 | 1,198 | 4,584 | 1,425 |
+| K r2 | 71 | 1,638 | 507 | 1,913 | 335 |
+| L r3 | 109 | 3,379 | 726 | 4,171 | 1,030 |
+| K r3 | 38 | 644 | 278 | 1,905 | 357 |
+
+- **Refused more often** (N1 holds). Pooled, the engine refused 3,796 of the
+  copies' 12,731 sides, three in ten, and 4,339 of the other births' 18,837,
+  under a quarter. In five runs of six; in L r3 the copies' share was the
+  smaller, 726 of 3,379 against 1,030 of 4,171. The copies are 461 of the
+  1,519 births, and tried two sides in five.
+
+| run | refused | wins | losses | losses closed through the copy's own wins | the cycle somewhere | a door carries every path | right by the policy |
+|---|---|---|---|---|---|---|---|
+| L r1 | 819 | 652 | 167 | 142 | 704 | 152 | 396 |
+| K r1 | 268 | 244 | 24 | 8 | 248 | 42 | 59 |
+| L r2 | 1,198 | 744 | 454 | 336 | 754 | 477 | 816 |
+| K r2 | 507 | 464 | 43 | 40 | 452 | 87 | 277 |
+| L r3 | 726 | 568 | 158 | 137 | 501 | 313 | 334 |
+| K r3 | 278 | 216 | 62 | 62 | 180 | 132 | 135 |
+
+- **Mostly wins** (N2 holds, trusted most): 2,888 of the 3,796. 390 of the 461
+  copies have a refused side.
+- **A refused win closes through an older rule nested in the copy, by
+  construction.** The loop installs a birth's wins before its losses, and at a
+  birth only the newborn's answer declares.
+  - **How a win closes.** While a copy's wins are tried, no rule stands declared
+    above it. So a path from the rule it claims to beat can only enter it
+    through a rule nested in its region, and every refused win closed so.
+  - **What that does to its original.** That rule lies inside the original too,
+    and beats it there as well, so the base already held the other rule above
+    the original. Every refused win contradicts its original's order.
+  - **No clause read this.**
+- **Mostly through rules of another queue.** At 2,450 of the 2,888 refused wins
+  a rule of another queue is among the rules nested in the copy that the paths
+  enter through. The rule that erred at the copy's ticket is among them at 690.
+  In L, at 1,081 of its 1,964 refused wins one of them had been born wrong; in
+  K, at 7 of 924.
+  - **In every run but L r2**, the three rules at the copy behind the most
+    refused sides are narrower rules of billing's tickets, of deflection or of
+    billing itself.
+  - **In L r2** they are keyword rules of `T2_TECHNICAL`.
+- **A refused loss closes mostly through the copy's own wins** (N3 holds, the
+  bet). A loss is tried after the copy's wins.
+  - **At 725 of the 908 refused losses**, a win the copy's answer had installed
+    first already reached the rule the copy declared above itself: at 541 only
+    so, and at 184 so or through a rule holding the copy.
+  - **K r1's few losses were the exception**, 8 of 24.
+  - **This is how `corrections/fall.py` found** the right sides of
+    `PLAN_CORRECTIONS.md`'s L runs refused.
+- **Real cycles** (N4 fails, trusted least). The cycle is nowhere at only 957
+  of the 3,796.
+  - **At the rest**, some path runs through rules that all match a point the
+    two rules share. On a win, the rule nested in the copy that such a path
+    enters through matches that point, and already beats the copy there.
+  - **Unlike I.** Most of the refusals I read at the cases of K's ranking were
+    nowhere, in K r1 and K r3.
+- **Right as often as not.** By the policy, over the points the two rules
+  share, 2,017 of the refused sides were right, 1,295 wrong and 484 even. Of
+  the refused losses, 548 of 908 were right.
+- **Through a door at a third.** One step carries every path at 1,203 of the
+  3,796, against 413 of the 576 refusals I read in K. The doors that carry most
+  are early declarations:
+  - **in L r2, `R0039`, of billing, above `R0031`**, of deflection, installed at
+    case 90, at 106 refused sides;
+  - **in L r2, `R0031` above `R0018`**, of `T2_TECHNICAL`, installed at case 73,
+    at 104;
+  - **in L r3, `R0126`, of deflection, above `R0089`**, of `T2_TECHNICAL`,
+    installed at case 449, at 175.
+
+**The two copies that cost most, as `copies.json` reads them.**
+- **`R0258`, in L r2, closed through older rules of its own queue.** All 21 of
+  its refused sides are wins.
+  - **Which rules.** They enter it through three keyword rules of
+    `T2_TECHNICAL` nested in it. `R0018`, keyword tickets of free accounts at
+    severity 3 or more, born at case 23 at a reported ticket of `H03`, is at
+    all 21; `R0054` and `R0183` at 18.
+  - **Its win over `R0252` was refused through `R0018`.** `R0252`'s answer, at
+    case 1704, had declared it above `R0018`, as well as above `R0160`, the
+    copy's original. `R0018` lies inside `R0258` and beats it by containment,
+    so `R0252` already stood above the copy.
+  - **The cycle is somewhere**, at keyword tickets of free accounts at severity
+    3. On the points the two rules share, keyword tickets at severity 3, the
+    policy is even between their queues.
+- **`R0275`, in L r3, closed through its own win.** All 8 of its refused sides
+  are losses, 6 of them to the keyword's security rules, each covering every
+  keyword ticket: `R0027`, `R0181`, `R0234`, `R0238`, `R0240` and `R0266`. The
+  other two are to rules of `ONCALL_ESCALATION`.
+  - **The win.** Each of the six closed only through its own answer: its win
+    over `R0263`, of `ACCOUNT_MANAGER`, enterprise accounts with 15 prior
+    tickets or more, installed first.
+  - **The chain.** `R0263` stood above `R0210`, of `T1_GENERAL`, born wrong at a
+    conflict. `R0210` stood above `R0126`, of deflection. `R0126` stood above
+    `R0089`, keyword billing tickets at severity 3 or more of `T2_TECHNICAL`,
+    which lies inside every one of the six.
+  - **No point lies on the whole chain**: it runs through api, dashboard and
+    billing tickets, and through enterprise and free accounts.
+  - **All six losses were right by the policy**, and repeated its original's
+    order: `R0073` stood below them.
+
+**So the copies' sides closed cycles by the order in which the loop installs
+them.**
+- **A win, tried first**, met an older rule nested in the copy, which the other
+  rule already reached. Through that rule the base already held the other rule
+  above the original, and the copy could not claim the region back.
+- **A loss, tried after**, met a win the copy had just installed.
+- **Most of those cycles are real**: a point the two rules share sees them.
+
+### The expectation
+
+Written in the module's docstring before the reading ran, and committed before
+it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| N1, pooled over the six runs, the engine refused for closing a cycle a larger share of the copies' sides than of the other births' sides | 3,796 of 12,731 against 4,339 of 18,837 | **holds** |
+| N2, pooled, more than half of the copies' refused sides are wins | 2,888 of 3,796 | **holds** |
+| N3, of the copies' refused losses, pooled, at more than half the cycle closes through the copy's own wins | 725 of 908 | **holds** |
+| N4, pooled, the cycle is nowhere at more than half of the copies' refused sides | 957 of 3,796 | fails |
+
+**N1, N2 and N3 hold, and N4 fails.**
+- **The bet held**, N3.
+- **The clause trusted most held**, N2.
+- **The clause trusted least failed**, N4: most cycles are real.
+
+### What it says
+
+- **A copy's sides close cycles by the order of installation.**
+  - **Its wins**, tried first, can only close through an older rule nested in
+    its region, which beats its original too. A refused win contradicts the
+    order the base held for its original, by construction.
+  - **Its losses**, tried after, closed mostly through one of its own wins.
+- **The copies' sides were refused more often than the other births'**, in five
+  runs of six.
+- **Most of those cycles are real**: a path runs through rules that all match a
+  point the two rules share. On a win, the nested rule the path enters through
+  already beats the copy there.
+- **`R0258` and `R0275` are the two routes.**
+  - **`R0258`'s win over `R0252`** was refused through an older keyword rule of
+    its own queue, which `R0252` had declared itself above.
+  - **`R0275`'s six losses to the security rules** were refused through its own
+    win over a rule of `ACCOUNT_MANAGER`, by a chain of four rules no point
+    sees.
+
+### What it does not settle
+
+1. **Whether a copy's losses, installed before its wins, would have been
+   kept.** Most refused losses closed through a win the same answer had
+   installed first. `corrections/fall.py` replayed `PLAN_CORRECTIONS.md`'s L
+   runs with each birth's losses first, and the same declarations kept most of
+   what the base had lost. These records were not replayed so. Free on the
+   records.
+2. **Why a copy's refused losses mostly contradict its original's order.** At
+   620 of the 908 the base already held an original above the rule the copy
+   declared above itself. Whether the original's order or the copy's answer was
+   the wrong one, by the policy, is free on the records.
 
 ---
 
@@ -1897,3 +2113,4 @@ before them. It is not signed, and it is on no scoreboard.
 - [`twins.json`](twins.json): POST-RUN, one region under two queues.
 - [`copies.json`](copies.json), [`asked.json`](asked.json): POST-RUN, two things
   the last reading left free.
+- [`sides.json`](sides.json): POST-RUN, one thing the last reading left free.
