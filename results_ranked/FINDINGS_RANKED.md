@@ -20,6 +20,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   #295, merged on 2026-11-20 at Sergi's word.
 - **The POST-RUN reading of one thing that reading left free** reached it in
   #298, merged on 2026-11-21 at Sergi's word.
+- **The POST-RUN reading of one thing the copies' refused sides left free**
+  reaches it in the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -240,6 +242,15 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   the merge of #298. Its `_env` says `git_dirty`, for the same files, and
 >   `code_dirty` is false. No module an earlier record of this plan ran
 >   changed.
+>
+> **[NOTE 2026-11-21, later] And a tenth.** [`losses.json`](losses.json) is the
+> POST-RUN reading of one thing the copies' refused sides left free.
+> - **It was written from `8f03fee`**, on the branch of the pull request it is
+>   opened in: the commit that carries the reading and its expectation.
+> - **Its code digest is `87fe60bbfa7c6f83`**, because `ranked/losses.py` was
+>   added after the last reading. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. No module an earlier record of this plan
+>   ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -2095,10 +2106,166 @@ it. It is not signed, and it is on no scoreboard.
    runs with each birth's losses first, and the same declarations kept most of
    what the base had lost. These records were not replayed so. Free on the
    records.
+   **[NOTE 2026-11-21, later] Read POST-RUN: mostly kept, and no lever on what
+   the base decides.** Tried first, the copies' losses were mostly installed,
+   for fewer wins refused instead. The base gave back what `R0275` had cost in
+   L r3, and lost more than it gained in L r2. Every birth's losses first gave
+   back L's keyword half, and cost outside it in four runs of six. *One thing
+   the copies' refused sides left free*, O, below.
 2. **Why a copy's refused losses mostly contradict its original's order.** At
    620 of the 908 the base already held an original above the rule the copy
    declared above itself. Whether the original's order or the copy's answer was
    the wrong one, by the policy, is free on the records.
+
+---
+
+## One thing the copies' refused sides left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-21, after the last reading.** Its *What it does
+not settle*, above, names one more thing the records can answer without a call:
+whether a copy's losses, tried before its wins, would have been kept, its first
+item. This reading answers it on the records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.losses`, on 2026-11-21,
+from `8f03fee` with its code clean, on the branch of the pull request it is
+opened in.
+- **The commit.** `8f03fee` carries the reading and its expectation, written
+  and committed before it ran. Nothing was added after the run.
+- **The record was committed alone**, as `4448849`.
+- **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `87fe60bbfa7c6f83`.
+- **The record is [`losses.json`](losses.json).** Its 24 gates passed. In each of
+  the six runs:
+  - replayed in the record's order, every edge gets the log's verdict, and the
+    base decides exactly what Stage C's final base decides right;
+  - the copies are `copies.json`'s;
+  - the copies' losses the log refused are `sides.json`'s;
+  - each replay tries every edge of the log once, at the birth that tried it.
+
+### O. Whether a copy's losses, tried before its wins, would have been kept
+
+Each run was replayed three times, on its own engine:
+- **in the record's order**;
+- **with the copies' losses first**: at a copy's birth, the edges that put
+  another rule above it are tried before those that put it above another;
+- **with every birth's losses first**, as `corrections/fall.py`'s replay does.
+
+K's ranking reads every citation of a born rule's answer, installed or not, so
+it is the same in all three. A replay is not the loop that would have run: a
+base installed in another order decides the arrivals otherwise, and would have
+escalated other cases.
+
+| run | the copies' refused losses | installed with their losses first | the copies' installed wins | refused | the base decides right | with the copies' losses first | change |
+|---|---|---|---|---|---|---|---|
+| L r1 | 167 | 53 | 1,065 | 57 | 86,255 | 86,610 | +355 |
+| K r1 | 24 | 7 | 172 | 3 | 104,020 | 104,020 | 0 |
+| L r2 | 454 | 275 | 1,055 | 146 | 80,901 | 80,490 | −411 |
+| K r2 | 43 | 36 | 445 | 32 | 86,030 | 84,990 | −1,040 |
+| L r3 | 158 | 105 | 1,524 | 67 | 72,570 | 74,630 | +2,060 |
+| K r3 | 62 | 58 | 241 | 68 | 104,160 | 104,380 | +220 |
+
+- **Most of the copies' refused losses are kept** (O1 holds, trusted most):
+  534 of the 908. A loss that closed only through the copy's own win, tried
+  first, meets no win of the copy.
+- **For fewer wins** (O2 holds). The replay refuses 373 of the 4,502 wins the
+  copies' births installed.
+  - **It also installs 156 of the copies' wins the record refused.** The base
+    it meets has changed: a path those wins closed through ran through an edge
+    the replay refused.
+- **It decides more in three runs of six** (O3 fails, the bet): in L r1, L r3
+  and K r3. It decides the same in K r1, and less in L r2 and K r2. Pooled, it
+  gains 1,184 points.
+  - **L r3 gains what `R0275` cost.** 2,730 points of `SECURITY_INCIDENT`'s,
+    as many as L found `R0275` costing, and 785 of `ONCALL_ESCALATION`'s. Six
+    of its losses to the security rules are installed, and its loss to
+    `R0092`, of `ONCALL_ESCALATION`. Its wins over `R0263` and `R0144`, the two
+    those losses had closed through, are refused. Its loss to `R0013` is still
+    refused.
+  - **L r2 loses.** It gains 4,005 points, 2,690 of them `T2_TECHNICAL`'s, and
+    loses 4,416: 2,356 of `BILLING_SPECIALIST`'s, 1,060 of
+    `ONCALL_ESCALATION`'s and 840 of `T3_ENGINEERING`'s. There it refuses 146
+    of the copies' installed wins and 21 of their installed losses. Its copy
+    that costs most, `R0258`, had no refused loss to keep: its refused sides
+    were all wins.
+  - **K r2 loses 1,460 points**, 840 of them `ACCOUNT_MANAGER`'s, and gains
+    420, all `ONCALL_ESCALATION`'s.
+  - **K r1 changes nothing.** It keeps 7 of its 24 refused losses, and refuses
+    3 wins, and no point is decided otherwise.
+- **K r3's copy that costs most, `R0158`, keeps all 5 of its refused losses,
+  and loses 23 of its wins.** A broad copy's many wins each reached a rule now
+  above it, as the drafter's account of O2 feared. K r3 still gains 220.
+
+| run | the base decides right | with every birth's losses first | change | in the keyword half | in the other half |
+|---|---|---|---|---|---|
+| L r1 | 86,255 | 90,680 | +4,425 | +1,680 | +2,745 |
+| K r1 | 104,020 | 103,855 | −165 | 0 | −165 |
+| L r2 | 80,901 | 78,639 | −2,262 | +2,420 | −4,682 |
+| K r2 | 86,030 | 83,284 | −2,746 | 0 | −2,746 |
+| L r3 | 72,570 | 92,569 | +19,999 | +17,945 | +2,054 |
+| K r3 | 104,160 | 102,830 | −1,330 | 0 | −1,330 |
+
+- **Every birth's losses first decides more, pooled** (O4 holds, trusted least):
+  551,857 points of the six runs' 806,400, against the copies' losses first's
+  535,120. It installs 2,855 of the 3,886 losses the record refused at every
+  birth, and refuses 1,724 of the 13,828 wins installed.
+- **Almost all of it is L r3's keyword half**: 17,945 points there, and 13,770
+  of the points it gains in L r3 are `SECURITY_INCIDENT`'s. `corrections/fall.py`
+  found the same lever giving back most of what `PLAN_CORRECTIONS.md`'s L runs
+  lost in that half.
+- **In L the keyword half gains in every run, and in K it never moves.** K's
+  ranking, which puts `SECURITY_INCIDENT` first in every run, already decides
+  the conflicts that L leaves open there.
+- **Outside the keyword half the lever costs in four runs of six**: in L r2 and
+  in every K run.
+
+**So the copies' losses, tried first, are mostly kept, and what that buys
+depends on where they fall.**
+- **In L r3** they gave back what `R0275` had cost.
+- **In L r2** they cost more than they gave back.
+- **Tried first at every birth**, the losses gave back most of L r3's keyword
+  half, and cost outside it in four runs of six.
+- **In K the keyword half did not move**: its ranking already decides the
+  conflicts the refused losses leave.
+
+### The expectation
+
+Written in the module's docstring before the reading ran, and committed before
+it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| O1, pooled over the six runs, the replay with the copies' losses first installs more than half of the copies' losses the record refused for a cycle | 534 of 908 | **holds** |
+| O2, pooled, that replay refuses fewer of the copies' wins the record installed than it installs of the copies' losses the record refused | 373 against 534 | **holds** |
+| O3, in every L run, the base with the copies' losses first decides right more points of the space than the record's | +355, −411 and +2,060 | fails |
+| O4, pooled over the six runs, the base with every birth's losses first decides right more points than the base with the copies' losses first | 551,857 against 535,120 | **holds** |
+
+**O1, O2 and O4 hold, and O3 fails.**
+- **The bet failed**, O3, and in L r2, which gained 4,005 points and lost
+  4,416. The drafter had feared L r3, whose refused losses were more often
+  wrong than right; L r3 gained the most.
+- **The clause trusted most held**, O1, and so did the one trusted least, O4.
+
+### What it says
+
+- **A copy's losses, tried before its wins, are mostly kept, and at the price of
+  fewer wins.**
+- **That is not a lever on what the base decides.** It gave back what one copy
+  cost in L r3, cost L r2 more than it gave back, and moved little in K.
+- **Every birth's losses first gives back L's keyword half**, most of all in L
+  r3, as `corrections/fall.py` found in `PLAN_CORRECTIONS.md`'s L runs. It
+  costs outside that half in four runs of six. In K the keyword half does not
+  move.
+
+### What it does not settle
+
+1. **Whether a loop that tried losses first would run better.** A replay keeps
+   the record's births. A base installed in another order would have decided
+   other arrivals, and the loop would have escalated other cases. Calls.
+2. **Why L r2 lost under the copies' losses first.** What it lost was mostly
+   `BILLING_SPECIALIST`'s, `ONCALL_ESCALATION`'s and `T3_ENGINEERING`'s.
+   Whether through the 146 wins it refused, the 21 losses, or edges at other
+   births, and whether those were right, is free on the records.
 
 ---
 
@@ -2121,3 +2288,5 @@ it. It is not signed, and it is on no scoreboard.
 - [`copies.json`](copies.json), [`asked.json`](asked.json): POST-RUN, two things
   the last reading left free.
 - [`sides.json`](sides.json): POST-RUN, one thing the last reading left free.
+- [`losses.json`](losses.json): POST-RUN, one thing the copies' refused sides
+  left free.
