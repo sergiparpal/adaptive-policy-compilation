@@ -1639,10 +1639,11 @@ account. To bump one, resolve the new tag to its commit —
 `gh api repos/actions/checkout/commits/vX.Y.Z --jq .sha` — and change SHA and
 comment together; there is a test that checks they travel together.
 
-Each job carries `timeout-minutes: 10` over a suite that finishes in seconds: it
-is not a speed
+Every job carries a `timeout-minutes`, the suite's twenty: it is not a speed
 target, it is what turns a hung job into a failure instead of six hours of
-runner. And superseded runs are cancelled… **except on `main`**. Here commits go
+runner. It was ten while the suite finished in seconds, and on 2026-11-20 ten
+minutes cancelled a job whose tests had passed; the workflow's comment dates the
+move. And superseded runs are cancelled… **except on `main`**. Here commits go
 straight to `main` and the workflow status is the only record that a given
 commit passed the suite; with a plain `cancel-in-progress: true`, pushing three
 commits in a row leaves the first two *cancelled* forever — they did not fail,

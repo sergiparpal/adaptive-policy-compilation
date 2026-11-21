@@ -48,9 +48,9 @@ jobs:
   coverage-at-m:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    # A cap, not a target, as in tests.yml. The suite takes ~45 s there; with
-    # coverage and one context per test it took 2.5 times as long as without,
-    # measured locally on 2026-10-31.
+    # A cap, not a target, as in tests.yml, whose comment dates what the suite
+    # takes. With coverage and one context per test it took 2.5 times as long
+    # as without, measured locally on 2026-10-31.
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
