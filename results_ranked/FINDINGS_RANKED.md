@@ -24,8 +24,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   reached it in #300, merged on 2026-11-21 at Sergi's word.
 - **The POST-RUN reading of one thing the losses first left free** reached it in
   #302, merged on 2026-11-21 by GitHub's auto-merge, which Sergi asked for.
-- **The POST-RUN reading of one thing L r2's loss left free** reaches it in the
-  pull request it is opened in.
+- **The POST-RUN reading of one thing L r2's loss left free** reaches it in
+  #304.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -272,8 +272,8 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 > **[NOTE 2026-11-21, after the eleventh] And a twelfth.**
 > [`together.json`](together.json) is the POST-RUN reading of one thing L r2's
 > loss left free.
-> - **It was written from `21af613`**, on the branch of the pull request it is
->   opened in: the commit that carries the reading and its expectation.
+> - **It was written from `21af613`**, on the branch of #304: the commit that
+>   carries the reading and its expectation.
 > - **Its code digest is `1ee576b108adf370`**, because `ranked/together.py` was
 >   added after the last reading. Its `_env` says `git_dirty`, for the same
 >   files, and `code_dirty` is false. No module an earlier record of this plan
@@ -2463,8 +2463,7 @@ why billing's copies declared sides the base could not hold together, its first
 item. This reading answers it on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.together`, on 2026-11-21,
-from `21af613` with its code clean, on the branch of the pull request it is
-opened in.
+from `21af613` with its code clean, on the branch of #304.
 - **The commit.** `21af613` carries the reading and its expectation, written
   and committed before it ran. Nothing was added after the run.
 - **The record was committed alone**, as `f673640`.
