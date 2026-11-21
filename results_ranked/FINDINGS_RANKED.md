@@ -22,8 +22,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   #298, merged on 2026-11-21 at Sergi's word.
 - **The POST-RUN reading of one thing the copies' refused sides left free**
   reached it in #300, merged on 2026-11-21 at Sergi's word.
-- **The POST-RUN reading of one thing the losses first left free** reaches it in
-  #302.
+- **The POST-RUN reading of one thing the losses first left free** reached it in
+  #302, merged on 2026-11-21 by GitHub's auto-merge, which Sergi asked for.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -258,12 +258,14 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >
 > **[NOTE 2026-11-21, latest] And an eleventh.** [`lost.json`](lost.json) is the
 > POST-RUN reading of one thing the losses first left free.
-> - **It was written from `c5a880f`**, on the branch of #302: the commit that
->   carries the reading and its expectation.
+> - **It was written from `c5a880f`**, on the branch of #302, which is
+>   `f50b554` on `main`: the commit that carries the reading and its
+>   expectation.
 > - **Its code digest is `8081339b350fb9b5`**, because `ranked/lost.py` was
->   added after the last reading. Its `_env` says `git_dirty`, for the same
->   files, and `code_dirty` is false. No module an earlier record of this plan
->   ran changed.
+>   added after the last reading. `main` computes it at `f50b554`, and still at
+>   the merge of #302. Its `_env` says `git_dirty`, for the same files, and
+>   `code_dirty` is false. No module an earlier record of this plan ran
+>   changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -2300,13 +2302,19 @@ why L r2 lost under the copies' losses first, its second item. This reading
 answers it on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m ranked.lost`, on 2026-11-21, from
-`c5a880f` with its code clean, on the branch of #302.
-- **The commit.** `c5a880f` carries the reading and its expectation, written
-  and committed before it ran. Nothing was added after the run.
-- **The record was committed alone**, as `c0f3028`.
+`c5a880f` with its code clean, on the branch of #302, which is `f50b554` on
+`main`.
+- **The commit.** `f50b554` on `main` carries the reading and its expectation,
+  written and committed before it ran. Nothing was added after the run.
+- **The record was committed alone**, as `553f6c3`.
+- **On #302's branch the five commits were `c5a880f`, `c0f3028`, `e6f41d5`,
+  `6d7f178` and `eb2c5bd`.** Each pair has the same subject, the same tree and
+  the same `git patch-id --stable`, and the GitHub API names #302 behind the
+  five `main` commits.
 - **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
-  repository's root, untracked. `code_dirty` is false, and the code digest is
-  `8081339b350fb9b5`.
+  repository's root, untracked. `code_dirty` is false, and the code digest,
+  `8081339b350fb9b5`, is the one `main` computes at `f50b554`, and still at the
+  merge.
 - **The record is [`lost.json`](lost.json).** Its 24 gates passed. In each of the
   six runs:
   - the replay in the record's order is Stage C's base;
