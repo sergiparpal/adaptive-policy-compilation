@@ -41,11 +41,16 @@ concurrency:
 jobs:
   suite:
     runs-on: ubuntu-latest
-    # The suite takes ~45 s. Ten minutes is not a speed target: it is the cap
-    # that turns a hung job —a download that does not answer, a
-    # test_order_determinism subprocess that never finishes— into a failure
-    # instead of six hours of runner.
-    timeout-minutes: 10
+    # Twenty minutes is not a speed target: it is the cap that turns a hung
+    # job —a download that does not answer, a test_order_determinism
+    # subprocess that never finishes— into a failure instead of six hours of
+    # runner. It was ten while the suite took ~45 s. On 2026-11-20, over that
+    # day's 30 runs, the 3.10 leg took a median of 8 min 46 s and the 3.12 leg
+    # 7 min 38 s, and ten minutes cancelled a 3.10 job a second and a half
+    # after its tests had printed OK. Twenty is about twice the slowest job of
+    # that day. When the suite outgrows it, move it again and date the move
+    # here.
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
