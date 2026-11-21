@@ -30,9 +30,11 @@ an official figure that no FINDINGS backs, which is the same mistake
 
 from __future__ import annotations
 
+import gc
 import itertools
 import random
-import time
+import sys
+import threading
 import unittest
 from collections import Counter
 
@@ -86,6 +88,72 @@ def score_naive_with_weights(order, pool, label, action, idxs, L, n):
         if action[min(p, key=lambda rid: rank[rid])] == label[i]:
             ok += L // n[label[i]]
     return ok
+
+
+def executed_instructions(fn, *args):
+    """The bytecode instructions the interpreter executes for `fn(*args)`,
+    counted in every Python frame the call enters, in this thread. A count,
+    not a clock: it does not move with the load on the machine, so a
+    comparison between two counts changes only when the code does.
+
+    From 3.12 on it counts `sys.monitoring`'s instruction events, and before
+    3.12 it traces opcode by opcode with `sys.settrace`. On 3.12 the second
+    route is the wrong one. There `f_trace_opcodes` sets a flag for the whole
+    interpreter, which `sys.settrace` reads when it is called and nothing
+    clears. So the first call traced that way counts no instruction at all,
+    and a count of zero would pass any bound for the wrong reason. And every
+    line tracer installed after it pays for instruction events for the rest
+    of the process: measured on 3.12.3, a line tracer ran about 1.8 times
+    slower. That would include coverage's, which the Distiller's per-test job
+    runs on 3.12. `sys.monitoring` leaves nothing behind.
+
+    The collector is off while it counts, so that no finalizer written in
+    Python runs inside the count."""
+    n = 0
+    collecting = gc.isenabled()
+    gc.disable()
+    try:
+        if hasattr(sys, "monitoring"):
+            mon = sys.monitoring
+            here = executed_instructions.__code__
+            thread = threading.get_ident()
+            tool = next(t for t in range(6) if mon.get_tool(t) is None)
+
+            def instruction(code, offset):
+                nonlocal n
+                if code is not here and threading.get_ident() == thread:
+                    n += 1
+
+            mon.use_tool_id(tool, "executed_instructions")
+            mon.register_callback(tool, mon.events.INSTRUCTION, instruction)
+            mon.set_events(tool, mon.events.INSTRUCTION)
+            try:
+                fn(*args)
+            finally:
+                mon.set_events(tool, mon.events.NO_EVENTS)
+                mon.register_callback(tool, mon.events.INSTRUCTION, None)
+                mon.free_tool_id(tool)
+        else:
+            def opcode(frame, event, arg):
+                nonlocal n
+                if event == "opcode":
+                    n += 1
+                return opcode
+
+            def enter(frame, event, arg):
+                frame.f_trace_opcodes = True
+                return opcode
+
+            previous = sys.gettrace()
+            sys.settrace(enter)
+            try:
+                fn(*args)
+            finally:
+                sys.settrace(previous)
+    finally:
+        if collecting:
+            gc.enable()
+    return n
 
 
 class TestScoring(unittest.TestCase):
@@ -462,26 +530,64 @@ class TestWeightedObjective(unittest.TestCase):
                 self.assertEqual(sa, sb)
 
     def test_the_unweighted_path_does_not_pay_for_the_weights(self):
-        """P1 asks that the unweighted path not slow down. The gate itself was
-        measured against the previous revision, which a test cannot import; what
-        is pinned here is the structural half of it — that `wt=None` really is a
-        fast path and not the weighted branch with ones — with a loose bound, so
-        that it catches a regression and not a busy machine."""
+        """P1 of `PLAN_BUDGET_LS.md` asks that the unweighted path not slow
+        down. The gate itself was measured against the previous revision, which
+        a test cannot import; what is pinned here is the structural half of it —
+        that `wt=None` really is a fast path and not the weighted branch with
+        ones.
+
+        It is pinned on a count of the instructions each path executes, not on
+        a clock. Until 2026-11-21 this test timed twenty calls of each path,
+        best of five, one path after the other, and asked that the unweighted
+        path take less than 1.5 times the weighted one. On 2026-11-21 a
+        full-suite run under 3.10 failed it once, 74.5 microseconds against 1.5
+        times 49.4, on code nobody had touched, and the next five runs passed:
+        the clock measured the machine as well as the code, as
+        `results3/FINDINGS_AUDIT.md` had already found of a timing that did not
+        alternate. A count does not move with the load, so the bound is strict:
+        whatever turns `None` into weights of one then runs the weighted
+        branch, and cannot execute fewer instructions than it does."""
         ids, _pool, label, action, idxs, M, W, full = instance(60, 300, seed=7)
         a_few = {rid: 1 for rid in ids}
         o = random_order(ids, seed=7)
+        self.assertEqual(score_order(o, M, W, full),
+                         score_order(o, M, W, full, a_few))
 
-        def time_it(wt):
-            best = float("inf")
-            for _ in range(5):
-                t0 = time.perf_counter()
-                for _ in range(20):
-                    score_order(o, M, W, full, wt)
-                best = min(best, time.perf_counter() - t0)
-            return best
+        unweighted = executed_instructions(score_order, o, M, W, full)
+        weighted = executed_instructions(score_order, o, M, W, full, a_few)
+        self.assertGreater(unweighted, 0)
+        self.assertEqual(unweighted,
+                         executed_instructions(score_order, o, M, W, full))
+        self.assertLess(unweighted, weighted)
 
-        time_it(None)                       # calienta
-        self.assertLess(time_it(None), 1.5 * time_it(a_few))
+    def test_the_count_sees_the_weighted_branch_with_ones(self):
+        """What keeps the test above from passing for the wrong reason. Here
+        `score_order` is rewritten as P1 forbids it, with `None` read as
+        weights of one held outside the function. It is the cheapest such
+        rewrite, and the clock the test above read until 2026-11-21 let it
+        through. On it, the comparison that test makes fails."""
+        ids, _pool, label, action, idxs, M, W, full = instance(60, 300, seed=7)
+        ones = {rid: 1 for rid in ids}
+        o = random_order(ids, seed=7)
+
+        def score_with_ones(order, M, W, full, wt=None):
+            if wt is None:
+                wt = ones
+            remaining, ok = full, 0
+            for rid in order:
+                fires = M[rid] & remaining
+                if fires:
+                    ok += wt[rid] * (W[rid] & fires).bit_count()
+                    remaining ^= fires
+                    if not remaining:
+                        break
+            return ok
+
+        self.assertEqual(score_with_ones(o, M, W, full),
+                         score_order(o, M, W, full))
+        self.assertGreaterEqual(
+            executed_instructions(score_with_ones, o, M, W, full),
+            executed_instructions(score_with_ones, o, M, W, full, ones))
 
 
 class TestTheStep0WeightedOptimum(unittest.TestCase):
