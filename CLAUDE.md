@@ -1675,6 +1675,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.sides                         # POST-RUN: why the copies' declared sides closed cycles
     PYTHONHASHSEED=0 python3 -m ranked.losses                        # POST-RUN: whether a copy's losses, tried first, would have been kept
     PYTHONHASHSEED=0 python3 -m ranked.lost                          # POST-RUN: why L r2 lost under the copies' losses first
+    PYTHONHASHSEED=0 python3 -m ranked.together                      # POST-RUN: why billing's copies declared sides the base could not hold together
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1823,6 +1824,15 @@ and closed their wins over deflection's rules, which were mostly right on
 billing's tickets; deflection's rules took those tickets. **An answer whose
 sides close a cycle with the base cannot keep them all**: the order of
 installation only chooses which side the engine refuses.
+
+**Read POST-RUN, those copies declared the policy's order, one listed rule at a
+time, and the base held it the other way.** Their sides were mostly right. What
+held them apart were older rules' own wins over rules of higher layers, mostly
+wrong by the policy, in cycles no point sees. The round's list showed part of
+that order in the listed rules' own sides, and the answers read each listed
+rule by its queue. **A round that shows the base's order does not get it
+kept**: a protocol that asks for a side against each listed rule should say in
+§0 what an answer that contradicts the list's own sides does.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,

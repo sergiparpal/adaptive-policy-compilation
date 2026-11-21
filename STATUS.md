@@ -3721,6 +3721,22 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *One thing the losses first left free*.
+     **[NOTE 2026-11-21, last] And one thing that reading left free, read
+     POST-RUN.**
+     - **Billing's copies declared the policy's order, one listed rule at a
+       time.** Of the copies' 2,300 win-and-loss pairs the base could not
+       hold together, both sides were right at 314 of billing's 514. Pooled
+       over every queue they were right at 785. The two copies' notes name
+       the layers they placed themselves between.
+     - **The base held it the other way, mostly through a wrong step**: at
+       1,687 of the 2,300, and the cycle was nowhere at 1,784. At the two
+       copies nearly every wrong step on their paths was an older rule's own
+       win over a rule of a higher layer.
+     - **The round showed a whole path at 575**, and the answers read each
+       listed rule alone.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *One thing L r2's loss left free*.
 
    All three are read above.
 
