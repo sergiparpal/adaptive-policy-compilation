@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 20, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 21, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -142,7 +142,8 @@ two readings left free were read POST-RUN the same day as well**, and the two
 items they answer are struck in place. **One thing those two left free was read
 POST-RUN the same day too**, and the item it answers is struck in place. **Two
 things that one left free were read POST-RUN the same day as well**, and the two
-items they answer are struck in place.
+items they answer are struck in place. **One thing those left free was read
+POST-RUN on November 21, 2026**, and the item it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -673,10 +674,24 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   and lets it be born, and a copy enters its original's region without the
   losses later rules declared against it. Refusing the copy, or installing its
   original's order with it, would change which cases escalate after it. Calls.
-- **Why the copies' declared sides closed cycles.** In L r2 `R0258`'s win over
-  `R0252`, and in L r3 `R0275`'s losses to the keyword's security rules, were
-  refused. Through which rules, and whether they are older rules nested in the
-  copy's region, as the refusals reading found in K. Free on the records.
+- ~~**Why the copies' declared sides closed cycles.**~~ **Read POST-RUN on
+  2026-11-21** (`FINDINGS_RANKED.md`, *One thing the last reading left free*,
+  N). By the order in which the loop installs them. A copy's wins, tried first,
+  closed through an older rule nested in its region, which beats its original
+  too. Its losses closed mostly through a win the same answer had installed
+  first. Most of the cycles are real. `R0258`'s win over `R0252` closed through
+  an older keyword rule of its own queue, which `R0252` had declared itself
+  above. `R0275`'s losses to the security rules closed through its own win
+  over a rule of `ACCOUNT_MANAGER`, by a chain of four rules no point sees.
+- **Whether a copy's losses, installed before its wins, would have been
+  kept.** Most of the copies' refused losses closed through a win the same
+  answer had installed first. `corrections/fall.py` replayed
+  `PLAN_CORRECTIONS.md`'s L runs with each birth's losses first, and the same
+  declarations kept most of what the base had lost. Free on the records.
+- **Why a copy's refused losses mostly contradict its original's order.** At
+  most of them the base already held an original above the rule the copy
+  declared above itself. Whether the original's order or the copy's answer was
+  the wrong one, by the policy, is free on the records.
 - **A first call shown the conflict.** At a conflict L asked about, the first
   call does not know which rules disagree, and drew the region a correction had
   drawn under the other queue. Shown the two, with their queues, it might side
@@ -758,6 +773,12 @@ Lessons it leaves:
   of L's twins at its conflicts bet most on the twin itself standing at the
   ticket. It was often beaten there, and another rule of its queue stood. Read
   the queue beside the rule before betting on the rule.
+- **Read what the order of installation settles before banding it.** Every
+  refused win of a copy closed through a rule nested in it, and contradicted
+  its original's order, by construction. Wins are tried first, and nothing is
+  declared above a newborn at its own birth. A clause on either would have
+  read the loop's code, not its records: the drafter said so, and banded what
+  the order leaves open.
 
 ---
 
