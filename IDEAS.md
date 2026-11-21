@@ -144,6 +144,8 @@ POST-RUN the same day too**, and the item it answers is struck in place. **Two
 things that one left free were read POST-RUN the same day as well**, and the two
 items they answer are struck in place. **One thing those left free was read
 POST-RUN on November 21, 2026**, and the item it answers is struck in place.
+**One thing that one left free was read POST-RUN the same day**, and the item
+it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -683,11 +685,22 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   an older keyword rule of its own queue, which `R0252` had declared itself
   above. `R0275`'s losses to the security rules closed through its own win
   over a rule of `ACCOUNT_MANAGER`, by a chain of four rules no point sees.
-- **Whether a copy's losses, installed before its wins, would have been
-  kept.** Most of the copies' refused losses closed through a win the same
-  answer had installed first. `corrections/fall.py` replayed
-  `PLAN_CORRECTIONS.md`'s L runs with each birth's losses first, and the same
-  declarations kept most of what the base had lost. Free on the records.
+- ~~**Whether a copy's losses, installed before its wins, would have been
+  kept.**~~ **Read POST-RUN on 2026-11-21** (`FINDINGS_RANKED.md`, *One thing
+  the copies' refused sides left free*, O). Mostly kept, at the price of fewer
+  wins, and no lever on what the base decides. Tried first, the copies' losses
+  gave back what one copy had cost in L r3, and cost L r2 more than they gave
+  back. Every birth's losses first gave back L's keyword half, most of all in L
+  r3, and cost outside it in four runs of six. In K the keyword half did not
+  move.
+- **Whether a loop that tries losses first would run better.**
+  `PLAN_CORRECTIONS.md`'s readings named it the next lever. Replayed on these
+  runs, it gave back L's keyword half, cost outside it in four runs of six, and
+  did not move K's keyword half. A replay keeps the record's births: only a
+  loop says what it would escalate. Calls.
+- **Why L r2 lost under the copies' losses first.** What it lost was mostly
+  billing's, on-call's and engineering's. Through which edges, and whether they
+  were right, is free on the records.
 - **Why a copy's refused losses mostly contradict its original's order.** At
   most of them the base already held an original above the rule the copy
   declared above itself. Whether the original's order or the copy's answer was
@@ -779,6 +792,10 @@ Lessons it leaves:
   declared above a newborn at its own birth. A clause on either would have
   read the loop's code, not its records: the drafter said so, and banded what
   the order leaves open.
+- **A lever on the order of installation is not a lever on what the base
+  decides.** Tried first, the copies' losses were mostly kept, and the base
+  gained in two L runs and lost in the third. A reading of a lever should read
+  what the base decides beside what the lever keeps.
 
 ---
 

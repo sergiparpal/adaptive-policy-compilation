@@ -1673,6 +1673,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.copies                        # POST-RUN: copies of the same queue, and what they cost
     PYTHONHASHSEED=0 python3 -m ranked.asked                         # POST-RUN: why L's twins are born at the conflicts it asks about
     PYTHONHASHSEED=0 python3 -m ranked.sides                         # POST-RUN: why the copies' declared sides closed cycles
+    PYTHONHASHSEED=0 python3 -m ranked.losses                        # POST-RUN: whether a copy's losses, tried first, would have been kept
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1804,6 +1805,16 @@ first, as `corrections/fall.py` found in L. Most of those cycles are real: a
 point the two rules share sees them. **Read what the order of installation
 settles before banding it**: a clause on it reads the loop's code, not its
 records.
+
+**Read POST-RUN, a copy's losses, tried before its wins, are mostly kept, and
+that is no lever on what the base decides.** Replayed with the copies' losses
+first, the base gave back what one copy had cost in one L run, and lost more
+than it gained in another. Every birth's losses first gave back L's keyword
+half, as `corrections/fall.py` found in `PLAN_CORRECTIONS.md`'s L runs, and
+cost outside it in most runs. In K the keyword half did not move, since its
+ranking already decides those conflicts. **A lever on the order of
+installation is not a lever on what the base decides**: read what the base
+decides beside what the lever keeps.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,

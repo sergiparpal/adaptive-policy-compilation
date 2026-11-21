@@ -3694,6 +3694,19 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *One thing the last reading left free*.
+     **[NOTE 2026-11-21, later] And one thing that reading left free, read
+     POST-RUN.**
+     - **A copy's losses, tried before its wins, are mostly kept**: 534 of the
+       908 the record refused, for 373 wins refused instead.
+     - **That is no lever on what the base decides.** With the copies' losses
+       first, L r3's base decides 2,060 points more and L r2's 411 fewer, and
+       the K runs move little.
+     - **Every birth's losses first gives back L's keyword half**, 17,945
+       points of it in L r3, and costs outside it in four runs of six. In K
+       the keyword half does not move.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *One thing the copies' refused sides left free*.
 
    All three are read above.
 
