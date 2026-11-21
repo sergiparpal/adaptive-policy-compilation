@@ -1674,6 +1674,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.asked                         # POST-RUN: why L's twins are born at the conflicts it asks about
     PYTHONHASHSEED=0 python3 -m ranked.sides                         # POST-RUN: why the copies' declared sides closed cycles
     PYTHONHASHSEED=0 python3 -m ranked.losses                        # POST-RUN: whether a copy's losses, tried first, would have been kept
+    PYTHONHASHSEED=0 python3 -m ranked.lost                          # POST-RUN: why L r2 lost under the copies' losses first
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1815,6 +1816,13 @@ cost outside it in most runs. In K the keyword half did not move, since its
 ranking already decides those conflicts. **A lever on the order of
 installation is not a lever on what the base decides**: read what the base
 decides beside what the lever keeps.
+
+**Read POST-RUN, the run that lost under the losses first lost through two of
+billing's copies.** Tried first, their losses to the keyword's rules went in,
+and closed their wins over deflection's rules, which were mostly right on
+billing's tickets; deflection's rules took those tickets. **An answer whose
+sides close a cycle with the base cannot keep them all**: the order of
+installation only chooses which side the engine refuses.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
