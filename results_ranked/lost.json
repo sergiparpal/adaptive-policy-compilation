@@ -1,0 +1,2122 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-21T16:20:42Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "c5a880f5fed188149acb181cfff63d3bd10882bb",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "8081339b350fb9b5"
+  },
+  "plan": "PLAN_RANKED.md",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_RANKED.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_RANKED.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "provenance": "POST-RUN: asked for by Sergi on 2026-11-21, after ranked/losses.py. The expectation in the module's docstring was written and committed before the reading ran. Not a signed row; no verdict moves.",
+  "source": {
+    "losses": "results_ranked/losses.json",
+    "losses_from": "8f03feebe46c1c216f8ca8ec2bc725cd407ab8ce",
+    "score": "results_ranked/score.json",
+    "score_from": "ab6d626a749611681db8f02a5c8e9b2b7df328d1",
+    "runs": {
+      "l_r1": "results_ranked/loop_l_r1.json",
+      "k_r1": "results_ranked/loop_k_r1.json",
+      "l_r2": "results_ranked/loop_l_r2.json",
+      "k_r2": "results_ranked/loop_k_r2.json",
+      "l_r3": "results_ranked/loop_l_r3.json",
+      "k_r3": "results_ranked/loop_k_r3.json"
+    }
+  },
+  "surface": "the whole space of 134,400 points, on each run's own engine: the points the replay with the copies' losses first decides otherwise than the record's base, each read through the edges whose verdict the replay changed",
+  "constants": {
+    "top": 10
+  },
+  "gates": [
+    {
+      "gate": 1,
+      "run": "l_r1",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r1",
+      "what": "the replays are losses.json's",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r1",
+      "what": "every changed point is reached",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "l_r1",
+      "what": "the changed edges are the graphs' difference",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "k_r1",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "k_r1",
+      "what": "the replays are losses.json's",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "k_r1",
+      "what": "every changed point is reached",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "k_r1",
+      "what": "the changed edges are the graphs' difference",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "l_r2",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r2",
+      "what": "the replays are losses.json's",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r2",
+      "what": "every changed point is reached",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "l_r2",
+      "what": "the changed edges are the graphs' difference",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "k_r2",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "k_r2",
+      "what": "the replays are losses.json's",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "k_r2",
+      "what": "every changed point is reached",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "k_r2",
+      "what": "the changed edges are the graphs' difference",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "l_r3",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "l_r3",
+      "what": "the replays are losses.json's",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "l_r3",
+      "what": "every changed point is reached",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "l_r3",
+      "what": "the changed edges are the graphs' difference",
+      "passes": true
+    },
+    {
+      "gate": 1,
+      "run": "k_r3",
+      "what": "the record's order is the run",
+      "passes": true
+    },
+    {
+      "gate": 2,
+      "run": "k_r3",
+      "what": "the replays are losses.json's",
+      "passes": true
+    },
+    {
+      "gate": 3,
+      "run": "k_r3",
+      "what": "every changed point is reached",
+      "passes": true
+    },
+    {
+      "gate": 4,
+      "run": "k_r3",
+      "what": "the changed edges are the graphs' difference",
+      "passes": true
+    }
+  ],
+  "readings": {
+    "runs": {
+      "l_r1": {
+        "changed": {
+          "missing": {
+            "a copy's win": 57,
+            "a copy's loss": 0,
+            "another birth's edge": 5
+          },
+          "added": {
+            "a copy's win": 1,
+            "a copy's loss": 53,
+            "another birth's edge": 6
+          }
+        },
+        "lost": {
+          "points": 545,
+          "any": {
+            "a copy's win": 545,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "alone": {
+            "a copy's win": 545,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "any_by_queue": {
+            "a copy's win": {
+              "ACCOUNT_MANAGER": 545
+            },
+            "a copy's loss": {},
+            "another birth's edge": {}
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 5,
+              "right": 5,
+              "wrong": 0,
+              "even": 0
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 5890,
+              "winner": "R0298",
+              "loser": "R0262",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 220,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 5899,
+              "winner": "R0298",
+              "loser": "R0253",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 220,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 5926,
+              "winner": "R0298",
+              "loser": "R0266",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 55,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 5860,
+              "winner": "R0298",
+              "loser": "R0273",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 25,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T1_GENERAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 5871,
+              "winner": "R0298",
+              "loser": "R0293",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 25,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            }
+          ],
+          "closes": {
+            "own answer": 5,
+            "containment": 0,
+            "either": 0
+          }
+        },
+        "gained": {
+          "points": 900,
+          "any": {
+            "a copy's win": 0,
+            "a copy's loss": 520,
+            "another birth's edge": 380
+          },
+          "alone": {
+            "a copy's win": 0,
+            "a copy's loss": 520,
+            "another birth's edge": 380
+          },
+          "any_by_queue": {
+            "a copy's win": {},
+            "a copy's loss": {
+              "T1_GENERAL": 300,
+              "T3_ENGINEERING": 220
+            },
+            "another birth's edge": {
+              "T3_ENGINEERING": 380
+            }
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "a copy's loss": {
+              "edges": 14,
+              "right": 8,
+              "wrong": 2,
+              "even": 4
+            },
+            "another birth's edge": {
+              "edges": 2,
+              "right": 2,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 7091,
+              "winner": "R0228",
+              "loser": "R0322",
+              "birth": 1824,
+              "newborn": "R0322",
+              "side": "loss",
+              "kind": "another birth's edge",
+              "change": "added",
+              "points": 380,
+              "queues": [
+                "T3_ENGINEERING",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "right"
+            },
+            {
+              "key": 4532,
+              "winner": "R0024",
+              "loser": "R0251",
+              "birth": 1317,
+              "newborn": "R0251",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "ONCALL_ESCALATION",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 4533,
+              "winner": "R0198",
+              "loser": "R0251",
+              "birth": 1317,
+              "newborn": "R0251",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "ONCALL_ESCALATION",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 4535,
+              "winner": "R0031",
+              "loser": "R0251",
+              "birth": 1317,
+              "newborn": "R0251",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 4536,
+              "winner": "R0160",
+              "loser": "R0251",
+              "birth": 1317,
+              "newborn": "R0251",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "even"
+            },
+            {
+              "key": 5998,
+              "winner": "R0031",
+              "loser": "R0298",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 6002,
+              "winner": "R0228",
+              "loser": "R0298",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "T3_ENGINEERING",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "wrong"
+            },
+            {
+              "key": 6011,
+              "winner": "R0160",
+              "loser": "R0298",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "even"
+            },
+            {
+              "key": 6012,
+              "winner": "R0198",
+              "loser": "R0298",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "ONCALL_ESCALATION",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 6013,
+              "winner": "R0024",
+              "loser": "R0298",
+              "birth": 1650,
+              "newborn": "R0298",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 220,
+              "queues": [
+                "ONCALL_ESCALATION",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            }
+          ]
+        }
+      },
+      "k_r1": {
+        "changed": {
+          "missing": {
+            "a copy's win": 3,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "added": {
+            "a copy's win": 0,
+            "a copy's loss": 7,
+            "another birth's edge": 0
+          }
+        },
+        "lost": {
+          "points": 0,
+          "any": {
+            "a copy's win": 0,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "alone": {
+            "a copy's win": 0,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "any_by_queue": {
+            "a copy's win": {},
+            "a copy's loss": {},
+            "another birth's edge": {}
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [],
+          "closes": {
+            "own answer": 0,
+            "containment": 0,
+            "either": 0
+          }
+        },
+        "gained": {
+          "points": 0,
+          "any": {
+            "a copy's win": 0,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "alone": {
+            "a copy's win": 0,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "any_by_queue": {
+            "a copy's win": {},
+            "a copy's loss": {},
+            "another birth's edge": {}
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": []
+        }
+      },
+      "l_r2": {
+        "changed": {
+          "missing": {
+            "a copy's win": 146,
+            "a copy's loss": 21,
+            "another birth's edge": 35
+          },
+          "added": {
+            "a copy's win": 91,
+            "a copy's loss": 275,
+            "another birth's edge": 101
+          }
+        },
+        "lost": {
+          "points": 4416,
+          "any": {
+            "a copy's win": 4416,
+            "a copy's loss": 0,
+            "another birth's edge": 560
+          },
+          "alone": {
+            "a copy's win": 3856,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "any_by_queue": {
+            "a copy's win": {
+              "BILLING_SPECIALIST": 2356,
+              "ONCALL_ESCALATION": 1060,
+              "SELF_SERVICE_DEFLECT": 40,
+              "T1_GENERAL": 20,
+              "T2_TECHNICAL": 100,
+              "T3_ENGINEERING": 840
+            },
+            "a copy's loss": {},
+            "another birth's edge": {
+              "ONCALL_ESCALATION": 220,
+              "T2_TECHNICAL": 100,
+              "T3_ENGINEERING": 240
+            }
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 23,
+              "right": 17,
+              "wrong": 3,
+              "even": 3
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 3,
+              "right": 2,
+              "wrong": 1,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 2022,
+              "winner": "R0143",
+              "loser": "R0119",
+              "birth": 794,
+              "newborn": "R0143",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 1216,
+              "queues": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5379,
+              "winner": "R0234",
+              "loser": "R0119",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 1216,
+              "queues": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 2027,
+              "winner": "R0143",
+              "loser": "R0060",
+              "birth": 794,
+              "newborn": "R0143",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 608,
+              "queues": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5371,
+              "winner": "R0234",
+              "loser": "R0060",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 608,
+              "queues": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5999,
+              "winner": "R0248",
+              "loser": "R0241",
+              "birth": 1665,
+              "newborn": "R0248",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 608,
+              "queues": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "T1_GENERAL",
+              "verdict": "wrong"
+            },
+            {
+              "key": 4453,
+              "winner": "R0213",
+              "loser": "R0115",
+              "birth": 1333,
+              "newborn": "R0213",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 600,
+              "queues": [
+                "T3_ENGINEERING",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5384,
+              "winner": "R0234",
+              "loser": "R0191",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 570,
+              "queues": [
+                "BILLING_SPECIALIST",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 1880,
+              "winner": "R0135",
+              "loser": "R0128",
+              "birth": 725,
+              "newborn": "R0135",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 420,
+              "queues": [
+                "ONCALL_ESCALATION",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ONCALL_ESCALATION",
+              "verdict": "even"
+            },
+            {
+              "key": 4459,
+              "winner": "R0213",
+              "loser": "R0200",
+              "birth": 1333,
+              "newborn": "R0213",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 420,
+              "queues": [
+                "T3_ENGINEERING",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5178,
+              "winner": "R0229",
+              "loser": "R0128",
+              "birth": 1488,
+              "newborn": "R0229",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 420,
+              "queues": [
+                "ONCALL_ESCALATION",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ONCALL_ESCALATION",
+              "verdict": "even"
+            }
+          ],
+          "closes": {
+            "own answer": 20,
+            "containment": 0,
+            "either": 3
+          }
+        },
+        "gained": {
+          "points": 4005,
+          "any": {
+            "a copy's win": 3085,
+            "a copy's loss": 3205,
+            "another birth's edge": 2190
+          },
+          "alone": {
+            "a copy's win": 20,
+            "a copy's loss": 190,
+            "another birth's edge": 730
+          },
+          "any_by_queue": {
+            "a copy's win": {
+              "ACCOUNT_MANAGER": 275,
+              "ONCALL_ESCALATION": 420,
+              "SELF_SERVICE_DEFLECT": 20,
+              "T2_TECHNICAL": 2370
+            },
+            "a copy's loss": {
+              "ACCOUNT_MANAGER": 380,
+              "ONCALL_ESCALATION": 420,
+              "T1_GENERAL": 35,
+              "T2_TECHNICAL": 2370
+            },
+            "another birth's edge": {
+              "ACCOUNT_MANAGER": 125,
+              "SELF_SERVICE_DEFLECT": 15,
+              "T2_TECHNICAL": 1730,
+              "T3_ENGINEERING": 320
+            }
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 30,
+              "right": 21,
+              "wrong": 0,
+              "even": 9
+            },
+            "a copy's loss": {
+              "edges": 45,
+              "right": 38,
+              "wrong": 0,
+              "even": 7
+            },
+            "another birth's edge": {
+              "edges": 15,
+              "right": 12,
+              "wrong": 2,
+              "even": 1
+            }
+          },
+          "top": [
+            {
+              "key": 5398,
+              "winner": "R0160",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5401,
+              "winner": "R0168",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5404,
+              "winner": "R0177",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5405,
+              "winner": "R0054",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "T2_TECHNICAL",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5409,
+              "winner": "R0102",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5410,
+              "winner": "R0091",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5427,
+              "winner": "R0074",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5428,
+              "winner": "R0132",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5433,
+              "winner": "R0015",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 5434,
+              "winner": "R0185",
+              "loser": "R0234",
+              "birth": 1534,
+              "newborn": "R0234",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 1280,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            }
+          ]
+        }
+      },
+      "k_r2": {
+        "changed": {
+          "missing": {
+            "a copy's win": 32,
+            "a copy's loss": 14,
+            "another birth's edge": 11
+          },
+          "added": {
+            "a copy's win": 30,
+            "a copy's loss": 36,
+            "another birth's edge": 11
+          }
+        },
+        "lost": {
+          "points": 1460,
+          "any": {
+            "a copy's win": 1060,
+            "a copy's loss": 0,
+            "another birth's edge": 200
+          },
+          "alone": {
+            "a copy's win": 1060,
+            "a copy's loss": 0,
+            "another birth's edge": 200
+          },
+          "any_by_queue": {
+            "a copy's win": {
+              "ACCOUNT_MANAGER": 440,
+              "BILLING_SPECIALIST": 200,
+              "T3_ENGINEERING": 420
+            },
+            "a copy's loss": {},
+            "another birth's edge": {
+              "ACCOUNT_MANAGER": 200
+            }
+          },
+          "unreached": 200,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 3,
+              "right": 2,
+              "wrong": 0,
+              "even": 1
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 1,
+              "right": 1,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 702,
+              "winner": "R0091",
+              "loser": "R0073",
+              "birth": 355,
+              "newborn": "R0091",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 440,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 2589,
+              "winner": "R0180",
+              "loser": "R0147",
+              "birth": 1493,
+              "newborn": "R0180",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 420,
+              "queues": [
+                "T3_ENGINEERING",
+                "ONCALL_ESCALATION"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "even"
+            },
+            {
+              "key": 1681,
+              "winner": "R0143",
+              "loser": "R0083",
+              "birth": 875,
+              "newborn": "R0143",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 200,
+              "queues": [
+                "BILLING_SPECIALIST",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 1745,
+              "winner": "R0146",
+              "loser": "R0114",
+              "birth": 922,
+              "newborn": "R0146",
+              "side": "win",
+              "kind": "another birth's edge",
+              "change": "missing",
+              "points": 200,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            }
+          ],
+          "closes": {
+            "own answer": 3,
+            "containment": 0,
+            "either": 0
+          }
+        },
+        "gained": {
+          "points": 420,
+          "any": {
+            "a copy's win": 0,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "alone": {
+            "a copy's win": 0,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "any_by_queue": {
+            "a copy's win": {},
+            "a copy's loss": {},
+            "another birth's edge": {}
+          },
+          "unreached": 420,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": []
+        }
+      },
+      "l_r3": {
+        "changed": {
+          "missing": {
+            "a copy's win": 67,
+            "a copy's loss": 0,
+            "another birth's edge": 16
+          },
+          "added": {
+            "a copy's win": 30,
+            "a copy's loss": 105,
+            "another birth's edge": 19
+          }
+        },
+        "lost": {
+          "points": 1790,
+          "any": {
+            "a copy's win": 1580,
+            "a copy's loss": 0,
+            "another birth's edge": 420
+          },
+          "alone": {
+            "a copy's win": 1370,
+            "a copy's loss": 0,
+            "another birth's edge": 210
+          },
+          "any_by_queue": {
+            "a copy's win": {
+              "ACCOUNT_MANAGER": 605,
+              "SELF_SERVICE_DEFLECT": 105,
+              "T2_TECHNICAL": 450,
+              "T3_ENGINEERING": 420
+            },
+            "a copy's loss": {},
+            "another birth's edge": {
+              "SELF_SERVICE_DEFLECT": 315,
+              "T3_ENGINEERING": 105
+            }
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 9,
+              "right": 8,
+              "wrong": 0,
+              "even": 1
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 2,
+              "right": 2,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 5102,
+              "winner": "R0275",
+              "loser": "R0144",
+              "birth": 1333,
+              "newborn": "R0275",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 420,
+              "queues": [
+                "T3_ENGINEERING",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5401,
+              "winner": "R0283",
+              "loser": "R0164",
+              "birth": 1402,
+              "newborn": "R0283",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 385,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 5437,
+              "winner": "R0283",
+              "loser": "R0179",
+              "birth": 1402,
+              "newborn": "R0283",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 385,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 4968,
+              "winner": "R0251",
+              "loser": "R0271",
+              "birth": 1295,
+              "newborn": "R0271",
+              "side": "loss",
+              "kind": "another birth's edge",
+              "change": "missing",
+              "points": 315,
+              "queues": [
+                "SELF_SERVICE_DEFLECT",
+                "T1_GENERAL"
+              ],
+              "newborn_queue": "T1_GENERAL",
+              "verdict": "right"
+            },
+            {
+              "key": 2813,
+              "winner": "R0217",
+              "loser": "R0126",
+              "birth": 938,
+              "newborn": "R0217",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 240,
+              "queues": [
+                "T1_GENERAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "T1_GENERAL",
+              "verdict": "even"
+            },
+            {
+              "key": 3220,
+              "winner": "R0231",
+              "loser": "R0126",
+              "birth": 1027,
+              "newborn": "R0231",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 240,
+              "queues": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "right"
+            },
+            {
+              "key": 5736,
+              "winner": "R0288",
+              "loser": "R0126",
+              "birth": 1434,
+              "newborn": "R0288",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 240,
+              "queues": [
+                "T2_TECHNICAL",
+                "SELF_SERVICE_DEFLECT"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "right"
+            },
+            {
+              "key": 3511,
+              "winner": "R0237",
+              "loser": "R0197",
+              "birth": 1096,
+              "newborn": "R0237",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 220,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 5726,
+              "winner": "R0288",
+              "loser": "R0260",
+              "birth": 1434,
+              "newborn": "R0288",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 210,
+              "queues": [
+                "T2_TECHNICAL",
+                "T1_GENERAL"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "right"
+            },
+            {
+              "key": 3972,
+              "winner": "R0251",
+              "loser": "R0210",
+              "birth": 1182,
+              "newborn": "R0251",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 105,
+              "queues": [
+                "SELF_SERVICE_DEFLECT",
+                "T1_GENERAL"
+              ],
+              "newborn_queue": "SELF_SERVICE_DEFLECT",
+              "verdict": "right"
+            }
+          ],
+          "closes": {
+            "own answer": 9,
+            "containment": 0,
+            "either": 0
+          }
+        },
+        "gained": {
+          "points": 3850,
+          "any": {
+            "a copy's win": 3670,
+            "a copy's loss": 3740,
+            "another birth's edge": 110
+          },
+          "alone": {
+            "a copy's win": 0,
+            "a copy's loss": 70,
+            "another birth's edge": 110
+          },
+          "any_by_queue": {
+            "a copy's win": {
+              "ONCALL_ESCALATION": 715,
+              "SECURITY_INCIDENT": 2730,
+              "T2_TECHNICAL": 225
+            },
+            "a copy's loss": {
+              "ONCALL_ESCALATION": 785,
+              "SECURITY_INCIDENT": 2730,
+              "T2_TECHNICAL": 225
+            },
+            "another birth's edge": {
+              "BILLING_SPECIALIST": 110
+            }
+          },
+          "unreached": 0,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 11,
+              "right": 5,
+              "wrong": 0,
+              "even": 6
+            },
+            "a copy's loss": {
+              "edges": 16,
+              "right": 10,
+              "wrong": 0,
+              "even": 6
+            },
+            "another birth's edge": {
+              "edges": 3,
+              "right": 3,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 5114,
+              "winner": "R0240",
+              "loser": "R0275",
+              "birth": 1333,
+              "newborn": "R0275",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5115,
+              "winner": "R0234",
+              "loser": "R0275",
+              "birth": 1333,
+              "newborn": "R0275",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5116,
+              "winner": "R0181",
+              "loser": "R0275",
+              "birth": 1333,
+              "newborn": "R0275",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5117,
+              "winner": "R0027",
+              "loser": "R0275",
+              "birth": 1333,
+              "newborn": "R0275",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5118,
+              "winner": "R0266",
+              "loser": "R0275",
+              "birth": 1333,
+              "newborn": "R0275",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5119,
+              "winner": "R0238",
+              "loser": "R0275",
+              "birth": 1333,
+              "newborn": "R0275",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "T3_ENGINEERING",
+              "verdict": "right"
+            },
+            {
+              "key": 5228,
+              "winner": "R0277",
+              "loser": "R0275",
+              "birth": 1349,
+              "newborn": "R0277",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "SECURITY_INCIDENT",
+              "verdict": "right"
+            },
+            {
+              "key": 6589,
+              "winner": "R0312",
+              "loser": "R0275",
+              "birth": 1654,
+              "newborn": "R0312",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "SECURITY_INCIDENT",
+              "verdict": "right"
+            },
+            {
+              "key": 7027,
+              "winner": "R0319",
+              "loser": "R0275",
+              "birth": 1704,
+              "newborn": "R0319",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "SECURITY_INCIDENT",
+              "verdict": "right"
+            },
+            {
+              "key": 7406,
+              "winner": "R0326",
+              "loser": "R0275",
+              "birth": 1721,
+              "newborn": "R0326",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "added",
+              "points": 2730,
+              "queues": [
+                "SECURITY_INCIDENT",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "SECURITY_INCIDENT",
+              "verdict": "right"
+            }
+          ]
+        }
+      },
+      "k_r3": {
+        "changed": {
+          "missing": {
+            "a copy's win": 68,
+            "a copy's loss": 0,
+            "another birth's edge": 9
+          },
+          "added": {
+            "a copy's win": 4,
+            "a copy's loss": 58,
+            "another birth's edge": 6
+          }
+        },
+        "lost": {
+          "points": 830,
+          "any": {
+            "a copy's win": 240,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "alone": {
+            "a copy's win": 240,
+            "a copy's loss": 0,
+            "another birth's edge": 0
+          },
+          "any_by_queue": {
+            "a copy's win": {
+              "ACCOUNT_MANAGER": 80,
+              "T2_TECHNICAL": 160
+            },
+            "a copy's loss": {},
+            "another birth's edge": {}
+          },
+          "unreached": 590,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 3,
+              "right": 1,
+              "wrong": 2,
+              "even": 0
+            },
+            "a copy's loss": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "another birth's edge": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 2411,
+              "winner": "R0162",
+              "loser": "R0146",
+              "birth": 1925,
+              "newborn": "R0162",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 120,
+              "queues": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "wrong"
+            },
+            {
+              "key": 2313,
+              "winner": "R0158",
+              "loser": "R0121",
+              "birth": 1889,
+              "newborn": "R0158",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 80,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "T3_ENGINEERING"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 2401,
+              "winner": "R0162",
+              "loser": "R0073",
+              "birth": 1925,
+              "newborn": "R0162",
+              "side": "win",
+              "kind": "a copy's win",
+              "change": "missing",
+              "points": 40,
+              "queues": [
+                "T2_TECHNICAL",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "wrong"
+            }
+          ],
+          "closes": {
+            "own answer": 3,
+            "containment": 0,
+            "either": 0
+          }
+        },
+        "gained": {
+          "points": 1050,
+          "any": {
+            "a copy's win": 0,
+            "a copy's loss": 420,
+            "another birth's edge": 90
+          },
+          "alone": {
+            "a copy's win": 0,
+            "a copy's loss": 360,
+            "another birth's edge": 30
+          },
+          "any_by_queue": {
+            "a copy's win": {},
+            "a copy's loss": {
+              "ACCOUNT_MANAGER": 320,
+              "T3_ENGINEERING": 100
+            },
+            "another birth's edge": {
+              "ACCOUNT_MANAGER": 90
+            }
+          },
+          "unreached": 600,
+          "by_kind": {
+            "a copy's win": {
+              "edges": 0,
+              "right": 0,
+              "wrong": 0,
+              "even": 0
+            },
+            "a copy's loss": {
+              "edges": 9,
+              "right": 6,
+              "wrong": 2,
+              "even": 1
+            },
+            "another birth's edge": {
+              "edges": 4,
+              "right": 4,
+              "wrong": 0,
+              "even": 0
+            }
+          },
+          "top": [
+            {
+              "key": 2418,
+              "winner": "R0002",
+              "loser": "R0162",
+              "birth": 1925,
+              "newborn": "R0162",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 260,
+              "queues": [
+                "SELF_SERVICE_DEFLECT",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "wrong"
+            },
+            {
+              "key": 2426,
+              "winner": "R0047",
+              "loser": "R0162",
+              "birth": 1925,
+              "newborn": "R0162",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 260,
+              "queues": [
+                "T1_GENERAL",
+                "T2_TECHNICAL"
+              ],
+              "newborn_queue": "T2_TECHNICAL",
+              "verdict": "wrong"
+            },
+            {
+              "key": 2333,
+              "winner": "R0024",
+              "loser": "R0158",
+              "birth": 1889,
+              "newborn": "R0158",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 100,
+              "queues": [
+                "ONCALL_ESCALATION",
+                "ACCOUNT_MANAGER"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 769,
+              "winner": "R0089",
+              "loser": "R0087",
+              "birth": 732,
+              "newborn": "R0089",
+              "side": "win",
+              "kind": "another birth's edge",
+              "change": "added",
+              "points": 90,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 741,
+              "winner": "R0073",
+              "loser": "R0087",
+              "birth": 708,
+              "newborn": "R0087",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 60,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 486,
+              "winner": "R0073",
+              "loser": "R0040",
+              "birth": 530,
+              "newborn": "R0073",
+              "side": "win",
+              "kind": "another birth's edge",
+              "change": "added",
+              "points": 30,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 513,
+              "winner": "R0073",
+              "loser": "R0074",
+              "birth": 535,
+              "newborn": "R0074",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 30,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            },
+            {
+              "key": 770,
+              "winner": "R0089",
+              "loser": "R0074",
+              "birth": 732,
+              "newborn": "R0089",
+              "side": "win",
+              "kind": "another birth's edge",
+              "change": "added",
+              "points": 30,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 778,
+              "winner": "R0089",
+              "loser": "R0040",
+              "birth": 732,
+              "newborn": "R0089",
+              "side": "win",
+              "kind": "another birth's edge",
+              "change": "added",
+              "points": 30,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "ACCOUNT_MANAGER",
+              "verdict": "right"
+            },
+            {
+              "key": 1006,
+              "winner": "R0073",
+              "loser": "R0098",
+              "birth": 1075,
+              "newborn": "R0098",
+              "side": "loss",
+              "kind": "a copy's loss",
+              "change": "added",
+              "points": 30,
+              "queues": [
+                "ACCOUNT_MANAGER",
+                "BILLING_SPECIALIST"
+              ],
+              "newborn_queue": "BILLING_SPECIALIST",
+              "verdict": "right"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "expectation": [
+    {
+      "clause": "P1",
+      "what": "in L r2, at more than half of the lost points a copy's win the replay refused is among the missing edges that free a wrong rule there",
+      "reading": {
+        "lost": 4416,
+        "through_a_copys_win": 4416
+      },
+      "holds": true
+    },
+    {
+      "clause": "P2",
+      "what": "in L r2, of the copies' wins the replay refused that free a wrong rule at a lost point, more than half are right by the policy",
+      "reading": {
+        "edges": 23,
+        "right": 17
+      },
+      "holds": true
+    },
+    {
+      "clause": "P3",
+      "what": "in L r2, more than half of those wins closed their cycle in the replay through the copy's own losses",
+      "reading": {
+        "own answer": 20,
+        "containment": 0,
+        "either": 3
+      },
+      "holds": true
+    },
+    {
+      "clause": "P4",
+      "what": "the lost points reached through the copies' refused wins are more in L r2 than in L r1 and L r3 together",
+      "reading": {
+        "l_r2": 4416,
+        "l_r1": 545,
+        "l_r3": 1580
+      },
+      "holds": true
+    }
+  ]
+}
