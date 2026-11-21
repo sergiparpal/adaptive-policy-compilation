@@ -22,6 +22,8 @@ figure below existed, in a commit of its own: `d6d507f` on `main`.
   #298, merged on 2026-11-21 at Sergi's word.
 - **The POST-RUN reading of one thing the copies' refused sides left free**
   reached it in #300, merged on 2026-11-21 at Sergi's word.
+- **The POST-RUN reading of one thing the losses first left free** reaches it in
+  the pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. All were
 written on #285's branch. The rebase merge gave each of those commits a new hash
@@ -253,6 +255,15 @@ adjudicated. `RK-a` to `RK-e` hold, `RK-b`, `RK-c` and `RK-d` thinly, and
 >   the merge of #300. Its `_env` says `git_dirty`, for the same files, and
 >   `code_dirty` is false. No module an earlier record of this plan ran
 >   changed.
+>
+> **[NOTE 2026-11-21, latest] And an eleventh.** [`lost.json`](lost.json) is the
+> POST-RUN reading of one thing the losses first left free.
+> - **It was written from `c5a880f`**, on the branch of the pull request it is
+>   opened in: the commit that carries the reading and its expectation.
+> - **Its code digest is `8081339b350fb9b5`**, because `ranked/lost.py` was
+>   added after the last reading. Its `_env` says `git_dirty`, for the same
+>   files, and `code_dirty` is false. No module an earlier record of this plan
+>   ran changed.
 
 **Each figure names its surface.** Every adjudicated row reads the exhaustive
 space of 134,400 points as the run's own engine decides it, but `RK-a`, which
@@ -2273,6 +2284,149 @@ it. It is not signed, and it is on no scoreboard.
    `BILLING_SPECIALIST`'s, `ONCALL_ESCALATION`'s and `T3_ENGINEERING`'s.
    Whether through the 146 wins it refused, the 21 losses, or edges at other
    births, and whether those were right, is free on the records.
+   **[NOTE 2026-11-21, latest] Read POST-RUN: through two of billing's copies.**
+   Every point it lost, it lost through a copy's win the replay refused. The
+   wins that carry most are two of billing's copies' over deflection's rules,
+   mostly right, closed by the same copies' losses, kept by going first. *One
+   thing the losses first left free*, P, below.
+
+---
+
+## One thing the losses first left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-21, after the last reading.** Its *What it does
+not settle*, above, names one more thing the records can answer without a call:
+why L r2 lost under the copies' losses first, its second item. This reading
+answers it on the records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m ranked.lost`, on 2026-11-21, from
+`c5a880f` with its code clean, on the branch of the pull request it is opened
+in.
+- **The commit.** `c5a880f` carries the reading and its expectation, written
+  and committed before it ran. Nothing was added after the run.
+- **The record was committed alone**, as `c0f3028`.
+- **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `8081339b350fb9b5`.
+- **The record is [`lost.json`](lost.json).** Its 24 gates passed. In each of the
+  six runs:
+  - the replay in the record's order is Stage C's base;
+  - both replays decide what `losses.json` keeps, with as many changed edges at
+    the copies' births;
+  - every changed point is reached by a changed edge whose rules match it, and
+    in L by one that frees or defeats a rule of another queue;
+  - the changed edges are the difference between the two bases' declared
+    graphs.
+
+### P. Why L r2 lost under the copies' losses first
+
+A changed edge is one that O's two replays, in the record's order and with the
+copies' losses first, gave different verdicts. It is missing when the record
+installed it and the replay refused it, and added when the reverse.
+
+**What the engine settles.** In L a point is decided where one queue stands.
+- **At a lost point.** The point stood right in the record, with no rule of
+  another queue undefeated. In the replay one stands. Containment is the same in
+  both, so an edge that defeated that rule is missing.
+- **So in L** every lost point is reached by a missing edge that frees a rule of
+  another queue there, and every gained point by an added edge that defeats
+  one. Gate 3 holds the reading to that.
+
+| run | lost | through a copy's refused win | that kind alone | through another birth's edge | gained | through a copy's kept loss |
+|---|---|---|---|---|---|---|
+| L r1 | 545 | 545 | 545 | 0 | 900 | 520 |
+| L r2 | 4,416 | 4,416 | 3,856 | 560 | 4,005 | 3,205 |
+| L r3 | 1,790 | 1,580 | 1,370 | 420 | 3,850 | 3,740 |
+
+- **Every point L r2 lost, it lost through a copy's win the replay refused** (P1
+  holds, the bet): all 4,416, and through that kind alone at 3,856. At the other
+  560 an edge of another birth was missing too. No copy's loss the replay
+  refused frees a rule at any lost point.
+- **23 of the copies' wins free a rule of another queue at a lost point**: 17
+  right by the policy, 3 wrong and 3 even (P2 holds, trusted least).
+- **They were refused through the copies' own losses** (P3 holds, trusted most).
+  20 closed only through a loss the copy's answer had installed first, and 3
+  through such a loss or a rule nested in the copy. None closed through
+  containment alone.
+- **Two of billing's copies carry most of it.** `R0143` and `R0234`, of
+  `BILLING_SPECIALIST`, were born at reported tickets of `H11`, at cases 794 and
+  1534. Both cover billing tickets with five prior tickets or more, and both are
+  copies of `R0039`. In the record each beat `R0119` and `R0060`, deflection's
+  rules of severity 4 without the keyword.
+  - **In the replay those wins are refused**, and deflection's rules stand on
+    billing's tickets. Each win over `R0119` carries 1,216 lost points, and each
+    over `R0060` 608: the four edges that carry the most.
+  - **2,356 of the lost points are `BILLING_SPECIALIST`'s**, 1,060
+    `ONCALL_ESCALATION`'s and 840 `T3_ENGINEERING`'s.
+- **The same copies' losses are what the replay gains.** The six edges that gain
+  most are `R0234`'s losses, kept by going first, at 1,280 points each. They put
+  it below `R0160` and `R0054`, keyword rules of `T2_TECHNICAL`, and below
+  `R0168`, `R0177`, `R0102` and `R0091`, of `SECURITY_INCIDENT`.
+  - **Through the copies' kept losses** the replay gains 3,205 points, 2,370 of
+    them `T2_TECHNICAL`'s. Through copies' wins it installs it gains 3,085,
+    mostly the same points.
+  - **`losses.json`'s halves say the same**: with the copies' losses first, L
+    r2's keyword half gains 2,050 points and its other half loses 2,461.
+- **L r1 and L r3 lost far less** (P4 holds). Through the copies' refused wins
+  they lost 545 and 1,580, against L r2's 4,416.
+  - **In L r1** all of it is `ACCOUNT_MANAGER`'s, through five wins of `R0298`,
+    a copy of that queue, over rules of `T2_TECHNICAL` and `T1_GENERAL`.
+  - **In L r3** the edges that lose most are `R0275`'s win over `R0144`, 420
+    points, and `R0283`'s over two rules of `T3_ENGINEERING`, 385 each.
+- **In K the ranking decides a conflict**, so a point can change through a rule
+  of its own queue, which this reading does not count.
+  - **K r2** lost 1,460: 1,060 through copies' refused wins, 200 through
+    another birth's edge, and 200 reached by neither.
+  - **K r3** lost 830: 240 through copies' wins, and 590 reached by neither.
+  - **K r1** lost and gained nothing.
+
+**So L r2 lost where two of billing's copies kept their losses and lost their
+wins.**
+- **What went in.** Tried first, their losses to the keyword's rules went in,
+  and the replay gained in the keyword half.
+- **What was refused instead.** The same losses closed the copies' wins over
+  deflection's rules, which were right on billing's tickets, and deflection's
+  rules took those tickets.
+- **The order chooses which side goes.** A copy whose sides close a cycle with
+  the base keeps only one kind of them. In the record it kept the wins; in the
+  replay, the losses.
+
+### The expectation
+
+Written in the module's docstring before the reading ran, and committed before
+it. It is not signed, and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| P1, in L r2, at more than half of the lost points a copy's win the replay refused is among the missing edges that free a wrong rule there | 4,416 of 4,416 | **holds** |
+| P2, in L r2, of the copies' wins the replay refused that free a wrong rule at a lost point, more than half are right by the policy | 17 of 23 | **holds** |
+| P3, in L r2, more than half of those wins closed their cycle in the replay through the copy's own losses | 20 and 3 of 23 | **holds** |
+| P4, the lost points reached through the copies' refused wins are more in L r2 than in L r1 and L r3 together | 4,416 against 545 and 1,580 | **holds** |
+
+**P1, P2, P3 and P4 hold.** The bet held, and so did the clauses trusted most
+and least.
+
+### What it says
+
+- **L r2 lost through two of billing's copies.** Their losses to the keyword's
+  rules, tried first, were kept. They closed the copies' wins over deflection's
+  rules, which were right, and deflection's rules took billing's tickets.
+- **What the lever gave in the keyword half, it took outside it**, through the
+  same copies.
+- **An answer whose sides close a cycle with the base cannot keep them all.**
+  The order of installation only chooses which side the engine refuses: the
+  losses, in the record; the wins, in the replay.
+
+### What it does not settle
+
+1. **Why billing's copies declared sides the base could not hold together.**
+   `R0143`'s and `R0234`'s answers put them below the keyword's rules and above
+   deflection's, while deflection's rules already reached rules the copies
+   declared themselves below. Their reasoning is in the records. Free on the
+   records.
+2. **A round that shows the conflict.** v1c's round does not show a copy which
+   of its sides the base already orders the other way. Shown it, an answer
+   might declare sides the engine can keep. Calls.
 
 ---
 
@@ -2297,3 +2451,4 @@ it. It is not signed, and it is on no scoreboard.
 - [`sides.json`](sides.json): POST-RUN, one thing the last reading left free.
 - [`losses.json`](losses.json): POST-RUN, one thing the copies' refused sides
   left free.
+- [`lost.json`](lost.json): POST-RUN, one thing the losses first left free.
