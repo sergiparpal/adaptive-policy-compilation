@@ -3707,6 +3707,20 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *One thing the copies' refused sides left free*.
+     **[NOTE 2026-11-21, latest] And one thing that reading left free, read
+     POST-RUN.**
+     - **L r2 lost through two of billing's copies.** Every one of the 4,416
+       points it lost with the copies' losses first, it lost through a copy's
+       win the replay refused: 23 wins, 17 of them right by the policy, each
+       closed by the copy's own losses, installed first.
+     - **The wins that carry most** are the two copies' wins over deflection's
+       rules on billing's tickets. The edges that gain most are one of them's
+       losses to the keyword's rules.
+     - **An answer whose sides close a cycle with the base cannot keep them
+       all**: the order of installation only chooses which.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *One thing the losses first left free*.
 
    All three are read above.
 

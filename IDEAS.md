@@ -145,7 +145,8 @@ things that one left free were read POST-RUN the same day as well**, and the two
 items they answer are struck in place. **One thing those left free was read
 POST-RUN on November 21, 2026**, and the item it answers is struck in place.
 **One thing that one left free was read POST-RUN the same day**, and the item
-it answers is struck in place.
+it answers is struck in place. **So was one thing that one left free**, and the
+item it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -698,9 +699,20 @@ than L and reached compiling at once at the median, thinly. What that leaves:
   runs, it gave back L's keyword half, cost outside it in four runs of six, and
   did not move K's keyword half. A replay keeps the record's births: only a
   loop says what it would escalate. Calls.
-- **Why L r2 lost under the copies' losses first.** What it lost was mostly
-  billing's, on-call's and engineering's. Through which edges, and whether they
-  were right, is free on the records.
+- ~~**Why L r2 lost under the copies' losses first.**~~ **Read POST-RUN on
+  2026-11-21** (`FINDINGS_RANKED.md`, *One thing the losses first left free*,
+  P). Through two of billing's copies. Every point it lost, it lost through a
+  copy's win the replay refused, mostly right, closed by the copy's own losses
+  installed first. The wins that carry most are the two copies' over
+  deflection's rules on billing's tickets, and the edges that gain most are one
+  of them's losses to the keyword's rules.
+- **Why billing's copies declared sides the base could not hold together.**
+  Their answers put them below the keyword's rules and above deflection's,
+  while deflection's rules already reached rules the copies declared
+  themselves below. Their reasoning is in the records. Free on the records.
+- **A placement round that shows what the base already orders.** v1c's round
+  does not show a copy which of its sides the base already orders the other
+  way. Shown it, an answer might declare sides the engine can keep. Calls.
 - **Why a copy's refused losses mostly contradict its original's order.** At
   most of them the base already held an original above the rule the copy
   declared above itself. Whether the original's order or the copy's answer was
@@ -796,6 +808,11 @@ Lessons it leaves:
   decides.** Tried first, the copies' losses were mostly kept, and the base
   gained in two L runs and lost in the third. A reading of a lever should read
   what the base decides beside what the lever keeps.
+- **An answer whose sides close a cycle with the base cannot keep them all.**
+  The order of installation only chooses which side the engine refuses: in L
+  r2 the record refused two copies' losses to the keyword's rules, and the
+  replay refused their wins over deflection's rules, mostly right. A lever on
+  the order should read what each side decides before choosing which to keep.
 
 ---
 
