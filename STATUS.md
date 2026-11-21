@@ -1,6 +1,6 @@
 # Status
 
-What is known, as of November 20, 2026. **Not a history** — that is the four
+What is known, as of November 21, 2026. **Not a history** — that is the four
 `FINDINGS` records, [`results3/FINDINGS_AUDIT.md`](results3/FINDINGS_AUDIT.md),
 [`results3/FINDINGS_ORDERS.md`](results3/FINDINGS_ORDERS.md) and
 [`results/FINDINGS_DEFAULT_RULE.md`](results/FINDINGS_DEFAULT_RULE.md),
@@ -3677,6 +3677,23 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
 
      [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
      *Two things the last reading left free*.
+     **[NOTE 2026-11-21] And one thing that reading left free, read
+     POST-RUN.**
+     - **A copy's sides closed cycles by the order of installation.** Its
+       wins, tried first, closed through an older rule nested in its region,
+       which beats its original too: 2,888 of the 3,796 refused sides. Its
+       losses closed mostly through a win the same answer had installed
+       first: 725 of 908.
+     - **The copies' sides were refused more often than the other births'**,
+       3,796 of 12,731 against 4,339 of 18,837, and most of their cycles are
+       real: nowhere at only 957.
+     - **`R0258`'s win over `R0252`** closed through an older keyword rule of
+       its own queue that `R0252` had declared itself above. **`R0275`'s six
+       losses to the security rules** closed through its own win over a rule
+       of `ACCOUNT_MANAGER`, by a chain no point sees.
+
+     [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md),
+     *One thing the last reading left free*.
 
    All three are read above.
 

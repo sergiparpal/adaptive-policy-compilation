@@ -1672,6 +1672,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m ranked.twins                         # POST-RUN: one region under two queues
     PYTHONHASHSEED=0 python3 -m ranked.copies                        # POST-RUN: copies of the same queue, and what they cost
     PYTHONHASHSEED=0 python3 -m ranked.asked                         # POST-RUN: why L's twins are born at the conflicts it asks about
+    PYTHONHASHSEED=0 python3 -m ranked.sides                         # POST-RUN: why the copies' declared sides closed cycles
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, never side by side
 
@@ -1793,6 +1794,16 @@ another queue standing at the ticket, almost always wrong. **A clause on the
 rule that stood can be met by its queue**: the twin itself was often beaten at
 the ticket, and another rule of its queue stood there. Read the queue beside
 the rule before betting on the rule.
+
+**Read POST-RUN, a copy's declared sides closed cycles by the order in which
+the loop installs them.** Its wins, tried first, could only close through an
+older rule nested in its region, which beats its original too: a refused win
+contradicts the order the base held for its original, by construction. Its
+losses, tried after, closed mostly through a win the same answer had installed
+first, as `corrections/fall.py` found in L. Most of those cycles are real: a
+point the two rules share sees them. **Read what the order of installation
+settles before banding it**: a clause on it reads the loop's code, not its
+records.
 
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
