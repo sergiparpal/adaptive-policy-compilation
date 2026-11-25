@@ -108,3 +108,6 @@ results_corrections/*.partial.jsonl
 # And the smoke runs, the runs and the at-once sessions of PLAN_RANKED.md
 # (ranked/run.py, ranked/ask.py).
 results_ranked/*.partial.jsonl
+# And the smoke run, the passes and the rarest queue's session of PLAN_CAUSE.md
+# (cause/ask.py).
+results_cause/*.partial.jsonl

@@ -1211,6 +1211,9 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > | `ranked/run.py` | `results_ranked/loop_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `ranked/ask.py` | `results_ranked/atonce_*.json` | **yes** — and it refuses while the plan is unsigned |
 > | `ranked/score.py` | `results_ranked/score.json` | **refuses while the plan is unsigned** |
+> | `cause/sample.py` | `results_cause/sample.json` | **refuses while the plan is unsigned** |
+> | `cause/ask.py` | `results_cause/ask_*.json` | **yes** — and it refuses while the plan is unsigned |
+> | `cause/score.py` | `results_cause/score.json` | **refuses while the plan is unsigned** |
 > | `corrections/forgotten.py` | `results_corrections/forgotten.json` | **refuses while the plan is unsigned** |
 > | `corrections/broad.py` | `results_corrections/broad.json` | **refuses while the plan is unsigned** |
 > | `corrections/fall.py` | `results_corrections/fall.json` | **refuses while the plan is unsigned** |
