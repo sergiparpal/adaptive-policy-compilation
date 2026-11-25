@@ -748,6 +748,14 @@ scoreboard reads the bands `PLAN_WHY.md` set on a development set.
   §2). They say which account each answer gives, and that the account goes with
   the class on a held-out set. They do not say that the account caused the
   class.
+  > **[ERRATUM 2026-11-25] The words in quotation marks are a paraphrase, not
+  > `EXTERNAL_REVIEW.md`'s text.** No sentence of that document says them. Its
+  > §2, *The synthesis neither side stated*, says under *And the mechanism is
+  > named* how often the proposer names the broader rule, *"against what its
+  > own explanations say"*. Those are its words.
+  > [`PLAN_HALVES.md`](../PLAN_HALVES.md) §0, *What the three documents say*,
+  > quotes them so, under the paraphrase as an unquoted heading. The bullet's
+  > reading does not rest on the quotation. No figure and no verdict moves.
 
 ### What it does not settle
 
