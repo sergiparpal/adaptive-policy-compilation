@@ -4,9 +4,11 @@
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
 any figure named here exists, in its own commit, staged by name. That includes
-Stage A, which spends nothing: §10 says why. **This is a first draft.** §2 holds
-the choices that are Sergi's, and §§5 to 11 will be completed against the
-package once he has made them. Each later correction is dated in place.
+Stage A, which spends nothing: §10 says why. **Sergi chose §2's recommendations
+on 2026-11-25**, as drafted, and the same day chose §2.5, which carried none:
+the agent launches the sessions, through a supervisor. §§5 to 11 are written
+against the package, `cause/`, and §0 says what writing it showed. Each later
+correction is dated in place.
 
 **Asked for by Sergi on 2026-11-25**, the day the drafter proposed it, after a
 reading of what the project leaves open. [`STATUS.md`](STATUS.md)'s *What is
@@ -176,6 +178,30 @@ Drafted, unsigned. One row is one event. **A band's edge is its own refutation
 line**, so band and refutation partition the axis and nothing can fall between
 them.
 
+**[Added before signature, 2026-11-25] What writing the package showed.** The
+package was written, and its checks run, before the signature, as §6 asks.
+
+- **`CA-g1` to `CA-g3` pass**, with the suite green, in `python3 -m cause.ask
+  --dry-run`. They print whether each check passes, and no figure.
+- **§0's three figures came back as declared.** Stage A's `figures` recomputed
+  them in memory, printed only which did not come back, none, and wrote
+  nothing. Figure 2's table now splits `PLAN_WHOLE.md`'s runs by arm, as the
+  loop groups `whole/paragraph.py` reads them do. The counts are the ones the
+  draft gave.
+- **The instrument came back.** Run over `PLAN_HALVES.md`'s closed records,
+  `halves/score.py` gave back that plan's six verdicts, fraction for fraction,
+  and its classes by arm. `halves/hidden.py`'s codebook gave back its counts on
+  that plan's pass 1. Only whether each agreed was printed.
+- **`e` and `v` are `PLAN_HALVES.md`'s prompts.** All 328 of their asks, the
+  passes' and the rarest queue's session's, carry the digests that plan's Stage A
+  record froze and its sessions asked.
+- **Stage C's scorer ran only on what nobody answered.** It read rows written by
+  hand, and one rule written by hand at every ask of every session. No answer of
+  the model was classed for this plan, and no reference class was printed.
+- **No rule of §0 changed.** The asker's validity flag is `cause/plan.py`'s
+  `valid`, which is §0's, and the scorer calls the same function. So the two
+  cannot part as `PLAN_HALVES.md`'s did.
+
 **The surface is the corpus, and the population is `PLAN_HALVES.md`'s.**
 
 - **Every figure is about tickets of `generate_corpus(2000, seed=17)`** that a
@@ -254,9 +280,9 @@ scorer, which is where `PLAN_AUTHORSHIP.md`'s `E-c` lost its verdict.
   lose.
 - **A row with no value is unadjudicable**, and the record says so.
 
-**What the sessions' commits may show.** If the agent launches the sessions
-(§2.5), a supervisor commits each record with a message written from it. It may
-give each session's asks, failures, retries and seconds, which no row reads. No
+**What the sessions' commits may show.** The agent launches the sessions
+(§2.5), and a supervisor commits each record with a message written from it. It
+may give each session's asks, failures, retries and seconds, which no row reads. No
 message gives a class, a share, a code or a row, and none is computed before
 Stage C.
 
@@ -402,6 +428,14 @@ had not written any record of `PLAN_HALVES.md`'s thread. In that session it read
     pattern for a row.
   - **Level 3's system prompt**, as `PLAN_HALVES.md`'s Stage A record keeps it,
     printed whole but for 27 of its 29 rules.
+  - **[Added before signature, 2026-11-25] While writing the package**:
+    `halves/plan.py`, `population.py`, `ask.py`, `gates.py`, `sample.py` and
+    `score.py`, whole; `halves/hidden.py`'s codebook, `codes`, `answer`,
+    `development` and `gates`; `tests/test_halves.py`, whole; `whole/paragraph.py`'s
+    `loop_paths`, `RIGHT_OUT` and `classed`; `first_match/ask.py`'s `served_by` and
+    `reasoned`; and the registries `PLAN_HALVES.md`'s package touched. The keys of
+    one row of `PLAN_HALVES.md`'s pass 1, and of its record, were printed. No
+    answer's class was.
 - **The three analytical documents `CLAUDE.md` asks a new one to read first.** A
   subagent of the drafter read `ARBITRATION_REPORT.md`, `CHAT_SUMMARY.md` and
   `EXTERNAL_REVIEW.md` whole for this plan on 2026-11-25, with every dated
@@ -426,7 +460,8 @@ were seen before §0's lines were drawn.
    | `PLAN_REASONED_LOOP.md`'s arms `i` and `e` | Baidu | 6 | 248 | 135 | 1 | 112 |
    | `PLAN_CHANNEL.md`'s arms `c` and `e` | Baidu | 6 | 275 | 134 | 7 | 134 |
    | `PLAN_PLACEMENT.md`'s v1b and v1c | DeepInfra | 6 | 264 | 149 | 6 | 109 |
-   | `PLAN_WHOLE.md`'s v1c and v1d | DeepInfra | 6 | 246 | 133 | 10 | 103 |
+   | `PLAN_WHOLE.md`'s v1c | DeepInfra | 3 | 141 | 86 | 6 | 49 |
+   | `PLAN_WHOLE.md`'s v1d | DeepInfra | 3 | 105 | 47 | 4 | 54 |
 
    - **By ticket, over the 24 runs.** All 136 were escalated. 63 met an impasse
      at least once, 108 a reported error and 17 a conflict.
@@ -675,7 +710,7 @@ reasoning on at high effort and 16,000 tokens. The same count as
 
 ## 2. The choices that have to be made at signature time
 
-### 2.1 The four texts — Sergi's to approve; the drafter recommends them as written
+### 2.1 The four texts — Sergi chose them as written on 2026-11-25
 
 Each stands where the base would be, at the head of the first call's user
 message. `rung2.proposers2.user_msg` appends the ticket after it, under *"TICKET
@@ -757,7 +792,7 @@ would read without it, and would no longer be the loop's paragraph.
   name. It is `PLAN_CORRECTIONS.md`'s question at another level, and the drafter
   recommends against it here.
 
-### 2.2 The tickets — the drafter recommends `PLAN_HALVES.md`'s 136
+### 2.2 The tickets — Sergi chose `PLAN_HALVES.md`'s 136 on 2026-11-25
 
 - **Why these.** `v` and `e` are then that plan's prompts, byte for byte, at every
   ticket. `CA-a` reads today's `v` against them, and `CA-g` today's `e`, so the
@@ -769,7 +804,7 @@ would read without it, and would no longer be the loop's paragraph.
   (`PLAN_HALVES.md` §0). It adds tickets no plan has asked under `e`, and four
   times the asks.
 
-### 2.3 Two passes, then the rarest queue's session — the drafter recommends it
+### 2.3 Two passes, then the rarest queue's session — Sergi chose it on 2026-11-25
 
 Pass 1, then pass 2, each asking the 544 prompts once, in its own seeded order,
 the arms interleaved. Then the rarest queue's session asks the 28 prompts at
@@ -787,19 +822,20 @@ by side.
   a prompt: about 690 asks, some 14 hours. *Thin* then reads the error alone,
   and `CA-a` reads one answer a ticket.
 
-### 2.4 The smoke run — the drafter recommends two tickets an arm
+### 2.4 The smoke run — Sergi chose two tickets an arm on 2026-11-25
 
 Eight asks: for each arm two tickets, drawn at a fixed seed from `T` outside
 `T₇`. It checks the pin, the texts, the records and the resume, and measures the
 price and the pace. No row reads its answers.
 
-### 2.5 Where the sessions are launched — Sergi's choice; the drafter has no recommendation
+### 2.5 Where the sessions are launched — Sergi chose the agent, through a supervisor, on 2026-11-25
 
-In Sergi's terminal, or by the agent through a supervisor detached from the
-agent's harness, one session at a time, as `PLAN_HALVES.md` §2.5 allowed. A pass
-lasts many hours, longer than a background command of the agent's harness
-survives, and a detached supervisor dies with WSL (`IDEAS.md`, *What
-`PLAN_HALVES.md` opens*).
+By the agent, through a supervisor detached from the agent's harness, one
+session at a time, as `PLAN_HALVES.md` §2.5 allowed. A pass lasts many hours,
+longer than a background command of the agent's harness survives, and a
+detached supervisor dies with WSL (`IDEAS.md`, *What `PLAN_HALVES.md` opens*).
+The drafter offered this choice with no recommendation. §8 says what the
+supervisor does.
 
 ### 2.6 The pin is DeepInfra's fp8 endpoint, with no bridge — by the rule agreed on 2026-11-06
 
@@ -819,7 +855,7 @@ DeepInfra met no refusal for the rate in `PLAN_HALVES.md`'s sessions.
 All are `PLAN_HALVES.md`'s, called and not changed, with `placement/plan.py`'s
 pin.
 
-### 2.8 The report that says why, at level 1 or 2 — the drafter recommends a plan of its own
+### 2.8 The report that says why, at level 1 or 2 — Sergi chose a plan of its own on 2026-11-25
 
 `IDEAS.md`'s *What `PLAN_RANKED.md` opens* carries a second lever on the births,
 *a report that says why*. At level 1, told only the right queue at a keyword
@@ -920,66 +956,215 @@ and its record will own them.
   Verdicts are fractions. A check that compares a recomputed float with a record
   uses a tolerance.
 
-*To be completed against the package.*
+**[Added before signature, 2026-11-25] Found writing the package.**
+
+- **`e`'s and `v`'s asks carry `PLAN_HALVES.md`'s names**, `v:710` and `e:710#3`,
+  and its digests. So a record of one plan could be read for the other's by its
+  ids. Each record carries its plan, its texts' digests and its fingerprint, and
+  `cause/ask.py`'s `under_protocol` refuses a record made under another protocol,
+  before a session or Stage C reads it.
+- **The checks read `PLAN_HALVES.md`'s answers**, to hold the instrument to that
+  plan's records (`CA-g2`). They print whether each agrees, and no class or
+  share. Stage A writes those answers' classes and codes as references, after
+  the signature.
+- **The checks may not name the record guard.** `tests/test_writer_lists.py`
+  counts a module that names it as a writer. `CA-g3` reads the ignored partial
+  files instead, as `PLAN_HALVES.md`'s checks did.
+- **The asker imports the checks**, so the check on the asker's validity flag
+  imports the asker inside its own function, and builds a row with the asker's
+  own `row_of`.
 
 ---
 
 ## 6. Blocking checks, before any record is written
 
-*To be completed against the package*, as `PLAN_HALVES.md`'s `HV-g1` to `HV-g4`:
+`cause/gates.py`. They run before any record of the plan is written, and any
+failure stops the plan before a figure exists. They print whether each check
+passes, and no figure of any plan.
 
-- **`CA-g1`, the texts.** Every arm's message at every ticket is `user_msg` over
-  its paragraph. `v`'s and `e`'s are `PLAN_HALVES.md`'s recorded prompts, by each
-  record's digests, at every ticket. `i` and `r` differ from `v` exactly as §2.1
-  says, and `r`'s notice is `corrections.protocol.REPORT` up to its last
-  sentence. The system prompt is level 3's, by digest.
-- **`CA-g2`, the request and the instrument.** The request is `PLAN_HALVES.md`'s,
-  with DeepInfra's pin. No module on the asker's path reads a label, by its names
-  and its string literals, as `N-g2` reads them. The classes give back
-  `PLAN_HALVES.md`'s Stage C figures, and the codebook `halves/hidden.py`'s
-  counts, from the closed records, before they read anything new.
-- **`CA-g3`, the design.** The 136 tickets, the 544 prompts, the passes' seeded
-  orders, the rarest queue's session and the smoke run's draw; the record guard;
-  a resumed record keeping each call's own seconds; and the asker's validity
-  flag on an empty object.
+- **`CA-g1`, the texts.**
+  - **`e` and `v` are `PLAN_HALVES.md`'s.** At every one of their 328 asks, the
+    digest that plan's Stage A record froze, and its three sessions' 600 rows of
+    `e` and `v` asked. That record's system prompt and paragraphs are this plan's.
+  - **`v` is the loop's first call**, `reasoned_loop.protocol.messages_for`, at
+    every ticket.
+  - **The notices.** `i` and `r` are `v`, a blank line and their notice, as
+    `corrections.protocol.base_text` sets its report at every queue. The review
+    notice is `REPORT` up to the sentence that names the queue, with one newline
+    in place of one space. Neither notice names a queue or a rule, or keeps a
+    placeholder, and the four paragraphs differ.
+  - **One paragraph apart.** Every arm's user message is `v`'s with the paragraph
+    replaced, under the loop's system prompt, and every repetition asks its
+    prompt's messages.
+  - **No builder takes a row, and the digests have teeth**: a changed character
+    moves one.
+  - **The suite is green.**
+- **`CA-g2`, the request and the instrument.**
+  - **The request** is `PLAN_HALVES.md`'s, `placement.protocol.request_with` over
+    the loop's request with DeepInfra's pin, on the first attempt and on a retry.
+    That plan's three session records carry the same model, temperature,
+    settings and pin.
+  - **No module on the asker's path names a label**, in a name or a string
+    literal, as `N-g2` reads them: `cause/plan.py`, `prompts.py`,
+    `population.py` and `ask.py`.
+  - **The instrument gives back `PLAN_HALVES.md`'s records.** `halves/score.py`,
+    run over that plan's records, gives back its six verdicts, fraction for
+    fraction, and its classes by arm. `halves/hidden.py`'s codebook gives back
+    its counts on that plan's pass 1. The standard errors are floats, and are not
+    compared.
+- **`CA-g3`, the design.**
+  - **The tickets** are `PLAN_HALVES.md`'s, as its Stage A record keeps them, and
+    every one met a cause in the 24 runs. The seven are the corpus's tickets of
+    `ONCALL_ESCALATION` by level 3's list, read over the space.
+  - **The asks.** 544 prompts, 136 an arm; each pass every prompt once, in its
+    order rebuilt from `ORDER_SEED`; the rarest queue's session its 28 prompts
+    four times each; the smoke run two distinct prompts of each arm, outside the
+    seven.
+  - **The partial files are ignored by git.**
+  - **The asker's validity flag is §0's.** Built by the asker's own `row_of`, an
+    empty object and a rule from the pinned provider are valid. A failed call, a
+    payload that is not an object and another provider's answer are not.
 - **`CA-g4`, the signature.** The gate reads `PLAN_CAUSE.md` and no other plan,
-  and counts every signature line.
+  and counts every signature line. It does not block a dry run, which writes
+  nothing; it blocks every write.
+
+**What the tests pin, beside the checks** (`tests/test_cause.py`): the constants
+and the lines; the four texts byte for byte; the gate's verdicts on fake plans
+and the plan's count of signature lines, never whether it is signed; that every
+writer refuses unsigned before it builds, asks or writes; the request as the SDK
+double receives it; that a session keeps every attempt, the provider and the
+reasoning, never a label, and that an empty object is valid; that an interrupted
+session resumes where it stopped, every kept answer with its own seconds; that
+an outage or a rate limit through every wait stops a session unrecorded; and
+Stage C's statistics, errors, *thin* and no-value rules, on rows written by
+hand.
 
 ---
 
 ## 7. Stage A — the design and the references (free, gated)
 
-`T` and its governing rules; the texts, their digests and the fingerprint; the
-seeded orders. The references at `T`: `PLAN_HALVES.md`'s `v` and `e` answers,
-classed and coded, by ticket; `CA-a`'s comparator, ticket by ticket; the causes
-the loops met at each ticket; and the error the references carry. §0's three
-figures, recomputed.
+`cause/sample.py` writes `results_cause/sample.json`. It reads the closed
+records and level 3's list, and asks nothing.
+
+- **The design**: the 136 tickets, every ask with its digest, and the four
+  sessions in their orders; the texts, their digests and the fingerprint.
+- **Each ticket's governing rule and its queue**, through
+  `halves.sample.governing`, called.
+- **The references, ticket by ticket.**
+  - **`PLAN_HALVES.md`'s `e` and `v`**: every answer of its two passes and its
+    rarest queue's session, valid as that plan's §0 reads it, classed as its
+    Stage C classed it, and coded by the codebook where it names the right queue
+    and a valid rule.
+  - **`CA-a`'s comparator**: that plan's `v` at each ticket, over its two passes.
+  - **The causes** the reasoning loops met at each ticket, by loop group.
+- **§0's three figures, recomputed**, and which of them did not come back.
+
+    python3 -m cause.sample --dry-run
+    PYTHONHASHSEED=0 python3 -m cause.sample
 
 ## 8. Stage B — the asks (gated on §0)
 
-The smoke run, then pass 1, pass 2 and the rarest queue's session, in that order,
-one at a time.
+`cause/ask.py` writes `results_cause/ask_<session>.json`, one session at a time:
+the smoke run, then pass 1, pass 2 and the rarest queue's session.
+
+- **The order of events**: the signature; the turn, each session after the one
+  before it, and the passes after a smoke record whose every arm holds a valid
+  answer and whose every attempt that reached the model was served by the pin,
+  reasoned and ended `stop`; the key, read off OpenRouter's key endpoint, a
+  management key refused; `CA-g1` to `CA-g3`; Stage A's record holding the
+  design the checks rebuilt; the record guard; and only then the client.
+- **A session that dies keeps what it paid for**, in its partial file, and the
+  same command resumes there. Five failed asks in a row, or a refusal for the
+  rate through every wait, stop it unrecorded.
+- **Who launches them.** The agent, as Sergi chose (§2.5), through a supervisor
+  detached from the agent's harness.
+  - **What it does.** It runs the sessions one at a time, in the order above,
+    and commits each record alone, through the pre-commit hook.
+  - **Pushing.** It pushes each record to one pull request. It retries a push
+    that times out, and goes on if the push still fails: the next push carries
+    the commit.
+  - **Resuming.** It resumes a session an outage stopped. WSL stops the
+    supervisor with the session. The agent then relaunches it, and the session
+    resumes from its partial file, every kept answer with its own seconds.
+  - **What it never does.** It never passes the overwrite flag, never skips the
+    hook, and never merges: the merge waits for Sergi's word.
+  - **Checking it is up.** A check that matches its process by command line runs
+    apart from the command that launches it.
+  - **Its messages** tell a launch a blocking check refused, which kept nothing,
+    from one that resumed from the partial file.
+- **What the commits may show** (§0): each session's asks, failures, retries
+  and seconds, and no class, share, code or row.
+
+    python3 -m cause.ask --dry-run
+    PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session smoke
+    PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session pass1
+    PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session pass2
+    PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session oncall
 
 ## 9. Stage C — scoring, and the six adjudications (free)
 
-`CA-a` to `CA-f`, and `CA-g`.
+`cause/score.py` writes `results_cause/score.json`. It reads the three
+sessions' records, each under this protocol and holding its session's asks,
+and Stage A's record, whose design they must hold.
+
+- **Every answer** is valid as §0 reads it, through `cause/plan.py`'s `valid`;
+  classed by `whole/paragraph.py`'s `classed`; and coded by `halves/hidden.py`'s
+  `codes` where it names the right queue and a valid rule.
+- **`CA-a` to `CA-f`** by §0's statistics, errors, *thin* and no-value rules.
+  The shares, the contrast and its clustered error are `halves/score.py`'s,
+  called.
+- **`CA-g`**, everything §0's last row lists.
+
+    python3 -m cause.score --dry-run
+    PYTHONHASHSEED=0 python3 -m cause.score
 
 ---
 
 ## 10. The gate, and where the code lives
 
-*To be completed against the package.* A package of its own, `cause/`, which
-calls `halves/`, `corrections/`, `whole/`, `placement/`, `reasoned_loop/`,
-`first_match/` and the packages under them, and edits none of them. Its gate
-reads `PLAN_CAUSE.md` and no other plan, and counts every signature line. **The
-free stages get the gate too**: what it protects is the order of events, not
-money.
+A package of its own, `cause/`. It calls `halves/`, `corrections/`, `whole/`,
+`placement/`, `reasoned_loop/`, `first_match/`, `authorship/`, `escalations/`,
+`reuse/` and `rung2/`, and edits none of them.
+
+| module | what it holds | on the asker's path |
+|---|---|---|
+| `plan.py` | the gate, the constants, the lines, §0's validity, the paths | yes |
+| `prompts.py` | the four texts and the asks | yes |
+| `population.py` | the design: the asks and the sessions | yes |
+| `ask.py` | Stage B, through the loop's own first call | yes |
+| `gates.py` | `CA-g1` to `CA-g4` | no |
+| `sample.py` | Stage A | no |
+| `score.py` | Stage C | no |
+
+- **The gate** reads `PLAN_CAUSE.md` and no other plan, and counts every
+  signature line. Every writer calls it before it measures, builds or writes
+  anything, and `cause/ask.py` before it builds a client. **The free stages get
+  the gate too**: what it protects is the order of events, not money.
+- **The registries.** `cause` is among `harness/provenance.py`'s `CODE_ROOTS`.
+  `cause/prompts.py` and `cause/ask.py` are watched as the authority channel in
+  `tests/test_oracle_separation.py`. `cause/ask.py` is among the guarded writers
+  in `tests/test_writer_lists.py` and the README's table, with Stage A and Stage
+  C beside it. `.gitignore` ignores the partial files.
 
 ---
 
 ## 11. Definition of done
 
-*To be completed against the package.*
+1. **Before signature**: `CA-g1` to `CA-g3` pass with the suite green, §2.5 is
+   chosen, and the plan is committed alone, staged by name, then the package in
+   a commit of its own.
+2. **The signature**, Sergi's, in a commit of its own.
+3. **Stage A**, written after it, with §0's three figures back.
+4. **The smoke run**, whose check passes, and its bills read by generation id.
+5. **Pass 1, pass 2 and the rarest queue's session**, one at a time, each record
+   committed alone.
+6. **Stage C**, the six rows adjudicated as signed, and `CA-g` reported.
+7. **`results_cause/FINDINGS_CAUSE.md`**, which owns every figure, and the
+   indexes: `STATUS.md`'s scoreboard and *What is open*, `IDEAS.md`'s opening and
+   a section of what the plan opens, the README, `CLAUDE.md`'s paragraph and its
+   list of paid writers, and `tests/test_prose_tables.py`'s `THREADS`, with
+   `TABLES` if the FINDINGS has a verdict table.
+8. **This file closed in place**, with a banner that says how its rows came out.
 
 ---
 
@@ -992,7 +1177,7 @@ money.
    decides its ticket is that plan's to read.
 2. **Why a notice works or does not.** The notes and the reasoning are recorded
    whole. `CA-f` reads one frozen code, and no stage writes another.
-3. **The conflict notice**, unless §2.1's alternative is chosen.
+3. **The conflict notice**, which §2.1 leaves out.
 4. **The report that says why, at level 1 or 2** (§2.8), and a first call shown
    the rule that erred, which `PLAN_CORRECTIONS.md`'s readings named.
 5. **Which of the hidden half's two sentences cuts**: that the base is not shown,
