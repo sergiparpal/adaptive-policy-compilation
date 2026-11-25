@@ -323,7 +323,7 @@ as `PLAN_HALVES.md` called it.
 | **CA-f** | **Told that no rule of the base matches its ticket, the first call names a conflict between two listed rules at least a fifth less often** | `B_v − B_i` | **≥ 1/5** | **< 1/5** |
 | **CA-g** | *Reported, not adjudicated.* **What the drafter could not band** | Each arm's `W` and `B` by pass and by session, pooled and by ticket, by governing rule and by true queue. `W_i` at the tickets where a DeepInfra loop met an impasse, and `W_r` where one met a reported error. `CA-e` and `CA-f`'s statistics under the other notice: `W_i⁷ − W_v⁷` and `B_v − B_r`. Every valid answer by class, and by breadth against its governing region: the region itself, wider, or neither. Each arm's share of answers of the wrong queue and of answers naming no valid rule. `halves/hidden.py`'s other codes by arm and class. How often a prompt's two answers in the passes share a class, by arm, and at `T₇` the spread of its six. Each arm's answers at each ticket of `T₇`, by class and by the rule a cut is by. How many answers declare `beats` or `loses_to`, and how many of those cite the manual's identifiers. `e` beside `PLAN_HALVES.md`'s `e`, ticket by ticket. The calls: providers, finish reasons, tokens, reasoning tokens over the attempts that reached the model, seconds, and retries by cause. The notes and the reasoning, recorded whole | — | — |
 
-**Signed by Sergi: ________ (date: ________)**
+**Signed by Sergi: Sergi Parpal (date: 2026-11-25)**
 
 **Why each row, and why these lines.**
 
