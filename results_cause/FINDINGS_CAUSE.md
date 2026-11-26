@@ -9,6 +9,8 @@ its own: `8fbc42f` on `main`.
   reached it in #309, merged on 2026-11-26.
 - **The POST-RUN reading of two things Stage C left free** reached it in
   #310, merged on 2026-11-26 at Sergi's word.
+- **The POST-RUN reading of one thing those two left free** reaches it in
+  #312.
 
 Every record names in its `_env` the commit it was written from. Five were
 written on the branch of #308, and the rebase merge gave each of those commits
@@ -51,8 +53,8 @@ POST-RUN reading of two things Stage C left free.
 
 **[NOTE 2026-11-26, last] And a third.** [`narrow.json`](narrow.json) is the
 POST-RUN reading of one thing those two left free.
-- **It was written from `482180e`**, on the branch `cause-narrow`: the commit
-  that adds the reading and its expectation.
+- **It was written from `482180e`**, on the branch of #312: the commit that
+  adds the reading and its expectation.
 - **Its code digest is `d7cf6d135e7fbc18`**, because `cause/narrow.py` was
   added after them. Its `_env` says `git_dirty`, for the same files, and
   `code_dirty` is false. The modules the two readings ran did not change.
@@ -710,7 +712,7 @@ call: why the model writes a narrowing instead of the missing default, its first
 item. This reading answers it on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m cause.narrow`, on 2026-11-26,
-from `482180e` with its code clean, on the branch `cause-narrow`.
+from `482180e` with its code clean, on the branch of #312.
 - **The commit.** `482180e` carries the reading and its expectation, written
   and committed before it ran on the held-out answers. Nothing was added after
   the run.
