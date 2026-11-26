@@ -1,0 +1,4799 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-26T07:35:10Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "56bfefc0fa1da2a9230629c9021f8147f25b4914",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "af3d8aae3b48e215"
+  },
+  "plan": "PLAN_CAUSE.md",
+  "stage": "C",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_CAUSE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_CAUSE.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "CA-g1": {
+      "what": "e and v are PLAN_HALVES.md's prompts and v the loop's first call; i and r are v and a notice as \u00a72.1 says, naming nothing; the arms differ in the paragraph alone; no builder takes a row; the digests have teeth; the suite green",
+      "e_and_v_are_the_halves": {
+        "asks": 328,
+        "departing": [],
+        "rows_read": 600,
+        "rows_departing": [],
+        "the_system_prompt": true,
+        "the_paragraphs": true,
+        "passes": true
+      },
+      "v_is_the_loops": {
+        "tickets": 136,
+        "departing": [],
+        "passes": true
+      },
+      "the_notices": {
+        "e_is_halves_e": true,
+        "v_is_halves_v_and_v2bs": true,
+        "i_is_v_a_blank_line_and_the_impasse_notice": true,
+        "r_is_v_a_blank_line_and_the_review_notice": true,
+        "set_as_the_report_is": true,
+        "the_review_notice_is_the_report_cut": true,
+        "the_four_differ": true,
+        "each_ends_its_line": true,
+        "no_notice_names_a_queue": true,
+        "no_notice_names_a_rule": true,
+        "no_notice_keeps_a_placeholder": true,
+        "passes": true
+      },
+      "one_paragraph_apart": {
+        "departing": [],
+        "repetitions": 112,
+        "repetitions_departing": [],
+        "passes": true
+      },
+      "builders": {
+        "parameters": {
+          "ask": [
+            "arm",
+            "ticket",
+            "case",
+            "rep"
+          ],
+          "paragraph": [
+            "arm"
+          ],
+          "system_prompt": [
+            "arm"
+          ],
+          "user_message": [
+            "arm",
+            "case"
+          ]
+        },
+        "passes": true
+      },
+      "digests": {
+        "digests": 544,
+        "collisions": [],
+        "one_changed_character_moves_the_digest": true,
+        "passes": true
+      },
+      "suite": {
+        "ran": true,
+        "tests": 3777,
+        "result": "OK (skipped=5)",
+        "seconds": 235.8,
+        "passes": true
+      },
+      "passes": true
+    },
+    "CA-g2": {
+      "what": "the request is PLAN_HALVES.md's with DeepInfra's pin, and its records sent it; the asker's path names no label; the classes and the codebook give back PLAN_HALVES.md's records",
+      "the_request": {
+        "first_attempt": true,
+        "a_retry": true,
+        "settings": true,
+        "the_pin": true,
+        "halves_records": 3,
+        "halves_records_sent_it": true,
+        "passes": true
+      },
+      "no_label_on_the_asker_path": {
+        "modules": [
+          "cause/plan.py",
+          "cause/prompts.py",
+          "cause/population.py",
+          "cause/ask.py"
+        ],
+        "forbidden_names": {},
+        "passes": true
+      },
+      "the_instrument": {
+        "verdicts": {
+          "HV-a": true,
+          "HV-b": true,
+          "HV-c": true,
+          "HV-d": true,
+          "HV-e": true,
+          "HV-f": true
+        },
+        "classes_by_arm": true,
+        "the_codebook": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "CA-g3": {
+      "what": "the tickets are PLAN_HALVES.md's and every one met a cause; the prompts, the passes, the rarest queue's session and the smoke run are \u00a72.3's; the partial files are ignored; the asker's flag is \u00a70's",
+      "the_tickets": {
+        "halves_tickets": true,
+        "the_seven": true,
+        "every_ticket_met_a_cause": true,
+        "loop_groups": true,
+        "passes": true
+      },
+      "asks_and_sessions": {
+        "prompts": {
+          "e": 136,
+          "v": 136,
+          "i": 136,
+          "r": 136
+        },
+        "repetitions": 112,
+        "rebuilt_from_the_seed": true,
+        "each_pass_holds_every_prompt_once": {
+          "pass1": true,
+          "pass2": true
+        },
+        "the_passes_differ": true,
+        "the_rarest_queues_session": true,
+        "its_repetitions": true,
+        "smoke": [
+          "e:855",
+          "v:75",
+          "v:1229",
+          "r:7",
+          "i:339",
+          "r:739",
+          "i:19",
+          "e:599"
+        ],
+        "smoke_two_distinct_of_each_arm_outside_the_seven": true,
+        "passes": true
+      },
+      "the_guard": {
+        "the_partial_files_are_ignored": true,
+        "passes": true
+      },
+      "the_askers_flag": {
+        "an_empty_object_is_valid": true,
+        "a_rule_is_valid": true,
+        "a_failed_call_is_not": true,
+        "a_string_is_not": true,
+        "another_provider_is_not": true,
+        "passes": true
+      },
+      "passes": true
+    },
+    "CA-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_CAUSE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_CAUSE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "sources": {
+    "pass1": "results_cause/ask_pass1.json",
+    "pass2": "results_cause/ask_pass2.json",
+    "oncall": "results_cause/ask_oncall.json"
+  },
+  "verdicts": {
+    "CA-a": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "-7/270",
+        "value": -0.025925925925925925
+      },
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds_at": "within",
+      "se": 0.032543935739458435,
+      "thin": false,
+      "why": null,
+      "by_pass": {
+        "pass1": {
+          "fraction": "-7/260",
+          "value": -0.026923076923076925
+        },
+        "pass2": {
+          "fraction": "-7/264",
+          "value": -0.026515151515151516
+        }
+      },
+      "tickets": 135,
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      }
+    },
+    "CA-b": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "9857/23496",
+        "value": 0.4195182158665305
+      },
+      "line": {
+        "fraction": "1/5",
+        "value": 0.2
+      },
+      "holds_at": ">=",
+      "se": 0.035622551418111784,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "e": {
+          "fraction": "200/267",
+          "value": 0.7490636704119851
+        },
+        "v": {
+          "fraction": "29/88",
+          "value": 0.32954545454545453
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "354/917",
+          "value": 0.386041439476554
+        },
+        "pass2": {
+          "fraction": "8069/17822",
+          "value": 0.4527550218830659
+        }
+      }
+    },
+    "CA-c": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "2621767/11607024",
+        "value": 0.22587762375609804
+      },
+      "line": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "holds_at": ">=",
+      "se": 0.03453337520287721,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "i": {
+          "fraction": "189/247",
+          "value": 0.7651821862348178
+        },
+        "e": {
+          "fraction": "200/267",
+          "value": 0.7490636704119851
+        },
+        "v": {
+          "fraction": "29/88",
+          "value": 0.32954545454545453
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "gap": {
+        "fraction": "9857/23496",
+        "value": 0.4195182158665305
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "28282/114625",
+          "value": 0.24673500545256272
+        },
+        "pass2": {
+          "fraction": "445925/2174284",
+          "value": 0.20509050335650725
+        }
+      }
+    },
+    "CA-d": {
+      "verdict": "refuted",
+      "value": {
+        "fraction": "18/247",
+        "value": 0.0728744939271255
+      },
+      "line": {
+        "fraction": "1/10",
+        "value": 0.1
+      },
+      "holds_at": ">=",
+      "se": 0.13504922129573754,
+      "thin": true,
+      "why": null,
+      "shares": {
+        "i": {
+          "fraction": "189/247",
+          "value": 0.7651821862348178
+        },
+        "r": {
+          "fraction": "9/13",
+          "value": 0.6923076923076923
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "-29/125",
+          "value": -0.232
+        },
+        "pass2": {
+          "fraction": "16/61",
+          "value": 0.26229508196721313
+        }
+      }
+    },
+    "CA-e": {
+      "verdict": "unadjudicable",
+      "why": "fewer than five of its tickets carry both arms",
+      "value": null,
+      "line": {
+        "fraction": "1/5",
+        "value": 0.2
+      },
+      "holds_at": ">=",
+      "se": null,
+      "thin": false,
+      "shares": {
+        "r": {
+          "fraction": "1/3",
+          "value": 0.3333333333333333
+        },
+        "v": {
+          "fraction": "5/14",
+          "value": 0.35714285714285715
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "tickets_with_both": 2
+    },
+    "CA-f": {
+      "verdict": "holds",
+      "value": {
+        "fraction": "11113/16302",
+        "value": 0.6816954974849712
+      },
+      "line": {
+        "fraction": "1/5",
+        "value": 0.2
+      },
+      "holds_at": ">=",
+      "se": 0.02992310206974577,
+      "thin": false,
+      "why": null,
+      "shares": {
+        "v": {
+          "fraction": "49/66",
+          "value": 0.7424242424242424
+        },
+        "i": {
+          "fraction": "15/247",
+          "value": 0.06072874493927125
+        }
+      },
+      "invalid_share": {
+        "fraction": "0",
+        "value": 0.0
+      },
+      "by_pass": {
+        "pass1": {
+          "fraction": "10952/16375",
+          "value": 0.6688244274809161
+        },
+        "pass2": {
+          "fraction": "11269/16226",
+          "value": 0.6945026500677924
+        }
+      }
+    }
+  },
+  "CA-g": {
+    "W": {
+      "e": {
+        "pooled": {
+          "fraction": "200/267",
+          "value": 0.7490636704119851
+        },
+        "ticket_weighted": {
+          "fraction": "101/136",
+          "value": 0.7426470588235294
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "5/7",
+            "value": 0.7142857142857143
+          },
+          "pass2": {
+            "fraction": "105/134",
+            "value": 0.7835820895522388
+          }
+        },
+        "at_the_seven": {
+          "fraction": "5/7",
+          "value": 0.7142857142857143
+        }
+      },
+      "v": {
+        "pooled": {
+          "fraction": "29/88",
+          "value": 0.32954545454545453
+        },
+        "ticket_weighted": {
+          "fraction": "87/272",
+          "value": 0.31985294117647056
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "43/131",
+            "value": 0.3282442748091603
+          },
+          "pass2": {
+            "fraction": "44/133",
+            "value": 0.3308270676691729
+          }
+        },
+        "at_the_seven": {
+          "fraction": "5/14",
+          "value": 0.35714285714285715
+        }
+      },
+      "i": {
+        "pooled": {
+          "fraction": "189/247",
+          "value": 0.7651821862348178
+        },
+        "ticket_weighted": {
+          "fraction": "98/129",
+          "value": 0.7596899224806202
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "96/125",
+            "value": 0.768
+          },
+          "pass2": {
+            "fraction": "93/122",
+            "value": 0.7622950819672131
+          }
+        },
+        "at_the_seven": {
+          "fraction": "20/21",
+          "value": 0.9523809523809523
+        }
+      },
+      "r": {
+        "pooled": {
+          "fraction": "9/13",
+          "value": 0.6923076923076923
+        },
+        "ticket_weighted": {
+          "fraction": "2/3",
+          "value": 0.6666666666666666
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "1",
+            "value": 1.0
+          },
+          "pass2": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        },
+        "at_the_seven": {
+          "fraction": "1/3",
+          "value": 0.3333333333333333
+        }
+      }
+    },
+    "B": {
+      "e": {
+        "pooled": {
+          "fraction": "24/89",
+          "value": 0.2696629213483146
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "37/133",
+            "value": 0.2781954887218045
+          },
+          "pass2": {
+            "fraction": "35/134",
+            "value": 0.26119402985074625
+          }
+        }
+      },
+      "v": {
+        "pooled": {
+          "fraction": "49/66",
+          "value": 0.7424242424242424
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "96/131",
+            "value": 0.732824427480916
+          },
+          "pass2": {
+            "fraction": "100/133",
+            "value": 0.7518796992481203
+          }
+        }
+      },
+      "i": {
+        "pooled": {
+          "fraction": "15/247",
+          "value": 0.06072874493927125
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "8/125",
+            "value": 0.064
+          },
+          "pass2": {
+            "fraction": "7/122",
+            "value": 0.05737704918032787
+          }
+        }
+      },
+      "r": {
+        "pooled": {
+          "fraction": "3/13",
+          "value": 0.23076923076923078
+        },
+        "by_pass": {
+          "pass1": {
+            "fraction": "1/5",
+            "value": 0.2
+          },
+          "pass2": {
+            "fraction": "1/4",
+            "value": 0.25
+          }
+        }
+      }
+    },
+    "under_the_other_notice": {
+      "W_i7_less_W_v7": {
+        "fraction": "25/42",
+        "value": 0.5952380952380952
+      },
+      "B_v_less_B_r": {
+        "fraction": "439/858",
+        "value": 0.5116550116550117
+      }
+    },
+    "where_the_loops_met_the_cause": {
+      "i_where_impasse": {
+        "tickets": 54,
+        "i": {
+          "fraction": "75/104",
+          "value": 0.7211538461538461
+        },
+        "v": {
+          "fraction": "21/53",
+          "value": 0.39622641509433965
+        },
+        "e": {
+          "fraction": "82/107",
+          "value": 0.7663551401869159
+        }
+      },
+      "r_where_error": {
+        "tickets": 63,
+        "r": {
+          "fraction": "1/2",
+          "value": 0.5
+        },
+        "v": {
+          "fraction": "43/121",
+          "value": 0.35537190082644626
+        },
+        "e": {
+          "fraction": "92/121",
+          "value": 0.7603305785123967
+        }
+      }
+    },
+    "classes": {
+      "e": {
+        "whole": 200,
+        "wrong_queue": 5,
+        "other": 32,
+        "cut_by_one": 35
+      },
+      "v": {
+        "cut_by_one": 87,
+        "other": 88,
+        "whole": 87,
+        "wrong_queue": 8,
+        "cut_by_two": 2
+      },
+      "i": {
+        "whole": 189,
+        "other": 50,
+        "wrong_queue": 25,
+        "cut_by_one": 8
+      },
+      "r": {
+        "wrong_queue": 259,
+        "whole": 9,
+        "other": 2,
+        "cut_by_one": 2
+      }
+    },
+    "wrong_queue_and_no_rule": {
+      "e": {
+        "valid": 272,
+        "wrong_queue": 5,
+        "no_rule": 0
+      },
+      "v": {
+        "valid": 272,
+        "wrong_queue": 8,
+        "no_rule": 0
+      },
+      "i": {
+        "valid": 272,
+        "wrong_queue": 25,
+        "no_rule": 0
+      },
+      "r": {
+        "valid": 272,
+        "wrong_queue": 259,
+        "no_rule": 0
+      }
+    },
+    "codes_by_class": {
+      "e": {
+        "cut": {
+          "answers": 35,
+          "CONFLICT": 34,
+          "BETWEEN": 25,
+          "EMPTY": 26,
+          "HIDDEN": 0,
+          "INSIDE": 27,
+          "RESOLVES": 20
+        },
+        "other": {
+          "answers": 32,
+          "CONFLICT": 26,
+          "BETWEEN": 15,
+          "EMPTY": 23,
+          "HIDDEN": 0,
+          "INSIDE": 15,
+          "RESOLVES": 12
+        },
+        "whole": {
+          "answers": 200,
+          "CONFLICT": 90,
+          "BETWEEN": 32,
+          "EMPTY": 199,
+          "HIDDEN": 0,
+          "INSIDE": 14,
+          "RESOLVES": 32
+        }
+      },
+      "i": {
+        "cut": {
+          "answers": 8,
+          "CONFLICT": 3,
+          "BETWEEN": 3,
+          "EMPTY": 2,
+          "HIDDEN": 8,
+          "INSIDE": 5,
+          "RESOLVES": 1
+        },
+        "other": {
+          "answers": 50,
+          "CONFLICT": 7,
+          "BETWEEN": 0,
+          "EMPTY": 9,
+          "HIDDEN": 48,
+          "INSIDE": 10,
+          "RESOLVES": 3
+        },
+        "whole": {
+          "answers": 189,
+          "CONFLICT": 28,
+          "BETWEEN": 12,
+          "EMPTY": 38,
+          "HIDDEN": 189,
+          "INSIDE": 39,
+          "RESOLVES": 17
+        }
+      },
+      "r": {
+        "cut": {
+          "answers": 2,
+          "CONFLICT": 0,
+          "BETWEEN": 1,
+          "EMPTY": 0,
+          "HIDDEN": 1,
+          "INSIDE": 1,
+          "RESOLVES": 1
+        },
+        "other": {
+          "answers": 2,
+          "CONFLICT": 0,
+          "BETWEEN": 0,
+          "EMPTY": 0,
+          "HIDDEN": 1,
+          "INSIDE": 1,
+          "RESOLVES": 1
+        },
+        "whole": {
+          "answers": 9,
+          "CONFLICT": 5,
+          "BETWEEN": 2,
+          "EMPTY": 0,
+          "HIDDEN": 6,
+          "INSIDE": 4,
+          "RESOLVES": 1
+        }
+      },
+      "v": {
+        "cut": {
+          "answers": 89,
+          "CONFLICT": 86,
+          "BETWEEN": 74,
+          "EMPTY": 1,
+          "HIDDEN": 6,
+          "INSIDE": 61,
+          "RESOLVES": 52
+        },
+        "other": {
+          "answers": 88,
+          "CONFLICT": 87,
+          "BETWEEN": 54,
+          "EMPTY": 5,
+          "HIDDEN": 29,
+          "INSIDE": 56,
+          "RESOLVES": 27
+        },
+        "whole": {
+          "answers": 87,
+          "CONFLICT": 86,
+          "BETWEEN": 68,
+          "EMPTY": 1,
+          "HIDDEN": 50,
+          "INSIDE": 31,
+          "RESOLVES": 26
+        }
+      }
+    },
+    "by_governing_rule": {
+      "H01": {
+        "e": {
+          "whole": 14,
+          "right_queue": 18,
+          "share": {
+            "fraction": "7/9",
+            "value": 0.7777777777777778
+          }
+        },
+        "i": {
+          "whole": 16,
+          "right_queue": 18,
+          "share": {
+            "fraction": "8/9",
+            "value": 0.8888888888888888
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 8,
+          "right_queue": 18,
+          "share": {
+            "fraction": "4/9",
+            "value": 0.4444444444444444
+          }
+        }
+      },
+      "H02": {
+        "e": {
+          "whole": 13,
+          "right_queue": 20,
+          "share": {
+            "fraction": "13/20",
+            "value": 0.65
+          }
+        },
+        "i": {
+          "whole": 16,
+          "right_queue": 19,
+          "share": {
+            "fraction": "16/19",
+            "value": 0.8421052631578947
+          }
+        },
+        "r": {
+          "whole": 0,
+          "right_queue": 1,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "v": {
+          "whole": 6,
+          "right_queue": 20,
+          "share": {
+            "fraction": "3/10",
+            "value": 0.3
+          }
+        }
+      },
+      "H03": {
+        "e": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        },
+        "i": {
+          "whole": 8,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 0,
+          "right_queue": 8,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        }
+      },
+      "H04": {
+        "e": {
+          "whole": 6,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/4",
+            "value": 0.75
+          }
+        },
+        "i": {
+          "whole": 6,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/4",
+            "value": 0.75
+          }
+        },
+        "v": {
+          "whole": 1,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1/8",
+            "value": 0.125
+          }
+        }
+      },
+      "H05": {
+        "e": {
+          "whole": 5,
+          "right_queue": 6,
+          "share": {
+            "fraction": "5/6",
+            "value": 0.8333333333333334
+          }
+        },
+        "i": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        }
+      },
+      "H07": {
+        "e": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "i": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 1,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H08": {
+        "e": {
+          "whole": 14,
+          "right_queue": 17,
+          "share": {
+            "fraction": "14/17",
+            "value": 0.8235294117647058
+          }
+        },
+        "i": {
+          "whole": 6,
+          "right_queue": 14,
+          "share": {
+            "fraction": "3/7",
+            "value": 0.42857142857142855
+          }
+        },
+        "v": {
+          "whole": 1,
+          "right_queue": 17,
+          "share": {
+            "fraction": "1/17",
+            "value": 0.058823529411764705
+          }
+        }
+      },
+      "H09": {
+        "e": {
+          "whole": 7,
+          "right_queue": 8,
+          "share": {
+            "fraction": "7/8",
+            "value": 0.875
+          }
+        },
+        "i": {
+          "whole": 8,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        }
+      },
+      "H10": {
+        "e": {
+          "whole": 5,
+          "right_queue": 6,
+          "share": {
+            "fraction": "5/6",
+            "value": 0.8333333333333334
+          }
+        },
+        "i": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "H11": {
+        "e": {
+          "whole": 4,
+          "right_queue": 4,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "i": {
+          "whole": 4,
+          "right_queue": 4,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 4,
+          "share": {
+            "fraction": "3/4",
+            "value": 0.75
+          }
+        }
+      },
+      "H12": {
+        "e": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        },
+        "i": {
+          "whole": 5,
+          "right_queue": 8,
+          "share": {
+            "fraction": "5/8",
+            "value": 0.625
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        }
+      },
+      "H13": {
+        "e": {
+          "whole": 8,
+          "right_queue": 8,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "i": {
+          "whole": 7,
+          "right_queue": 8,
+          "share": {
+            "fraction": "7/8",
+            "value": 0.875
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 8,
+          "share": {
+            "fraction": "3/8",
+            "value": 0.375
+          }
+        }
+      },
+      "H14": {
+        "e": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "i": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H15": {
+        "e": {
+          "whole": 8,
+          "right_queue": 10,
+          "share": {
+            "fraction": "4/5",
+            "value": 0.8
+          }
+        },
+        "i": {
+          "whole": 10,
+          "right_queue": 10,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 0,
+          "right_queue": 2,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "v": {
+          "whole": 5,
+          "right_queue": 10,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H16": {
+        "e": {
+          "whole": 21,
+          "right_queue": 28,
+          "share": {
+            "fraction": "3/4",
+            "value": 0.75
+          }
+        },
+        "i": {
+          "whole": 22,
+          "right_queue": 24,
+          "share": {
+            "fraction": "11/12",
+            "value": 0.9166666666666666
+          }
+        },
+        "v": {
+          "whole": 8,
+          "right_queue": 29,
+          "share": {
+            "fraction": "8/29",
+            "value": 0.27586206896551724
+          }
+        }
+      },
+      "H17": {
+        "e": {
+          "whole": 6,
+          "right_queue": 9,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "i": {
+          "whole": 10,
+          "right_queue": 10,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 8,
+          "right_queue": 10,
+          "share": {
+            "fraction": "4/5",
+            "value": 0.8
+          }
+        }
+      },
+      "H18": {
+        "e": {
+          "whole": 19,
+          "right_queue": 31,
+          "share": {
+            "fraction": "19/31",
+            "value": 0.6129032258064516
+          }
+        },
+        "i": {
+          "whole": 17,
+          "right_queue": 21,
+          "share": {
+            "fraction": "17/21",
+            "value": 0.8095238095238095
+          }
+        },
+        "r": {
+          "whole": 0,
+          "right_queue": 1,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "v": {
+          "whole": 4,
+          "right_queue": 29,
+          "share": {
+            "fraction": "4/29",
+            "value": 0.13793103448275862
+          }
+        }
+      },
+      "H19": {
+        "e": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "i": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "H20": {
+        "e": {
+          "whole": 6,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "i": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "v": {
+          "whole": 3,
+          "right_queue": 6,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H22": {
+        "e": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "i": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        }
+      },
+      "H23": {
+        "e": {
+          "whole": 1,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        },
+        "i": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 0,
+          "right_queue": 2,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        }
+      },
+      "H24": {
+        "e": {
+          "whole": 13,
+          "right_queue": 14,
+          "share": {
+            "fraction": "13/14",
+            "value": 0.9285714285714286
+          }
+        },
+        "i": {
+          "whole": 13,
+          "right_queue": 14,
+          "share": {
+            "fraction": "13/14",
+            "value": 0.9285714285714286
+          }
+        },
+        "r": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 7,
+          "right_queue": 14,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        }
+      },
+      "H26": {
+        "e": {
+          "whole": 4,
+          "right_queue": 6,
+          "share": {
+            "fraction": "2/3",
+            "value": 0.6666666666666666
+          }
+        },
+        "i": {
+          "whole": 5,
+          "right_queue": 5,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 5,
+          "share": {
+            "fraction": "2/5",
+            "value": 0.4
+          }
+        }
+      },
+      "H28": {
+        "e": {
+          "whole": 9,
+          "right_queue": 14,
+          "share": {
+            "fraction": "9/14",
+            "value": 0.6428571428571429
+          }
+        },
+        "i": {
+          "whole": 3,
+          "right_queue": 14,
+          "share": {
+            "fraction": "3/14",
+            "value": 0.21428571428571427
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 14,
+          "share": {
+            "fraction": "1/7",
+            "value": 0.14285714285714285
+          }
+        }
+      },
+      "H29": {
+        "e": {
+          "whole": 17,
+          "right_queue": 24,
+          "share": {
+            "fraction": "17/24",
+            "value": 0.7083333333333334
+          }
+        },
+        "i": {
+          "whole": 4,
+          "right_queue": 23,
+          "share": {
+            "fraction": "4/23",
+            "value": 0.17391304347826086
+          }
+        },
+        "v": {
+          "whole": 2,
+          "right_queue": 22,
+          "share": {
+            "fraction": "1/11",
+            "value": 0.09090909090909091
+          }
+        }
+      }
+    },
+    "by_queue": {
+      "ACCOUNT_MANAGER": {
+        "e": {
+          "whole": 21,
+          "right_queue": 22,
+          "share": {
+            "fraction": "21/22",
+            "value": 0.9545454545454546
+          }
+        },
+        "i": {
+          "whole": 21,
+          "right_queue": 22,
+          "share": {
+            "fraction": "21/22",
+            "value": 0.9545454545454546
+          }
+        },
+        "r": {
+          "whole": 2,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 9,
+          "right_queue": 22,
+          "share": {
+            "fraction": "9/22",
+            "value": 0.4090909090909091
+          }
+        }
+      },
+      "BILLING_SPECIALIST": {
+        "e": {
+          "whole": 9,
+          "right_queue": 10,
+          "share": {
+            "fraction": "9/10",
+            "value": 0.9
+          }
+        },
+        "i": {
+          "whole": 10,
+          "right_queue": 10,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 9,
+          "right_queue": 10,
+          "share": {
+            "fraction": "9/10",
+            "value": 0.9
+          }
+        }
+      },
+      "ONCALL_ESCALATION": {
+        "e": {
+          "whole": 11,
+          "right_queue": 14,
+          "share": {
+            "fraction": "11/14",
+            "value": 0.7857142857142857
+          }
+        },
+        "i": {
+          "whole": 12,
+          "right_queue": 14,
+          "share": {
+            "fraction": "6/7",
+            "value": 0.8571428571428571
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 1,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 5,
+          "right_queue": 14,
+          "share": {
+            "fraction": "5/14",
+            "value": 0.35714285714285715
+          }
+        }
+      },
+      "SECURITY_INCIDENT": {
+        "e": {
+          "whole": 27,
+          "right_queue": 38,
+          "share": {
+            "fraction": "27/38",
+            "value": 0.7105263157894737
+          }
+        },
+        "i": {
+          "whole": 32,
+          "right_queue": 37,
+          "share": {
+            "fraction": "32/37",
+            "value": 0.8648648648648649
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        },
+        "v": {
+          "whole": 14,
+          "right_queue": 38,
+          "share": {
+            "fraction": "7/19",
+            "value": 0.3684210526315789
+          }
+        }
+      },
+      "SELF_SERVICE_DEFLECT": {
+        "e": {
+          "whole": 24,
+          "right_queue": 30,
+          "share": {
+            "fraction": "4/5",
+            "value": 0.8
+          }
+        },
+        "i": {
+          "whole": 24,
+          "right_queue": 28,
+          "share": {
+            "fraction": "6/7",
+            "value": 0.8571428571428571
+          }
+        },
+        "r": {
+          "whole": 3,
+          "right_queue": 3,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "v": {
+          "whole": 14,
+          "right_queue": 29,
+          "share": {
+            "fraction": "14/29",
+            "value": 0.4827586206896552
+          }
+        }
+      },
+      "T1_GENERAL": {
+        "e": {
+          "whole": 27,
+          "right_queue": 40,
+          "share": {
+            "fraction": "27/40",
+            "value": 0.675
+          }
+        },
+        "i": {
+          "whole": 9,
+          "right_queue": 39,
+          "share": {
+            "fraction": "3/13",
+            "value": 0.23076923076923078
+          }
+        },
+        "v": {
+          "whole": 4,
+          "right_queue": 38,
+          "share": {
+            "fraction": "2/19",
+            "value": 0.10526315789473684
+          }
+        }
+      },
+      "T2_TECHNICAL": {
+        "e": {
+          "whole": 65,
+          "right_queue": 92,
+          "share": {
+            "fraction": "65/92",
+            "value": 0.7065217391304348
+          }
+        },
+        "i": {
+          "whole": 59,
+          "right_queue": 75,
+          "share": {
+            "fraction": "59/75",
+            "value": 0.7866666666666666
+          }
+        },
+        "r": {
+          "whole": 1,
+          "right_queue": 2,
+          "share": {
+            "fraction": "1/2",
+            "value": 0.5
+          }
+        },
+        "v": {
+          "whole": 18,
+          "right_queue": 91,
+          "share": {
+            "fraction": "18/91",
+            "value": 0.1978021978021978
+          }
+        }
+      },
+      "T3_ENGINEERING": {
+        "e": {
+          "whole": 16,
+          "right_queue": 21,
+          "share": {
+            "fraction": "16/21",
+            "value": 0.7619047619047619
+          }
+        },
+        "i": {
+          "whole": 22,
+          "right_queue": 22,
+          "share": {
+            "fraction": "1",
+            "value": 1.0
+          }
+        },
+        "r": {
+          "whole": 0,
+          "right_queue": 2,
+          "share": {
+            "fraction": "0",
+            "value": 0.0
+          }
+        },
+        "v": {
+          "whole": 14,
+          "right_queue": 22,
+          "share": {
+            "fraction": "7/11",
+            "value": 0.6363636363636364
+          }
+        }
+      }
+    },
+    "agreement_between_the_passes": {
+      "i": {
+        "prompts": 136,
+        "same_class": 99,
+        "share": {
+          "fraction": "99/136",
+          "value": 0.7279411764705882
+        }
+      },
+      "e": {
+        "prompts": 136,
+        "same_class": 83,
+        "share": {
+          "fraction": "83/136",
+          "value": 0.6102941176470589
+        }
+      },
+      "v": {
+        "prompts": 136,
+        "same_class": 75,
+        "share": {
+          "fraction": "75/136",
+          "value": 0.5514705882352942
+        }
+      },
+      "r": {
+        "prompts": 136,
+        "same_class": 125,
+        "share": {
+          "fraction": "125/136",
+          "value": 0.9191176470588235
+        }
+      }
+    },
+    "the_seven": {
+      "257": {
+        "e": {
+          "other": 1,
+          "whole": 5
+        },
+        "i": {
+          "whole": 6
+        },
+        "r": {
+          "wrong_queue": 6
+        },
+        "v": {
+          "cut_by_one": 2,
+          "whole": 4
+        }
+      },
+      "710": {
+        "e": {
+          "whole": 5,
+          "other": 1
+        },
+        "i": {
+          "whole": 6
+        },
+        "r": {
+          "wrong_queue": 5,
+          "cut_by_one": 1
+        },
+        "v": {
+          "other": 3,
+          "whole": 2,
+          "cut_by_one": 1
+        }
+      },
+      "954": {
+        "e": {
+          "whole": 4,
+          "cut_by_one": 1,
+          "other": 1
+        },
+        "i": {
+          "whole": 5,
+          "other": 1
+        },
+        "r": {
+          "wrong_queue": 6
+        },
+        "v": {
+          "cut_by_one": 3,
+          "whole": 2,
+          "other": 1
+        }
+      },
+      "982": {
+        "e": {
+          "whole": 4,
+          "cut_by_one": 1,
+          "other": 1
+        },
+        "i": {
+          "cut_by_one": 1,
+          "whole": 5
+        },
+        "r": {
+          "wrong_queue": 6
+        },
+        "v": {
+          "cut_by_one": 5,
+          "whole": 1
+        }
+      },
+      "1432": {
+        "e": {
+          "cut_by_one": 4,
+          "whole": 2
+        },
+        "i": {
+          "whole": 6
+        },
+        "r": {
+          "wrong_queue": 6
+        },
+        "v": {
+          "cut_by_one": 6
+        }
+      },
+      "1783": {
+        "e": {
+          "whole": 6
+        },
+        "i": {
+          "whole": 6
+        },
+        "r": {
+          "wrong_queue": 4,
+          "whole": 1,
+          "cut_by_one": 1
+        },
+        "v": {
+          "whole": 6
+        }
+      },
+      "1951": {
+        "e": {
+          "whole": 4,
+          "cut_by_one": 2
+        },
+        "i": {
+          "whole": 6
+        },
+        "r": {
+          "wrong_queue": 6
+        },
+        "v": {
+          "cut_by_one": 5,
+          "other": 1
+        }
+      }
+    },
+    "breadth": {
+      "e": {
+        "cut_by_one|within_or_across": 41,
+        "other|within_or_across": 35,
+        "whole|the_region": 215,
+        "whole|within_or_across": 4
+      },
+      "i": {
+        "cut_by_one|within_or_across": 8,
+        "other|within_or_across": 50,
+        "whole|the_region": 202,
+        "whole|within_or_across": 15
+      },
+      "r": {
+        "cut_by_one|within_or_across": 4,
+        "other|within_or_across": 2,
+        "whole|the_region": 9
+      },
+      "v": {
+        "cut_by_one|within_or_across": 101,
+        "cut_by_two|within_or_across": 2,
+        "other|within_or_across": 92,
+        "whole|the_region": 85,
+        "whole|within_or_across": 12
+      }
+    },
+    "declarations": {
+      "e": {
+        "valid": 300,
+        "declaring": 48,
+        "citing_the_manual": 48
+      },
+      "v": {
+        "valid": 300,
+        "declaring": 144,
+        "citing_the_manual": 144
+      },
+      "i": {
+        "valid": 300,
+        "declaring": 144,
+        "citing_the_manual": 144
+      },
+      "r": {
+        "valid": 300,
+        "declaring": 99,
+        "citing_the_manual": 99
+      }
+    },
+    "valid_answers_naming_no_queue": {
+      "e": 0,
+      "v": 0,
+      "i": 0,
+      "r": 0
+    },
+    "beside_halves": {
+      "e": {
+        "today": {
+          "fraction": "200/267",
+          "value": 0.7490636704119851
+        },
+        "halves": {
+          "fraction": "201/260",
+          "value": 0.7730769230769231
+        },
+        "by_ticket": {
+          "0": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "2": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "3": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "4": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "6": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "7": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "8": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "9": {
+            "today": [
+              1,
+              1
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "10": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "13": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "15": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "16": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "17": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "18": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "19": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "21": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "22": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "23": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "25": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "26": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "28": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "29": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "33": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "34": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "35": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "38": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "42": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "44": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "45": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "46": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "49": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "50": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "55": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "57": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "58": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "64": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "68": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "69": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "75": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "77": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "78": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "80": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "86": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "91": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "92": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "96": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "102": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "103": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "105": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "106": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "107": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "111": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "120": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "123": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "131": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "135": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "138": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "141": {
+            "today": [
+              1,
+              1
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "147": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "148": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "155": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "158": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "162": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "163": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "168": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "172": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "180": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "192": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "199": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "227": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "228": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "238": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "245": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "257": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "260": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "265": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "271": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "278": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "282": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "294": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "301": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "316": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "338": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "339": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "342": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "346": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "367": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "369": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "388": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "401": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "402": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "448": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "456": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "467": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "476": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "511": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "530": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "564": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "566": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "567": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "580": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "587": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "599": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "642": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "658": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "676": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "688": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "710": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "725": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "739": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "751": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "761": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "762": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "770": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "805": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "816": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "855": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "954": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "982": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1063": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1160": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1229": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "1234": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1235": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1264": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1318": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1432": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "1514": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1704": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1783": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1802": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1807": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1871": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1951": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1998": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          }
+        }
+      },
+      "v": {
+        "today": {
+          "fraction": "29/88",
+          "value": 0.32954545454545453
+        },
+        "halves": {
+          "fraction": "9/25",
+          "value": 0.36
+        },
+        "by_ticket": {
+          "0": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "2": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "3": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "4": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              0
+            ]
+          },
+          "6": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "7": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "8": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "9": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "10": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "13": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "15": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "16": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "17": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "18": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "19": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "21": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "22": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "23": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "25": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "26": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "28": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "29": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "33": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "34": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "35": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "38": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "42": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "44": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "45": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "46": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "49": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "50": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "55": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "57": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "58": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "64": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "68": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "69": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "75": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "77": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "78": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "80": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "86": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "91": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "92": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "96": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "102": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "103": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "105": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "106": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "107": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "111": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "120": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "123": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "131": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "135": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "138": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "141": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "147": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "148": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "155": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "158": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "162": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "163": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "168": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "172": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "180": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "192": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "199": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "227": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "228": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "238": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "245": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "257": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "260": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "265": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "271": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "278": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "282": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              1
+            ]
+          },
+          "294": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "301": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "316": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "338": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "339": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "342": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "346": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "367": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "369": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "388": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "401": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "402": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "448": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "456": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "467": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "476": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "511": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "530": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "564": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "566": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "567": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "580": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "587": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "599": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "642": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "658": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "676": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "688": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "710": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "725": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "739": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "751": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "761": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "762": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "770": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "805": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "816": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "855": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "954": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "982": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "1063": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1160": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "1229": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "1234": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1235": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1264": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1318": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "1432": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1514": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              0,
+              2
+            ]
+          },
+          "1704": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "1783": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1802": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1807": {
+            "today": [
+              0,
+              1
+            ],
+            "halves": [
+              0,
+              1
+            ]
+          },
+          "1871": {
+            "today": [
+              1,
+              2
+            ],
+            "halves": [
+              1,
+              2
+            ]
+          },
+          "1951": {
+            "today": [
+              0,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          },
+          "1998": {
+            "today": [
+              2,
+              2
+            ],
+            "halves": [
+              2,
+              2
+            ]
+          }
+        }
+      }
+    },
+    "calls": {
+      "pass1": {
+        "asks": 544,
+        "valid": 544,
+        "failed": 0,
+        "providers": {
+          "DeepInfra": 544
+        },
+        "finish_reasons": {
+          "stop": 544
+        },
+        "prompt_tokens_median": 1798.5,
+        "completion_tokens_median": 4324.5,
+        "reasoning_tokens_median": 4157.0,
+        "seconds_median": 53.035,
+        "seconds_mean": 59.86748161764706,
+        "retries": {}
+      },
+      "pass2": {
+        "asks": 544,
+        "valid": 544,
+        "failed": 0,
+        "providers": {
+          "DeepInfra": 544
+        },
+        "finish_reasons": {
+          "stop": 544
+        },
+        "prompt_tokens_median": 1798.5,
+        "completion_tokens_median": 4444.5,
+        "reasoning_tokens_median": 4261.0,
+        "seconds_median": 49.035,
+        "seconds_mean": 56.237132352941174,
+        "retries": {}
+      },
+      "oncall": {
+        "asks": 112,
+        "valid": 112,
+        "failed": 0,
+        "providers": {
+          "DeepInfra": 112
+        },
+        "finish_reasons": {
+          "stop": 112
+        },
+        "prompt_tokens_median": 1798.5,
+        "completion_tokens_median": 4146.0,
+        "reasoning_tokens_median": 4009.0,
+        "seconds_median": 51.225,
+        "seconds_mean": 54.29669642857143,
+        "retries": {}
+      }
+    }
+  }
+}
