@@ -7,8 +7,8 @@ its own: `8fbc42f` on `main`.
   sessions** reached `main` in #308, merged on 2026-11-26.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reached it in #309, merged on 2026-11-26.
-- **The POST-RUN reading of two things Stage C left free** reaches it in the
-  pull request it is opened in.
+- **The POST-RUN reading of two things Stage C left free** reaches it in
+  #310.
 
 Every record names in its `_env` the commit it was written from. Five were
 written on the branch of #308, and the rebase merge gave each of those commits
@@ -41,8 +41,8 @@ one.
 **[NOTE 2026-11-26, later] And two POST-RUN records.**
 [`review.json`](review.json) and [`general.json`](general.json) are the
 POST-RUN reading of two things Stage C left free.
-- **They were written from `485b7d6`**, on the branch of the pull request it is
-  opened in: the commit that adds both readings and their expectations.
+- **They were written from `485b7d6`**, on the branch of #310: the commit that
+  adds both readings and their expectations.
 - **Their code digest is `0c4414106f60c424`**, because `cause/review.py` and
   `cause/general.py` were added after Stage C. Their `_env` says `git_dirty`,
   for the same files, and `code_dirty` is false. The modules Stage C ran did
@@ -450,7 +450,7 @@ both on the records alone. They spend nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m cause.review` and
 `PYTHONHASHSEED=0 python3 -m cause.general`, on 2026-11-26, from `485b7d6` with
-its code clean, on the branch of the pull request that carries them.
+its code clean, on the branch of #310.
 - **`485b7d6` carries both readings and their expectations**, written and
   committed before either ran on the held-out answers. Each record was
   committed alone after it, as `da28caa` and `7a991ab`.
