@@ -1873,6 +1873,7 @@ The first command is blocking and writes nothing:
     PYTHONHASHSEED=0 python3 -m cause.score                         # Stage C, free, from the sessions
     PYTHONHASHSEED=0 python3 -m cause.review                        # POST-RUN: which queue the review notice names, and why
     PYTHONHASHSEED=0 python3 -m cause.general                       # POST-RUN: why the impasse notice cuts at T1_GENERAL's tickets
+    PYTHONHASHSEED=0 python3 -m cause.narrow                        # POST-RUN: why the model narrows a missing default
     PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session smoke  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session pass1  # then pass2 and oncall, never side by side
 
@@ -1904,6 +1905,16 @@ paragraph had, so the cut there was never the conflict's. **And a codebook
 frozen on one pass misses another's words**: most notes `GAP` missed said gap
 in other words, and its clause failed on them. Read a frozen code's misses by
 hand before reading a failed clause as the model's.
+
+**Read POST-RUN, the model narrows a missing default by writing a particular
+case of it.** Wherever it narrows, its reasoning places the draft inside the
+governing rule. Told that no rule matches, it writes a missing rule back where
+few rules of other queues lie inside it. At a default, where many do, it
+mostly writes a rule nested in the default instead. When it writes the default
+whole, it reasons that the other rules lie inside it and beat it. The
+declarations do not explain it: the catch-all needs none. A text that wants a
+missing default written whole should say what a rule that holds others does
+under level 1.
 
 **A share read among right-queue answers can lose its denominator to the
 arm.** A plan whose arm may move the queue should band the queue beside the

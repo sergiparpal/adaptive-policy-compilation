@@ -152,6 +152,8 @@ told why its ticket escalated, closed on November 26, 2026**: `PLAN_CAUSE.md`,
 seven signed rows, four held, one refuted, one with no value and one reported,
 written up in `results_cause/`. **Two things its Stage C left free were read
 POST-RUN the same day**, and the two items they answer are struck in place.
+**One thing those two left free was read POST-RUN the same day too**, and the
+item it answers is struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -605,6 +607,11 @@ answer. What that leaves:
   missing from the base, and the first call writes its ticket's own
   combination inside the default's region. `FINDINGS_CAUSE.md`, *Two things
   Stage C left free*, B.
+  **[NOTE 2026-11-26, last] Read POST-RUN, the narrowing there is a rule nested
+  in the missing default.** It holds no rule of another queue, and the model
+  writes it where the default's region holds many. A plan for the loop should
+  say in §0 what it reads where the first call writes such a rule.
+  `FINDINGS_CAUSE.md`, *One thing the two readings left free*, C.
 - ~~**Which queue the review notice names, and why.**~~ **Read POST-RUN on
   2026-11-26** (`FINDINGS_CAUSE.md`, *Two things Stage C left free*, A). The
   model takes the decision for the manual's first match, rules that queue out,
@@ -628,10 +635,23 @@ answer. What that leaves:
   default's region, and most of its notes, read by hand, call it a gap. v2b's
   paragraph had narrowed there the same way, so the cut was never the
   conflict's.
-- **Why the model narrows a missing default.** Its notes say the default is
-  absent and add a specific rule, and do not say why specific. The default's
-  breadth, named in most of pass 1's reasonings there, told nothing apart.
-  Free on the records, with a codebook built for it.
+- ~~**Why the model narrows a missing default.**~~ **Read POST-RUN on
+  2026-11-26** (`FINDINGS_CAUSE.md`, *One thing the two readings left free*,
+  C). Where the model narrows, under every arm, its reasoning places the draft
+  inside the governing rule, and the draft holds no rule of another queue.
+  Told that no rule matches, it writes back a missing rule whose region holds
+  few rules of other queues. At the three, which hold many, it mostly writes a
+  rule nested in the missing default. Written whole, the default is reasoned
+  as the rule the others lie inside and beat. `H29` needs no declaration
+  whole, and was narrowed as the other two were.
+- **A first-call text that gets a missing default written whole.** The impasse
+  notice could say that the rules nested in the missing rule stand, and win
+  inside it without a declaration. Or the system prompt could say what a rule
+  that holds others does under level 1. Calls.
+- **Why the empty base writes the few whole less often than the three.** Under
+  `e`, the rules whose regions hold one to three rules of another queue were
+  written whole less often than the three, on both passes. Free on the
+  records.
 - **The rarest queue.** The impasse notice wrote the region at its tickets, but
   every escalation on record there was a reported error or a conflict. What
   reaches those tickets is the review notice's text, so the route there is a
@@ -672,6 +692,11 @@ Lessons it leaves:
   reads them four times over. `cause/review.py`'s first clause held by one
   answer, and on pass 2 alone by more. A clause that pools sessions should say
   how it weighs repeated tickets.
+- **A frozen code misses again where an account runs past its window.**
+  `cause/narrow.py`'s S1 failed by one answer. Read by hand, some of its misses
+  placed the draft inside the default in other words, one of them beyond the
+  window the code reads. It is the thread's second clause to fail partly on
+  its codebook, after D4.
 
 ---
 
