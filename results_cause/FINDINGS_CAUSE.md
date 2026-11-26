@@ -7,8 +7,8 @@ its own: `8fbc42f` on `main`.
   sessions** reached `main` in #308, merged on 2026-11-26.
 - **Stage C, this record, the banner that closes the plan and the indexes**
   reached it in #309, merged on 2026-11-26.
-- **The POST-RUN reading of two things Stage C left free** reaches it in
-  #310.
+- **The POST-RUN reading of two things Stage C left free** reached it in
+  #310, merged on 2026-11-26 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. Five were
 written on the branch of #308, and the rebase merge gave each of those commits
@@ -41,12 +41,13 @@ one.
 **[NOTE 2026-11-26, later] And two POST-RUN records.**
 [`review.json`](review.json) and [`general.json`](general.json) are the
 POST-RUN reading of two things Stage C left free.
-- **They were written from `485b7d6`**, on the branch of #310: the commit that
-  adds both readings and their expectations.
+- **They were written from `485b7d6`**, on the branch of #310, which is
+  `4b2dfc7` on `main`: the commit that adds both readings and their
+  expectations.
 - **Their code digest is `0c4414106f60c424`**, because `cause/review.py` and
-  `cause/general.py` were added after Stage C. Their `_env` says `git_dirty`,
-  for the same files, and `code_dirty` is false. The modules Stage C ran did
-  not change.
+  `cause/general.py` were added after Stage C. `main` computes it at `4b2dfc7`,
+  and still at the merge of #310. Their `_env` says `git_dirty`, for the same
+  files, and `code_dirty` is false. The modules Stage C ran did not change.
 
 **This record owns every figure in it.**
 
@@ -450,10 +451,14 @@ both on the records alone. They spend nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m cause.review` and
 `PYTHONHASHSEED=0 python3 -m cause.general`, on 2026-11-26, from `485b7d6` with
-its code clean, on the branch of #310.
-- **`485b7d6` carries both readings and their expectations**, written and
+its code clean, on the branch of #310, which is `4b2dfc7` on `main`.
+- **`4b2dfc7` carries both readings and their expectations**, written and
   committed before either ran on the held-out answers. Each record was
-  committed alone after it, as `da28caa` and `7a991ab`.
+  committed alone after it, as `c7e065f` and `e1c73bc` on `main`.
+- **On #310's branch the six commits were `485b7d6`, `da28caa`, `7a991ab`,
+  `5a7f597`, `54b0836` and `d9f3dd9`.** Each pair has the same subject, the
+  same tree and the same `git patch-id --stable`, and the GitHub API names #310
+  behind the six `main` commits.
 - **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in
   the repository's root, untracked. `code_dirty` is false, and the code digest
   is `0c4414106f60c424`.
@@ -612,8 +617,8 @@ queue's session asked none of these tickets.
 ### The expectation
 
 Written in the two modules' docstrings before either reading ran on the
-held-out answers, and committed before them, in `485b7d6`. It is not signed,
-and it is on no scoreboard.
+held-out answers, and committed before them, in `4b2dfc7` on `main`. It is not
+signed, and it is on no scoreboard.
 
 | clause | reading | |
 |---|---|---|
