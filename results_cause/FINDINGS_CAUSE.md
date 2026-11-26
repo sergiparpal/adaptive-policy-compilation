@@ -9,8 +9,8 @@ its own: `8fbc42f` on `main`.
   reached it in #309, merged on 2026-11-26.
 - **The POST-RUN reading of two things Stage C left free** reached it in
   #310, merged on 2026-11-26 at Sergi's word.
-- **The POST-RUN reading of one thing those two left free** reaches it in
-  #312.
+- **The POST-RUN reading of one thing those two left free** reached it in
+  #312, merged on 2026-11-26 at Sergi's word.
 
 Every record names in its `_env` the commit it was written from. Five were
 written on the branch of #308, and the rebase merge gave each of those commits
@@ -53,11 +53,12 @@ POST-RUN reading of two things Stage C left free.
 
 **[NOTE 2026-11-26, last] And a third.** [`narrow.json`](narrow.json) is the
 POST-RUN reading of one thing those two left free.
-- **It was written from `482180e`**, on the branch of #312: the commit that
-  adds the reading and its expectation.
+- **It was written from `482180e`**, on the branch of #312, which is `73ff089`
+  on `main`: the commit that adds the reading and its expectation.
 - **Its code digest is `d7cf6d135e7fbc18`**, because `cause/narrow.py` was
-  added after them. Its `_env` says `git_dirty`, for the same files, and
-  `code_dirty` is false. The modules the two readings ran did not change.
+  added after them. `main` computes it at `73ff089`, and still at the merge of
+  #312. Its `_env` says `git_dirty`, for the same files, and `code_dirty` is
+  false. The modules the two readings ran did not change.
 
 **This record owns every figure in it.**
 
@@ -712,11 +713,16 @@ call: why the model writes a narrowing instead of the missing default, its first
 item. This reading answers it on the records alone. It spends nothing.
 
 **What was run.** `PYTHONHASHSEED=0 python3 -m cause.narrow`, on 2026-11-26,
-from `482180e` with its code clean, on the branch of #312.
-- **The commit.** `482180e` carries the reading and its expectation, written
-  and committed before it ran on the held-out answers. Nothing was added after
-  the run.
-- **The record was committed alone**, as `7e24681`.
+from `482180e` with its code clean, on the branch of #312, which is `73ff089`
+on `main`.
+- **The commit.** `73ff089` on `main` carries the reading and its expectation,
+  written and committed before it ran on the held-out answers. Nothing was
+  added after the run.
+- **The record was committed alone**, as `c533d01` on `main`.
+- **On #312's branch the five commits were `482180e`, `7e24681`, `7a00273`,
+  `a404cd2` and `10cf5b4`.** Each pair has the same subject, the same tree and
+  the same `git patch-id --stable`, and the GitHub API names #312 behind the
+  five `main` commits.
 - **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
   repository's root, untracked. `code_dirty` is false, and the code digest is
   `d7cf6d135e7fbc18`.
@@ -809,8 +815,8 @@ above them:
 ### The expectation
 
 Written in the module's docstring before the reading ran on the held-out
-answers, and committed before it, in `482180e`. It is not signed, and it is on
-no scoreboard.
+answers, and committed before it, in `73ff089` on `main`. It is not signed, and
+it is on no scoreboard.
 
 | clause | reading | |
 |---|---|---|
