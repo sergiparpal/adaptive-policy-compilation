@@ -1,5 +1,32 @@
 # PLAN_CAUSE — the loop's first call, told why its ticket escalated
 
+> **[CLOSED 2026-11-26] Executed in full, with §0 signed.** Sergi signed §0 on
+> 2026-11-25, before any figure of the plan existed. Five of the six rows were
+> adjudicated on 2026-11-26.
+> - **`CA-a`, `CA-b`, `CA-c` and `CA-f` hold.**
+> - **`CA-d` is refuted, thin.**
+> - **`CA-e` is unadjudicable**, by §0's own rule. Too few of the rarest queue's
+>   tickets carried a right-queue answer under both notices it compares.
+> - `CA-g` is reported.
+>
+> **The figures are owned by
+> [`results_cause/FINDINGS_CAUSE.md`](results_cause/FINDINGS_CAUSE.md)**, and
+> no result is to be read off this file. The scoreboard is in
+> [`STATUS.md`](STATUS.md).
+>
+> **Two things went otherwise than this file says.** The findings give both.
+> - **§0's reading of `CA-d` refuted beside `CA-c` held does not fit.** It took
+>   the review notice to act on the region, and the notice acted on the queue.
+>   Nearly every answer under it named another queue, so `CA-d` was read on a
+>   handful of answers.
+> - **The asks took less time than §1 priced**: under a day, summed, against a
+>   day to a day and a half. §1's money, one to two dollars, held.
+>
+> **The line immediately below says `unsigned`.** That was this file's status
+> while it was drafted, and it has been false since 2026-11-25. The line is kept
+> unedited and this banner is its correction. The banner touches no line of §0,
+> adds no signature line, and travels alone.
+
 **Status: drafted by Claude on 2026-11-25, unsigned.** Under hard rule 2 of
 `CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
 record is written until Sergi has signed §0.** The signature has to land before
