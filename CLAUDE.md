@@ -1871,6 +1871,8 @@ The first command is blocking and writes nothing:
     python3 -m cause.ask --dry-run                                  # CA-g1..CA-g4; must pass first
     PYTHONHASHSEED=0 python3 -m cause.sample                        # Stage A, free
     PYTHONHASHSEED=0 python3 -m cause.score                         # Stage C, free, from the sessions
+    PYTHONHASHSEED=0 python3 -m cause.review                        # POST-RUN: which queue the review notice names, and why
+    PYTHONHASHSEED=0 python3 -m cause.general                       # POST-RUN: why the impasse notice cuts at T1_GENERAL's tickets
     PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session smoke  # Stage B: spends — only if asked
     PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session pass1  # then pass2 and oncall, never side by side
 
@@ -1886,6 +1888,22 @@ read the region under that notice read it on a handful of answers (`CA-d`
 refuted, thin), and the one at the rarest queue's tickets had no value. A plan
 that tells the proposer its base erred should say in §0 what it tells it the
 base decided.
+
+**Read POST-RUN, the review notice moved the queue on a guess.** Told nothing
+of the decision, the model took it for the manual's first match, ruled that
+queue out, and named the next matched rule's, as an exception nested in the
+governing rule. It guessed the queue that is right. Where the next rule closes
+a block of the list, as severity 1's default does, it mostly named the one
+after. A notice that leaves the decision out leaves the model to supply it.
+
+**Read POST-RUN, the impasse notice cut at `T1_GENERAL`'s tickets because the
+rule missing there is a default.** The model read the governing rule as
+missing from the base, and wrote it back, but at the defaults' tickets. There
+it wrote its ticket's own combination inside the default's region, as v2b's
+paragraph had, so the cut there was never the conflict's. **And a codebook
+frozen on one pass misses another's words**: most notes `GAP` missed said gap
+in other words, and its clause failed on them. Read a frozen code's misses by
+hand before reading a failed clause as the model's.
 
 **A share read among right-queue answers can lose its denominator to the
 arm.** A plan whose arm may move the queue should band the queue beside the

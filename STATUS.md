@@ -3105,6 +3105,26 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      is open too, if it is not to move the queue. Both take calls.
 
    [`results_cause/FINDINGS_CAUSE.md`](results_cause/FINDINGS_CAUSE.md).
+   **[NOTE 2026-11-26, later] What each notice moved, and why, read
+   POST-RUN.**
+   - **The review notice.** Told nothing of the decision, the model takes it
+     for the manual's first match. It rules that queue out, and names the next
+     matched rule's, as an exception nested in the governing rule's region.
+     Where only `T1_GENERAL`'s rules match, it climbs to `T2_TECHNICAL`. So it
+     guessed the queue that is right, and ruled it out.
+   - **Where the next rule closes a block of the list**, as `H08` closes
+     severity 1's, it mostly names the one after. At the rarest queue's tickets
+     whose next rule is `H08`, it never named that rule's queue.
+   - **The impasse notice.** The model reads the governing rule as missing from
+     the base at nearly every ticket, and writes it back, but at the defaults
+     `H08`, `H28` and `H29`. There it writes its ticket's own combination
+     inside the default's region, as v2b's paragraph did. So the cut at
+     `T1_GENERAL`'s tickets is the defaults', and was never the conflict's.
+   - **What is open now** is a review notice that says what the base decided,
+     which takes calls, and why the model narrows a missing default, which is
+     free on the records.
+
+   [`results_cause/FINDINGS_CAUSE.md`](results_cause/FINDINGS_CAUSE.md), *Two things Stage C left free*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`

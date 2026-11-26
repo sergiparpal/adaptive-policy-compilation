@@ -150,7 +150,8 @@ item it answers is struck in place. **And so was one thing that one left
 free**, and the item it answers is struck in place. **The loop's first call,
 told why its ticket escalated, closed on November 26, 2026**: `PLAN_CAUSE.md`,
 seven signed rows, four held, one refuted, one with no value and one reported,
-written up in `results_cause/`.
+written up in `results_cause/`. **Two things its Stage C left free were read
+POST-RUN the same day**, and the two items they answer are struck in place.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -599,17 +600,38 @@ answer. What that leaves:
   is, at level 3 with reasoning on. §12 of `PLAN_CAUSE.md` names it. The open
   questions are whether whole first calls at the impasses compile more of the
   policy, and what the placement round then does with them. Calls.
-- **Which queue the review notice names, and why.** Each ask keeps the queue it
-  names, its note and its reasoning. Setting each named queue against the
-  list's later matches at its ticket, and reading the reasoning, is free on the
-  records.
+  **[NOTE 2026-11-26, later] Read POST-RUN, expect narrowings at the defaults.**
+  At the tickets of `H08`, `H28` and `H29` the notice is read as the default
+  missing from the base, and the first call writes its ticket's own
+  combination inside the default's region. `FINDINGS_CAUSE.md`, *Two things
+  Stage C left free*, B.
+- ~~**Which queue the review notice names, and why.**~~ **Read POST-RUN on
+  2026-11-26** (`FINDINGS_CAUSE.md`, *Two things Stage C left free*, A). The
+  model takes the decision for the manual's first match, rules that queue out,
+  and names the next matched rule's queue, as an exception nested in the
+  governing rule's region. Where only `T1_GENERAL`'s rules match, it climbs to
+  `T2_TECHNICAL`. Where the next rule closes a block of the list, as `H08`
+  closes severity 1's, it mostly names the one after.
 - **A review notice that does not move the queue.** This one names no
   decision, so the model was left to guess which one erred. At a reported error
   the loop knows the queue its base decided and the rule that decided it. A
   notice that names them is the next text. Calls.
-- **Why the impasse notice cuts at `T1_GENERAL`'s tickets.** There it wrote the
-  region in under a quarter of its answers, against about two thirds under the
-  empty base. Free on the records.
+  **[NOTE 2026-11-26, later] Read POST-RUN, the queue moved on a guess.** The
+  model took the decision for the manual's first match, which is the queue
+  that is right, and ruled it out. A notice that names the decision leaves
+  nothing to guess. Whether the model then still passes over a block's default
+  is the same text's question.
+- ~~**Why the impasse notice cuts at `T1_GENERAL`'s tickets.**~~ **Read
+  POST-RUN on 2026-11-26** (the same section, B). The model reads the governing
+  rule as missing from the base, and writes it back, but at the defaults `H08`,
+  `H28` and `H29`. There it writes its ticket's own combination inside the
+  default's region, and most of its notes, read by hand, call it a gap. v2b's
+  paragraph had narrowed there the same way, so the cut was never the
+  conflict's.
+- **Why the model narrows a missing default.** Its notes say the default is
+  absent and add a specific rule, and do not say why specific. The default's
+  breadth, named in most of pass 1's reasonings there, told nothing apart.
+  Free on the records, with a codebook built for it.
 - **The rarest queue.** The impasse notice wrote the region at its tickets, but
   every escalation on record there was a reported error or a conflict. What
   reaches those tickets is the review notice's text, so the route there is a
@@ -637,6 +659,19 @@ Lessons it leaves:
   `PLAN_HALVES.md`'s bets on which text moves the cut were refuted. This plan's,
   `CA-c`, held. The row the drafter trusted third, `CA-d`, was refuted by an
   effect on the queue that no row banded.
+- **A notice that names nothing of the decision leaves the model to guess it.**
+  Read POST-RUN, the model guessed the manual's first match, which is the
+  queue that is right, and ruled it out. A notice that tells the proposer its
+  base erred should say what the base decided, or the model supplies it.
+- **A codebook frozen on one pass misses another's words.** `cause/general.py`'s
+  `GAP` was frozen on pass 1's notes. Most of the held-out notes it missed said
+  the same thing in other words, and its clause failed on them. Read a frozen
+  code's misses by hand before reading a failed clause as the model's.
+- **A clause that pools the held-out sessions weighs repeated tickets more.**
+  The rarest queue's session asks seven tickets four times, so a pooled clause
+  reads them four times over. `cause/review.py`'s first clause held by one
+  answer, and on pass 2 alone by more. A clause that pools sessions should say
+  how it weighs repeated tickets.
 
 ---
 
