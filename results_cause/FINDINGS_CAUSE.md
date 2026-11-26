@@ -49,6 +49,14 @@ POST-RUN reading of two things Stage C left free.
   and still at the merge of #310. Their `_env` says `git_dirty`, for the same
   files, and `code_dirty` is false. The modules Stage C ran did not change.
 
+**[NOTE 2026-11-26, last] And a third.** [`narrow.json`](narrow.json) is the
+POST-RUN reading of one thing those two left free.
+- **It was written from `482180e`**, on the branch `cause-narrow`: the commit
+  that adds the reading and its expectation.
+- **Its code digest is `d7cf6d135e7fbc18`**, because `cause/narrow.py` was
+  added after them. Its `_env` says `git_dirty`, for the same files, and
+  `code_dirty` is false. The modules the two readings ran did not change.
+
 **This record owns every figure in it.**
 
 **All three stages ran on 2026-11-25 and 2026-11-26. `CA-a`, `CA-b`, `CA-c`
@@ -677,6 +685,13 @@ signed, and it is on no scoreboard.
    why specific. Pass 1's reasoning named the default's breadth in most
    answers at the three rules' tickets, whole or not, so breadth told nothing
    apart there. Free on the records, with a codebook built for it.
+   **[NOTE 2026-11-26, last] Read POST-RUN: the narrowing is a particular case
+   of the missing default, which holds many rules of other queues.** Where the
+   model narrows, under every arm, its reasoning places the draft inside the
+   governing rule. Told that no rule matches, it writes a missing rule back
+   where few rules of other queues lie inside it. At the three, which hold
+   many, it mostly writes a rule nested in the default instead. *One thing the
+   two readings left free*, C, below.
 2. **What a review notice that names the decision does.** At a reported error
    the loop knows the queue its base decided and the rule that decided it.
    Whether the model then keeps the governing rule's queue, and still passes
@@ -684,6 +699,163 @@ signed, and it is on no scoreboard.
 3. **Whether a loop that sends the impasse notice compiles more**, with
    narrowings to expect at the defaults' tickets. Stage C's second item, and
    calls.
+
+---
+
+## One thing the two readings left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-26, after the two readings.** Their *What it
+does not settle*, above, names one more thing the records can answer without a
+call: why the model writes a narrowing instead of the missing default, its first
+item. This reading answers it on the records alone. It spends nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m cause.narrow`, on 2026-11-26,
+from `482180e` with its code clean, on the branch `cause-narrow`.
+- **The commit.** `482180e` carries the reading and its expectation, written
+  and committed before it ran on the held-out answers. Nothing was added after
+  the run.
+- **The record was committed alone**, as `7e24681`.
+- **Its `_env` says `git_dirty`**, for the sandbox's empty placeholders in the
+  repository's root, untracked. `code_dirty` is false, and the code digest is
+  `d7cf6d135e7fbc18`.
+- **The record is [`narrow.json`](narrow.json).** Its five gates passed:
+  - every answer of the three sessions is valid as §0 reads it;
+  - the passes' classes, recounted by arm, are Stage C's;
+  - every answer keeps its reasoning and its payload;
+  - its codes' counts on pass 1 come back, over the answers B read there;
+  - of the rules that govern the passes' tickets, those whose regions hold four
+    or more rules of another queue are the three, and those that hold one to
+    three are `H03`, `H12`, `H16` and `H18`.
+
+**Pass 1 is the development set**, as in A and B, and every clause reads the
+held-out answers. The three rules and the few govern none of the rarest queue's
+tickets, so the clauses at their tickets read pass 2.
+
+### C. Why the model narrows a missing default
+
+**What it reads.** Every valid right-queue answer of `e`, `v` and `i`, as B
+does: 162, 161 and 150 held out.
+- **A rule's group** counts the rules of another queue whose regions lie whole
+  inside the rule's region, the rule aside. It reads the manual's regions, and
+  no truth.
+  - **The many**, four or more, are the three. `H08` holds `H04` to `H07`,
+    `H28` holds 7, and `H29` holds all 26 rules of another queue.
+  - **The few**, one to three, are `H03`, `H12`, `H16` and `H18`. They close the
+    keyword's, billing's, the api's and the integrations' blocks of the list, as
+    the three close theirs.
+  - **None** is every other rule that governs a ticket of the passes.
+- **`INSIDE`** reads the reasoning: a sentence that places a draft inside the
+  governing rule. The draft is called a *subset* of the rule, *contained* in it
+  or *more specific than* it, or the rule is said to *contain* the draft.
+- **`CONTAINER`** reads the reasoning: a sentence that places the other rules
+  inside the draft, or has the draft yield to the more specific rules.
+- **`HOLDS_NONE`** reads no text: the draft holds no rule of another queue.
+
+Whole answers out of right-queue answers, held out, by the governing rule's
+group. The few and the three were asked in the passes alone.
+
+| governing rule's group | `e` | `v` | `i` |
+|---|---|---|---|
+| none | 76 of 96 | 46 of 96 | 91 of 95 |
+| few, `H03`, `H12`, `H16` and `H18` | 27 of 38 | 6 of 37 | 25 of 29 |
+| many, the three | 21 of 28 | 2 of 28 | 5 of 26 |
+
+The answers that carry each code, held out, out of the answers in the row
+above them:
+
+| | `e` whole | `e` not whole | `v` whole | `v` not whole | `i` whole | `i` not whole |
+|---|---|---|---|---|---|---|
+| answers at the three rules' tickets | 21 | 7 | 2 | 26 | 5 | 21 |
+| `INSIDE` | 7 | 6 | 2 | 25 | 0 | 12 |
+| `CONTAINER` | 4 | 1 | 0 | 1 | 3 | 0 |
+| `HOLDS_NONE` | 0 | 6 | 1 | 26 | 1 | 21 |
+| answers at the other tickets | 103 | 31 | 52 | 81 | 116 | 8 |
+| `INSIDE` | 21 | 30 | 31 | 79 | 19 | 6 |
+
+- **Where the model narrows, its reasoning places the draft inside the governing
+  rule** (S2 holds). Under `e` and `i`, `INSIDE` was in 54 of the 67 answers not
+  whole, and in 47 of the 245 whole ones. Under `v`, which S2 leaves out, it was
+  in 104 of 107 and in 33 of 54.
+- **At a missing default it did so in just over half** (S1 fails). `INSIDE` was
+  in 12 of `i`'s 21 answers not whole at the three rules' tickets, where pass 1
+  had 14 of 17. The line asked for 13.
+  - **Read by hand after the verdict, three of the nine misses say it in other
+    words**: *Actually it's a subset of H08*, *that would be more specific than
+    H08 if H08 existed*, and, past the code's window, *if that rule existed, it
+    would cover all tickets including ours, and our rule would be a subset*, of
+    `H29`.
+  - **The other six never set the draft inside the default**, by its identifier
+    or as the catch-all. Each note calls the draft what no rule covers. Three
+    say it in `GAP`'s words. The other three say it in words B lists among
+    `GAP`'s misses: *que no tienen regla asignada*, *no atendidos por reglas
+    específicas*, *no son capturados por reglas específicas*.
+- **Under the empty base, its narrowings there were particular cases of the
+  default too** (S6, the bet, holds): 6 of `e`'s 7.
+- **The narrowing holds no rule of another queue** (S4 holds). 53 of the 54
+  answers not whole at the three rules' tickets held none. The one that held
+  some was `e`'s at ticket 106, under `H28`: it held `H04`, `H09` and `H13`.
+- **A missing rule that holds few is written back** (S5 holds). Under `i`, 25 of
+  the 29 right-queue answers at the few's tickets were whole: 4 of 4 at `H03`, 3
+  of 4 at `H12`, 11 of 11 at `H16` and 7 of 10 at `H18`.
+- **Written whole, the default is reasoned as the rule the others lie inside**
+  (S3 holds, at its line). `CONTAINER` was in 3 of the 7 whole answers of `v`
+  and `i` at the three rules' tickets, all three of them `i`'s. It was in 1 of
+  the 47 answers not whole. The line asked for 3.
+- **The groups go another way under the empty base**, as they did on pass 1. It
+  wrote the few whole in 27 of 38, and the three in 21 of 28.
+
+### The expectation
+
+Written in the module's docstring before the reading ran on the held-out
+answers, and committed before it, in `482180e`. It is not signed, and it is on
+no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| S1, under `i`, `INSIDE` in at least 0.60 of the answers not whole at the three rules' tickets | 12 of 21 | fails |
+| S2, under `e` and `i`, over every ticket, `INSIDE` in at least 0.75 of the answers not whole, and in at most 0.25 of the whole ones | 54 of 67, and 47 of 245 | **holds** |
+| S3, under `v` and `i`, at the three rules' tickets, `CONTAINER` in at least 0.40 of the whole answers, and in at most 0.15 of those not whole | 3 of 7, and 1 of 47 | **holds** |
+| S4, at the three rules' tickets, at least 0.85 of the answers not whole, under `e`, `v` and `i` together, hold no rule of another queue | 53 of 54 | **holds** |
+| S5, under `i`, at least 0.70 of the right-queue answers at the few's tickets are whole | 25 of 29 | **holds** |
+| S6, under `e`, `INSIDE` in at least 0.60 of the answers not whole at the three rules' tickets | 6 of 7 | **holds** |
+
+**S2 to S6 hold, and S1 fails.**
+- **The bet held**: S6, under the empty base.
+- **S4, trusted most, held**, and so did S2. S1, trusted third, failed by one
+  answer, and partly on its codebook: three of its misses said it in other
+  words.
+- **S3 held at its line**, on 7 whole answers.
+
+### What it says
+
+- **When the model narrows, it writes a particular case of the governing rule.**
+  Under every arm, its reasoning places the draft inside the rule, and the draft
+  holds no rule of another queue.
+- **Told that no rule matches, it writes the missing rule back where few rules
+  of other queues lie inside it.** At the three, where many do, it mostly does
+  not.
+- **There, most of its narrowings are particular cases of the missing default,
+  *if it existed*, and the rest fill what they call a gap.** When it writes the
+  default whole, its reasoning has the other rules lie inside it and beat it.
+- **So the narrowing at a missing default is the model declining to write a rule
+  under which rules it believes stand would nest.** It writes one nested in the
+  default instead. The declarations do not explain it. `H29` holds every rule
+  of another queue, so written whole it needs no declaration, and 10 of `i`'s
+  12 answers there were narrowed.
+- **The codes say which account goes with the narrowing, not that a text caused
+  it.** The system prompt calls the proposer the system's exception component,
+  and says a particular case of another rule needs no declaration. Only a text
+  that says otherwise could tell whether that is why.
+
+### What it does not settle
+
+1. **Whether a text gets the default written whole.** The impasse notice could
+   say that the rules nested in the missing rule stand, and win inside it
+   without a declaration. Or the system prompt could say what a rule that
+   holds others does under level 1. It is the loop with the impasse notice's
+   question too. Calls.
+2. **Why the empty base writes the few whole less often than the three.** Under
+   `e` the groups run the other way, on both passes. Free on the records.
 
 ---
 
@@ -703,6 +875,10 @@ signed, and it is on no scoreboard.
 - [`general.json`](general.json): POST-RUN, why the impasse notice cuts at
   `T1_GENERAL`'s tickets. Every right-queue answer of `e`, `v` and `i` read,
   with the six clauses.
+- [`narrow.json`](narrow.json): POST-RUN, why the model narrows a missing
+  default. Every right-queue answer of `e`, `v` and `i` read, with what its
+  governing rule and its draft hold of the rules of another queue, its two
+  codes and the six clauses.
 
 Every ask keeps its prompt and its digest, the answer's payload, which holds its
 note, and its reasoning, whole. It also keeps its call attempts as
