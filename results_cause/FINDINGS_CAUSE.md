@@ -6,7 +6,9 @@ its own: `8fbc42f` on `main`.
 - **The plan, its package, the signature, Stage A, the smoke run and the three
   sessions** reached `main` in #308, merged on 2026-11-26.
 - **Stage C, this record, the banner that closes the plan and the indexes**
-  reach it in the pull request this record was opened in.
+  reached it in #309, merged on 2026-11-26.
+- **The POST-RUN reading of two things Stage C left free** reaches it in the
+  pull request it is opened in.
 
 Every record names in its `_env` the commit it was written from. Five were
 written on the branch of #308, and the rebase merge gave each of those commits
@@ -35,6 +37,16 @@ repository's.** Empty placeholder files sat untracked in the repository's root
 throughout, named `.bashrc`, `.gitconfig`, `.claude/` and the like, as in
 `PLAN_CORRECTIONS.md`'s records. No module reads them, and no commit staged
 one.
+
+**[NOTE 2026-11-26, later] And two POST-RUN records.**
+[`review.json`](review.json) and [`general.json`](general.json) are the
+POST-RUN reading of two things Stage C left free.
+- **They were written from `485b7d6`**, on the branch of the pull request it is
+  opened in: the commit that adds both readings and their expectations.
+- **Their code digest is `0c4414106f60c424`**, because `cause/review.py` and
+  `cause/general.py` were added after Stage C. Their `_env` says `git_dirty`,
+  for the same files, and `code_dirty` is false. The modules Stage C ran did
+  not change.
 
 **This record owns every figure in it.**
 
@@ -403,6 +415,12 @@ served both.
     decision to be the manual's first match, and name the next rule's queue.
     A POST-RUN reading could set each named queue against the list's later
     matches, and read the reasoning.
+
+  **[NOTE 2026-11-26, later] Read POST-RUN: the model takes the decision for
+  the manual's first match.** Every answer's reasoning set the reviewer's mark
+  against the governing rule. Most named the next matched rule's queue, as an
+  exception nested in the governing rule's region. *Two things Stage C left
+  free*, A, below.
 - **Whether a loop that sends the impasse notice at its impasses compiles more.**
   The notices were asked alone, at tickets the loops escalated, with the base
   hidden and no placement round. A loop's first call would see the same text.
@@ -413,6 +431,254 @@ served both.
   decision erred.
 - **Why the impasse notice cuts at `T1_GENERAL`'s tickets**, where it wrote the
   region less often than the empty base. No row reads a queue alone.
+
+  **[NOTE 2026-11-26, later] Read POST-RUN: the cut is the defaults'.** At the
+  tickets of `H08`, `H28` and `H29` the notice is read as the default missing
+  from the base, and the model writes a narrowing of it kept to its ticket.
+  v2b's paragraph had narrowed there the same way. *Two things Stage C left
+  free*, B, below.
+
+---
+
+## Two things Stage C left free — POST-RUN
+
+**Asked for by Sergi on 2026-11-26, after Stage C.** *What Stage C does not
+settle*, above, names two things the records can answer without a call: which
+queue the review notice names, and why, its first item, and why the impasse
+notice cuts at `T1_GENERAL`'s tickets, its fourth. These two readings answer
+both on the records alone. They spend nothing.
+
+**What was run.** `PYTHONHASHSEED=0 python3 -m cause.review` and
+`PYTHONHASHSEED=0 python3 -m cause.general`, on 2026-11-26, from `485b7d6` with
+its code clean, on the branch of the pull request that carries them.
+- **`485b7d6` carries both readings and their expectations**, written and
+  committed before either ran on the held-out answers. Each record was
+  committed alone after it, as `da28caa` and `7a991ab`.
+- **Their `_env` says `git_dirty`**, for the sandbox's empty placeholders in
+  the repository's root, untracked. `code_dirty` is false, and the code digest
+  is `0c4414106f60c424`.
+- **The records are [`review.json`](review.json) and
+  [`general.json`](general.json).** Each passed its four gates:
+  - every answer of the three sessions is valid as §0 reads it;
+  - the passes' classes, recounted by arm, are Stage C's;
+  - every answer keeps its reasoning and its payload;
+  - its code's counts on pass 1 come back.
+
+**Pass 1 is the development set.** Each code was frozen on it, and every clause
+reads the held-out answers: those of pass 2 and of the rarest queue's session.
+That session asks only `T₇`'s seven tickets, four times each, so they weigh
+more in the held-out answers than in a pass.
+
+### A. Which queue the review notice names, and why
+
+**What it reads.** Every valid answer of `r`: 164 held out, 136 of pass 2 and
+28 of the rarest queue's session.
+- **The runner-up** is the first rule the ticket matches whose queue is not the
+  governing rule's. `H29` matches every ticket, so only the tickets that match
+  no rule but `T1_GENERAL`'s have none.
+- **The place** of the queue an answer names is the governing rule's, the
+  runner-up's, a later matched rule's, or none of theirs.
+- **`MARK`** reads the reasoning: the governing rule's identifier or its queue's
+  name within the 400 characters before a word of the reviewer's mark. The
+  other arms carry no reviewer, so their hits are the code's noise.
+
+| place of the queue it names | pass 1, development | pass 2 | the rarest queue's session | held out |
+|---|---|---|---|---|
+| the governing rule's | 5 | 8 | 2 | 10 |
+| the runner-up's | 89 | 82 | 13 | 95 |
+| a later rule's | 14 | 16 | 13 | 29 |
+| none of the matched rules' | 28 | 30 | 0 | 30 |
+
+- **It names the runner-up's queue** (V1 holds, by one answer). 95 of the 135
+  held-out wrong-queue answers at tickets with a runner-up did, 0.7037.
+  - **Pass 2 alone** gives 82 of 109, and 80 of 103 outside `T₇`.
+  - **The rarest queue's session** gave 13 of 26.
+- **It writes that queue as an exception nested in the governing rule** (V2 and
+  V3 hold).
+  - **134 of the 154 wrong-queue answers** drafted a region inside the
+    governing rule's.
+  - **120 of the 124 that named a matched rule's queue** drafted inside the
+    first such rule's region, and 48 of them drafted the two rules'
+    intersection exactly.
+  - **Most declared nothing.** 55 of the 154 declared a side, and 33 of them
+    declared the draft above the governing rule.
+- **Where no matched rule has the queue it names, it climbs the support
+  ladder** (V4 holds). 22 of those 30 answers named the tier above the
+  governing rule's queue.
+  - **At the tickets only `T1_GENERAL`'s rules match**, 18 of the 19 answers
+    named `T2_TECHNICAL`.
+  - **At `T2_TECHNICAL`'s tickets**, 4 named `T3_ENGINEERING`.
+- **The reasoning sets the reviewer's mark against the governing rule** (V5
+  holds). `MARK` was in all 164 answers of `r`, and in 35 of the other arms'
+  492: 11 under the empty base, 7 under v2b's paragraph and 17 under the
+  impasse notice.
+
+**By the governing rule's queue**, the place of what `r`'s held-out answers
+named:
+
+| governing rule's queue | answers | the runner-up's | a later rule's | none | the governing rule's |
+|---|---|---|---|---|---|
+| `T2_TECHNICAL` | 48 | 39 | 1 | 6 | 2 |
+| `ONCALL_ESCALATION` | 35 | 15 | 17 | 0 | 3 |
+| `T1_GENERAL` | 20 | 1 | 0 | 19 | 0 |
+| `SECURITY_INCIDENT` | 19 | 10 | 6 | 1 | 2 |
+| `SELF_SERVICE_DEFLECT` | 15 | 12 | 0 | 2 | 1 |
+| `ACCOUNT_MANAGER` | 11 | 9 | 1 | 1 | 0 |
+| `T3_ENGINEERING` | 11 | 7 | 2 | 0 | 2 |
+| `BILLING_SPECIALIST` | 5 | 2 | 2 | 1 | 0 |
+
+**At the rarest queue's tickets it passes over severity 1's default** (V6, the
+bet, fails). 15 of the 32 wrong-queue answers there named the runner-up's
+queue. The held-out answers at `T₇`, five a ticket:
+
+| ticket | governing rule | runner-up | what `r` named |
+|---|---|---|---|
+| 257 | `H05` | `H06`, `T3_ENGINEERING` | `T3_ENGINEERING` 4, `T2_TECHNICAL` 1 |
+| 710 | `H05` | `H06`, `T3_ENGINEERING` | `T3_ENGINEERING` 4, `ONCALL_ESCALATION` 1 |
+| 1432 | `H04` | `H07`, `T3_ENGINEERING` | `T3_ENGINEERING` 5 |
+| 1783 | `H05` | `H06`, `T3_ENGINEERING` | `T3_ENGINEERING` 2, `ONCALL_ESCALATION` 2, `T2_TECHNICAL` 1 |
+| 954 | `H04` | `H08`, `T2_TECHNICAL` | `ACCOUNT_MANAGER` 5, the queue of `H13` |
+| 982 | `H04` | `H08`, `T2_TECHNICAL` | `ACCOUNT_MANAGER` 5, the queue of `H09` |
+| 1951 | `H04` | `H08`, `T2_TECHNICAL` | `T3_ENGINEERING` 5, the queue of `H17` |
+
+- **Where the runner-up is a rule of engineering**, the model named its queue
+  in 15 of 20 answers.
+- **Where it is `H08`, severity 1 to `T2_TECHNICAL`, the model never named its
+  queue.** In all 15 it named the queue of the next rule its ticket matches,
+  past `H08`.
+- **Read after the verdicts, the later answers outside `T₇` passed over rules
+  of the same kind.** 11 of their 12 passed over `H03` at 6, `H12` at 3 and
+  `H18` at 2. Each is a rule of one condition that closes a block of the list,
+  as `H08` closes severity 1's. It is not every such rule: `H28` and `H29`,
+  which close theirs, were the runner-up whose queue an answer named 29
+  times.
+
+### B. Why the impasse notice cuts at `T1_GENERAL`'s tickets
+
+**What it reads.** Every valid right-queue answer of `e`, `v` and `i`: 162, 161
+and 150 held out.
+- **The three rules are Stage C's**: `H08`, `H28` and `H29`, where *By queue and
+  by governing rule*, above, found the notice writing the region least beside
+  the empty base. Stage C made that selection on both passes, and the reading
+  takes it as given. `H28` and `H29` govern all of `T1_GENERAL`'s tickets but
+  one, which is `H23`'s.
+- **`ABSENT`** reads the reasoning: the governing rule said not to be in the
+  base, its identifier and a word of absence within one sentence.
+- **`GAP`** reads the note: the draft said to cover what no rule covers.
+
+Whole answers out of right-queue answers, pass 2, by governing rule. The rarest
+queue's session asked none of these tickets.
+
+| governing rule | `e` | `v` | `i` |
+|---|---|---|---|
+| `H08`, severity 1 to `T2_TECHNICAL` | 8 of 9 | 0 of 9 | 2 of 7 |
+| `H23`, phone at off hours to `T1_GENERAL` | 1 of 1 | 0 of 1 | 1 of 1 |
+| `H28`, business and enterprise to `T1_GENERAL` | 5 of 7 | 2 of 7 | 1 of 7 |
+| `H29`, every ticket to `T1_GENERAL` | 8 of 12 | 0 of 12 | 2 of 12 |
+
+- **The notice is read as the governing rule missing from the base** (D1
+  holds). `ABSENT` was in 146 of `i`'s 150 answers, against 49 of `e`'s 162 and
+  83 of `v`'s 161.
+- **At the three rules' tickets, what the notice writes instead of the region
+  is a narrowing kept to its ticket** (D2 holds).
+  - **19 of `i`'s 21 answers not whole there** were *other*, inside the
+    governing rule's region and covering their ticket.
+  - **The other two** were cuts by one listed rule, both at `H08`'s tickets.
+  - **Summed answer by answer, the 21 held** 36,735 of the 97,380 points of
+    their rules' parts, 0.3772.
+- **Under v2b's paragraph it was no cut by a listed rule either** (D3 holds).
+  21 of `v`'s 26 answers not whole there were *other*.
+- **The codebook found *gap* in half of those notes** (D4 fails). `GAP` was in
+  11 of the 21, and in 8 of `i`'s 116 whole answers at the other tickets.
+  - **Read after the verdict, six of the ten notes it missed say the same in
+    other words**: *no explicit routing in the existing rules*, *lack
+    coverage*, *que no tienen regla asignada*, *no existe ninguna regla que
+    cubra*, *no atendidos por reglas específicas*, *no son capturados por
+    reglas específicas*.
+  - **The patterns were frozen on pass 1**, whose notes used two of those
+    phrasings once each.
+- **The empty base's notes do not call it so** (D5 holds): 2 of `e`'s 28
+  answers at the three rules' tickets.
+- **Elsewhere, the notice's narrowings were not called gaps** (D6, the bet,
+  fails). `GAP` was in none of `i`'s 8 answers not whole at the other tickets.
+  Read by hand after the verdict, two of them say it in other words.
+- **Two notes give the account in so many words.**
+  - **At ticket 725, under `H08`**: *"The generic severity 1 rule (H08) is
+    absent, so we add this specific rule to route critical mobile issues to
+    technical support"*.
+  - **At ticket 1807, under `H08`**: *"Segun el manual, para severity=1 la
+    accion es T2_TECHNICAL (H08), pero esa regla no esta en la base."*
+
+### The expectation
+
+Written in the two modules' docstrings before either reading ran on the
+held-out answers, and committed before them, in `485b7d6`. It is not signed,
+and it is on no scoreboard.
+
+| clause | reading | |
+|---|---|---|
+| V1, among `r`'s wrong-queue answers at tickets with a runner-up, at least 0.70 name the runner-up's queue | 95 of 135 | **holds** |
+| V2, at least 0.80 of `r`'s wrong-queue answers draft inside the governing rule's region | 134 of 154 | **holds** |
+| V3, of those naming a matched rule's queue, at least 0.80 draft inside the first such rule's region | 120 of 124 | **holds** |
+| V4, of those naming a queue no matched rule has, at least 0.70 name the tier above the governing rule's queue | 22 of 30 | **holds** |
+| V5, `MARK` in at least 0.90 of `r`'s answers, and in at most 0.25 of the other arms' | 164 of 164, and 35 of 492 | **holds** |
+| V6, at `T₇`'s tickets, at least half of `r`'s wrong-queue answers name the runner-up's queue | 15 of 32 | fails |
+| D1, `ABSENT` in at least 0.90 of `i`'s answers, and in at most 0.40 of `e`'s | 146 of 150, and 49 of 162 | **holds** |
+| D2, under `i`, at least 0.80 of the answers not whole at the three rules' tickets are narrowings kept to their ticket | 19 of 21 | **holds** |
+| D3, under `v`, at least 0.60 of the answers not whole there are *other* | 21 of 26 | **holds** |
+| D4, `GAP` in at least 0.60 of `i`'s answers not whole there, and in at most 0.20 of `i`'s whole answers at the other tickets | 11 of 21, and 8 of 116 | fails |
+| D5, `GAP` in at most 0.15 of `e`'s answers at the three rules' tickets | 2 of 28 | **holds** |
+| D6, `GAP` in at least half of `i`'s answers not whole at the other tickets | none of 8 | fails |
+
+**V1 to V5 hold, and V6 fails. D1, D2, D3 and D5 hold, and D4 and D6 fail.**
+- **Both bets failed**: V6 at `T₇`'s tickets, where the model passed over
+  `H08`, and D6 at the other tickets, where the notice's narrowings were not
+  called gaps.
+- **V1, trusted most, held by one answer.** The rarest queue's session asks
+  `T₇` four times, and pass 2 alone held by more.
+- **D1, trusted most, held.** D4 failed on its codebook: the notes said *gap*
+  in words its patterns, frozen on pass 1, did not hold.
+
+### What it says
+
+- **Told that a reviewer marked the decision wrong, and nothing of the
+  decision, the model takes it for the manual's first match.** Every answer's
+  reasoning set the mark against the governing rule.
+  - **Then it rules that queue out**, and names the next matched rule's.
+  - **It writes it as an exception nested in the governing rule's region**,
+    which wins there by containment.
+  - **Where no rule of another queue matches, it climbs the support ladder.**
+- **So the notice moved the queue because the model guessed the decision, and
+  guessed the queue that is right.** At a reported error the base decided
+  another queue than the manual's first match. A notice that names what the
+  base decided would not leave it to the guess.
+- **At the rarest queue's tickets the guess passes over severity 1's default.**
+  Where the runner-up was `H08`, the model named the queue of the next rule
+  past it, an account manager's or engineering's, and never `T2_TECHNICAL`.
+- **Told that no rule of the base matches, the model reads the governing rule
+  as missing from the base, and writes it back, but at a default.** At the
+  tickets of `H08`, `H28` and `H29` it writes instead a narrowing of the default
+  kept to its ticket: the ticket's own combination inside the default's
+  region. Two notes say so: the default is absent, so a specific rule is added.
+- **The cut at `T1_GENERAL`'s tickets is the defaults', and v2b's paragraph
+  made it too.** Its answers not whole there were narrowings of the same kind,
+  and not cuts by a listed rule. What the notice took away, a conflict read
+  between two listed rules, was never what cut there.
+
+### What it does not settle
+
+1. **Why the model writes a narrowing instead of the missing default.** The
+   notes say the default is absent and add a specific rule. They do not say
+   why specific. Pass 1's reasoning named the default's breadth in most
+   answers at the three rules' tickets, whole or not, so breadth told nothing
+   apart there. Free on the records, with a codebook built for it.
+2. **What a review notice that names the decision does.** At a reported error
+   the loop knows the queue its base decided and the rule that decided it.
+   Whether the model then keeps the governing rule's queue, and still passes
+   over a default, takes calls. It is Stage C's third item.
+3. **Whether a loop that sends the impasse notice compiles more**, with
+   narrowings to expect at the defaults' tickets. Stage C's second item, and
+   calls.
 
 ---
 
@@ -426,6 +692,12 @@ served both.
 - [`ask_oncall.json`](ask_oncall.json): the rarest queue's session, 112 asks.
 - [`score.json`](score.json): Stage C. The six verdicts with their fractions,
   errors and passes, and `CA-g`.
+- [`review.json`](review.json): POST-RUN, which queue the review notice names,
+  and why. Every answer of `r` read, and of the other arms the code alone,
+  with the six clauses.
+- [`general.json`](general.json): POST-RUN, why the impasse notice cuts at
+  `T1_GENERAL`'s tickets. Every right-queue answer of `e`, `v` and `i` read,
+  with the six clauses.
 
 Every ask keeps its prompt and its digest, the answer's payload, which holds its
 note, and its reasoning, whole. It also keeps its call attempts as
