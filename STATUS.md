@@ -3125,6 +3125,25 @@ Not all of [`IDEAS.md`](IDEAS.md) — the ones that would change a conclusion.
      free on the records.
 
    [`results_cause/FINDINGS_CAUSE.md`](results_cause/FINDINGS_CAUSE.md), *Two things Stage C left free*.
+   **[NOTE 2026-11-26, last] Why the model narrows a missing default, read
+   POST-RUN.**
+   - **Where the model narrows, its reasoning places the draft inside the
+     governing rule**, under every arm, and the draft holds no rule of another
+     queue.
+   - **Told that no rule matches, it writes the missing rule back where few
+     rules of other queues lie inside it.** At `H08`, `H28` and `H29`, whose
+     regions hold many, it mostly writes a rule nested in the missing default
+     instead. When it writes the default whole, its reasoning has the other
+     rules lie inside it and beat it.
+   - **The declarations do not explain it.** `H29` holds every rule of another
+     queue, so written whole it needs none, and it was narrowed as the other
+     two were.
+   - **What is open now** is whether a loop that sends the impasse notice
+     compiles more, a review notice that says what the base decided, and a
+     first-call text that gets a missing default written whole. All three take
+     calls.
+
+   [`results_cause/FINDINGS_CAUSE.md`](results_cause/FINDINGS_CAUSE.md), *One thing the two readings left free*.
 3. **~~ILP as a competitor.~~ Run on 2026-08-30**, opened by Sergi and
    pre-registered as `PLAN_ILP.md`. Not Popper or ILASP — neither is installable
    here — but sequential covering over a declared language, gated by an `I-g1`
