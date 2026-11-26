@@ -64,6 +64,7 @@ up in four places at once.
 | **HV** · the paragraph's halves | the loop's first call asked alone at 136 tickets the reasoning loops escalated, with level 3's manual and reasoning on, pinned to DeepInfra, under four paragraphs where the base would be — the empty base, v2b's paragraph, its first half alone and its overlap clause on the empty base — in two passes and a session of the rarest queue's tickets, to see which half of v2b's paragraph makes the first call cut — closed 2026-11-12 | [`results_halves/FINDINGS_HALVES.md`](results_halves/FINDINGS_HALVES.md) |
 | **CR** · the learning regime | `PLAN_PLACEMENT.md`'s v1c at level 1, the catalogue, with reasoning on, pinned to DeepInfra, under the channel at coverage 1/2, with and without a report that carries the reported ticket's true queue, beside the same labels compiled at once and handed to the inducer and the students, to see whether the loop learns what its prompt does not hold — closed 2026-11-14 | [`results_corrections/FINDINGS_CORRECTIONS.md`](results_corrections/FINDINGS_CORRECTIONS.md) |
 | **RK** · the conflicts settled by the loop's own ranking | `PLAN_CORRECTIONS.md`'s arm L on an engine that decides each CONFLICT by the ranking of the queues its own placement votes choose, beside the same loop on rung 2's engine, which asks, in one period, with each run's labels compiled at once and handed to the inducer and the students — closed 2026-11-20 | [`results_ranked/FINDINGS_RANKED.md`](results_ranked/FINDINGS_RANKED.md) |
+| **CA** · the first call told why its ticket escalated | the loop's first call asked alone at `PLAN_HALVES.md`'s 136 tickets, with level 3's manual and reasoning on, pinned to DeepInfra, under four paragraphs where the base would be — the empty base, v2b's paragraph, and v2b's paragraph with a notice that no rule of the base matches the ticket or that a reviewer marked the engine's decision wrong — in two passes and a session of the rarest queue's tickets, to see whether telling the first call why the engine stopped gives the governing region back — closed 2026-11-26 | [`results_cause/FINDINGS_CAUSE.md`](results_cause/FINDINGS_CAUSE.md) |
 
 **The two `P`/`B` rows have a write-up.**
 [`PAIRWISE_WRITEUP.md`](PAIRWISE_WRITEUP.md) presents both threads as one result
@@ -1053,6 +1054,49 @@ PYTHONHASHSEED=0 .venv/bin/python -m ranked.run --smoke --arm l  # Stage B · sp
 PYTHONHASHSEED=0 .venv/bin/python -m ranked.ask --session smoke  # then §9's order, one step at a time
 ```
 
+**[`PLAN_CAUSE.md`](PLAN_CAUSE.md) closed on 2026-11-26**: the loop's first
+call, told why its ticket escalated. Sergi signed §0 on 2026-11-25, before any
+of its figures existed.
+- **What it asked.** It asked the loop's first call alone, with level 3's manual
+  and reasoning on, every call pinned to DeepInfra's fp8 endpoint, at
+  `PLAN_HALVES.md`'s 136 tickets. Four arms differ in the paragraph that stands
+  where the base would be:
+  - **`e`**, the empty base, and **`v`**, v2b's paragraph, both as
+    `PLAN_HALVES.md` asked them;
+  - **`i`**, `v` and a notice that no rule of the base matches the ticket;
+  - **`r`**, `v` and a notice that a reviewer marked the engine's decision on
+    the ticket wrong, which names no queue, no rule and no decision.
+
+  Two passes asked every prompt once, the arms interleaved, and a third session
+  asked the rarest queue's seven tickets four times more.
+- **Why.** Read POST-RUN, `PLAN_HALVES.md`'s hidden half cut because it left
+  the engine's impasse unexplained: the model read it as a conflict between two
+  of the manual's rules. The open lever was a text that says why the engine
+  stopped.
+
+Its record is [`results_cause/FINDINGS_CAUSE.md`](results_cause/FINDINGS_CAUSE.md). Its
+gate reads that plan and no other, counts its signature line, and guards its
+three writers. `halves/`, `corrections/`, `whole/`, `placement/`,
+`reasoned_loop/`, `first_match/`, `authorship/`, `escalations/`, `reuse/` and
+`rung2/` are called by it and not edited; its asker is the loop's, with
+`placement/`'s pin.
+
+Stages A and C are free, and each reproduces from the committed records in a
+few minutes, most of it the suite inside its first check. **Stage B spent**:
+its records are guarded, and a re-run neither overwrites them nor gives the
+same answers back. A paid session does not start without Sergi asking for it.
+A pass took about eight and a half to nine hours of calls on DeepInfra, which
+refused no call for the rate. A session stopped by an outage resumes from its
+partial file with the same command.
+
+```bash
+python3 -m cause.ask --dry-run                                  # CA-g1..CA-g4, blocking; writes nothing
+PYTHONHASHSEED=0 python3 -m cause.sample                        # Stage A · the design and the references
+PYTHONHASHSEED=0 python3 -m cause.score                         # Stage C · CA-a to CA-f, and CA-g
+PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session smoke  # Stage B · spends · only on Sergi's say
+PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session pass1  # then pass2 and oncall, one session at a time
+```
+
 What each of them should produce is in the record it belongs to; the corrected
 figures are indexed in [`STATUS.md`](STATUS.md). And before touching anything,
 the test suite — **no API calls and no writes to `results*/`**:
@@ -1340,7 +1384,7 @@ the change is in [`results2/CHANGELOG.md`](results2/CHANGELOG.md).
 > `PLAN_WHOLE.md`'s, and the three of `halves/`, which run
 > `PLAN_HALVES.md`'s, and the four of `corrections/`, which run
 > `PLAN_CORRECTIONS.md`'s, and the four of `ranked/`, which run
-> `PLAN_RANKED.md`'s.
+> `PLAN_RANKED.md`'s, and the three of `cause/`, which run `PLAN_CAUSE.md`'s.
 >
 > **Since August 8, 2026 the two paid commands refuse to overwrite.** The guard
 > is in [`harness/record_guard.py`](harness/record_guard.py) and it distinguishes
@@ -1485,6 +1529,7 @@ What it covers, and why those things:
 | `test_placement_births.py` | `placement/births.py`, the POST-RUN reading of whether the cut is why the loop's births are narrow, on a list and births built by hand: each class a birth falls in — the wrong queue, whole, cut by one listed rule with the first match a cut changes and the cutting rule's queue, cut by two, and other — gate 1 on a row naming another governing rule, gate 2 on counts that differ from Stage C's, gate 3, the counts, the expectation's clauses at their edges and arm by arm, a reading without value, and the writer refusing unsigned before it reads or writes. **No figure of the reading** |
 | `test_whole.py` | the `PLAN_WHOLE.md` instrument: §11's constants with the client and the pin imported from `PLAN_PLACEMENT.md`, the seed the next prime after 103 and no closed thread's, §0's lines as exact fractions on their own sides, `DECLARED` against §0's text, the schedule, and the gate counting every signature line; v1d's paragraph by digest, opening with v2b's first sentence, naming no queue and no rule, and quoted in the plan; v1d's messages v1c's with that one paragraph replaced, on the first call and on the placement call, v2b's text giving v1c's messages back, and a first message that is not v1c's refused; the texts' digests and fingerprints of both arms; v1d's proposer sending v1d's messages through the resumable proposer and v1c's class sending v1c's, a loop on a corpus built by hand giving the same record under both and messages one paragraph apart; the resume with each call's own seconds, and a partial file under the other arm or other draws refused; nothing built, asked or written unsigned, the dry runs building no client, a run refusing before the key without what comes before it, and the turn; the smoke check with v1d's paragraph; the request `PLAN_PLACEMENT.md`'s for both arms, through the SDK double; `whole(r)` on drafts built by hand, with the drafts' breadth; and Stage C's exact lines on every side, medians, `WR-f`'s pairs read by repetition, thin labels and every reason a row has no value. **No figure of the plan** |
 | `test_corrections.py` | the `PLAN_CORRECTIONS.md` instrument: the constants with the client and the pin imported from `PLAN_PLACEMENT.md`, level 1, the seed the next prime after 107, §0's lines as exact fractions on their own sides, the schedule, the checkpoints, and the gate counting every signature line without pinning whether the plan is signed; the report by digest, naming one queue and no rule, quoted in the plan; the messages, v1c's with level 3's system prompt and no report, one report apart with it, and one system prompt apart at level 1; **the label's route**, on a corpus built by hand: arm l's proposer handed the reported case's own label at its two calls and nowhere else, arm n's none, and the same record under both; the at-once asks, `PLAN_MANUAL.md`'s level-1 compile messages with no label, the labels read off an L record and refused when they are not its reported errors', the design, the re-asks and the validity flag on an empty object; the learners' plumbing; Stage C's exact lines, medians, thin labels and every reason a row has no value; and nothing built, asked or written unsigned. **No figure of the plan** |
+| `test_cause.py` | the `PLAN_CAUSE.md` instrument: the constants and the lines as drafted, and the four texts as §2.1 chose them, `e` and `v` byte for byte `PLAN_HALVES.md`'s; the gate counting every signature line, and every writer refusing unsigned before it builds, asks or writes; the design rebuilt from its seeds; the request as the SDK double receives it; Stage B keeping every attempt, the provider and the reasoning, never a label, its validity flag §0's, and its resume with each answer's own seconds; and Stage C's statistics, errors, *thin* and no-value rules on rows built by hand |
 | `test_ranked.py` | the `PLAN_RANKED.md` instrument: the constants with the client, the pin, level 1, the texts and the at-once asks imported from `PLAN_CORRECTIONS.md`, the two arms and their engines, the seed the next prime after 109, §0's lines as exact fractions, the schedule, a session after every run, and the gate counting every signature line without pinning whether the plan is signed; **the count**: before any vote the domain's order, every citation a vote, a rule and a side, a rule not yet born never counted, and the ranking `corrections.online.Agreement` chooses; **the decision**: arm K's engine as rung 2's but where rung 2's returns CONFLICT, where its ranking decides, overriding `decide` and nothing else, and the space read as it decides; **the loop** on a corpus built by hand with a scripted proposer: arm L asks at a CONFLICT and arm K decides it, a reported error hands its own label in both arms, and the check on arm K's record catches a log that is not its births'; the readings after every birth, the conflicts a run asked about, the two designs set aside and the count under which a rule written again votes again; the sessions' design; Stage C's exact lines, medians, thin labels, the count of runs and every reason a row has no value; nothing built, asked or written unsigned; **Step 0** compared without its calls' seconds, which the wall clock reads, and whole otherwise; and §0's declared figures recomputed, with one closed run replayed under both arms |
 | `test_corrections_forgotten.py` | `corrections/forgotten.py`, the POST-RUN reading of why the final base forgets its corrections, on a run built by hand with six labelled points: one kept, one never born, its report left unplaced, one never right, its correction broader than the rule that erred there, and three taken back, by containment, by an edge and by a conflict; each loss's newborn with its cause, a point arriving again unreported after its loss, the final ways of the forgotten points, why a born report does not leave its point right for each reason, the five gates passing on that run and each failing on its own, a label that is not the reported case's refused, the expectation's clauses at their edges and over nothing, the writer refusing unsigned before it reads or writes, and, added after the first run, the born reports by breadth, the nested reports' rules, the last losses' targets and spans, and the takers' causes beside the births'. **No figure of the reading** |
 | `test_corrections_broad.py` | `corrections/broad.py`, the POST-RUN reading of why the first call writes broad corrections, on records built by hand: a draft's region and the payloads that build none, the two codes each matched and each refused where a longer word, a far ticket or a full stop would fool it, the first calls with their breadth and codes, the pairs on the same ticket overall and on the same queue, the corrections that duplicate a rule of their queue and the one written most often, a copy of another queue that is no duplicate, the nested rules of another queue left out of the round, the four gates on six runs built by hand and each failing on its own, the expectation's clauses at their edges, on the held-out runs alone and over nothing, and the writer refusing unsigned before it reads or writes. **No figure of the reading** |
@@ -2388,6 +2433,15 @@ adaptive-policy-compilation/
 │   ├── sample.py            Stage A · the references
 │   └── score.py             Stage C · RK-a to RK-f and RK-g, gated on PLAN_RANKED.md
 │
+├── cause/                CA · the loop's first call, told why its ticket escalated
+│   ├── plan.py              the gate, the constants, §0's lines, §0's validity and the paths, beside PLAN_HALVES.md's plan · the proposer's path
+│   ├── prompts.py           the four arms' texts and messages: e and v are PLAN_HALVES.md's, and each notice follows v · the proposer's path
+│   ├── population.py        the design: PLAN_HALVES.md's tickets, the asks and the sessions · the proposer's path
+│   ├── ask.py               Stage B · the smoke run, the two passes and the rarest queue's session · spends · resumes · the proposer's path
+│   ├── gates.py             CA-g1..CA-g4 · blocking
+│   ├── sample.py            Stage A · the design and the references
+│   └── score.py             Stage C · CA-a to CA-f and CA-g, gated on PLAN_CAUSE.md
+│
 ├── edges/                W · what the edges declared at write time bought
 │   ├── plan.py              the gate and §8's constants; §0's three lines
 │   ├── rebuild.py           a Stage B run rebuilt, each edge declared, flipped or absent
@@ -2475,7 +2529,7 @@ adaptive-policy-compilation/
     results_spotcheck/  results_unreached/  results_manual/  results_apply/
     results_queue_alone/  results_first_match/  results_reasoned_rule/
     results_reasoned_loop/  results_channel/  results_placement/  results_whole/  results_halves/
-    results_corrections/  results_ranked/
+    results_corrections/  results_ranked/  results_cause/
     The records. FINDINGS*.md are the conclusions with their dated
     errata; the .json files are the raw data, for post-hoc slicing
     without paying for any run again. They are versioned on purpose:
