@@ -182,7 +182,8 @@ the FINDINGS.
 2026-11-05 `channel/run.py`, since 2026-11-07 `placement/run.py`, since
 2026-11-09 `whole/run.py`, since 2026-11-10 `halves/ask.py`, and since
 2026-11-12 `corrections/run.py` and `corrections/ask.py`, and since 2026-11-18
-`ranked/run.py` and `ranked/ask.py`, all twenty-two below. It
+`ranked/run.py` and `ranked/ask.py`, and since 2026-11-25 `cause/ask.py`, all
+twenty-three below. It
 refuses to run while §0 of **the
 plan that governs the run** is
 unsigned — `PLAN_PAIRWISE.md` for Stage D, `PLAN_PROPOSER_1600.md` for a
@@ -1834,6 +1835,77 @@ rule by its queue. **A round that shows the base's order does not get it
 kept**: a protocol that asks for a side against each listed rule should say in
 §0 what an answer that contradicts the list's own sides does.
 
+**`PLAN_CAUSE.md` closed on 2026-11-26: the loop's first call, told why its
+ticket escalated.** Seven signed rows: five adjudicated, four held and one
+refuted, one signed and not adjudicated, and one reported. Sergi signed §0 on
+2026-11-25, before any figure it governs existed.
+- **What it asked.** It asked the loop's first call alone, with level 3's
+  manual and reasoning on, at `PLAN_HALVES.md`'s tickets: two passes, then a
+  session of the rarest queue's tickets. Four arms differ in the paragraph that
+  stands where the base would be.
+  - **`e`** is the empty base, and **`v`** v2b's paragraph, as `PLAN_HALVES.md`
+    asked them.
+  - **`i`** is `v` with a notice that no rule of the base matches the ticket.
+  - **`r`** is `v` with a notice that a reviewer marked the engine's decision
+    on the ticket wrong. It names no queue, no rule and no decision.
+  - **The pin is DeepInfra's fp8 endpoint**, by the rule agreed on 2026-11-06,
+    with no bridge.
+- **Where it is written up.** The record is `results_cause/FINDINGS_CAUSE.md`,
+  and `STATUS.md` indexes its figures.
+- **What spent.** Stages A and C are free and reproduce from the committed
+  records. Stage B spent: its records are guarded, and a re-run neither
+  overwrites them nor gives the same answers back, so a paid session does not
+  start without Sergi asking for it.
+- **The gate.** Every writer in `cause/` refuses while the plan carries a blank
+  signature line. The gate reads `PLAN_CAUSE.md` and no other plan, and counts
+  every such line.
+- **What it calls.** `halves/`, `corrections/`, `whole/`, `placement/`,
+  `reasoned_loop/`, `first_match/`, `authorship/`, `escalations/`, `reuse/` and
+  `rung2/` are called by it and not edited. Its asker is the loop's, with
+  `placement/`'s pin.
+- **It sends the manual's texts again**, so its proposer-path modules are
+  watched as the authority channel in `tests/test_oracle_separation.py`.
+
+The first command is blocking and writes nothing:
+
+    python3 -m cause.ask --dry-run                                  # CA-g1..CA-g4; must pass first
+    PYTHONHASHSEED=0 python3 -m cause.sample                        # Stage A, free
+    PYTHONHASHSEED=0 python3 -m cause.score                         # Stage C, free, from the sessions
+    PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session smoke  # Stage B: spends — only if asked
+    PYTHONHASHSEED=0 .venv/bin/python -m cause.ask --session pass1  # then pass2 and oncall, never side by side
+
+**Told that no rule of the base matches its ticket, the first call writes the
+governing region** (`CA-c` holds), **and stops reading the impasse as a
+conflict between two of the manual's rules** (`CA-f` holds). The notice keeps
+v2b's hidden base, so a blind loop can send it. What the hidden base cost was
+the impasse left unexplained.
+
+**Told that a reviewer marked the decision wrong, and nothing of the decision,
+the first call names another queue.** Nearly every answer did. So the row that
+read the region under that notice read it on a handful of answers (`CA-d`
+refuted, thin), and the one at the rarest queue's tickets had no value. A plan
+that tells the proposer its base erred should say in §0 what it tells it the
+base decided.
+
+**A share read among right-queue answers can lose its denominator to the
+arm.** A plan whose arm may move the queue should band the queue beside the
+region, and say in §0 what a row read on a handful of answers means.
+
+**A scorer's word for no value must be one the prose test reads.** `CA-e`'s
+record writes its verdict `unadjudicable`, which `tests/test_prose_tables.py`
+had read only as a flag. It learnt the string in the commit that closed the
+thread. A new scorer should run that test before signature, on a record built
+by hand with a row of no value.
+
+**Check a detached process with `kill -0` or `ps -p`, not with grep over
+`/proc`.** In the agent's shell `grep` is a function. Over
+`/proc/<pid>/cmdline` it missed a match, and read the live supervisor as gone.
+
+**Its sessions were launched by the agent, as §2.5 let Sergi choose.** A
+supervisor ran them one at a time, committed each record alone and pushed it to
+one pull request. The merge waited for Sergi's word, and went in by auto-merge
+once CI was green.
+
 **Every paid call keeps what OpenRouter says about it, since 2026-10-16.**
 `harness/call_record.py` wraps the clients of `rung2/proposers2.py`,
 `authorship/protocol.py` and `rung2/pair_judgement.py`, since 2026-10-17
@@ -1846,7 +1918,7 @@ and `reasoned_loop/protocol.py` ask through too, and `channel/run.py` through
 `corrections/run.py` through the same asker, without changing a request, and
 `corrections/ask.py` through a subclass of it that changes the budget alone,
 and `ranked/run.py` through the same asker and `ranked/ask.py` through that
-subclass, each unchanged. Every paid writer but rung 1's stores each question's attempts as
+subclass, and `cause/ask.py` through the same asker, each unchanged. Every paid writer but rung 1's stores each question's attempts as
 `call_attempts`: generation id, provider, model, both finish reasons and the
 tokens. A new paid writer does the same, and `tests/test_call_record.py` fails
 on a call site nobody classified. **OpenRouter does not document `provider` in
@@ -1940,7 +2012,8 @@ and, since 2026-09-29, `reuse/run.py`, since 2026-10-02, `fidelity/ask.py`, sinc
 2026-11-05, `channel/run.py`, since 2026-11-07, `placement/run.py`, since
 2026-11-09, `whole/run.py`, since 2026-11-10, `halves/ask.py`, and since
 2026-11-12, `corrections/run.py` and `corrections/ask.py`, and since
-2026-11-18, `ranked/run.py` and `ranked/ask.py`.
+2026-11-18, `ranked/run.py` and `ranked/ask.py`, and since 2026-11-25,
+`cause/ask.py`.
 **The guard is not authorization**: the norm above still holds, and the flag is
 not typed without Sergi asking for it.
 

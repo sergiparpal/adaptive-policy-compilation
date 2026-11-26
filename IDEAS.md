@@ -1,6 +1,6 @@
 # Parking lot
 
-Status as of November 21, 2026. Rungs 1, 2, 3 and 4 closed; see
+Status as of November 26, 2026. Rungs 1, 2, 3 and 4 closed; see
 `results/FINDINGS.md`, `results2/FINDINGS2.md`, `results3/FINDINGS3.md` and
 `results4/FINDINGS4.md`. The optimizer audit of August 8, 2026
 (`results3/FINDINGS_AUDIT.md`)
@@ -147,7 +147,10 @@ POST-RUN on November 21, 2026**, and the item it answers is struck in place.
 **One thing that one left free was read POST-RUN the same day**, and the item
 it answers is struck in place. **So was one thing that one left free**, and the
 item it answers is struck in place. **And so was one thing that one left
-free**, and the item it answers is struck in place.
+free**, and the item it answers is struck in place. **The loop's first call,
+told why its ticket escalated, closed on November 26, 2026**: `PLAN_CAUSE.md`,
+seven signed rows, four held, one refuted, one with no value and one reported,
+written up in `results_cause/`.
 This is a list of things not done,
 none of them developed and in no order of precedence.
 
@@ -159,6 +162,24 @@ against, a threshold a next run would have to clear.
 
 ## No longer here
 
+- **The loop's first call, told why its ticket escalated.** November 26, 2026,
+  `PLAN_CAUSE.md`, a dollar and nine cents. The loop's first call was asked
+  alone, with level 3's manual and reasoning on, pinned to DeepInfra, at
+  `PLAN_HALVES.md`'s 136 tickets: two passes, then a session of the rarest
+  queue's tickets. Four paragraphs stood where the base would be: the empty
+  base, v2b's paragraph, and v2b's paragraph with one of two notices. One said
+  that no rule of the base matches the ticket, the other that a reviewer marked
+  the engine's decision wrong.
+  - **Told that no rule matches, the first call writes the region** as often as
+    under the empty base, and stops naming a conflict between two listed rules.
+  - **Told that a reviewer marked the decision wrong, it names another queue**
+    in nearly every answer. So the row that read the region under that notice
+    read it on few answers, and the one at the rarest queue's tickets had no
+    value.
+  - **At the rarest queue's tickets the impasse notice writes the region**, and
+    no loop on record met an impasse there.
+
+  What it leaves is in its own section below. `results_cause/`.
 - **A loop that settles its conflicts by the ranking its own votes choose.**
   November 20, 2026, `PLAN_RANKED.md`, three dollars and thirteen cents.
   `PLAN_CORRECTIONS.md`'s arm L ran twice over, at level 1 with reasoning on,
@@ -553,6 +574,69 @@ against, a threshold a next run would have to clear.
   feedback recovers far more of what full supervision does than rung 4 credited
   (see the erratum in `FINDINGS4.md` §1), so "it would only degrade things
   further" now rests on a smaller margin than when it was written.
+
+---
+
+## What `PLAN_CAUSE.md` opens and does not resolve
+
+Closed November 26, 2026. It asked the loop's first call alone, with level 3's
+manual and reasoning on, pinned to DeepInfra, at `PLAN_HALVES.md`'s 136 tickets,
+in two passes and a session of the rarest queue's tickets. Four paragraphs stood
+where the base would be:
+- the empty base;
+- v2b's paragraph;
+- v2b's paragraph with an impasse notice, that no rule of the base matches this
+  ticket;
+- v2b's paragraph with a review notice, that a reviewer marked the engine's
+  decision on this ticket wrong. It names no queue, no rule and no decision.
+
+Told of the impasse, the first call wrote the governing region as often as
+under the empty base, and stopped reading a conflict between two of the
+manual's rules. Told of the review, it named another queue in nearly every
+answer. What that leaves:
+
+- **The loop that sends the impasse notice at its impasses**, beside v1c as it
+  is, at level 3 with reasoning on. §12 of `PLAN_CAUSE.md` names it. The open
+  questions are whether whole first calls at the impasses compile more of the
+  policy, and what the placement round then does with them. Calls.
+- **Which queue the review notice names, and why.** Each ask keeps the queue it
+  names, its note and its reasoning. Setting each named queue against the
+  list's later matches at its ticket, and reading the reasoning, is free on the
+  records.
+- **A review notice that does not move the queue.** This one names no
+  decision, so the model was left to guess which one erred. At a reported error
+  the loop knows the queue its base decided and the rule that decided it. A
+  notice that names them is the next text. Calls.
+- **Why the impasse notice cuts at `T1_GENERAL`'s tickets.** There it wrote the
+  region in under a quarter of its answers, against about two thirds under the
+  empty base. Free on the records.
+- **The rarest queue.** The impasse notice wrote the region at its tickets, but
+  every escalation on record there was a reported error or a conflict. What
+  reaches those tickets is the review notice's text, so the route there is a
+  report that keeps the queue. Calls.
+
+Lessons it leaves:
+
+- **A notice that the base erred, naming nothing it decided, moves the queue.**
+  Nearly every answer under the review notice named a queue other than the
+  governing rule's. A plan that tells the proposer its base erred should say in §0 what it
+  tells it the base decided.
+- **A share read among right-queue answers can lose its denominator to the
+  arm.** `CA-d` and `CA-e` read the region among answers of the right queue, and
+  the review notice moved the queue. `CA-d` read a handful of answers, and
+  `CA-e` had no value. A plan whose arm may move the queue should band the queue beside the
+  region.
+- **A scorer's word for no value must be one the prose test reads.** `CA-e`'s
+  record writes its verdict `unadjudicable`, a string `tests/test_prose_tables.py`
+  had never been given. It was taught to read it in the commit that closed the
+  thread.
+- **Check a detached process with `kill -0` or `ps -p`.** In the agent's shell
+  `grep` is a function, and over `/proc/<pid>/cmdline` it missed a match. So it
+  read the live supervisor as gone. A script run with `bash` gets the real grep.
+- **A bet on a text held, after two that failed.** `PLAN_WHOLE.md`'s and
+  `PLAN_HALVES.md`'s bets on which text moves the cut were refuted. This plan's,
+  `CA-c`, held. The row the drafter trusted third, `CA-d`, was refuted by an
+  effect on the queue that no row banded.
 
 ---
 
@@ -1307,6 +1391,11 @@ base and nothing beside the first half. What that leaves:
   says the base exists and is hidden, and that a nested rule is ordered by
   containment, set beside v1c in a loop, is the plan §12 of `PLAN_HALVES.md`
   names. Calls.
+  **[NOTE 2026-11-26] Found for the first call alone, by `PLAN_CAUSE.md`.**
+  v2b's paragraph with a notice that no rule of the base matches the ticket
+  wrote the region as often as the empty base (`CA-c` holds). It keeps v2b's
+  hidden base, so a blind loop can send it. Setting it beside v1c in a loop is
+  still open. See *What `PLAN_CAUSE.md` opens*.
 - **Why the first half cuts.** Under it, and under v2b's paragraph, nearly half
   the answers declared `beats` or `loses_to` against the manual's identifiers.
   Under the empty base about a tenth did. Whether the model takes the manual's
@@ -1324,6 +1413,10 @@ base and nothing beside the first half. What that leaves:
   paragraph did (`HV-f` refuted), and at 1432 every text cut at least half the
   time. So a text that fixes the cut over all the tickets may still lose the
   queue, as T1 did. Calls.
+  **[NOTE 2026-11-26] The impasse notice writes the region there.**
+  `PLAN_CAUSE.md`'s first call wrote it in nearly every answer at the seven
+  tickets, 1432 included. But no loop on record met an impasse at them, and the
+  review notice named another queue there. See *What `PLAN_CAUSE.md` opens*.
 - **A ticket's class from one ask.** A prompt's two answers shared a class in
   about half the prompts. A plan that reads a class ticket by ticket needs
   several asks a ticket, as the rarest queue's session had.

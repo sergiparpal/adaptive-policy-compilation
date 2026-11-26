@@ -105,6 +105,7 @@ THREADS = {
     "HV": ("results_halves/score.json", ("verdicts",)),
     "CR": ("results_corrections/score.json", ("verdicts",)),
     "RK": ("results_ranked/score.json", ("verdicts",)),
+    "CA": ("results_cause/score.json", ("verdicts",)),
 }
 
 # Rows a thread's record keeps somewhere else. `P-c`'s record states its verdict
@@ -153,6 +154,7 @@ TABLES = {
     "results_halves/FINDINGS_HALVES.md": ("HV",),
     "results_corrections/FINDINGS_CORRECTIONS.md": ("CR",),
     "results_ranked/FINDINGS_RANKED.md": ("RK",),
+    "results_cause/FINDINGS_CAUSE.md": ("CA",),
 }
 PROSE_ONLY = {"P": "results2/FINDINGS2.md", "B": "results3/FINDINGS3.md"}
 NOT_TABLES = {
@@ -239,7 +241,9 @@ def verdict(row: object) -> str | None:
                             ("neither", DEAD)):
             if said.startswith(start):
                 return word
-        if "not a verdict" in said:
+        # `halves/score.py`'s word for a row with no value, which `cause/score.py`
+        # took with it. `CA-e` was the first row to carry it, on 2026-11-26.
+        if "not a verdict" in said or said.startswith("unadjudicable"):
             return NONE
     for flag in ("holds", "band_holds"):
         if isinstance(row.get(flag), bool):
@@ -757,6 +761,7 @@ class TestTheReaders(unittest.TestCase):
         self.assertEqual(verdict({"holds": False, "thin": True}), REFUTED)
         self.assertEqual(verdict({"band_holds": True}), HOLDS)
         self.assertEqual(verdict({"holds": None, "unadjudicable": True}), NONE)
+        self.assertEqual(verdict({"verdict": "unadjudicable", "value": None}), NONE)
         self.assertEqual(verdict({"adjudicates": False}), REPORTED)
         self.assertEqual(verdict({"band": "P-c HOLDS and Stage D may run"}), HOLDS)
         self.assertIsNone(verdict({"band": "> 0.4824"}))
