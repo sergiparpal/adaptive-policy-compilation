@@ -1,17 +1,18 @@
 # PLAN_IMPASSE — the loop whose first call is told, at an impasse, that no rule of the base matches, beside v1c, under half the errors reported
 
-**Status: drafted by Claude on 2026-11-28, unsigned.** Under hard rule 2 of
-`CLAUDE.md` a model may draft a band and may not sign it. **Nothing runs and no
-record is written until Sergi has signed §0.** The signature has to land before
-any figure named here exists, in its own commit, staged by name. That includes
-Stage A, which spends nothing: §11 says why.
-- **§2's choices are open.** Each carries the drafter's recommendation but
-  §2.5, which carries none.
-- **The package, `impasse/`, is not written yet.** §§5 to 11 say what it will
-  hold, against the packages it calls.
-- **Once it is written**, and its checks have run, §0 says what writing it
-  showed, before the signature, as `PLAN_CAUSE.md`'s did. Each later correction
-  is dated in place.
+**Status: drafted by Claude on 2026-11-28, completed against its package the
+same day, unsigned.** Under hard rule 2 of `CLAUDE.md` a model may draft a band
+and may not sign it. **Nothing runs and no record is written until Sergi has
+signed §0.** The signature has to land before any figure named here exists, in
+its own commit, staged by name. That includes Stage A, which spends nothing: §11
+says why.
+- **Sergi asked on 2026-11-28 for the package to be written with §2's
+  recommendations as drafted**: §2.1 to §2.4, §2.6 and §2.7. Each stays his to
+  overrule at signature. §2.5 carries no recommendation, and is still his to
+  choose.
+- **§§5 to 11 are written against the package, `impasse/`**, and §0 says what
+  writing it showed, in a dated addition. Each later correction is dated in
+  place.
 
 **Asked for by Sergi on 2026-11-28**, after a reading of what the project leaves
 open, in which the drafter named this plan as the next step.
@@ -202,6 +203,43 @@ Drafted, unsigned. One row is one event. **A band's edge is its own refutation
 line**, so band and refutation partition the axis and nothing can fall between
 them.
 
+**[Added before signature, 2026-11-28] What writing the package showed.** The
+package was written, and its checks run, before the signature, as §7 asks.
+
+- **`IM-g1` to `IM-g3` pass**, with the suite green, in `python3 -m impasse.run
+  --dry-run`. They print pass or fail, and no figure.
+- **v1n is v1c but for the notice, on the closed runs' own answers.** Served each
+  of the six v1c runs' answers by `channel/gates.py`'s replay, this plan's v1c
+  gives back the run's rules and causes, case for case.
+  - **Told no impasse**, v1n's proposer sends v1c's messages at every one of the
+    936 calls of the six runs, byte for byte, and leaves the same record.
+  - **Told the cause**, it sends the same but for the one paragraph at the 349
+    calls of the runs' 197 impasse escalations, and v1c's messages at the other
+    587.
+  - **The notice was sent at exactly the records' impasses**, and at no other
+    case.
+- **§0's figures came back as declared**: figures 1 to 6 and 8 from the records
+  and the text, and figure 7 from the seed. Stage A's reading was run in memory,
+  and nothing was written.
+- **Stage C's scorer was run in memory, to test the code**, and nothing was
+  written. `PLAN_WHOLE.md`'s three v1c runs stood in for v1c, and its three v1d
+  runs for v1n.
+  - **Its six rows gave back figures §0 already declares, or a record already
+    publishes**: `IM-a` 16/51, from figure 2's medians; `IM-b` 3/8, figure 3's
+    v1d pooled; `IM-c` and `IM-d` the difference `WR-d` read; `IM-e` 17/35,
+    from figure 1's medians; `IM-f` 9/11, figure 4's median.
+  - **Its reported row was computed and not printed.**
+- **One rule of §0 changed, and no line.** `IM-b`'s minimum was ten drafts.
+  Writing the scorer showed that it could hide the row's refutation.
+  - **Why.** A default drafted whole takes its later impasses away, so a v1n that
+    wrote the defaults whole would meet few of them. v1d met 8 in its three runs
+    (figure 3), under ten.
+  - **The change.** The minimum is five drafts, as `CA-e`'s was five tickets. With
+    v1d standing in, the row has a value.
+- **The record keeps the cases at which the notice was sent**, as `notice_at`, and
+  not a flag on each call's row. The call rows are `placement`'s, called and not
+  edited.
+
 **The runs.** `R = 3` runs per arm. Each run is `PLAN_REUSE.md`'s loop over the
 2,000 cases of `generate_corpus(2000, seed=17)`, with a fresh rung 2 engine. Its
 trigger is `PLAN_CHANNEL.md`'s channel at coverage 1/2. Run `k` of either arm
@@ -290,8 +328,10 @@ not in the scorer, which is where `PLAN_AUTHORSHIP.md`'s `E-c` lost its verdict.
   - **`IM-a` reads the runs that have a `whole_I(r)`.** A run with no
     right-queue first-call draft at an impasse has none. With fewer than two
     such runs in either arm, the row has no value.
-  - **`IM-b` has no value** if v1n's runs hold fewer than ten right-queue
-    first-call drafts at the defaults' impasses between them.
+  - **`IM-b` has no value** if v1n's runs hold fewer than five right-queue
+    first-call drafts at the defaults' impasses between them. [Amended before
+    signature, 2026-11-28: the draft said ten; *What writing the package showed*,
+    above, says why.]
   - **`IM-f` reads v1n's runs that have a whole first-call draft at an
     impasse.** With fewer than two such runs, the row has no value.
 - **A row with no value is unadjudicable**, and the record writes its verdict
@@ -475,6 +515,15 @@ repository and the agent's notes hold, and in it the drafter read:
     `held` and `group`; `reuse/plan.py`'s `gate_signature`;
     `tests/test_prose_tables.py`'s docstring, `THREADS` and `TABLES`.
   - **Level 3's system prompt**, its 29 rules and the sentence above them.
+  - **[Added before signature, 2026-11-28] While writing the package**:
+    `whole/run.py`, `gates.py`, `references.py`, `sample.py` and `score.py`,
+    whole; `tests/test_whole.py`, whole; `placement/protocol.py`'s
+    `propose_v1c`; `placement/run.py`'s `Stamped` and the helpers `whole/run.py`
+    imports from it; `cause/gates.py`'s scan for labels; `reasoned_loop/score.py`'s
+    verdict words and `frac`; `tests/test_prose_tables.py`'s `verdict`; and the
+    registries `PLAN_CAUSE.md`'s package touched. The keys of one of
+    `PLAN_CAUSE.md`'s session records, and its texts' digests, were printed. No
+    answer of that plan's was read.
 - **The three analytical documents `CLAUDE.md` asks a new one to read first.** A
   subagent of the drafter read `ARBITRATION_REPORT.md`, `CHAT_SUMMARY.md` and
   `EXTERNAL_REVIEW.md` whole for this plan on 2026-11-28, with every dated
@@ -1119,7 +1168,7 @@ C. **Every record carries `_env`**, with:
    - the protocol, the arm, the run, the coverage, the draws' seed string and
      their digest, the texts' digests and the fingerprint, and the paragraph the
      notice's first calls carried, as `notice_text`;
-   - for every first call, whether it carried the notice;
+   - the cases whose first call carried the notice, as `notice_at`;
    - every call's `call_attempts`, and the cause of every retry;
    - for every round, `O`, v1c's list, and every rule left out with its reason.
 
@@ -1192,7 +1241,9 @@ decidirlo.
   placement message and the retry message. `IM-g2` holds each to v1c's by digest.
 - **What the record keeps of it.** The header's `texts_sha16` gives v1c's four
   texts' digests and the paragraph's, under `notice_base`, and the fingerprint
-  over the five. Every first call's row says whether it carried the notice. A
+  over the five. The record keeps v2b's paragraph as `base_text`, the notice's
+  paragraph as `notice_text`, and the cases whose first call carried it as
+  `notice_at`. A
   partial file's rows carry each request's digest, so a v1n run cannot be served
   an answer a v1c request paid for, nor the reverse.
 - **A blocking check holds v1n to v1c**, call for call, on `PLAN_PLACEMENT.md`'s
@@ -1212,7 +1263,7 @@ Both arms run `PLAN_CHANNEL.md`'s channel arm, called through `placement/`.
 ### 5.4 What a run records, and how it resumes
 
 - **What it records** is `PLAN_PLACEMENT.md` §5.4's record, with this plan's
-  header, the notice's text and digest, and the notice flag on every first call.
+  header, the notice's text and digest, and the cases at which it was sent.
 - **How it resumes** is `PLAN_REASONED_LOOP.md` §5.5's, with both its signed
   amendments, called and not copied.
   - **A call refused for the rate on every attempt is waited out**, after each
@@ -1321,6 +1372,24 @@ the broader rule of each crossing pair its round lists, so v1n's rounds may
 declare it above rules the policy puts first. `IM-g` reads the placed edges'
 direction against the better rule, as `RL-e` read it, in both arms.
 
+**[Added before signature, 2026-11-28] Found writing the package.**
+
+- **The flag must not outlive its escalation.** `propose_v1n` clears it in a
+  `finally`, so an escalation that raises, an outage among them, cannot leave the
+  next one told it is an impasse. A test pins it.
+- **A resumed run rebuilds `notice_at` as it was.** The answers a resume serves
+  from the partial file pass through the same first call, so the cases at which
+  the notice was sent come back the same. A test pins it on a run built by hand.
+- **`whole/gates.py`'s replay double does not run the proposer's constructor**,
+  so v1n's state would be missing under it. `impasse/gates.py` keeps a double of
+  its own, which sets that state, and calls `whole`'s and `placement`'s readings
+  otherwise.
+- **The checks may not name the record guard.** `tests/test_writer_lists.py`
+  counts a module that names it as a writer, so `IM-g3` reads `.gitignore` for
+  the partial files, as `PLAN_CAUSE.md`'s checks did.
+- **`IM-b`'s minimum could hide its refutation**, and was lowered before the
+  signature (§0, *What writing the package showed*).
+
 ---
 
 ## 7. Blocking checks, before any record is written
@@ -1341,13 +1410,14 @@ figure exists.**
   refuses any other call. Under it, this plan's v1c gives back the run's rules
   and causes, case for case.
 - **v1n told no impasse is v1c.** On the same replays, v1n's proposer class, with
-  its flag held false, sends v1c's messages at every call, byte for byte, and
-  leaves the same record.
+  the notice held off, sends v1c's messages at every call, byte for byte, sends
+  the notice nowhere, and leaves the same record.
 - **v1n is v1c but for the notice, at the impasses alone.** On the same replays,
   v1n's messages at every call of an impasse escalation are v1c's but for the
   first user message, where `PLAN_CAUSE.md`'s arm `i`'s paragraph stands in
   place of v2b's, at the start and once. At every call of a conflict or a
-  reported error they are v1c's, byte for byte.
+  reported error they are v1c's, byte for byte. The notice is sent at exactly
+  the record's impasses, so the flag reads the cause and nothing else.
 - **No float decides a check.** Values are compared as fractions, and counts as
   integers.
 
@@ -1355,17 +1425,17 @@ figure exists.**
 
 - **The texts.** v1c's four are the ones the six v1c runs sent, by digest and
   fingerprint. v1n's paragraph at an impasse is `PLAN_CAUSE.md`'s arm `i`'s, by
-  digest, and every ask of `i` in that plan's three session records carried it.
+  digest, and that plan's three session records carry its digest and its bytes.
   It opens with v2b's paragraph, names no queue and no rule, ends in a newline,
   and is quoted in §5.2 of this plan byte for byte.
 - **The requests.** Both arms send one request, `PLAN_PLACEMENT.md`'s,
   `reasoned_loop.protocol.Asker`'s but for the pin, read off
   `placement.protocol.request_with` without building a client. The SDK double
   sends it in `tests/test_impasse.py`, which `IM-g1`'s suite runs.
-- **The flag reads the cause and nothing else.** On every escalation of the six
-  replays, the flag is true exactly where the record's cause is an IMPASSE, and
-  the proposer's path names no label, in a name or a string literal, as `N-g2`
-  reads them.
+- **The proposer's path names no label**, in a name or a string literal, as
+  `N-g2` reads them: `impasse/plan.py`, `protocol.py` and `run.py`. That the
+  flag reads the cause and nothing else is `IM-g1`'s: on the six replays the
+  notice is sent exactly where the record's cause is an IMPASSE.
 - **The drafting reading.** §0's figures 1 to 6 come back from the records, and
   figure 8 from the text's regions.
 
@@ -1517,7 +1587,8 @@ pinned by tests:**
   - `IM_D_LINE = Fraction(1, 40)`.
   - `IM_E_LINE = Fraction(3, 4)`.
   - `IM_F_LINE = Fraction(3, 4)`.
-  - `IM_B_MIN = 10`, the drafts `IM-b` needs to have a value.
+  - `IM_B_MIN = 5`, the drafts `IM-b` needs to have a value, amended before
+    signature from the draft's ten (§0).
 
 **The names.**
 
@@ -1576,8 +1647,8 @@ network.
         pin;
       - the protocol, the arm, the run, the coverage, and the draws' seed
         string and digest;
-      - the texts' digests, the fingerprint, the notice's paragraph, the notice
-        flag on every first call, and `call_attempts`;
+      - the texts' digests, the fingerprint, the notice's paragraph, the cases
+        at which it was sent, and `call_attempts`;
       - every round's `O`, list and rules left out, as rule C says.
 
       All were produced with `PYTHONHASHSEED=0`.
@@ -1596,12 +1667,12 @@ network.
         back;
       - the flag set from the cause alone, and cleared after each escalation;
       - each arm's proposer sending its own messages, and a loop on a corpus
-        built by hand giving the same record under both while no case is an
-        impasse;
+        built by hand giving the same record under both, with the notice at its
+        impasses alone;
       - the resume, that a resumed record keeps each call's own seconds, and that
         a run cannot resume under the other arm or other draws;
-      - `whole_I`, `whole_D` and `born_W` on drafts built by hand, by cause, by
-        group and by breadth;
+      - `whole_I`, `whole_D` and `born_W` on drafts built by hand, by cause and
+        by group;
       - the exactness of §0's comparisons on every side, *thin* on medians and on
         `IM-b`'s pooled share, and each row's conditions for having no value,
         with a record built by hand holding a row of no value;
