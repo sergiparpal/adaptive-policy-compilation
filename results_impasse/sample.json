@@ -1,0 +1,1367 @@
+{
+  "_env": {
+    "recorded_at": "2026-11-28T13:53:09Z",
+    "python": "3.12.3",
+    "openai": null,
+    "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pythonhashseed": "0",
+    "git_commit": "adbc977abc1c84a94240c480179aedeb865a6668",
+    "git_dirty": true,
+    "code_dirty": false,
+    "code_digest": "f7f9fd4f564355b9"
+  },
+  "plan": "PLAN_IMPASSE.md",
+  "stage": "A",
+  "provenance": "Figures 1 to 8 were computed while drafting, on 2026-11-28, from PLAN_PLACEMENT.md's and PLAN_WHOLE.md's records and from level 3's text, and seen before \u00a70's lines were drawn. This record recomputes all eight and owns them. None of them is a figure of the runs this plan buys.",
+  "signature": {
+    "what": "every line starting `**Signed by Sergi:` in PLAN_IMPASSE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+    "source": "PLAN_IMPASSE.md",
+    "found": 1,
+    "unsigned": 0,
+    "passes": true
+  },
+  "gates": {
+    "IM-g1": {
+      "what": "PLAN_PLACEMENT.md's and PLAN_WHOLE.md's verdicts come back from their runs and PLAN_WHOLE.md's blocking checks pass; this plan's v1c is those plans' v1c on their six v1c runs' answers; v1n told no impasse is v1c, and v1n is v1c but for the notice, at the impasses alone and at every one of them; the suite green",
+      "placement_verdicts": {
+        "rows": 6,
+        "missing_runs": [],
+        "departing": [],
+        "passes": true
+      },
+      "whole_verdicts": {
+        "rows": 6,
+        "missing_runs": [],
+        "departing": [],
+        "passes": true
+      },
+      "whole_checks": {
+        "WR-g1": true,
+        "WR-g2": true,
+        "WR-g3": true,
+        "placement_verdicts": true,
+        "placement_checks": true,
+        "passes": true
+      },
+      "replays": {
+        "pl_v1c_r1": {
+          "calls": 186,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "told_no_impasse_is_v1c": true,
+          "apart_at_the_impasses_alone": true,
+          "notice_at_the_impasses": true,
+          "impasses": 37,
+          "first_calls": 98,
+          "placement_calls": 88,
+          "calls_with_the_notice": 68,
+          "passes": true
+        },
+        "pl_v1c_r2": {
+          "calls": 126,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "told_no_impasse_is_v1c": true,
+          "apart_at_the_impasses_alone": true,
+          "notice_at_the_impasses": true,
+          "impasses": 32,
+          "first_calls": 68,
+          "placement_calls": 58,
+          "calls_with_the_notice": 57,
+          "passes": true
+        },
+        "pl_v1c_r3": {
+          "calls": 167,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "told_no_impasse_is_v1c": true,
+          "apart_at_the_impasses_alone": true,
+          "notice_at_the_impasses": true,
+          "impasses": 28,
+          "first_calls": 87,
+          "placement_calls": 80,
+          "calls_with_the_notice": 51,
+          "passes": true
+        },
+        "wh_v1c_r1": {
+          "calls": 168,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "told_no_impasse_is_v1c": true,
+          "apart_at_the_impasses_alone": true,
+          "notice_at_the_impasses": true,
+          "impasses": 26,
+          "first_calls": 88,
+          "placement_calls": 80,
+          "calls_with_the_notice": 46,
+          "passes": true
+        },
+        "wh_v1c_r2": {
+          "calls": 132,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "told_no_impasse_is_v1c": true,
+          "apart_at_the_impasses_alone": true,
+          "notice_at_the_impasses": true,
+          "impasses": 35,
+          "first_calls": 72,
+          "placement_calls": 60,
+          "calls_with_the_notice": 59,
+          "passes": true
+        },
+        "wh_v1c_r3": {
+          "calls": 157,
+          "replay_is_the_run": true,
+          "records_alike": true,
+          "told_no_impasse_is_v1c": true,
+          "apart_at_the_impasses_alone": true,
+          "notice_at_the_impasses": true,
+          "impasses": 39,
+          "first_calls": 84,
+          "placement_calls": 73,
+          "calls_with_the_notice": 68,
+          "passes": true
+        }
+      },
+      "suite": {
+        "ran": true,
+        "tests": 3897,
+        "result": "OK (skipped=5)",
+        "seconds": 239.2,
+        "passes": true
+      },
+      "passes": true
+    },
+    "IM-g2": {
+      "what": "v1c's texts are the ones the six v1c runs sent, and v1n's are v1c's and PLAN_CAUSE.md's arm i's paragraph, quoted in the plan; both arms send PLAN_PLACEMENT.md's request with its pin; the proposer's path names no label; \u00a70's figures come back, and DEFAULTS is cause/narrow.py's many",
+      "texts": {
+        "v1c_is_reasoned_loops": true,
+        "sent_by_the_v1c_runs": {
+          "pl_v1c_r1": true,
+          "pl_v1c_r2": true,
+          "pl_v1c_r3": true,
+          "wh_v1c_r1": true,
+          "wh_v1c_r2": true,
+          "wh_v1c_r3": true,
+          "pl_smoke": true
+        },
+        "system_prompt_digest": true,
+        "v1n_shares_v1cs_four": true,
+        "v1n_keys": true,
+        "notice_base_digest": true,
+        "blind_base_digest": true,
+        "sent_by_plan_causes_sessions": {
+          "pass1": true,
+          "pass2": true,
+          "oncall": true
+        },
+        "opens_with_v2bs_paragraph": true,
+        "names_nothing": true,
+        "ascii": true,
+        "quoted_in_the_plan": true,
+        "fingerprints_differ": true,
+        "passes": true
+      },
+      "requests": {
+        "same_for_both_arms_0": true,
+        "placements_but_for_the_pin_0": true,
+        "same_for_both_arms_1": true,
+        "placements_but_for_the_pin_1": true,
+        "pin": true,
+        "asker": true,
+        "passes": true
+      },
+      "no_label_on_the_proposers_path": {
+        "modules": [
+          "impasse/plan.py",
+          "impasse/protocol.py",
+          "impasse/run.py"
+        ],
+        "forbidden_names": {},
+        "passes": true
+      },
+      "drafting": {
+        "as_declared": {
+          "escalations": true,
+          "whole_by_cause": true,
+          "groups": true,
+          "groups_pooled_v1c": true,
+          "impasses_at_defaults_v1c": true,
+          "born": true,
+          "lost": true,
+          "h01_case_44": true,
+          "groups_of_rules": true,
+          "schedule": true,
+          "defaults": true
+        },
+        "passes": true
+      },
+      "passes": true
+    },
+    "IM-g3": {
+      "what": "the six runs alternate from the arm the seed draws; the smoke run is 30 cases under v1n with PLAN_CHANNEL.md's smoke draws; the coverage is 1/2; the cap is 400 escalations; run k of both arms reads PLAN_PLACEMENT.md's draws of run k; the partial files are ignored by git",
+      "schedule": [
+        [
+          "v1c",
+          1
+        ],
+        [
+          "v1n",
+          1
+        ],
+        [
+          "v1c",
+          2
+        ],
+        [
+          "v1n",
+          2
+        ],
+        [
+          "v1c",
+          3
+        ],
+        [
+          "v1n",
+          3
+        ]
+      ],
+      "as_declared": true,
+      "six_runs_three_an_arm": true,
+      "the_arms_alternate": true,
+      "each_repetition_in_order": true,
+      "smoke": true,
+      "coverage": true,
+      "cap": true,
+      "draws_are_placements": true,
+      "the_partial_files_are_ignored": true,
+      "passes": true
+    },
+    "IM-g4": {
+      "what": "every line starting `**Signed by Sergi:` in PLAN_IMPASSE.md, of which there must be at least 1. A gate that stopped at the first would report ok over an unsigned amendment.",
+      "source": "PLAN_IMPASSE.md",
+      "found": 1,
+      "unsigned": 0,
+      "passes": true
+    }
+  },
+  "references": {
+    "drafting": {
+      "escalations": {
+        "pl_v1c_r1": [
+          98,
+          37,
+          18,
+          43
+        ],
+        "pl_v1c_r2": [
+          68,
+          32,
+          3,
+          33
+        ],
+        "pl_v1c_r3": [
+          87,
+          28,
+          6,
+          53
+        ],
+        "wh_v1c_r1": [
+          88,
+          26,
+          4,
+          58
+        ],
+        "wh_v1c_r2": [
+          72,
+          35,
+          10,
+          27
+        ],
+        "wh_v1c_r3": [
+          84,
+          39,
+          4,
+          41
+        ],
+        "wh_v1d_r1": [
+          48,
+          17,
+          4,
+          27
+        ],
+        "wh_v1d_r2": [
+          58,
+          14,
+          7,
+          37
+        ],
+        "wh_v1d_r3": [
+          55,
+          17,
+          2,
+          36
+        ]
+      },
+      "whole_by_cause": {
+        "pl_v1c_r1": {
+          "IMPASSE": [
+            10,
+            36
+          ],
+          "CONFLICT": [
+            7,
+            17
+          ],
+          "ERROR": [
+            18,
+            39
+          ]
+        },
+        "pl_v1c_r2": {
+          "IMPASSE": [
+            10,
+            30
+          ],
+          "CONFLICT": [
+            0,
+            3
+          ],
+          "ERROR": [
+            9,
+            31
+          ]
+        },
+        "pl_v1c_r3": {
+          "IMPASSE": [
+            13,
+            27
+          ],
+          "CONFLICT": [
+            0,
+            6
+          ],
+          "ERROR": [
+            22,
+            52
+          ]
+        },
+        "wh_v1c_r1": {
+          "IMPASSE": [
+            8,
+            24
+          ],
+          "CONFLICT": [
+            1,
+            4
+          ],
+          "ERROR": [
+            35,
+            57
+          ]
+        },
+        "wh_v1c_r2": {
+          "IMPASSE": [
+            14,
+            31
+          ],
+          "CONFLICT": [
+            2,
+            9
+          ],
+          "ERROR": [
+            7,
+            26
+          ]
+        },
+        "wh_v1c_r3": {
+          "IMPASSE": [
+            11,
+            36
+          ],
+          "CONFLICT": [
+            1,
+            4
+          ],
+          "ERROR": [
+            23,
+            40
+          ]
+        },
+        "wh_v1d_r1": {
+          "IMPASSE": [
+            11,
+            17
+          ],
+          "CONFLICT": [
+            3,
+            4
+          ],
+          "ERROR": [
+            13,
+            26
+          ]
+        },
+        "wh_v1d_r2": {
+          "IMPASSE": [
+            9,
+            13
+          ],
+          "CONFLICT": [
+            1,
+            7
+          ],
+          "ERROR": [
+            20,
+            35
+          ]
+        },
+        "wh_v1d_r3": {
+          "IMPASSE": [
+            10,
+            16
+          ],
+          "CONFLICT": [
+            2,
+            2
+          ],
+          "ERROR": [
+            16,
+            33
+          ]
+        }
+      },
+      "groups": {
+        "pl_v1c_r1": {
+          "none": [
+            6,
+            16
+          ],
+          "few": [
+            3,
+            10
+          ],
+          "many": [
+            1,
+            10
+          ]
+        },
+        "pl_v1c_r2": {
+          "none": [
+            10,
+            15
+          ],
+          "few": [
+            0,
+            8
+          ],
+          "many": [
+            0,
+            7
+          ]
+        },
+        "pl_v1c_r3": {
+          "none": [
+            9,
+            12
+          ],
+          "few": [
+            3,
+            9
+          ],
+          "many": [
+            1,
+            6
+          ]
+        },
+        "wh_v1c_r1": {
+          "none": [
+            6,
+            10
+          ],
+          "few": [
+            1,
+            11
+          ],
+          "many": [
+            1,
+            3
+          ]
+        },
+        "wh_v1c_r2": {
+          "none": [
+            12,
+            16
+          ],
+          "few": [
+            2,
+            8
+          ],
+          "many": [
+            0,
+            7
+          ]
+        },
+        "wh_v1c_r3": {
+          "none": [
+            8,
+            16
+          ],
+          "few": [
+            3,
+            9
+          ],
+          "many": [
+            0,
+            11
+          ]
+        },
+        "wh_v1d_r1": {
+          "none": [
+            8,
+            9
+          ],
+          "few": [
+            2,
+            5
+          ],
+          "many": [
+            1,
+            3
+          ]
+        },
+        "wh_v1d_r2": {
+          "none": [
+            7,
+            8
+          ],
+          "few": [
+            1,
+            3
+          ],
+          "many": [
+            1,
+            2
+          ]
+        },
+        "wh_v1d_r3": {
+          "none": [
+            7,
+            7
+          ],
+          "few": [
+            2,
+            6
+          ],
+          "many": [
+            1,
+            3
+          ]
+        }
+      },
+      "groups_pooled_v1c": {
+        "none": [
+          51,
+          85
+        ],
+        "few": [
+          12,
+          55
+        ],
+        "many": [
+          3,
+          44
+        ]
+      },
+      "impasses_at_defaults_v1c": {
+        "H08": 7,
+        "H27": 0,
+        "H28": 13,
+        "H29": 24
+      },
+      "born": {
+        "pl_v1c_r1": {
+          "whole": 10,
+          "born": 7,
+          "unplaced": 3,
+          "refused": 0
+        },
+        "pl_v1c_r2": {
+          "whole": 10,
+          "born": 10,
+          "unplaced": 0,
+          "refused": 0
+        },
+        "pl_v1c_r3": {
+          "whole": 13,
+          "born": 10,
+          "unplaced": 3,
+          "refused": 0
+        },
+        "wh_v1c_r1": {
+          "whole": 8,
+          "born": 7,
+          "unplaced": 1,
+          "refused": 0
+        },
+        "wh_v1c_r2": {
+          "whole": 14,
+          "born": 12,
+          "unplaced": 1,
+          "refused": 1
+        },
+        "wh_v1c_r3": {
+          "whole": 11,
+          "born": 10,
+          "unplaced": 1,
+          "refused": 0
+        },
+        "wh_v1d_r1": {
+          "whole": 11,
+          "born": 9,
+          "unplaced": 2,
+          "refused": 0
+        },
+        "wh_v1d_r2": {
+          "whole": 9,
+          "born": 8,
+          "unplaced": 1,
+          "refused": 0
+        },
+        "wh_v1d_r3": {
+          "whole": 10,
+          "born": 7,
+          "unplaced": 3,
+          "refused": 0
+        }
+      },
+      "lost": {
+        "pl_v1c_r1": [
+          4375,
+          4080,
+          125,
+          170,
+          0
+        ],
+        "pl_v1c_r2": [
+          4260,
+          2060,
+          80,
+          0,
+          2120
+        ],
+        "pl_v1c_r3": [
+          6580,
+          6400,
+          160,
+          20,
+          0
+        ],
+        "wh_v1c_r1": [
+          10860,
+          10120,
+          720,
+          0,
+          20
+        ],
+        "wh_v1c_r2": [
+          11288,
+          8880,
+          288,
+          0,
+          2120
+        ],
+        "wh_v1c_r3": [
+          10450,
+          425,
+          9920,
+          105,
+          0
+        ]
+      },
+      "h01_case_44": {
+        "pl_v1c_r1": [
+          "IMPASSE",
+          "cut_by_one",
+          "nacida",
+          155
+        ],
+        "pl_v1c_r2": [
+          "ERROR",
+          "cut_by_one",
+          "nacida",
+          155
+        ],
+        "pl_v1c_r3": [
+          "IMPASSE",
+          "cut_by_one",
+          "nacida",
+          1802
+        ],
+        "wh_v1c_r1": [
+          "decided",
+          null,
+          null,
+          155
+        ],
+        "wh_v1c_r2": [
+          "ERROR",
+          "cut_by_one",
+          "rechazada",
+          null
+        ],
+        "wh_v1c_r3": [
+          "IMPASSE",
+          "cut_by_one",
+          "nacida",
+          null
+        ],
+        "wh_v1d_r1": [
+          "decided",
+          null,
+          null,
+          155
+        ],
+        "wh_v1d_r2": [
+          "ERROR",
+          "whole",
+          "nacida",
+          null
+        ],
+        "wh_v1d_r3": [
+          "IMPASSE",
+          "whole",
+          "nacida",
+          null
+        ]
+      },
+      "groups_of_rules": {
+        "many": [
+          "H08",
+          "H27",
+          "H28",
+          "H29"
+        ],
+        "few": [
+          "H03",
+          "H06",
+          "H12",
+          "H16",
+          "H18"
+        ]
+      },
+      "as_declared": {
+        "escalations": true,
+        "whole_by_cause": true,
+        "groups": true,
+        "groups_pooled_v1c": true,
+        "impasses_at_defaults_v1c": true,
+        "born": true,
+        "lost": true,
+        "h01_case_44": true,
+        "groups_of_rules": true,
+        "schedule": true,
+        "defaults": true
+      }
+    },
+    "groups": {
+      "H01": {
+        "holds": [],
+        "group": "none"
+      },
+      "H02": {
+        "holds": [],
+        "group": "none"
+      },
+      "H03": {
+        "holds": [
+          "H01",
+          "H02"
+        ],
+        "group": "few"
+      },
+      "H04": {
+        "holds": [],
+        "group": "none"
+      },
+      "H05": {
+        "holds": [],
+        "group": "none"
+      },
+      "H06": {
+        "holds": [
+          "H05"
+        ],
+        "group": "few"
+      },
+      "H07": {
+        "holds": [],
+        "group": "none"
+      },
+      "H08": {
+        "holds": [
+          "H04",
+          "H05",
+          "H06",
+          "H07"
+        ],
+        "group": "many"
+      },
+      "H09": {
+        "holds": [],
+        "group": "none"
+      },
+      "H10": {
+        "holds": [],
+        "group": "none"
+      },
+      "H11": {
+        "holds": [],
+        "group": "none"
+      },
+      "H12": {
+        "holds": [
+          "H09",
+          "H10",
+          "H11"
+        ],
+        "group": "few"
+      },
+      "H13": {
+        "holds": [],
+        "group": "none"
+      },
+      "H14": {
+        "holds": [],
+        "group": "none"
+      },
+      "H15": {
+        "holds": [],
+        "group": "none"
+      },
+      "H16": {
+        "holds": [
+          "H07",
+          "H15"
+        ],
+        "group": "few"
+      },
+      "H17": {
+        "holds": [],
+        "group": "none"
+      },
+      "H18": {
+        "holds": [
+          "H17"
+        ],
+        "group": "few"
+      },
+      "H19": {
+        "holds": [],
+        "group": "none"
+      },
+      "H20": {
+        "holds": [],
+        "group": "none"
+      },
+      "H21": {
+        "holds": [],
+        "group": "none"
+      },
+      "H22": {
+        "holds": [],
+        "group": "none"
+      },
+      "H23": {
+        "holds": [],
+        "group": "none"
+      },
+      "H24": {
+        "holds": [],
+        "group": "none"
+      },
+      "H25": {
+        "holds": [],
+        "group": "none"
+      },
+      "H26": {
+        "holds": [],
+        "group": "none"
+      },
+      "H27": {
+        "holds": [
+          "H02",
+          "H04",
+          "H05",
+          "H06",
+          "H07",
+          "H10",
+          "H15",
+          "H17"
+        ],
+        "group": "many"
+      },
+      "H28": {
+        "holds": [
+          "H01",
+          "H04",
+          "H05",
+          "H06",
+          "H09",
+          "H13",
+          "H14"
+        ],
+        "group": "many"
+      },
+      "H29": {
+        "holds": [
+          "H01",
+          "H02",
+          "H03",
+          "H04",
+          "H05",
+          "H06",
+          "H07",
+          "H08",
+          "H09",
+          "H10",
+          "H11",
+          "H12",
+          "H13",
+          "H14",
+          "H15",
+          "H16",
+          "H17",
+          "H18",
+          "H19",
+          "H20",
+          "H21",
+          "H22",
+          "H24",
+          "H25",
+          "H26",
+          "H27"
+        ],
+        "group": "many"
+      }
+    },
+    "transcriber": {
+      "v1c_r1": {
+        "escalations": 23,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 21,
+        "calls": 42,
+        "rules": [
+          "H13",
+          "H29",
+          "H19",
+          "H24",
+          "H16",
+          "H20",
+          "H11",
+          "H10",
+          "H18",
+          "H07",
+          "H12",
+          "H08",
+          "H14",
+          "H09",
+          "H26",
+          "H17",
+          "H01",
+          "H15",
+          "H03",
+          "H05",
+          "H02",
+          "H06",
+          "H04"
+        ],
+        "space_right": 134380,
+        "space_points": 134400,
+        "corpus_right": 1999,
+        "corpus_cases": 2000,
+        "recall_oncall": "1",
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            8180,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            6300,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 22,
+        "listed_v1b": 148,
+        "listed_v1c": 108,
+        "not_sent": 3,
+        "left_out": {
+          "inside": 6,
+          "containing": 29,
+          "governed": 5
+        }
+      },
+      "v1c_r2": {
+        "escalations": 22,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 20,
+        "calls": 40,
+        "rules": [
+          "H13",
+          "H29",
+          "H24",
+          "H18",
+          "H11",
+          "H20",
+          "H16",
+          "H12",
+          "H03",
+          "H10",
+          "H01",
+          "H19",
+          "H14",
+          "H07",
+          "H08",
+          "H09",
+          "H26",
+          "H17",
+          "H15",
+          "H02",
+          "H06",
+          "H04"
+        ],
+        "space_right": 132280,
+        "space_points": 134400,
+        "corpus_right": 1996,
+        "corpus_cases": 2000,
+        "recall_oncall": "2/3",
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            8180,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            4200,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 21,
+        "listed_v1b": 132,
+        "listed_v1c": 98,
+        "not_sent": 3,
+        "left_out": {
+          "inside": 3,
+          "containing": 29,
+          "governed": 2
+        }
+      },
+      "v1c_r3": {
+        "escalations": 23,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 21,
+        "calls": 42,
+        "rules": [
+          "H13",
+          "H29",
+          "H19",
+          "H24",
+          "H18",
+          "H11",
+          "H20",
+          "H12",
+          "H03",
+          "H16",
+          "H14",
+          "H01",
+          "H10",
+          "H08",
+          "H09",
+          "H26",
+          "H07",
+          "H17",
+          "H15",
+          "H02",
+          "H05",
+          "H06",
+          "H04"
+        ],
+        "space_right": 134380,
+        "space_points": 134400,
+        "corpus_right": 1999,
+        "corpus_cases": 2000,
+        "recall_oncall": "1",
+        "recall_space": {
+          "T1_GENERAL": [
+            5200,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            36720,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            8180,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            50400,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            16440,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            6300,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            4300,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 22,
+        "listed_v1b": 148,
+        "listed_v1c": 111,
+        "not_sent": 3,
+        "left_out": {
+          "inside": 3,
+          "containing": 32,
+          "governed": 2
+        }
+      },
+      "v1c_smoke": {
+        "escalations": 9,
+        "impasses": 2,
+        "conflicts": 0,
+        "errors": 7,
+        "calls": 16,
+        "rules": [
+          "H13",
+          "H29",
+          "H19",
+          "H18",
+          "H10",
+          "H20",
+          "H12",
+          "H03",
+          "H11"
+        ],
+        "space_right": 49420,
+        "space_points": 134400,
+        "corpus_right": 1107,
+        "corpus_cases": 2000,
+        "recall_oncall": "0",
+        "recall_space": {
+          "T1_GENERAL": [
+            5220,
+            5220
+          ],
+          "T2_TECHNICAL": [
+            28960,
+            36720
+          ],
+          "T3_ENGINEERING": [
+            0,
+            8180
+          ],
+          "BILLING_SPECIALIST": [
+            6840,
+            6840
+          ],
+          "SECURITY_INCIDENT": [
+            0,
+            50400
+          ],
+          "ACCOUNT_MANAGER": [
+            7680,
+            16440
+          ],
+          "ONCALL_ESCALATION": [
+            0,
+            6300
+          ],
+          "SELF_SERVICE_DEFLECT": [
+            720,
+            4300
+          ]
+        },
+        "cover": 1,
+        "stopped_at": null,
+        "rounds": 8,
+        "listed_v1b": 20,
+        "listed_v1c": 10,
+        "not_sent": 1,
+        "left_out": {
+          "inside": 2,
+          "containing": 8
+        }
+      }
+    },
+    "schedule": [
+      [
+        "v1c",
+        1
+      ],
+      [
+        "v1n",
+        1
+      ],
+      [
+        "v1c",
+        2
+      ],
+      [
+        "v1n",
+        2
+      ],
+      [
+        "v1c",
+        3
+      ],
+      [
+        "v1n",
+        3
+      ]
+    ],
+    "schedule_as_declared": true,
+    "channels": {
+      "v1c_r1": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r1",
+        "draws_sha16": "1347b9525a1e06a3",
+        "draws_n": 2000
+      },
+      "v1n_r1": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r1",
+        "draws_sha16": "1347b9525a1e06a3",
+        "draws_n": 2000
+      },
+      "v1c_r2": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r2",
+        "draws_sha16": "e81548d721b99577",
+        "draws_n": 2000
+      },
+      "v1n_r2": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r2",
+        "draws_sha16": "e81548d721b99577",
+        "draws_n": 2000
+      },
+      "v1c_r3": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r3",
+        "draws_sha16": "1f60e3d5e68553d4",
+        "draws_n": 2000
+      },
+      "v1n_r3": {
+        "channel_coverage": "1/2",
+        "draws_seed": "PLAN_CHANNEL/channel/97/r3",
+        "draws_sha16": "1f60e3d5e68553d4",
+        "draws_n": 2000
+      }
+    },
+    "streams": {
+      "r1": {
+        "seed": "PLAN_CHANNEL/channel/97/r1",
+        "sha16": "1347b9525a1e06a3"
+      },
+      "r2": {
+        "seed": "PLAN_CHANNEL/channel/97/r2",
+        "sha16": "e81548d721b99577"
+      },
+      "r3": {
+        "seed": "PLAN_CHANNEL/channel/97/r3",
+        "sha16": "1f60e3d5e68553d4"
+      },
+      "smoke": {
+        "seed": "PLAN_CHANNEL/channel/97/smoke",
+        "sha16": "029047351ae2d471"
+      }
+    },
+    "texts_sha16": {
+      "v1c": {
+        "system_prompt": "7b883f03a863d647",
+        "blind_base": "8de0ebf50ce9a54b",
+        "placement_template": "ccfd0eceba1468b2",
+        "retry_message": "ca7b3803f1bef2dd"
+      },
+      "v1n": {
+        "system_prompt": "7b883f03a863d647",
+        "blind_base": "8de0ebf50ce9a54b",
+        "placement_template": "ccfd0eceba1468b2",
+        "retry_message": "ca7b3803f1bef2dd",
+        "notice_base": "24b1b5c42568dd32"
+      }
+    },
+    "fingerprints": {
+      "v1c": "8dc358cab48635e6",
+      "v1n": "c8808ef1bf07d1f6"
+    },
+    "base_text": "BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este\nticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\n",
+    "notice_text": "BASE DE REGLAS: no se te muestra en este paso. Escribe tu regla para este\nticket; si se solapa con reglas existentes de OTRA cola, se te listaran despues.\n\nAVISO DEL MOTOR: ninguna regla de la base casa este ticket. Por eso no ha podido\ndecidirlo.\n"
+  }
+}
