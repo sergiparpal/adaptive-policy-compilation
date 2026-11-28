@@ -8,8 +8,8 @@ its own commit, staged by name. That includes Stage A, which spends nothing: §1
 says why.
 - **Sergi asked on 2026-11-28 for the package to be written with §2's
   recommendations as drafted**: §2.1 to §2.4, §2.6 and §2.7. Each stays his to
-  overrule at signature. §2.5 carries no recommendation, and is still his to
-  choose.
+  overrule at signature. **The same day he chose §2.5, which carried none**: the
+  agent launches the runs, through a supervisor.
 - **§§5 to 11 are written against the package, `impasse/`**, and §0 says what
   writing it showed, in a dated addition. Each later correction is dated in
   place.
@@ -1034,10 +1034,14 @@ first run it must show:
 
 It also measures the price and the pace. No row reads its answers.
 
-### 2.5 Where the runs are launched — Sergi's choice, with no recommendation
+### 2.5 Where the runs are launched — Sergi chose the agent, through a supervisor, on 2026-11-28
 
-- **By the agent, detached from the agent's harness**, as `PLAN_PLACEMENT.md`'s,
-  `PLAN_WHOLE.md`'s and the later plans' were. A supervisor:
+The drafter offered this choice with no recommendation, and Sergi chose the
+first of its two options.
+
+- **By the agent, detached from the agent's harness — chosen**, as
+  `PLAN_PLACEMENT.md`'s, `PLAN_WHOLE.md`'s and the later plans' were. A
+  supervisor:
   - runs them one at a time, in §2.3's order, never side by side, and resumes a
     run an outage has stopped;
   - commits each record alone, before the next run starts, with a message that
@@ -1049,8 +1053,8 @@ It also measures the price and the pace. No row reads its answers.
   - tells a launch a blocking check refused, which kept nothing, from one that
     resumed from the partial file;
   - never passes the overwrite flag, never skips the hook, and never merges.
-- **Or in Sergi's terminal**, one run at a time, with the key loaded as rule 7
-  says.
+- **Or in Sergi's terminal — not chosen**, one run at a time, with the key
+  loaded as rule 7 says.
 
 A run lasts hours, longer than a background command of the agent's harness
 survives, and a detached supervisor dies with WSL. Either way the smoke run,
@@ -1497,6 +1501,14 @@ come back, Stage A's findings carry an erratum to §0, dated, and no band moves.
 **The smoke run's pace, rate limits and bills are reported before the first
 run**, by call and by round. They decide nothing, and no row reads the smoke run's
 answers.
+
+**Who launches them.** The agent, as Sergi chose (§2.5): the smoke run directly,
+and the six runs through a supervisor detached from the agent's harness, which
+does what §2.5 lists. WSL stops the supervisor with the run; the agent then
+relaunches it, and the run resumes from its partial file, every kept answer with
+its own seconds. A check that matches the supervisor's process runs apart from
+the command that launches it, by `kill -0` or `ps -p` and not by a search over
+`/proc`.
 
     python3 -m impasse.run --dry-run
     PYTHONHASHSEED=0 .venv/bin/python -m impasse.run --smoke
