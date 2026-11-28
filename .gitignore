@@ -111,3 +111,5 @@ results_ranked/*.partial.jsonl
 # And the smoke run, the passes and the rarest queue's session of PLAN_CAUSE.md
 # (cause/ask.py).
 results_cause/*.partial.jsonl
+# And the smoke run and the runs of PLAN_IMPASSE.md (impasse/run.py).
+results_impasse/*.partial.jsonl
